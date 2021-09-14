@@ -9,6 +9,7 @@ const Navbar: NextPage = () => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomodoroIsActive, setPomodoroIsActive] = useState<boolean>(false);
+  const [settings, setSettings] = useState<boolean>(false);
 
   const openFullscreen = (): void => {
     if (document.documentElement.requestFullscreen) {
@@ -51,6 +52,9 @@ const Navbar: NextPage = () => {
           <Link href="/pomodoro"><a className={styles.link} id='link2' onClick={clickLink}>Pomodoro Timer</a></Link>
           {isFullscreen ? <div onClick={() => closeFullscreen()} className={styles.line}>[  ]</div> :
             <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
+        </div>
+        <div onClick={() => setSettings(true)}>
+          Settings
         </div>
       </nav>
     </>
