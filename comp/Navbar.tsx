@@ -30,15 +30,15 @@ const Navbar: NextPage = () => {
     setPomodoroIsActive(!pomodoroIsActive);
   }
 
-  useEffect(() => {
-    if (clockIsActive) {
-      document.getElementById('link1')!.classList.add('activeLink');
-      document.getElementById('link2')!.classList.remove('activeLink');
-    } else {
-      document.getElementById('link2')!.classList.add('activeLink');
-      document.getElementById('link1')!.classList.remove('activeLink');
-    }
-  }, [clockIsActive])
+  // useEffect(() => {
+  //   if (clockIsActive) {
+  //     document.getElementById('link1')!.classList.add('activeLink');
+  //     document.getElementById('link2')!.classList.remove('activeLink');
+  //   } else {
+  //     document.getElementById('link2')!.classList.add('activeLink');
+  //     document.getElementById('link1')!.classList.remove('activeLink');
+  //   }
+  // }, [clockIsActive])
 
   return (
     <>
