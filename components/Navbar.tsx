@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'
-import styles from '../styles/Navbar.module.css'
+import Image from 'next/image';
+import styles from '../styles/Navbar.module.css';
 import Head from 'next/head';
 
 const Navbar: NextPage = () => {
