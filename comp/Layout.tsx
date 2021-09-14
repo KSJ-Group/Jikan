@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 const Layout: NextPage = ({ children }) => {
   return (
-    <div>
+    <div id='layout'>
       <Navbar />
       <Background />
       { children }

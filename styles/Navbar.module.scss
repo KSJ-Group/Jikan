@@ -1,18 +1,19 @@
 .nav {
-  display: flex;
-  flex-direction: row;
   height: 100px;
-  justify-content: center;
   z-index: 2;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .mainLinks {
-  position: relative;
-  top: 40px;
   display: flex;
-  flex-direction: row;
   z-index: 2;
-
+  position: relative;
+  top: 50px;
 }
 
 .line {
@@ -20,7 +21,6 @@
   margin-top: 20px;
   cursor: default;
   z-index: 2;
-
 }
 
 .link {
@@ -29,7 +29,6 @@
   margin: 20px;
   font-size: 25px;
   z-index: 2;
-
 
   &:hover {
     color: rgb(113, 106, 106);
