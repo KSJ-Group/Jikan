@@ -53,7 +53,6 @@ const Navbar: NextPage = () => {
           {isFullscreen ? <div onClick={() => closeFullscreen()} className={styles.line}>[  ]</div> :
             <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
         </div>
-
       </nav>
     </>
   );
