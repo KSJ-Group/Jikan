@@ -1,0 +1,47 @@
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+}
+
+.mainLinks {
+  position: relative;
+  top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  z-index: 2;
+}
+
+.line {
+  font-size: 25px;
+  margin-top: 20px;
+  cursor: default;
+  z-index: 2;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+  font-size: 25px;
+  z-index: 2;
+}
+
+.link:hover {
+  color: #716a6a;
+}
+/*# sourceMappingURL=Navbar.module.css.map */

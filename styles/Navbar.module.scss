@@ -1,0 +1,37 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: center;
+  z-index: 2;
+}
+
+.mainLinks {
+  position: relative;
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+
+}
+
+.line {
+  font-size: 25px;
+  margin-top: 20px;
+  cursor: default;
+  z-index: 2;
+
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+  font-size: 25px;
+  z-index: 2;
+
+
+  &:hover {
+    color: rgb(113, 106, 106);
+  }
+}
