@@ -6,26 +6,25 @@ import styles from '../styles/Navbar.module.css'
 import Head from 'next/head';
 
 const Navbar: NextPage = () => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [clockIsActive, setClockIsActive] = useState<boolean>(true);
+  const [pomodoroIsActive, setPomodoroIsActive] = useState<boolean>(false);
 
-  const [clockIsActive, setClockIsActive] = useState(true);
-  const [pomodoroIsActive, setPomodoroIsActive] = useState(false);
-
-  const openFullscreen = () => {
+  const openFullscreen = (): void => {
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen();
     }
     setIsFullscreen(true);
   }
 
-  const closeFullscreen = () => {
+  const closeFullscreen = (): void => {
     if (document.exitFullscreen) {
       document.exitFullscreen();
     }
     setIsFullscreen(false);
   }
 
-  const clickLink = () => {
+  const clickLink = (): void => {
     setClockIsActive(!clockIsActive);
     setPomodoroIsActive(!pomodoroIsActive);
   }
