@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import styles from '../styles/Navbar.module.css'
 import Head from 'next/head';
+import Settings from './Settings';
 
 const Navbar: NextPage = () => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -52,10 +53,12 @@ const Navbar: NextPage = () => {
           <Link href="/pomodoro"><a className={styles.link} id='link2' onClick={clickLink}>Pomodoro Timer</a></Link>
           {isFullscreen ? <div onClick={() => closeFullscreen()} className={styles.line}>[  ]</div> :
             <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
+          <div onClick={() => setSettings(true)}>
+            Settings
+            <Settings settings={settings} setSettings={setSettings} />
+          </div>
         </div>
-        <div onClick={() => setSettings(true)}>
-          Settings
-        </div>
+
       </nav>
     </>
   );

@@ -1,23 +1,14 @@
 import type { NextPage } from 'next';
-import React, {useState, useEffect} from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import OffcanvasHeader from 'react-bootstrap/OffcanvasHeader';
-import OffcanvasTitle from 'react-bootstrap/OffcanvasTitle';
-import OffcanvasBody from 'react-bootstrap/OffcanvasBody';
+import React, { useState, useEffect } from 'react';
+import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 
-const Settings: NextPage = () => {
-  const [show, setShow] = useState(false);
+const Settings: NextPage = ( {settings, setSettings} ) => {
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setSettings(false);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
-
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas settings={settings} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
