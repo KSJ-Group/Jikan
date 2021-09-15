@@ -8,7 +8,8 @@ interface Photo {
   url: string,
   avg_color: string,
   src: {
-    large: string
+    original: string,
+    medium: string
   }
 }
 
@@ -39,7 +40,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
       })
       .catch((error) => {console.log(error)})
   }
-
+  console.log('these are images', images)
   return (
     <div className={styles.search}>
       <form>

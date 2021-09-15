@@ -8,7 +8,7 @@ interface backProps {
 
 const Background: NextPage<backProps> = ({background}) => {
   return (
-    <div>
+    <div className={styles.imageContainer}>
       <Image src={background} className={styles.image} layout='fill'/>
     </div>
   );

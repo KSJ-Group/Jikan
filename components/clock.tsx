@@ -4,13 +4,13 @@ import moment from 'moment';
 import { useEffect, useState } from 'react';
 
 const Clock: NextPage = () => {
-  const [time, setTime] = useState(moment().format('h:mm A'));
+  const [time, setTime] = useState<string>(moment().format('h:mm A'));
 
   useEffect(() => {
     setInterval(updateTime, 1000);
   }, [])
 
-  const updateTime = () => {
+  const updateTime = (): void => {
     setTime(moment().format('h:mm A'));
   }
 

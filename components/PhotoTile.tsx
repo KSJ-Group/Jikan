@@ -1,20 +1,22 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import styles from '../styles/PhotoTile.module.css';
 
-type ButtonProps = {
+interface ButtonProps {
   url: string,
   avg_color: string,
   src: {
-    large: string
+    original: string,
+    medium: string
   },
   changeBackground: (event: React.MouseEvent, url:string) => void
 }
 
 const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src, changeBackground}) => {
   return (
-    <div>
-      <Image src={src.large} alt={url} width={200} height={150} onClick={(event)=>{changeBackground(event, src.large)}}/>
+    <div className={styles.imageContainer}>
+      <Image src={src.medium} alt={url} layout='fill' onClick={(event)=>{changeBackground(event, src.original)}}/>
     </div>
   )
 
