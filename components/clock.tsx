@@ -16,7 +16,7 @@ const Clock: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.time}>{'12:22 PM'}</div>
+      <div className={styles.time}>{time}</div>
     </div>
   );
 };

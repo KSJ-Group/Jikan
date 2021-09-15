@@ -1,0 +1,108 @@
+$phone: 450px;
+$s: 600px;
+$m: 850px;
+$l: 1200px;
+$xl: 1400px;
+$xxl: 2500px;
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pomodoro {
+  height: 100vh;
+  width: 100vw;
+  @include flexCenter();
+}
+
+.container {
+  width: 900px;
+  height: 500px;
+  z-index: 3;
+  @include flexCenter();
+  flex-direction: column;
+  background-color: rgba(245, 245, 245, 0.5);
+  @media screen and (min-width: $xxl) {
+    width: 1200px;
+    height: 600px;
+  }
+  @media screen and (max-width: $xl) {
+    width: 80vw;
+    height: 400px;
+  }
+  @media screen and (max-width: $l) {
+    width: 80vw;
+    height: 400px;
+  }
+  @media screen and (max-width: $m) {
+    width: 80vw;
+    height: 400px;
+  }
+  @media screen and (max-width: $s) {
+    width: 80vw;
+    height: 400px;
+  }
+  @media screen and (max-width: $phone) {
+    width: 80vw;
+    height: 300px;
+  }
+}
+
+.links {
+  @include flexCenter();
+  flex-direction: row;
+}
+
+.activeLink {
+  background-color: rgb(52, 59, 94);
+  color: white;
+}
+
+.link {
+  margin: 30px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.timer {
+  z-index: 2;
+  font-size: 235px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  @media screen and (min-width: $xxl) {
+    font-size: 300px;
+  }
+  @media screen and (max-width: $xl) {
+    font-size: 200px;
+  }
+  @media screen and (max-width: $l) {
+    font-size: 150px;
+  }
+  @media screen and (max-width: $m) {
+    font-size: 100px;
+  }
+  @media screen and (max-width: $s) {
+    font-size: 80px;
+  }
+  @media screen and (max-width: $phone) {
+    font-size: 65px;
+  }
+}
+
+.startBtn {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(208, 208, 208);
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: rgb(189, 189, 189);
+  }
+}
