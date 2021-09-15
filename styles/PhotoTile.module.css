@@ -1,0 +1,22 @@
+.imageContainer {
+  height: 150px;
+  width: 200px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.image:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
+}
+/*# sourceMappingURL=PhotoTile.module.css.map */
