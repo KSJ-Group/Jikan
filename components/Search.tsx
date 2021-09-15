@@ -47,10 +47,12 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
         <input type='text' onChange={(event: any)=>{search(event)}}/>
         <input type='submit'/>
       </form>
+      <div className={styles.images}>
       {images.map((image) => {
         return (
           <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} changeBackground={changeBackground} />
         )})}
+      </div>
     </div>
   )
 }

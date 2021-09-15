@@ -1,4 +1,17 @@
 .imageContainer {
   height: 150px;
   width: 200px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 }

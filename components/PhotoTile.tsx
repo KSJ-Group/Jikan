@@ -16,7 +16,7 @@ interface ButtonProps {
 const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src, changeBackground}) => {
   return (
     <div className={styles.imageContainer}>
-      <Image src={src.medium} alt={url} layout='fill' onClick={(event)=>{changeBackground(event, src.original)}}/>
+      <img className={styles.image} src={src.medium} alt={url} onClick={(event)=>{changeBackground(event, src.original)}}/>
     </div>
   )
 
