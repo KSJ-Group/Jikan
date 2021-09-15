@@ -35,7 +35,7 @@ const Search: NextPage = () => {
       })
       .catch((error) => {console.log(error)})
   }
-  console.log('these are images', images)
+
   return (
     <div className={styles.search}>
       <form>
