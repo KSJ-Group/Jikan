@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import type { NextPage } from 'next';
 import styles from '../styles/Pomodoro.module.css';
 import Head from 'next/head';
 
-const pomodoro: React.FC = () => {
+const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
