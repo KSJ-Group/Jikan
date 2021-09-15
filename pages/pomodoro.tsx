@@ -17,15 +17,12 @@ const pomodoro: React.FC = () => {
   useEffect(() => {
     setStarted(false);
     if (pomodoro) {
-      console.log('timer', timer);
       setShortBreakTime(millisToMinutesAndSeconds(300000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
     } else if (shortBreak) {
-      console.log('timer', timer);
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
     } else if (longBreak) {
-      console.log('timer', timer);
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setShortBreakTime(millisToMinutesAndSeconds(300000));
     }
@@ -89,13 +86,10 @@ const pomodoro: React.FC = () => {
 
   const stopClickHandler = (): void => {
     setStarted(false);
-    console.log('Timer:', timer);
     clearInterval(timer);
-    console.log('Timer:', timer);
   }
 
   const startTimer = (): void => {
-    console.log(timer);
     if (pomodoro) {
       if (minutesAndSecondsToMillis(pomodoroTime) > 0) {
         setPomodoroTime((prevState: string) => {
