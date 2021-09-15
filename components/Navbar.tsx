@@ -31,6 +31,10 @@ const Navbar: React.FC = () => {
   }
 
 
+
+  useEffect(() => {
+  }, [showSettings])
+
   return (
     <>
       <Head>
@@ -58,8 +62,8 @@ const Navbar: React.FC = () => {
             <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
           <div onClick={() => setShowSettings(true)}>
             Settings
-            <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
           </div>
+          <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
         </div>
 
       </nav>

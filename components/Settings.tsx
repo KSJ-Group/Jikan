@@ -4,17 +4,17 @@ import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react
 interface Props {
   showSettings: boolean,
   setShowSettings: any
-};
+}
+
 
 const Settings: React.FC<Props> = ( {showSettings, setShowSettings} ) => {
 
-  const handleClose = () => setShowSettings(false);
 
 
   return (
     <>
-      <Offcanvas show={showSettings} onHide={handleClose} placement='end'>
-        <Offcanvas.Header closeButton>
+      <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end'>
+        <Offcanvas.Header closeButton >
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
