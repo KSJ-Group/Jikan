@@ -1,14 +1,18 @@
-import type { NextPage } from 'next';
 import React, { useState, useEffect } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 
-const Settings: NextPage = ( {settings, setSettings} ) => {
+interface Props {
+  settings: boolean,
+  setSettings: any
+};
+
+const Settings: React.FC<Props> = ( {settings, setSettings} ) => {
 
   const handleClose = () => setSettings(false);
 
   return (
     <>
-      <Offcanvas settings={settings} onHide={handleClose}>
+      <Offcanvas show={settings} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
