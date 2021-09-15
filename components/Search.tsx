@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import type { NextPage } from 'next';
 import axios from 'axios';
 import styles from '../styles/Search.module.css';
+import PhotoTile from './PhotoTile';
 
 interface Photo {
   url: string,
   avg_color: string,
+  src: {
+    large: string
+  }
 }
 
 const photos: Photo[] = [];
 
-const Search = () => {
+const Search: NextPage = () => {
   const [terms, setTerms] = useState<string>('')
   const [page, setPage] = useState<number>(1)  // this should increment when user wants to see next set of images
   const [images, setImages] = useState<typeof photos>([])
@@ -30,14 +35,17 @@ const Search = () => {
       })
       .catch((error) => {console.log(error)})
   }
-
-console.log(images)
+  console.log('these are images', images)
   return (
     <div className={styles.search}>
       <form>
         <input type='text' onChange={(event)=>{search(event)}}/>
         <input type='submit'/>
       </form>
+      {images.map((image) => {
+        return (
+          <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} />
+        )})}
     </div>
   )
 }
