@@ -10,6 +10,7 @@ const Settings: React.FC<Props> = ( {settings, setSettings} ) => {
 
   const handleClose = () => setSettings(false);
 
+  
   return (
     <>
       <Offcanvas show={settings} onHide={handleClose}>
