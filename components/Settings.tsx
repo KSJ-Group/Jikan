@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 
 interface Props {
-  settings: boolean,
-  setSettings: any
-};
+  showSettings: boolean,
+  setShowSettings: any
+}
 
-const Settings: React.FC<Props> = ( {settings, setSettings} ) => {
 
-  const handleClose = () => setSettings(false);
+const Settings: React.FC<Props> = ( {showSettings, setShowSettings} ) => {
 
-  
+
+
   return (
     <>
-      <Offcanvas show={settings} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
+      <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end'>
+        <Offcanvas.Header closeButton >
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
