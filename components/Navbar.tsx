@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomodoroIsActive, setPomodoroIsActive] = useState<boolean>(false);
-  const [settings, setSettings] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   const openFullscreen = (): void => {
     if (document.documentElement.requestFullscreen) {
@@ -56,9 +56,9 @@ const Navbar: React.FC = () => {
           <Link href="/pomodoro"><a className={styles.link} id='link2' onClick={clickLink}>Pomodoro Timer</a></Link>
           {isFullscreen ? <div onClick={() => closeFullscreen()} className={styles.line}>[  ]</div> :
             <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
-          <div onClick={() => setSettings(true)}>
+          <div onClick={() => setShowSettings(true)}>
             Settings
-            <Settings settings={settings} setSettings={setSettings} />
+            <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
           </div>
         </div>
 
