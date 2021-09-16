@@ -3,10 +3,7 @@ import type { NextPage } from 'next';
 import styles from '../styles/Pomodoro.module.css';
 import Head from 'next/head';
 import { millisToMinutesAndSeconds, minutesAndSecondsToMillis } from '../helper/convertTime';
-
-// let pomodoroTimer: number;
-// let shortBreakTimer: number;
-// let longBreakTimer: number;
+import AreYouSureModal from '../components/AreYouSureModal';
 
 let timer: number;
 
@@ -20,6 +17,8 @@ const pomodoro: NextPage = () => {
   const [longBreakTime, setLongBreakTime] = useState<any>(900000);
 
   const [started, setStarted] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [targetMode, setTargetMode] = useState<string>('');
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
@@ -42,19 +41,48 @@ const pomodoro: NextPage = () => {
   }, [pomodoro, shortBreak, longBreak])
 
   const linkClickHandler = (target: string): void => {
-    if (target === 'Pomodoro') {
-      setPomodoro(true);
-      setShortBreak(false);
-      setLongBreak(false);
-    } else if (target === 'Short Break') {
-      setShortBreak(true);
-      setPomodoro(false);
-      setLongBreak(false);
-    } else if (target === 'Long Break') {
-      setLongBreak(true);
-      setPomodoro(false);
-      setShortBreak(false);
+    if (target === 'Pomodoro' && !pomodoro) {
+      if (started) {
+        setShowModal(true);
+        setTargetMode('pomodoro');
+      } else {
+        switchToPom();
+      }
+    } else if (target === 'Short Break' && !shortBreak) {
+      if (started) {
+        setShowModal(true);
+        setTargetMode('short');
+      } else {
+        switchToShort();
+      }
+    } else if (target === 'Long Break' && !longBreak) {
+      if (started) {
+        setShowModal(true);
+        setTargetMode('long');
+      } else {
+        switchToLong();
+      }
     }
+  }
+
+  const handleClose = (): void => setShowModal(false);
+
+  const switchToPom = (): void => {
+    setPomodoro(true);
+    setShortBreak(false);
+    setLongBreak(false);
+  }
+
+  const switchToShort = (): void => {
+    setShortBreak(true);
+    setPomodoro(false);
+    setLongBreak(false);
+  }
+
+  const switchToLong = (): void => {
+    setLongBreak(true);
+    setPomodoro(false);
+    setShortBreak(false);
   }
 
   const startClickHandler = (): void => {
@@ -139,6 +167,7 @@ const pomodoro: NextPage = () => {
         {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}
         {longBreak ? <div className={styles.timer}>{longBreakTime}</div> : null}
         {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
+        {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode}/> : null}
       </div>
     </div>
   );
