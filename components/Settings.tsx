@@ -26,20 +26,51 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
           </div>
 
           <div>
-            <Form className={styles.form}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Pomodoro</Form.Label>
-                <Form.Control type="pomodoro" className={styles.pomodoro} />
+            <Form >
+              <div className={styles.form}>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Pomodoro</Form.Label>
+                  <Form.Control type="pomodoro" className={styles.pomodoro} />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Short Break</Form.Label>
+                  <Form.Control type="shortbreak" className={styles.shortbreak} />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Long Break</Form.Label>
+                  <Form.Control type="longbreak" className={styles.longbreak} />
+                </Form.Group>
+              </div>
+              <Form.Group>
+                <Form.Label>check this out yo</Form.Label>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  label="you do u seiji"
+                />
               </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Short Break</Form.Label>
-                <Form.Control type="shortbreak" className={styles.shortbreak} />
+              <Form.Group>
+                <Form.Label>Alert Sound</Form.Label>
+                <Form.Select>
+                  <option value='' hidden></option>
+                  <option value='Classic beep'>Classic beep</option>
+                  <option value='Classic Seiji'>Classic Seiji</option>
+                  <option value='Classic June'>Classic June</option>
+                  <option value='Classic Katie'>Classic Katie</option>
+                </Form.Select>
               </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Long Break</Form.Label>
-                <Form.Control type="longbreak" className={styles.longbreak} />
+              <Form.Group>
+                <Form.Label>Font</Form.Label>
+                <Form.Select>
+                  <option value='' hidden></option>
+                  <option value='Arial'>Arial</option>
+                  <option value='TimeNewSeiji'>TimeNewSeiji</option>
+                  <option value='RandomFont'>RandomFont</option>
+                </Form.Select>
               </Form.Group>
 
               <Button variant="primary" type="submit">
@@ -48,14 +79,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             </Form>
           </div>
 
-          <div>
-            Auto-start breaks?
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              label="you do u seiji"
-            />
-          </div>
+
 
           <div>
             Alarm Sound
