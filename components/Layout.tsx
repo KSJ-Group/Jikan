@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import Search from './Search';
@@ -7,8 +7,16 @@ import Search from './Search';
 const Layout: NextPage = ({ children }) => {
   const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
 
+  useEffect((): any => {
+    let cachedImage = localStorage.getItem('background')
+    if (cachedImage) {
+      setBackground(cachedImage)
+    }
+  }, [])
+
   const changeBackground = (event: React.MouseEvent, url:string): void => {
-    setBackground(url)
+    setBackground(url);
+    localStorage.setItem('background', url);
   }
 
   return (
