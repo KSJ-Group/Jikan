@@ -22,7 +22,7 @@ const photos: Photo[] = [];
 
 const Search: NextPage<searchProps> = ({ changeBackground }) => {
   const [terms, setTerms] = useState<string>('')
-  const [page, setPage] = useState<number>(1)  // this should increment when user wants to see next set of images
+  const [page, setPage] = useState<number>(1)
   const [images, setImages] = useState<typeof photos>([])
   const [maxPages, setMaxPages] = useState<number>(0)
   useEffect(() => {
