@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap'
+import styles from '../styles/Settings.module.css';
 
 interface Props {
   showSettings: boolean,
@@ -7,7 +9,7 @@ interface Props {
 }
 
 
-const Settings: React.FC<Props> = ( {showSettings, setShowSettings} ) => {
+const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
 
 
@@ -18,8 +20,65 @@ const Settings: React.FC<Props> = ( {showSettings, setShowSettings} ) => {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <div>
+            Clock Settings
+            <div>Brightness</div>
+          </div>
+
+          <div className={styles.form}>
+            <Form>
+              <Form.Group  controlId="formBasicEmail">
+                <Form.Label>Pomodoro</Form.Label>
+                <Form.Control type="pomodoro" className={styles.pomodoro}/>
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Short Break</Form.Label>
+                <Form.Control type="shortbreak" className={styles.shortbreak}/>
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Long Break</Form.Label>
+                <Form.Control type="longbreak" className={styles.longbreak}/>
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </div>
+
+          <div>
+            Auto-start breaks?
+          </div>
+
+          <div>
+            Alarm Sound
+          </div>
+
+          <div>
+            Font
+          </div>
+
+          <div>
+            Show seconds
+          </div>
+
+          <div>
+            Blur
+          </div>
+
+          <div>
+            12 hours
+          </div>
+
+          <div>
+            24 hours
+          </div>
+
+          <div>
+            Background Image
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
