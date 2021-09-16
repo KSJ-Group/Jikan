@@ -24,7 +24,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
   const [terms, setTerms] = useState<string>('')
   const [page, setPage] = useState<number>(1)  // this should increment when user wants to see next set of images
   const [images, setImages] = useState<typeof photos>([])
-
+  const [maxPages, setMaxPages] = useState<number>(0)
   useEffect(() => {
     fetchImages(terms, page);
   },[terms, page])
@@ -37,7 +37,8 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
     axios.get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
-        setImages(data.data);
+        setImages(data.data.photos);
+        setMaxPages(Math.ceil(data.data.total_results/12));
       })
       .catch((error) => {console.log(error);})
   }
@@ -47,7 +48,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
     direction ? newPage++: newPage--;
     setPage(newPage);
   }
-  console.log('this is page', page)
+  console.log('this is page number and max pages', page, maxPages)
   return (
     <div className={styles.search}>
       <form>
@@ -59,7 +60,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
           <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} changeBackground={changeBackground} />
         )})}
       </div>
-      <Page changePage={changePage}/>
+      <Page changePage={changePage} page={page} maxPages={maxPages}/>
     </div>
   )
 }
