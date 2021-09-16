@@ -13,7 +13,6 @@
   display: flex;
   z-index: 2;
   position: relative;
-  top: 50px;
 }
 
 .line {
@@ -33,4 +32,10 @@
   &:hover {
     color: rgb(113, 106, 106);
   }
+}
+
+.settings {
+  position: absolute;
+  right: 60px;
+  top: 45px;
 }

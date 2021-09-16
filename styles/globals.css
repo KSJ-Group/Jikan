@@ -18,3 +18,11 @@ html, body {
   color: white;
 }
 
+.fs {
+  position: absolute;
+  font-size: 25px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin: 30px;
+}

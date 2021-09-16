@@ -6,31 +6,14 @@ import Head from 'next/head';
 import Settings from './Settings';
 
 const Navbar: React.FC = () => {
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomodoroIsActive, setPomodoroIsActive] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
-
-  const openFullscreen = (): void => {
-    if (document.documentElement.requestFullscreen) {
-      document.documentElement.requestFullscreen();
-    }
-    setIsFullscreen(true);
-  }
-
-  const closeFullscreen = (): void => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-    setIsFullscreen(false);
-  }
 
   const clickLink = (): void => {
     setClockIsActive(!clockIsActive);
     setPomodoroIsActive(!pomodoroIsActive);
   }
-
-
 
   useEffect(() => {
   }, [showSettings])
@@ -58,14 +41,11 @@ const Navbar: React.FC = () => {
           <Link href="/"><a className={styles.link} id='link1' onClick={clickLink}>Digital Clock</a></Link>
           <div className={styles.line}>|</div>
           <Link href="/pomodoro"><a className={styles.link} id='link2' onClick={clickLink}>Pomodoro Timer</a></Link>
-          {isFullscreen ? <div onClick={() => closeFullscreen()} className={styles.line}>[  ]</div> :
-            <div onClick={() => openFullscreen()} className={styles.line}>[  ]</div>}
-          <div onClick={() => setShowSettings(true)}>
-            Settings
+        </div>
+        <div className={styles.settings} onClick={() => setShowSettings(true)}>
+            [Settings]
           </div>
           <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
-        </div>
-
       </nav>
     </>
   );
