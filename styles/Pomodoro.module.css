@@ -90,6 +90,7 @@
           flex-direction: row;
   position: relative;
   top: 40px;
+  z-index: 3;
 }
 
 @media screen and (max-width: 678px) {
@@ -189,6 +190,7 @@
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
+  z-index: 3;
 }
 
 @media screen and (max-width: 850px) {

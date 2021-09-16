@@ -55,6 +55,7 @@ $phone: 450px;
   flex-direction: row;
   position: relative;
   top: 40px;
+  z-index: 3;
   @media screen and (max-width: 678px) {
     // top: -10px;
     width: 70vw;
@@ -123,6 +124,7 @@ $phone: 450px;
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
+  z-index: 3;
   @media  screen and (max-width: $m) {
     top: -10px;
   }
