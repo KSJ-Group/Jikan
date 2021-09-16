@@ -66,11 +66,7 @@ $phone: 450px;
     width: 60vw;
     flex-wrap: wrap;
   }
-}
 
-.activeLink {
-  background-color: rgb(52, 59, 94);
-  color: white;
 }
 
 .link {
@@ -84,6 +80,9 @@ $phone: 450px;
   @media screen and (max-width: $phone) {
     font-size: 18px;
     margin: 10px;
+  }
+  &:hover {
+    color: rgb(113, 106, 106);
   }
 }
 

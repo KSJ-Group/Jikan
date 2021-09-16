@@ -31,12 +31,21 @@ const pomodoro: NextPage = () => {
     if (pomodoro) {
       setShortBreakTime(millisToMinutesAndSeconds(300000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
+      document.getElementById('link4')?.classList.add('activePomLink');
+      document.getElementById('link5')?.classList.remove('activePomLink');
+      document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (shortBreak) {
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
+      document.getElementById('link5')?.classList.add('activePomLink');
+      document.getElementById('link4')?.classList.remove('activePomLink');
+      document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (longBreak) {
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setShortBreakTime(millisToMinutesAndSeconds(300000));
+      document.getElementById('link6')?.classList.add('activePomLink');
+      document.getElementById('link4')?.classList.remove('activePomLink');
+      document.getElementById('link5')?.classList.remove('activePomLink');
     }
   }, [pomodoro, shortBreak, longBreak])
 
@@ -159,9 +168,9 @@ const pomodoro: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.links}>
-          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
-          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
-          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
+          <div className={styles.link}  id='link4' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
+          <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
+          <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
         {pomodoro ? <div className={styles.timer}>{pomodoroTime}</div> : null}
         {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}

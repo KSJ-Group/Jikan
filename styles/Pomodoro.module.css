@@ -110,11 +110,6 @@
   }
 }
 
-.activeLink {
-  background-color: #343b5e;
-  color: white;
-}
-
 .link {
   margin: 30px;
   font-size: 25px;
@@ -133,6 +128,10 @@
     font-size: 18px;
     margin: 10px;
   }
+}
+
+.link:hover {
+  color: #716a6a;
 }
 
 .timer {
