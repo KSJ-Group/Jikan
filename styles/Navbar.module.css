@@ -21,7 +21,6 @@
   display: flex;
   z-index: 2;
   position: relative;
-  top: 50px;
 }
 
 .line {
@@ -41,5 +40,11 @@
 
 .link:hover {
   color: #716a6a;
+}
+
+.settings {
+  position: absolute;
+  right: 60px;
+  top: 45px;
 }
 /*# sourceMappingURL=Navbar.module.css.map */
