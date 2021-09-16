@@ -40,7 +40,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
       })
       .catch((error) => {console.log(error)})
   }
-  console.log('these are images', images)
+
   return (
     <div className={styles.search}>
       <form>

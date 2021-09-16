@@ -17,7 +17,7 @@ export default function handler(
   let { terms, page } = req.query
   let query: AxiosRequestConfig = {
     method: `get`,
-    url: `https://api.pexels.com/v1/search?query=${terms}&page=${page}&per_page=12`,
+    url: `https://api.pexels.com/v1/search?query=${terms}&page=${page}&per_page=12&orientation=landscape`,
     headers: {Authorization: pexelAPI}
   }
   axios(query)
