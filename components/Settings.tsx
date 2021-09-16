@@ -25,8 +25,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <div>Brightness</div>
           </div>
 
-          <div className={styles.form}>
-            <Form>
+          <div>
+            <Form className={styles.form}>
               <Form.Group  controlId="formBasicEmail">
                 <Form.Label>Pomodoro</Form.Label>
                 <Form.Control type="pomodoro" className={styles.pomodoro}/>
