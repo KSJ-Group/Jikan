@@ -27,19 +27,19 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
           <div>
             <Form className={styles.form}>
-              <Form.Group  controlId="formBasicEmail">
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Pomodoro</Form.Label>
-                <Form.Control type="pomodoro" className={styles.pomodoro}/>
+                <Form.Control type="pomodoro" className={styles.pomodoro} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Short Break</Form.Label>
-                <Form.Control type="shortbreak" className={styles.shortbreak}/>
+                <Form.Control type="shortbreak" className={styles.shortbreak} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Long Break</Form.Label>
-                <Form.Control type="longbreak" className={styles.longbreak}/>
+                <Form.Control type="longbreak" className={styles.longbreak} />
               </Form.Group>
 
               <Button variant="primary" type="submit">
@@ -50,6 +50,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
           <div>
             Auto-start breaks?
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label="you do u seiji"
+            />
           </div>
 
           <div>
