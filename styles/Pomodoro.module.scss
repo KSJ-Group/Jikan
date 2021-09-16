@@ -1,9 +1,9 @@
-$phone: 450px;
-$s: 600px;
-$m: 850px;
-$l: 1200px;
-$xl: 1400px;
 $xxl: 2500px;
+$xl: 1400px;
+$l: 1200px;
+$m: 850px;
+$s: 600px;
+$phone: 450px;
 
 @mixin flexCenter() {
   display: flex;
@@ -53,6 +53,18 @@ $xxl: 2500px;
 .links {
   @include flexCenter();
   flex-direction: row;
+  position: relative;
+  top: 40px;
+  @media screen and (max-width: 678px) {
+    // top: -10px;
+    width: 70vw;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: $phone) {
+    top: -10px;
+    width: 60vw;
+    flex-wrap: wrap;
+  }
 }
 
 .activeLink {
@@ -62,14 +74,21 @@ $xxl: 2500px;
 
 .link {
   margin: 30px;
-  padding: 15px;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 10px;
   cursor: pointer;
+  @media screen and (max-width: 678px) {
+    margin: 10px;
+  }
+  @media screen and (max-width: $phone) {
+    font-size: 18px;
+    margin: 10px;
+  }
 }
 
 .timer {
   z-index: 2;
+  position: relative;
   font-size: 235px;
   font-weight: bold;
   text-align: center;
@@ -84,24 +103,37 @@ $xxl: 2500px;
     font-size: 150px;
   }
   @media screen and (max-width: $m) {
-    font-size: 100px;
+    font-size: 150px;
   }
   @media screen and (max-width: $s) {
-    font-size: 80px;
+    font-size: 100px;
   }
   @media screen and (max-width: $phone) {
-    font-size: 65px;
+    font-size: 80px;
+    top: -10px;
   }
 }
 
 .startBtn {
+  position: relative;
+  top: -50px;
   padding: 20px;
   border-radius: 10px;
   background-color: rgb(208, 208, 208);
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
-
+  @media  screen and (max-width: $m) {
+    top: -10px;
+  }
+  @media screen and (max-width: $s) {
+    top: -10px;
+  }
+  @media  screen and (max-width: $phone) {
+    font-size: 18px;
+    padding: 10px;
+    top: -10px;
+  }
   &:hover {
     background-color: rgb(189, 189, 189);
   }
