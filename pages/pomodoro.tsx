@@ -4,6 +4,12 @@ import styles from '../styles/Pomodoro.module.css';
 import Head from 'next/head';
 import { millisToMinutesAndSeconds, minutesAndSecondsToMillis } from '../helper/convertTime';
 
+// let pomodoroTimer: number;
+// let shortBreakTimer: number;
+// let longBreakTimer: number;
+
+let timer: number;
+
 const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
@@ -14,10 +20,6 @@ const pomodoro: NextPage = () => {
   const [longBreakTime, setLongBreakTime] = useState<any>(900000);
 
   const [started, setStarted] = useState<boolean>(false);
-
-  let pomodoroTimer: number;
-  let shortBreakTimer: number;
-  let longBreakTimer: number;
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
@@ -58,27 +60,23 @@ const pomodoro: NextPage = () => {
   const startClickHandler = (): void => {
     setStarted(true);
     if (pomodoro) {
-      pomodoroTimer = window.setInterval(startTimer, 1000);
+      timer = window.setInterval(startTimer, 1000);
     } else if (shortBreak) {
-      shortBreakTimer = window.setInterval(startTimer, 1000);
+      timer = window.setInterval(startTimer, 1000);
     } else if (longBreak) {
-      longBreakTimer = window.setInterval(startTimer, 1000);
+      timer = window.setInterval(startTimer, 1000);
     }
   }
 
   const stopClickHandler = (): void => {
     setStarted(false);
     if (pomodoro) {
-      clearInterval(pomodoroTimer);
-      pomodoroTimer = 0;
+      stopTimer();
     } else if (shortBreak) {
-      clearInterval(shortBreakTimer);
-      shortBreakTimer = 0;
+      stopTimer();
     } else if (longBreak) {
-      clearInterval(longBreakTimer);
-      longBreakTimer = 0;
+      stopTimer();
     }
-    window.alert('Timer should stop');
   }
 
   const startTimer = (): void => {
@@ -86,42 +84,64 @@ const pomodoro: NextPage = () => {
       if (minutesAndSecondsToMillis(pomodoroTime) > 0) {
         setPomodoroTime((prevState: string) => {
           let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
+          if (newTime === '0:00') {
+            stopTimer();
+            playAlertSound();
+          }
           return newTime;
         })
       }
     } else if (shortBreak) {
       setShortBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
+        if (newTime === '0:00') {
+          stopTimer();
+          playAlertSound();
+        }
         return newTime;
       });
     } else if (longBreak) {
       setLongBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
+        if (newTime === '0:00') {
+          stopTimer();
+          playAlertSound();
+        }
         return newTime;
       });
     }
   }
 
-return (
-  <div className={styles.pomodoro}>
-    <div className={styles.container}>
-      <Head>
-        <title>Jikan | Pomodoro </title>
-        <meta name="description" content="Track time" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className={styles.links}>
-        <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
-        <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
-        <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
+  const stopTimer = (): void => {
+    clearInterval(timer);
+    timer = 0;
+  }
+
+  const playAlertSound = (): void => {
+    var audio = new Audio('alarm.wav');
+    audio.play();
+  }
+
+  return (
+    <div className={styles.pomodoro}>
+      <div className={styles.container}>
+        <Head>
+          <title>Jikan | Pomodoro </title>
+          <meta name="description" content="Track time" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className={styles.links}>
+          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
+          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
+          <div className={styles.link} onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
+        </div>
+        {pomodoro ? <div className={styles.timer}>{pomodoroTime}</div> : null}
+        {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}
+        {longBreak ? <div className={styles.timer}>{longBreakTime}</div> : null}
+        {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
       </div>
-      {pomodoro ? <div className={styles.timer}>{pomodoroTime}</div> : null}
-      {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}
-      {longBreak ? <div className={styles.timer}>{longBreakTime}</div> : null}
-      {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
     </div>
-  </div>
-);
+  );
 };
 
 export default pomodoro;
