@@ -48,7 +48,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
     direction ? newPage++: newPage--;
     setPage(newPage);
   }
-  console.log('this is page number and max pages', page, maxPages)
+
   return (
     <div className={styles.search}>
       <form>
