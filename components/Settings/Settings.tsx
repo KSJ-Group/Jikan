@@ -8,6 +8,9 @@ import AlertSound from './AlertSound';
 import Brightness from './Brightness';
 import AutoStarBreak from './AutoStartBreak';
 import Font from './Font';
+import ShowSeconds from './ShowSeconds';
+import Blur from './Blur';
+import TimeFormat from './TimeFormat';
 
 interface Props {
   showSettings: boolean,
@@ -31,11 +34,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <Login />
             {isLoggedIn ? <div>Profile</div> : <div>Sign | Register</div>}
             <Brightness />
-            <Form >
-              <Timers />
-              <AlertSound />
-              <AutoStarBreak />
-            </Form>
+            <ShowSeconds />
+            <Blur />
+            <TimeFormat />
+            <Font />
           </div> :
           // Pomodoro settings
           <div>
@@ -43,8 +45,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
           <Brightness />
           <Form >
             <Timers />
-            <AlertSound />
             <AutoStarBreak />
+            <AlertSound />
+            <Font />
           </Form>
         </div> }
         </Offcanvas.Body>
