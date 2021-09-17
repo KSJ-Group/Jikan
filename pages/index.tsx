@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Clock from '../components/clock';
-import styles from '../styles/Main.module.css';
+import styles from '../styles/Main/Main.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home: NextPage = () => {

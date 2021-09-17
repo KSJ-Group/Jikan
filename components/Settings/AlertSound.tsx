@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap'
-import styles from '../../styles/Settings.module.css';
+import styles from '../../styles/Settings/Settings.module.css';
 
 const AlertSound = () => {
   return (

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import styles from '../styles/Clock.module.css';
+import styles from '../styles/Clock/Clock.module.css';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 
