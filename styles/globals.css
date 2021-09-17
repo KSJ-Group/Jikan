@@ -13,8 +13,21 @@ html, body {
   opacity: 100%; /* Change this to change the brightness */
 }
 
-.activePomLink {
-  background-color: rgb(52, 59, 94);
-  color: white;
+.activeLink {
+  font-weight: bold;
 }
 
+.activePomLink {
+  background-color: rgb(66, 66, 92);
+  padding: 5px;
+  color: rgb(231, 231, 231);
+}
+
+.fs {
+  position: absolute;
+  font-size: 25px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin: 30px;
+}

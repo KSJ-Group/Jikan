@@ -25,8 +25,11 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
   const [page, setPage] = useState<number>(1)
   const [images, setImages] = useState<typeof photos>([])
   const [maxPages, setMaxPages] = useState<number>(0)
+
   useEffect(() => {
-    fetchImages(terms, page);
+    if (images.length) {
+      fetchImages(terms, page);
+    }
   },[terms, page])
 
   const search = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -43,7 +46,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
       .catch((error) => {console.log(error);})
   }
 
-  const changePage = (direction: boolean) => {
+  const changePage = (direction: boolean): void => {
     let newPage = page;
     direction ? newPage++: newPage--;
     setPage(newPage);

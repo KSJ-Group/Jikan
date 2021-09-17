@@ -88,23 +88,55 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  position: relative;
+  top: 40px;
+  z-index: 3;
 }
 
-.activeLink {
-  background-color: #343b5e;
-  color: white;
+@media screen and (max-width: 678px) {
+  .links {
+    width: 70vw;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .links {
+    top: -10px;
+    width: 60vw;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 .link {
   margin: 30px;
-  padding: 15px;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 10px;
   cursor: pointer;
 }
 
+@media screen and (max-width: 678px) {
+  .link {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .link {
+    font-size: 18px;
+    margin: 10px;
+  }
+}
+
+.link:hover {
+  color: #716a6a;
+}
+
 .timer {
   z-index: 2;
+  position: relative;
   font-size: 235px;
   font-weight: bold;
   text-align: center;
@@ -131,29 +163,53 @@
 
 @media screen and (max-width: 850px) {
   .timer {
-    font-size: 100px;
+    font-size: 150px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .timer {
-    font-size: 80px;
+    font-size: 100px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .timer {
-    font-size: 65px;
+    font-size: 80px;
+    top: -10px;
   }
 }
 
 .startBtn {
+  position: relative;
+  top: -50px;
   padding: 20px;
   border-radius: 10px;
   background-color: #d0d0d0;
   cursor: pointer;
   font-size: 25px;
   font-weight: bold;
+  z-index: 3;
+}
+
+@media screen and (max-width: 850px) {
+  .startBtn {
+    top: -10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .startBtn {
+    top: -10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .startBtn {
+    font-size: 18px;
+    padding: 10px;
+    top: -10px;
+  }
 }
 
 .startBtn:hover {
