@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import Search from './Settings/Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Layout: NextPage = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -28,6 +29,7 @@ const Layout: NextPage = ({ children }) => {
     <div id='layout'>
       <Navbar />
       <div onClick={() => toggleFullscreen()} className='fs'>[ ]</div>
+      <i className="fas fa-compress"></i>
       <Background background={background}/>
       { children }
       {/* <Search changeBackground={changeBackground}/> */}
