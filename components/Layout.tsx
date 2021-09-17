@@ -2,19 +2,13 @@ import type { NextPage } from 'next';
 import React, { useState, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
-import Search from './Search';
+import Search from './Settings/Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Layout: NextPage = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
 
-  useEffect((): any => {
-    let cachedImage = localStorage.getItem('background')
-    if (cachedImage) {
-      setBackground(cachedImage)
-    }
-  }, [])
-  
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
       if (document.exitFullscreen) {
@@ -29,18 +23,16 @@ const Layout: NextPage = ({ children }) => {
     }
   }
 
-  const changeBackground = (event: React.MouseEvent, url:string): void => {
-    setBackground(url);
-    localStorage.setItem('background', url);
-  }
+
 
   return (
     <div id='layout'>
       <Navbar />
       <div onClick={() => toggleFullscreen()} className='fs'>[ ]</div>
+      <i className="fas fa-compress"></i>
       <Background background={background}/>
       { children }
-      <Search changeBackground={changeBackground}/>
+      {/* <Search changeBackground={changeBackground}/> */}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import Font from './Font';
 import ShowSeconds from './ShowSeconds';
 import Blur from './Blur';
 import TimeFormat from './TimeFormat';
+import Search from './Search';
 
 interface Props {
   showSettings: boolean,
@@ -18,8 +19,21 @@ interface Props {
 }
 
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
-  const [isClock, setIsClock] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isClock, setIsClock] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
+
+  useEffect((): any => {
+    let cachedImage = localStorage.getItem('background')
+    if (cachedImage) {
+      setBackground(cachedImage)
+    }
+  }, [])
+
+  const changeBackground = (event: React.MouseEvent, url:string): void => {
+    setBackground(url);
+    localStorage.setItem('background', url);
+  }
 
   return (
     <>
@@ -38,6 +52,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <Blur />
             <TimeFormat />
             <Font />
+            Change Background Image
+            <Search changeBackground={changeBackground} />
           </div> :
           // Pomodoro settings
           <div>
@@ -48,6 +64,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <AutoStarBreak />
             <AlertSound />
             <Font />
+            Change Background Image
+            <Search changeBackground={changeBackground} />
           </Form>
         </div> }
         </Offcanvas.Body>
