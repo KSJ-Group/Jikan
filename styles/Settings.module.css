@@ -1,0 +1,22 @@
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pomodoro {
+  width: 70px;
+}
+
+.shortbreak {
+  width: 70px;
+}
+
+.longbreak {
+  width: 70px;
+}
+/*# sourceMappingURL=Settings.module.css.map */

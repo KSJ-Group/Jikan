@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;CACpB;;AAED,AAAA,SAAS,CAAC;EACR,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,WAAW,CAAC;EACV,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "Settings.module.scss"
+    ],
+    "names": [],
+    "file": "Settings.module.css"
+}

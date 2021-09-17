@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Navbar.module.css';
 import Head from 'next/head';
-import Settings from './Settings';
+import Settings from './Settings/Settings';
 
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
