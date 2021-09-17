@@ -10,6 +10,8 @@ interface Photo {
 
 const photos: Photo[] = [];
 
+
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<typeof photos>
@@ -17,10 +19,10 @@ export default function handler(
   let { terms, page } = req.query
   let query: AxiosRequestConfig = {
     method: `get`,
-    url: `https://api.pexels.com/v1/search?query=${terms}&page=${page}&per_page=12`,
+    url: `https://api.pexels.com/v1/search?query=${terms}&page=${page}&per_page=12&orientation=landscape`,
     headers: {Authorization: pexelAPI}
   }
   axios(query)
-    .then((response) => {res.status(200).json(response.data.photos)})
+    .then((response) => {console.log(response.data); res.status(200).json(response.data)})
     .catch((error) => {console.log(error)})
 }
