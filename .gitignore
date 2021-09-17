@@ -37,3 +37,4 @@ package-lock.json
 
 # sensitive keys
 config.js
+.env
