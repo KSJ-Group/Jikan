@@ -23,6 +23,8 @@ const Home: NextPage = () => {
           crossOrigin="true"></script>
 
         <script>var Alert = ReactBootstrap.Alert; </script>
+
+        <script src="https://kit.fontawesome.com/5a44324c7d.js" crossOrigin="anonymous"></script>
       </Head>
       <Clock />
     </div>
