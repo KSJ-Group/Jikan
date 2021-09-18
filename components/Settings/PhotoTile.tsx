@@ -10,25 +10,16 @@ interface ButtonProps {
     original: string,
     medium: string
   }
-}
+};
 
 const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src}) => {
   const { changeBackground, loaded } = useContext(BackgroundContext);
 
-  useEffect((): any => {
-    let cachedImage = localStorage.getItem('background')
-    if (cachedImage) {
-      changeBackground(cachedImage)
-    }
-  }, [])
-
   return (
     <div className={styles.imageContainer}>
       {loaded ? <img className={styles.image} src={src.medium} alt={url} onClick={(event)=>{changeBackground(src.original)}}/> : <div>Uploading Background Image...</div>}
-
     </div>
-  )
-
-}
+  );
+};
 
 export default PhotoTile;

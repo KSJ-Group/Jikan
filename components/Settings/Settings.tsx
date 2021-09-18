@@ -23,11 +23,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const [isClock, setIsClock] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-  // const changeBackground = (event: React.MouseEvent, url:string): void => {
-  //   setBackground(url);
-  //   localStorage.setItem('background', url);
-  // }
-
   return (
     <>
         <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end'>
@@ -65,7 +60,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         </Offcanvas>
     </>
   );
-}
+};
 
 
 export default Settings;
