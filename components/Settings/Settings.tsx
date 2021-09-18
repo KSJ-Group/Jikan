@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
+import { BackgroundProvider } from '../BackgroundContext';
 import styles from '../../styles/Settings/Settings.module.css';
 import Login from './Login';
 import Timers from './Timers';
@@ -21,19 +22,11 @@ interface Props {
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const [isClock, setIsClock] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
 
-  useEffect((): any => {
-    let cachedImage = localStorage.getItem('background')
-    if (cachedImage) {
-      setBackground(cachedImage)
-    }
-  }, [])
-
-  const changeBackground = (event: React.MouseEvent, url:string): void => {
-    setBackground(url);
-    localStorage.setItem('background', url);
-  }
+  // const changeBackground = (event: React.MouseEvent, url:string): void => {
+  //   setBackground(url);
+  //   localStorage.setItem('background', url);
+  // }
 
   return (
     <>
@@ -43,31 +36,31 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.body}>
           {isClock ?
-          // Clock settings
-          <div>
-            <Login />
-            {isLoggedIn ? <div>Profile</div> : <div>Sign | Register</div>}
-            <Brightness />
-            <ShowSeconds />
-            <Blur />
-            <TimeFormat />
-            <Font />
-            Change Background Image
-            <Search changeBackground={changeBackground} />
-          </div> :
-          // Pomodoro settings
-          <div>
-          <Login />
-          <Brightness />
-          <Form >
-            <Timers />
-            <AutoStarBreak />
-            <AlertSound />
-            <Font />
-            Change Background Image
-            <Search changeBackground={changeBackground} />
-          </Form>
-        </div> }
+            // Clock settings
+            <div>
+              <Login />
+              {isLoggedIn ? <div>Profile</div> : <div>Sign | Register</div>}
+              <Brightness />
+              <ShowSeconds />
+              <Blur />
+              <TimeFormat />
+              <Font />
+              Change Background Image
+              <Search />
+            </div> :
+            // Pomodoro settings
+            <div>
+              <Login />
+              <Brightness />
+              <Form >
+                <Timers />
+                <AutoStarBreak />
+                <AlertSound />
+                <Font />
+                Change Background Image
+                <Search />
+              </Form>
+            </div>}
         </Offcanvas.Body>
       </Offcanvas>
     </>
