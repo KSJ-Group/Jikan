@@ -11,7 +11,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 420px;
+  width: 375px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
