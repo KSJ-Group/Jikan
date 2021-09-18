@@ -1,29 +1,44 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/Navbar/Navbar.module.css';
 import Head from 'next/head';
 import Settings from './Settings/Settings';
 
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
-  const [pomodoroIsActive, setPomodoroIsActive] = useState<boolean>(false);
+  const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
 
-  const clickLink = (): void => {
-    setClockIsActive(!clockIsActive);
-    setPomodoroIsActive(!pomodoroIsActive);
+  const clickLinkClock = (): void => {
+    if (!clockIsActive) {
+      setClockIsActive(true);
+      setPomIsActive(false);
+    }
+  }
+
+  const clickLinkPom = (): void => {
+    if (!pomIsActive) {
+      setPomIsActive(true);
+      setClockIsActive(false);
+    }
   }
 
   useEffect(() => {
     if (clockIsActive) {
-      document.getElementById('link1')?.classList.add('activeLink');
-      document.getElementById('link2')?.classList.remove('activeLink');
-    } else {
-      document.getElementById('link2')?.classList.add('activeLink');
-      document.getElementById('link1')?.classList.remove('activeLink');
+      document.getElementById('clock')?.classList.add('activeLink');
+      document.getElementById('timer')?.classList.remove('activeLink');
+    } else if (pomIsActive) {
+      document.getElementById('timer')?.classList.add('activeLink');
+      document.getElementById('clock')?.classList.remove('activeLink');
     }
-  }, [clockIsActive])
+  }, [clockIsActive, pomIsActive])
+
+  useEffect(() => {
+    if (window.location.href.includes('pomodoro')) {
+      setClockIsActive(false);
+      setPomIsActive(true);
+    }
+  }, []);
 
   return (
     <>
@@ -47,9 +62,9 @@ const Navbar: React.FC = () => {
       </Head>
       <nav className={styles.nav}>
         <div className={styles.mainLinks}>
-          <Link href="/"><a className={styles.link} id='link1' onClick={clickLink}>Digital Clock</a></Link>
+          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Digital Clock</a></Link>
           <div className={styles.line}>|</div>
-          <Link href="/pomodoro"><a className={styles.link} id='link2' onClick={clickLink}>Pomodoro Timer</a></Link>
+          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
             [Settings]

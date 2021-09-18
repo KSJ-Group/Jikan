@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
-import styles from '../../styles/Settings.module.css';
+import styles from '../../styles/Settings/Settings.module.css';
 import Login from './Login';
 import Timers from './Timers';
 import AlertSound from './AlertSound';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap'
-import styles from '../../styles/Settings.module.css';
+import styles from '../../styles/Settings/Settings.module.css';
 
 const Timers = () => {
   return (

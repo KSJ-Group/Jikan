@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import styles from '../../styles/Page.module.css';
+import styles from '../../styles/Page/Page.module.css';
 
 interface pageProps {
   changePage: (direction: boolean)=> void,
