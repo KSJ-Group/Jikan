@@ -1,9 +1,8 @@
-import type { NextPage } from 'next';
 import styles from '../styles/Clock/Clock.module.css';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 
-const Clock: NextPage = () => {
+const Clock: React.FC = () => {
   const [time, setTime] = useState<string>(moment().format('h:mm A'));
 
   useEffect(() => {

@@ -1,11 +1,10 @@
-import type { NextPage } from 'next';
 import React, { useState, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import Search from './Settings/Search';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Layout: NextPage = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
 

@@ -29,7 +29,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (min-width: 2500px) {
@@ -91,6 +91,7 @@
   position: relative;
   top: 40px;
   z-index: 3;
+  color: white;
 }
 
 @media screen and (max-width: 678px) {
@@ -101,10 +102,17 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .links {
     top: -10px;
-    width: 60vw;
+    width: 70vw;
+    float: wrap;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .links {
+    width: 70vw;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
@@ -113,7 +121,7 @@
 .link {
   margin: 30px;
   font-size: 25px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -125,13 +133,9 @@
 
 @media screen and (max-width: 450px) {
   .link {
-    font-size: 18px;
+    font-size: 16px;
     margin: 10px;
   }
-}
-
-.link:hover {
-  color: #716a6a;
 }
 
 .timer {
@@ -141,6 +145,7 @@
   font-weight: bold;
   text-align: center;
   font-family: "Courier New", monospace;
+  color: white;
 }
 
 @media screen and (min-width: 2500px) {
@@ -175,7 +180,7 @@
 
 @media screen and (max-width: 450px) {
   .timer {
-    font-size: 80px;
+    font-size: 70px;
     top: -10px;
   }
 }
@@ -194,13 +199,13 @@
 
 @media screen and (max-width: 850px) {
   .startBtn {
-    top: -10px;
+    top: -40px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .startBtn {
-    top: -10px;
+    top: -30px;
   }
 }
 
@@ -208,7 +213,7 @@
   .startBtn {
     font-size: 18px;
     padding: 10px;
-    top: -10px;
+    top: -25px;
   }
 }
 

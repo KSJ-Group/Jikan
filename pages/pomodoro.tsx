@@ -74,7 +74,9 @@ const pomodoro: NextPage = () => {
     }
   }
 
-  const handleClose = (): void => setShowModal(false);
+  const handleClose = (): void => {
+    setShowModal(false)
+  };
 
   const switchToPom = (): void => {
     setPomodoro(true);
