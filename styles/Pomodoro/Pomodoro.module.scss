@@ -23,7 +23,8 @@ $phone: 450px;
   z-index: 3;
   @include flexCenter();
   flex-direction: column;
-  background-color: rgba(245, 245, 245, 0.5);
+  // background-color: rgba(245, 245, 245, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   @media screen and (min-width: $xxl) {
     width: 1200px;
     height: 600px;
@@ -56,14 +57,19 @@ $phone: 450px;
   position: relative;
   top: 40px;
   z-index: 3;
+  color: white;
   @media screen and (max-width: 678px) {
-    // top: -10px;
     width: 70vw;
     flex-wrap: wrap;
   }
-  @media screen and (max-width: $phone) {
+  @media screen and (max-width: $s) {
     top: -10px;
-    width: 60vw;
+    width: 70vw;
+    float: wrap;
+  }
+  @media screen and (max-width: $phone) {
+    // top: 10px;
+    width: 70vw;
     flex-wrap: wrap;
   }
 
@@ -72,17 +78,14 @@ $phone: 450px;
 .link {
   margin: 30px;
   font-size: 25px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   @media screen and (max-width: 678px) {
     margin: 10px;
   }
   @media screen and (max-width: $phone) {
-    font-size: 18px;
+    font-size: 16px;
     margin: 10px;
-  }
-  &:hover {
-    color: rgb(113, 106, 106);
   }
 }
 
@@ -93,6 +96,7 @@ $phone: 450px;
   font-weight: bold;
   text-align: center;
   font-family: "Courier New", monospace;
+  color: white;
   @media screen and (min-width: $xxl) {
     font-size: 300px;
   }
@@ -109,7 +113,7 @@ $phone: 450px;
     font-size: 100px;
   }
   @media screen and (max-width: $phone) {
-    font-size: 80px;
+    font-size: 70px;
     top: -10px;
   }
 }
@@ -125,15 +129,15 @@ $phone: 450px;
   font-weight: bold;
   z-index: 3;
   @media  screen and (max-width: $m) {
-    top: -10px;
+    top: -40px;
   }
   @media screen and (max-width: $s) {
-    top: -10px;
+    top: -30px;
   }
   @media  screen and (max-width: $phone) {
     font-size: 18px;
     padding: 10px;
-    top: -10px;
+    top: -25px;
   }
   &:hover {
     background-color: rgb(189, 189, 189);

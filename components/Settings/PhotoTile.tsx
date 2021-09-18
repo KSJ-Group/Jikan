@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import styles from '../styles/PhotoTile.module.css';
+import styles from '../../styles/PhotoTile/PhotoTile.module.css';
 
 interface ButtonProps {
   url: string,
