@@ -23,6 +23,6 @@ export default function handler(
     headers: {Authorization: pexelAPI}
   }
   axios(query)
-    .then((response) => {console.log(response.data); res.status(200).json(response.data)})
+    .then((response) => {res.status(200).json(response.data)})
     .catch((error) => {console.log(error)})
 }
