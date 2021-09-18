@@ -6,7 +6,7 @@ export const BackgroundContext = createContext(
     changeBackground: (url:string): void => {},
     loaded: false,
     changeLoadStatus: (status:boolean): void => {}
-  })
+  });
 
 
 export const BackgroundProvider: React.FC = ({ children }) => {
@@ -23,23 +23,23 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     changeLoadStatus: (status:boolean): void => {
       setLoaded(true);
     }
-  }
+  };
 
   useEffect((): any => {
-    let cachedImage = localStorage.getItem('background')
+    let cachedImage = localStorage.getItem('background');
     if (cachedImage) {
-      store.changeBackground(cachedImage)
-    }
-  }, [])
-    console.log('setloaded', loaded)
+      store.changeBackground(cachedImage);
+    };
+  }, []);
+
     return (
       <BackgroundContext.Provider value={store}>
         {children}
       </BackgroundContext.Provider>
-    )
-  }
+    );
+  };
 
 
 export const useBackgroundContext = () => {
-  return useContext(BackgroundContext)
-}
+  return useContext(BackgroundContext);
+};
