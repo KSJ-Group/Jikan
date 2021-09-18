@@ -1,4 +1,14 @@
 .page {
-  color: white;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.page:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=Page.module.css.map */
