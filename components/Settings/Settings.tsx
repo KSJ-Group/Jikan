@@ -37,11 +37,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   return (
     <>
-      <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end'>
-        <Offcanvas.Header closeButton >
+      <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end' className={styles.settings}>
+        <Offcanvas.Header closeButton className={styles.header}>
           <Offcanvas.Title>Settings</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className={styles.body}>
           {isClock ?
           // Clock settings
           <div>

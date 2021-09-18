@@ -3,6 +3,21 @@
   flex-direction: row;
 }
 
+.settings {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.header {
+  background-color: rgb(60, 71, 102);
+  color: white;
+  border-bottom: 1px solid white;;
+}
+
+.body {
+  background-color: rgb(60, 71, 102);
+  color: white;
+}
+
 .pomodoro {
   width: 70px;
 }
