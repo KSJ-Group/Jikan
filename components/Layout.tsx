@@ -26,7 +26,7 @@ const Layout: React.FC = ({ children }) => {
       <BackgroundProvider>
         <Navbar />
         <div onClick={() => toggleFullscreen()} className='fs'>[ ]</div>
-        <i className="fas fa-compress"></i>
+        <i aria-hidden className="fas fa-compress"></i>
         <Background />
         { children }
       </BackgroundProvider>
