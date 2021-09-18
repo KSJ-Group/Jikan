@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import type { NextPage } from 'next';
 import axios from 'axios';
 import styles from '../../styles/Search/Search.module.css';
@@ -14,13 +14,10 @@ interface Photo {
   }
 }
 
-interface searchProps {
-  changeBackground: (event: React.MouseEvent, url:string) => void;
-}
 
 const photos: Photo[] = [];
 
-const Search: NextPage<searchProps> = ({ changeBackground }) => {
+const Search: NextPage = () => {
   const [terms, setTerms] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [images, setImages] = useState<typeof photos>([])
@@ -34,6 +31,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
       fetchImages(terms, page);
     }
   },[terms, page])
+
 
   const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -64,7 +62,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
       <div className={styles.images}>
       {images.map((image) => {
         return (
-          <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} changeBackground={changeBackground} />
+          <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} />
         )})}
       </div>
       <Page changePage={changePage} page={page} maxPages={maxPages}/>

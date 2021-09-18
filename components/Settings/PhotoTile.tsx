@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useContext} from 'react';
 import type { NextPage } from 'next';
+import { BackgroundContext } from '../BackgroundContext';
 import styles from '../../styles/PhotoTile/PhotoTile.module.css';
 
 interface ButtonProps {
@@ -8,14 +9,23 @@ interface ButtonProps {
   src: {
     original: string,
     medium: string
-  },
-  changeBackground: (event: React.MouseEvent, url:string) => void
+  }
 }
 
-const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src, changeBackground}) => {
+const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src}) => {
+  const { changeBackground, loaded } = useContext(BackgroundContext);
+
+  useEffect((): any => {
+    let cachedImage = localStorage.getItem('background')
+    if (cachedImage) {
+      changeBackground(cachedImage)
+    }
+  }, [])
+
   return (
     <div className={styles.imageContainer}>
-      <img className={styles.image} src={src.medium} alt={url} onClick={(event)=>{changeBackground(event, src.original)}}/>
+      {loaded ? <img className={styles.image} src={src.medium} alt={url} onClick={(event)=>{changeBackground(src.original)}}/> : <div>Uploading Background Image...</div>}
+
     </div>
   )
 

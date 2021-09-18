@@ -1,14 +1,16 @@
+import React, { useState, useContext, useEffect } from 'react';
 import Image from 'next/image';
-import styles from '../styles/Background/Background.module.css'
+import { BackgroundContext } from './BackgroundContext';
+import styles from '../styles/Background/Background.module.css';
 
-interface backProps {
-  background: string
-}
 
-const Background: React.FC<backProps> = ({background}) => {
+const Background: React.FC = () => {
+  const { background, changeLoadStatus } = useContext(BackgroundContext);
+
+
   return (
     <div className={styles.imageContainer}>
-      <Image src={background} className={styles.image} layout='fill'/>
+      <Image src={background} className={styles.image} layout='fill' onLoadingComplete={()=>{changeLoadStatus(true)}}/>
     </div>
   );
 };
