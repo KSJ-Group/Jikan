@@ -35,9 +35,10 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
     }
   },[terms, page])
 
-  const search = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setTerms(event.target.value);
+    setPage(1);
   }
 
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
@@ -58,7 +59,7 @@ const Search: NextPage<searchProps> = ({ changeBackground }) => {
   return (
     <div className={styles.search}>
       <form>
-        <input type='text' onChange={(event: any)=>{search(event)}}/>
+        <input type='text' onChange={(event: any)=>{changeTerms(event)}}/>
       </form>
       <div className={styles.images}>
       {images.map((image) => {

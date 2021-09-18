@@ -7,7 +7,6 @@ interface pageProps {
   page: number,
   maxPages: number
 }
-
 const Page:NextPage<pageProps>= ({ changePage, page, maxPages }) => {
   return (
     <div className={styles.page}>

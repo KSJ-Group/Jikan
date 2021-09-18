@@ -1,3 +1,8 @@
 .page {
-  color: white;
+  color: black;
+  &:hover {
+    cursor:pointer;
+  }
+  display: flex;
+  justify-content: space-between;
 }
