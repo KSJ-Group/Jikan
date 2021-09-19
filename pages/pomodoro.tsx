@@ -35,7 +35,7 @@ const pomodoro: NextPage = () => {
   useEffect(() => {
     alert.src = alertTone;
     setPomodoroTime(millisToMinutesAndSeconds(1500000))
-    setShortBreakTime(millisToMinutesAndSeconds(6000))
+    setShortBreakTime(millisToMinutesAndSeconds(300000))
     setLongBreakTime(millisToMinutesAndSeconds(900000))
     if (Notification.permission !== 'denied') {
       Notification.requestPermission()
@@ -63,7 +63,7 @@ const pomodoro: NextPage = () => {
     setStarted(false);
     if (pomodoro) {
       stopTimer();
-      setShortBreakTime(millisToMinutesAndSeconds(10000));
+      setShortBreakTime(millisToMinutesAndSeconds(300000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
       document.getElementById('link4')?.classList.add('activePomLink');
       document.getElementById('link5')?.classList.remove('activePomLink');
