@@ -24,6 +24,13 @@ const Navbar: React.FC = () => {
   }
 
   useEffect(() => {
+    if (window.location.href.includes('pomodoro')) {
+      setClockIsActive(false);
+      setPomIsActive(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (clockIsActive) {
       document.getElementById('clock')?.classList.add('activeLink');
       document.getElementById('timer')?.classList.remove('activeLink');
@@ -32,13 +39,6 @@ const Navbar: React.FC = () => {
       document.getElementById('clock')?.classList.remove('activeLink');
     }
   }, [clockIsActive, pomIsActive])
-
-  useEffect(() => {
-    if (window.location.href.includes('pomodoro')) {
-      setClockIsActive(false);
-      setPomIsActive(true);
-    }
-  }, []);
 
   return (
     <>
@@ -67,9 +67,9 @@ const Navbar: React.FC = () => {
           <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
-            [Settings]
-          </div>
-          <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
+          [Settings]
+        </div>
+        <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
       </nav>
     </>
   );

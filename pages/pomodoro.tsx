@@ -19,9 +19,9 @@ const pomodoro: NextPage = () => {
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const [pomodoroTime, setPomodoroTime] = useState<any>(1500000);
-  const [shortBreakTime, setShortBreakTime] = useState<any>(300000);
-  const [longBreakTime, setLongBreakTime] = useState<any>(900000);
+  const [pomodoroTime, setPomodoroTime] = useState<any>(0);
+  const [shortBreakTime, setShortBreakTime] = useState<any>(0);
+  const [longBreakTime, setLongBreakTime] = useState<any>(0);
   const [currentTime, setCurrentTime] = useState<any>('');
 
   const [started, setStarted] = useState<boolean>(false);
@@ -34,9 +34,9 @@ const pomodoro: NextPage = () => {
 
   useEffect(() => {
     alert.src = alertTone;
-    setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
-    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime))
-    setLongBreakTime(millisToMinutesAndSeconds(longBreakTime))
+    setPomodoroTime(millisToMinutesAndSeconds(1500000))
+    setShortBreakTime(millisToMinutesAndSeconds(300000))
+    setLongBreakTime(millisToMinutesAndSeconds(900000))
   }, [])
 
   useEffect(() => {

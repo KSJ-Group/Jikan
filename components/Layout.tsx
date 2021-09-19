@@ -7,14 +7,6 @@ import { BackgroundProvider } from './BackgroundContext';
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
-  useEffect(() => {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'f') {
-        toggleFullscreen();
-      }
-    })
-  }, [isFullscreen])
-
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
       if (document.exitFullscreen) {

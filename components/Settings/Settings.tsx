@@ -20,8 +20,25 @@ interface Props {
 }
 
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
-  const [isClock, setIsClock] = useState<boolean>(false);
+  const [isClock, setIsClock] = useState<boolean>(true);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const [brightness, setBrightness] = useState<number>(100);
+  const [pomTime, setPomTime] = useState<number>(1500000);
+  const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
+  const [longBreakTime, setLongBreakTime] = useState<number>(900000);
+
+  const [autoStartBreak, setAutoStartBreak] = useState<boolean>(false);
+  const [blur, setBlur] = useState<boolean>(false);
+  const [showSeconds, setShowSeconds] = useState<boolean>(false);
+  const [is24Hour, setIs24Hour] = useState<boolean>(false);
+
+  const [selectedAlert, setSelectedAlert] = useState<string>('');
+  const [selectedFont, setSelectedFont] = useState<string>('');
+
+  // useEffect(() => {
+  //   console.log('Alert:', selectedAlert)
+  // }, [is24Hour])
 
   return (
     <>
@@ -34,25 +51,23 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             // Clock settings
             <div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
-              <Brightness />
-              <ShowSeconds />
-              <Blur />
-              <TimeFormat />
-              <Font />
+              <Brightness brightness={brightness} setBrightness={setBrightness} />
+              <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
+              <Blur blur={blur} setBlur={setBlur} />
+              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour}/>
+              <Font setSelectedFont={setSelectedFont} />
               <Search />
             </div> :
             // Pomodoro settings
             <div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
-              <Brightness />
-              <Form >
-                <Timers />
-                <AutoStarBreak />
-                <Blur />
-                <AlertSound />
-                <Font />
-                <Search />
-              </Form>
+              <Brightness brightness={brightness} setBrightness={setBrightness} />
+              <Timers pomTime={pomTime} setPomTime={setPomTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} />
+              <AutoStarBreak autoStartBreak={autoStartBreak} setAutoStartBreak={setAutoStartBreak} />
+              <Blur blur={blur} setBlur={setBlur} />
+              <AlertSound setSelectedAlert={setSelectedAlert} />
+              <Font setSelectedFont={setSelectedFont} />
+              <Search />
             </div>}
         </Offcanvas.Body>
       </Offcanvas>

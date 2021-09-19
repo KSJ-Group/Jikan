@@ -13,6 +13,7 @@
   display: flex;
   z-index: 2;
   position: relative;
+  justify-content: center;
 }
 
 .line {
@@ -24,11 +25,12 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
   margin: 20px;
   font-size: 25px;
   z-index: 2;
-
+  transition: 0.1s ease-in;
   &:hover {
     color: rgb(113, 106, 106);
   }
@@ -38,4 +40,5 @@
   position: absolute;
   right: 60px;
   top: 45px;
+  cursor: pointer;
 }

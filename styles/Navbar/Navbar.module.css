@@ -21,6 +21,9 @@
   display: flex;
   z-index: 2;
   position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .line {
@@ -32,10 +35,13 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
   margin: 20px;
   font-size: 25px;
   z-index: 2;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
 }
 
 .link:hover {
@@ -46,5 +52,6 @@
   position: absolute;
   right: 60px;
   top: 45px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=Navbar.module.css.map */
