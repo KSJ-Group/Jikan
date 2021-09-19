@@ -35,9 +35,29 @@ const pomodoro: NextPage = () => {
   useEffect(() => {
     alert.src = alertTone;
     setPomodoroTime(millisToMinutesAndSeconds(1500000))
-    setShortBreakTime(millisToMinutesAndSeconds(300000))
+    setShortBreakTime(millisToMinutesAndSeconds(6000))
     setLongBreakTime(millisToMinutesAndSeconds(900000))
+    if (Notification.permission !== 'denied') {
+      Notification.requestPermission()
+    }
   }, [])
+
+  const showNotification = () => {
+    if (pomodoro) {
+      const notification = new Notification('Jikan', {
+        body: 'Good job! Your pomodoro time is up.'
+      })
+    } else if (shortBreak) {
+      const notification = new Notification('Jikan', {
+        body: 'Your short break is over!'
+      })
+    } else {
+      const notification = new Notification('Jikan', {
+        body: 'Your long break is over!'
+      })
+    }
+
+  }
 
   useEffect(() => {
     setStarted(false);
@@ -189,7 +209,9 @@ const pomodoro: NextPage = () => {
       setLongBreakTime(millisToMinutesAndSeconds(900000));
       setStarted(false);
     } else {
-      window.focus();
+      if (Notification.permission === 'granted') {
+        showNotification();
+      }
       setAlarmOn(true);
       alert.play();
     }
