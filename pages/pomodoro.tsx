@@ -43,7 +43,7 @@ const pomodoro: NextPage = () => {
     setStarted(false);
     if (pomodoro) {
       stopTimer();
-      setShortBreakTime(millisToMinutesAndSeconds(1000));
+      setShortBreakTime(millisToMinutesAndSeconds(10000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
       document.getElementById('link4')?.classList.add('activePomLink');
       document.getElementById('link5')?.classList.remove('activePomLink');
