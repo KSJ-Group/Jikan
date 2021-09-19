@@ -3,9 +3,11 @@ import { Form } from 'react-bootstrap'
 import styles from '../../styles/Settings/Settings.module.css';
 
 const AlertSound = () => {
+  const [selectedAlert, setSelectedAlert] = useState<string>('');
+
   return (
     <div>
-      <Form.Group>
+      <Form.Group className={styles.alert}>
         <Form.Label>Alert Sound</Form.Label>
         <Form.Select>
           <option value='' hidden></option>

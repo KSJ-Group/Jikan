@@ -5,7 +5,7 @@ import styles from '../../styles/Settings/Settings.module.css';
 const Font = () => {
   return (
     <div>
-      <Form.Group>
+      <Form.Group className={styles.font}>
         <Form.Label>Font</Form.Label>
         <Form.Select>
           <option value='' hidden></option>

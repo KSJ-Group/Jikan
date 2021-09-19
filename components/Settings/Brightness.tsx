@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from '../../styles/Settings/Settings.module.css';
 
 const Brightness = () => {
   const [brightness, setBrightness] = useState<number>(50)
@@ -9,11 +10,12 @@ const Brightness = () => {
   }
 
   return (
-    <div>
+    <div className={styles.brightness}>
       Brightness
-      <div>
-        <input onChange={changeHandler} type="range" className="brightness" name="volume"
+      <div className={styles.sliderDiv}>
+        <input className={styles.brightnessSlider} onChange={changeHandler} type="range" name="volume"
           min="0" max="100" />
+        <div className={styles.indicator}>{brightness}%</div>
       </div>
     </div>
   );
