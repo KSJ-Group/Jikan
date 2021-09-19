@@ -14,7 +14,6 @@ interface Photo {
   }
 }
 
-
 const photos: Photo[] = [];
 
 const Search: NextPage = () => {
@@ -56,8 +55,9 @@ const Search: NextPage = () => {
 
   return (
     <div className={styles.search}>
+      <div className={styles.searchTitle}>Change Background Image</div>
       <form>
-        <input type='text' onChange={(event: any)=>{changeTerms(event)}}/>
+        <input type='text'  className={styles.searchInput} placeholder='Search image...' onChange={(event: any)=>{changeTerms(event)}}/>
       </form>
       <div className={styles.images}>
       {images.map((image) => {

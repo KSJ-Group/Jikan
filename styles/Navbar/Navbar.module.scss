@@ -13,6 +13,7 @@
   display: flex;
   z-index: 2;
   position: relative;
+  justify-content: center;
 }
 
 .line {
@@ -20,22 +21,43 @@
   margin-top: 20px;
   cursor: default;
   z-index: 2;
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
+  text-shadow: -0.1px 0 black, 0 0.1px black, 0.1px 0 black, 0 -0.1px black;
   margin: 20px;
   font-size: 25px;
   z-index: 2;
-
+  transition: 0.1s ease-in;
   &:hover {
     color: rgb(113, 106, 106);
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin: 10px;
   }
 }
 
 .settings {
   position: absolute;
-  right: 60px;
-  top: 45px;
+  right: 40px;
+  top: 17px;
+  cursor: pointer;
+  @media screen and (max-width: 600px) {
+    right: 20px;
+  }
+  padding: 20px;
+}
+
+.settingsIcon {
+  color: white;
+  &:hover {
+    color:rgb(255, 251, 251);
+  }
 }

@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BackgroundProvider } from './BackgroundContext';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faExpandAlt, faCompressAlt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+  faExpandAlt,
+  faCompressAlt
+);
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -25,7 +33,8 @@ const Layout: React.FC = ({ children }) => {
     <div id='layout'>
       <BackgroundProvider>
         <Navbar />
-        <div onClick={() => toggleFullscreen()} className='fs'>[ ]</div>
+        {isFullscreen ?
+        <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faCompressAlt} /></div>  : <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpandAlt} /></div> }
         <i aria-hidden className="fas fa-compress"></i>
         <Background />
         { children }

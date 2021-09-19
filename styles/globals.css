@@ -31,9 +31,24 @@ html, body {
 
 .fs {
   position: absolute;
+  display: block;
   font-size: 25px;
-  top: 0;
-  left: 0;
+  bottom: 0;
+  right: 40px;
   z-index: 2;
-  margin: 30px;
+  padding: 20px;
+  cursor: pointer;
+  color: white;
+  text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+  font-weight: bold;
+}
+
+.fs:hover {
+  color:rgb(255, 251, 251);
+}
+
+@media only screen and (max-width: 600px) {
+  .fs {
+    display: none;
+  }
 }

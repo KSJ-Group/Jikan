@@ -21,6 +21,9 @@
   display: flex;
   z-index: 2;
   position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .line {
@@ -30,21 +33,54 @@
   z-index: 2;
 }
 
+@media screen and (max-width: 600px) {
+  .line {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}
+
 .link {
   text-decoration: none;
-  color: black;
+  color: white;
+  text-shadow: -0.1px 0 black, 0 0.1px black, 0.1px 0 black, 0 -0.1px black;
   margin: 20px;
   font-size: 25px;
   z-index: 2;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
 }
 
 .link:hover {
   color: #716a6a;
 }
 
+@media screen and (max-width: 600px) {
+  .link {
+    font-size: 18px;
+    margin: 10px;
+  }
+}
+
 .settings {
   position: absolute;
-  right: 60px;
-  top: 45px;
+  right: 40px;
+  top: 17px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .settings {
+    right: 20px;
+  }
+}
+
+.settingsIcon {
+  color: white;
+}
+
+.settingsIcon:hover {
+  color: #fffbfb;
 }
 /*# sourceMappingURL=Navbar.module.css.map */

@@ -4,6 +4,13 @@ import styles from '../styles/Navbar/Navbar.module.css';
 import Head from 'next/head';
 import Settings from './Settings/Settings';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import Font from './Settings/Font';
+
+library.add(faBars)
+
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
@@ -24,6 +31,13 @@ const Navbar: React.FC = () => {
   }
 
   useEffect(() => {
+    if (window.location.href.includes('pomodoro')) {
+      setClockIsActive(false);
+      setPomIsActive(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (clockIsActive) {
       document.getElementById('clock')?.classList.add('activeLink');
       document.getElementById('timer')?.classList.remove('activeLink');
@@ -32,13 +46,6 @@ const Navbar: React.FC = () => {
       document.getElementById('clock')?.classList.remove('activeLink');
     }
   }, [clockIsActive, pomIsActive])
-
-  useEffect(() => {
-    if (window.location.href.includes('pomodoro')) {
-      setClockIsActive(false);
-      setPomIsActive(true);
-    }
-  }, []);
 
   return (
     <>
@@ -67,9 +74,9 @@ const Navbar: React.FC = () => {
           <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
-            [Settings]
-          </div>
-          <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
+          <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="2x"/>
+        </div>
+        <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
       </nav>
     </>
   );

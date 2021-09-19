@@ -4,43 +4,79 @@ import styles from '../styles/Pomodoro/Pomodoro.module.css';
 import Head from 'next/head';
 import { millisToMinutesAndSeconds, minutesAndSecondsToMillis } from '../helper/convertTime';
 import AreYouSureModal from '../components/AreYouSureModal';
+import TimerDoneModal from '../components/TimerModal';
+
+const { Howl, Howler } = require('howler');
 
 let timer: number;
+var alert = new Howl({
+  src: 'alarm.wav',
+  loop: true
+});
 
 const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const [pomodoroTime, setPomodoroTime] = useState<any>(1500000);
-  const [shortBreakTime, setShortBreakTime] = useState<any>(300000);
-  const [longBreakTime, setLongBreakTime] = useState<any>(900000);
+  const [pomodoroTime, setPomodoroTime] = useState<any>(0);
+  const [shortBreakTime, setShortBreakTime] = useState<any>(0);
+  const [longBreakTime, setLongBreakTime] = useState<any>(0);
+  const [currentTime, setCurrentTime] = useState<any>('');
 
   const [started, setStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [targetMode, setTargetMode] = useState<string>('');
 
+  const [timerModal, setShowTimerModal] = useState<boolean>(false);
+  const [alertTone, setAlertTone] = useState<string>('alarm.wav');
+  const [alarmOn, setAlarmOn] = useState<boolean>(false);
+
   useEffect(() => {
-    setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
-    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime))
-    setLongBreakTime(millisToMinutesAndSeconds(longBreakTime))
+    alert.src = alertTone;
+    setPomodoroTime(millisToMinutesAndSeconds(1500000))
+    setShortBreakTime(millisToMinutesAndSeconds(300000))
+    setLongBreakTime(millisToMinutesAndSeconds(900000))
+    if (Notification.permission !== 'denied') {
+      Notification.requestPermission()
+    }
   }, [])
+
+  const showNotification = () => {
+    if (pomodoro) {
+      const notification = new Notification('Jikan', {
+        body: 'Good job! Your pomodoro time is up.'
+      })
+    } else if (shortBreak) {
+      const notification = new Notification('Jikan', {
+        body: 'Your short break is over!'
+      })
+    } else {
+      const notification = new Notification('Jikan', {
+        body: 'Your long break is over!'
+      })
+    }
+
+  }
 
   useEffect(() => {
     setStarted(false);
     if (pomodoro) {
+      stopTimer();
       setShortBreakTime(millisToMinutesAndSeconds(300000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
       document.getElementById('link4')?.classList.add('activePomLink');
       document.getElementById('link5')?.classList.remove('activePomLink');
       document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (shortBreak) {
+      stopTimer();
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setLongBreakTime(millisToMinutesAndSeconds(900000));
       document.getElementById('link5')?.classList.add('activePomLink');
       document.getElementById('link4')?.classList.remove('activePomLink');
       document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (longBreak) {
+      stopTimer();
       setPomodoroTime(millisToMinutesAndSeconds(1500000));
       setShortBreakTime(millisToMinutesAndSeconds(300000));
       document.getElementById('link6')?.classList.add('activePomLink');
@@ -124,9 +160,9 @@ const pomodoro: NextPage = () => {
         setPomodoroTime((prevState: string) => {
           let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
           if (newTime === '0:00') {
-            stopTimer();
-            playAlertSound();
+            timeUpHandler();
           }
+          setCurrentTime(newTime);
           return newTime;
         })
       }
@@ -134,18 +170,18 @@ const pomodoro: NextPage = () => {
       setShortBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
         if (newTime === '0:00') {
-          stopTimer();
-          playAlertSound();
+          timeUpHandler();
         }
+        setCurrentTime(newTime);
         return newTime;
       });
     } else if (longBreak) {
       setLongBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
         if (newTime === '0:00') {
-          stopTimer();
-          playAlertSound();
+          timeUpHandler();
         }
+        setCurrentTime(newTime);
         return newTime;
       });
     }
@@ -156,21 +192,41 @@ const pomodoro: NextPage = () => {
     timer = 0;
   }
 
-  const playAlertSound = (): void => {
-    var audio = new Audio('alarm.wav');
-    audio.play();
+  const timeUpHandler = (): void => {
+    stopTimer();
+    alarmHandler();
+    setShowTimerModal(true);
+  }
+
+  const alarmHandler = (): void => {
+    if (alarmOn) {
+      setAlarmOn(false);
+      alert.stop();
+      alert.loop = false;
+      setShowTimerModal(false);
+      setPomodoroTime(millisToMinutesAndSeconds(1500000));
+      setShortBreakTime(millisToMinutesAndSeconds(300000));
+      setLongBreakTime(millisToMinutesAndSeconds(900000));
+      setStarted(false);
+    } else {
+      if (Notification.permission === 'granted') {
+        showNotification();
+      }
+      setAlarmOn(true);
+      alert.play();
+    }
   }
 
   return (
     <div className={styles.pomodoro}>
       <div className={styles.container}>
         <Head>
-          <title>Jikan | Pomodoro </title>
+          {currentTime ? <title>{currentTime} | Jikan</title> : <title>Jikan | Pomodoro </title>}
           <meta name="description" content="Track time" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.links}>
-          <div className={styles.link}  id='link4' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
+          <div className={styles.link} id='link4' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
           <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
           <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
@@ -178,7 +234,8 @@ const pomodoro: NextPage = () => {
         {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}
         {longBreak ? <div className={styles.timer}>{longBreakTime}</div> : null}
         {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
-        {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode}/> : null}
+        {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode} /> : null}
+        {timerModal ? <TimerDoneModal show={timerModal} handleClose={alarmHandler} /> : null}
       </div>
     </div>
   );
