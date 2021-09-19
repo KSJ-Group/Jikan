@@ -30,14 +30,14 @@ const Search: NextPage = () => {
     } else {
       fetchImages(terms, page);
     }
-  },[terms, page])
+  },[terms, page]);
 
 
   const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
     setTerms(event.target.value);
     setPage(1);
-  }
+  };
 
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
     axios.get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
@@ -46,13 +46,13 @@ const Search: NextPage = () => {
         setMaxPages(Math.ceil(data.data.total_results/12));
       })
       .catch((error) => {console.log(error);})
-  }
+  };
 
   const changePage = (direction: boolean): void => {
     let newPage = page;
     direction ? newPage++: newPage--;
     setPage(newPage);
-  }
+  };
 
   return (
     <div className={styles.search}>
@@ -62,12 +62,12 @@ const Search: NextPage = () => {
       <div className={styles.images}>
       {images.map((image) => {
         return (
-          <PhotoTile url={image.url} avg_color={image.avg_color} src={image.src} />
+          <PhotoTile key={image.url} url={image.url} avg_color={image.avg_color} src={image.src} />
         )})}
       </div>
       <Page changePage={changePage} page={page} maxPages={maxPages}/>
     </div>
-  )
-}
+  );
+};
 
 export default Search;
