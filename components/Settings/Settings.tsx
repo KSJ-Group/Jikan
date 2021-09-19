@@ -36,10 +36,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const [selectedAlert, setSelectedAlert] = useState<string>('');
   const [selectedFont, setSelectedFont] = useState<string>('');
 
-  // useEffect(() => {
-  //   console.log('Alert:', selectedAlert)
-  // }, [is24Hour])
-
   return (
     <>
       <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end' className={styles.settings}>

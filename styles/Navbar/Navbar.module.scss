@@ -21,6 +21,10 @@
   margin-top: 20px;
   cursor: default;
   z-index: 2;
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 }
 
 .link {
@@ -34,11 +38,26 @@
   &:hover {
     color: rgb(113, 106, 106);
   }
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin: 10px;
+  }
 }
 
 .settings {
   position: absolute;
-  right: 60px;
-  top: 45px;
+  right: 40px;
+  top: 17px;
   cursor: pointer;
+  @media screen and (max-width: 600px) {
+    right: 20px;
+  }
+  padding: 20px;
+}
+
+.settingsIcon {
+  color: white;
+  &:hover {
+    color:rgb(255, 251, 251);
+  }
 }
