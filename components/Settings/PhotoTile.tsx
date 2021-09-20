@@ -1,7 +1,8 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import type { NextPage } from 'next';
 import { BackgroundContext } from '../BackgroundContext';
 import styles from '../../styles/PhotoTile/PhotoTile.module.css';
+import { Spinner } from 'react-bootstrap'
 
 interface ButtonProps {
   url: string,
@@ -12,12 +13,15 @@ interface ButtonProps {
   }
 };
 
-const PhotoTile: NextPage<ButtonProps>= ({url, avg_color, src}) => {
+const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src }) => {
   const { changeBackground, loaded } = useContext(BackgroundContext);
 
   return (
     <div className={styles.imageContainer}>
-      {loaded ? <img className={styles.image} src={src.medium} alt={url} onClick={(event)=>{changeBackground(src.original)}}/> : <div>Uploading Background Image...</div>}
+      {loaded ? <img className={styles.image} src={src.medium} alt={url} onClick={(event) => { changeBackground(src.original) }} /> : <div>Uploading Background Image...</div>}
+      <Spinner className={styles.spinner} animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
     </div>
   );
 };

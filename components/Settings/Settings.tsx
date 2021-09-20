@@ -50,7 +50,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
               <Blur blur={blur} setBlur={setBlur} />
-              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour}/>
+              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
               <Font setSelectedFont={setSelectedFont} />
               <Search />
             </div> :

@@ -19,4 +19,8 @@
           transform: scale(1.05);
   cursor: pointer;
 }
+
+.spinner {
+  z-index: 100;
+}
 /*# sourceMappingURL=PhotoTile.module.css.map */
