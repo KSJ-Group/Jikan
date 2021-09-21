@@ -3,25 +3,25 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 export const BackgroundContext = createContext(
   {
     background: '/pexels-photo-5011944.jpeg',
-    changeBackground: (url:string): void => {},
-    loaded: false,
-    changeLoadStatus: (status:boolean): void => {}
+    changeBackground: (url: string): void => { },
+    loaded: true,
+    changeLoadStatus: (status:boolean): void => { }
   });
 
 
 export const BackgroundProvider: React.FC = ({ children }) => {
   const [background, setBackground] = useState<string>('/pexels-photo-5011944.jpeg');
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   const store = {
     background: background,
-    changeBackground: (url:string): void => {
+    changeBackground: (url: string): void => {
       setBackground(url);
       localStorage.setItem('background', url);
     },
     loaded: loaded,
     changeLoadStatus: (status:boolean): void => {
-      setLoaded(true);
+      setLoaded(status);
     }
   };
 
@@ -32,12 +32,13 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     };
   }, []);
 
-    return (
-      <BackgroundContext.Provider value={store}>
-        {children}
-      </BackgroundContext.Provider>
-    );
-  };
+  console.log('in context', loaded);
+  return (
+    <BackgroundContext.Provider value={store}>
+      {children}
+    </BackgroundContext.Provider>
+  );
+};
 
 
 export const useBackgroundContext = () => {
