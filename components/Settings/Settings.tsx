@@ -41,13 +41,15 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   return (
     <>
       <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end' className={styles.settings}>
-        <Offcanvas.Header closeButton className={styles.header}>
+        {/* <Offcanvas.Header closeButton className={styles.header}>
           {isClock ? <Offcanvas.Title>Clock Settings</Offcanvas.Title> : <Offcanvas.Title>Pomodoro Settings</Offcanvas.Title>}
-        </Offcanvas.Header>
+        </Offcanvas.Header> */}
         <Offcanvas.Body className={styles.body}>
           {isClock ?
             // Clock settings
             <div>
+              <h2>Clock Settings</h2>
+              <button onClick={() => setIsClock(false)}>Switch to pomodoro settings</button>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
@@ -58,6 +60,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             </div> :
             // Pomodoro settings
             <div>
+              <h2>Pomodoro Settings</h2>
+              <button onClick={() => setIsClock(true)}>Switch to clock settings</button>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <Timers pomTime={pomTime} setPomTime={setPomTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} />
