@@ -35,7 +35,6 @@ const Layout: React.FC = ({ children }) => {
         <Navbar />
         {isFullscreen ?
         <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faCompressAlt} /></div>  : <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpandAlt} /></div> }
-        <i aria-hidden className="fas fa-compress"></i>
         <Background />
         { children }
       </BackgroundProvider>
