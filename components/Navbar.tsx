@@ -41,9 +41,13 @@ const Navbar: React.FC = () => {
     if (clockIsActive) {
       document.getElementById('clock')?.classList.add('activeLink');
       document.getElementById('timer')?.classList.remove('activeLink');
+      document.getElementById('clock')?.classList.remove('inactiveLink');
+      document.getElementById('timer')?.classList.add('inactiveLink');
     } else if (pomIsActive) {
       document.getElementById('timer')?.classList.add('activeLink');
       document.getElementById('clock')?.classList.remove('activeLink');
+      document.getElementById('timer')?.classList.remove('inactiveLink');
+      document.getElementById('clock')?.classList.add('inactiveLink');
     }
   }, [clockIsActive, pomIsActive])
 
@@ -74,7 +78,10 @@ const Navbar: React.FC = () => {
           <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
-          <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="2x"/>
+          <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="lg" />
+          <div className={styles.settingsWord}>
+            Settings
+          </div>
         </div>
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
       </nav>

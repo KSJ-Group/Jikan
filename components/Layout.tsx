@@ -5,15 +5,23 @@ import { BackgroundProvider } from './BackgroundContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faExpandAlt, faCompressAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExpand } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
-  faExpandAlt,
-  faCompressAlt
+  faExpand
 );
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   window.addEventListener('keydown', (e) => {
+  //     if (e.key === 'Escape' && !isFullscreen) {
+  //       console.log('Escape!');
+  //       setIsFullscreen(false);
+  //     }
+  //   })
+  // }, [])
 
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
@@ -33,8 +41,7 @@ const Layout: React.FC = ({ children }) => {
     <div id='layout'>
       <BackgroundProvider>
         <Navbar />
-        {isFullscreen ?
-        <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faCompressAlt} /></div>  : <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpandAlt} /></div> }
+        <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg'/><div className='fsText'>Fullscreen</div></div>
         <Background />
         { children }
       </BackgroundProvider>

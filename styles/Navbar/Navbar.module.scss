@@ -1,5 +1,5 @@
 .nav {
-  height: 100px;
+  height: 50px;
   z-index: 2;
   position: absolute;
   top: 0;
@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .mainLinks {
@@ -14,7 +15,6 @@
   z-index: 2;
   position: relative;
   justify-content: center;
-  // background-color: rgba(0, 0, 0, 0.4);
 }
 
 .line {
@@ -22,6 +22,7 @@
   margin-top: 20px;
   cursor: default;
   z-index: 2;
+  color: black;
   @media screen and (max-width: 600px) {
     font-size: 18px;
     margin-top: 10px;
@@ -30,15 +31,14 @@
 
 .link {
   text-decoration: none;
-  color: white;
-  // text-shadow: -0.8px 0 black, 0 0.8px black, 0.8px 0 black, 0 -0.8px black;
   margin: 20px;
   font-size: 25px;
   z-index: 2;
   transition: 0.1s ease-in;
   &:hover {
-    color: rgb(113, 106, 106);
+    color: rgb(255, 255, 255);
   }
+
   @media screen and (max-width: 600px) {
     font-size: 18px;
     margin: 10px;
@@ -47,13 +47,24 @@
 
 .settings {
   position: absolute;
-  right: 40px;
-  top: 17px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  right: 20px;
   cursor: pointer;
-  @media screen and (max-width: 600px) {
-    right: 20px;
+  padding: 10px;
+  color: white;
+  background-color:rgba(0, 0, 0, 0.2);
+  transition: 0.1s ease-in;
+
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.4);
   }
-  padding: 20px;
+}
+
+.settingsWord {
+  margin-left: 10px;
 }
 
 .settingsIcon {
