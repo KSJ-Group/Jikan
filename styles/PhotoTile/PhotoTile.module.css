@@ -19,4 +19,11 @@
           transform: scale(1.05);
   cursor: pointer;
 }
+
+.spinner {
+  z-index: 100;
+  position: relative;
+  top: -70px;
+  left: 67px;
+}
 /*# sourceMappingURL=PhotoTile.module.css.map */

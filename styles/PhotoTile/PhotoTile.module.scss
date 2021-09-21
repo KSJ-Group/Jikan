@@ -15,3 +15,10 @@
     cursor: pointer;
   }
 }
+
+.spinner {
+  z-index: 100;
+  position: relative;
+  top: -70px;
+  left: 67px;
+}

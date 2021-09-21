@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Offcanvas, OffcanvasHeader, OffcanvasTitle, OffcanvasBody } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
-import { BackgroundProvider } from '../BackgroundContext';
+import { BackgroundProvider, BackgroundContext } from '../BackgroundContext';
 import styles from '../../styles/Settings/Settings.module.css';
 import Login from './Login';
 import Timers from './Timers';
@@ -23,7 +23,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const [isClock, setIsClock] = useState<boolean>(true);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-  const [brightness, setBrightness] = useState<number>(100);
+  const [brightness, setBrightness] = useState<number>(50);
   const [pomTime, setPomTime] = useState<number>(1500000);
   const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
   const [longBreakTime, setLongBreakTime] = useState<number>(900000);
@@ -35,6 +35,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   const [selectedAlert, setSelectedAlert] = useState<string>('');
   const [selectedFont, setSelectedFont] = useState<string>('');
+
+  const { loaded } = useContext(BackgroundContext);
 
   return (
     <>
@@ -50,7 +52,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
               <Blur blur={blur} setBlur={setBlur} />
-              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour}/>
+              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
               <Font setSelectedFont={setSelectedFont} />
               <Search />
             </div> :
