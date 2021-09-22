@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import type { NextPage } from 'next';
 import styles from '../styles/Pomodoro/Pomodoro.module.css';
 import Head from 'next/head';
 import { millisToMinutesAndSeconds, minutesAndSecondsToMillis } from '../helper/convertTime';
 import AreYouSureModal from '../components/AreYouSureModal';
 import TimerDoneModal from '../components/TimerModal';
+import { SettingsContext } from '../components/SettingsContext';
 
-const { Howl, Howler } = require('howler');
+const { Howl } = require('howler');
 
 let timer: number;
 var alert = new Howl({
@@ -18,6 +19,8 @@ const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
+
+  // const { pomodoroTime, setPomodoroTime, shortBreakTime, setShortBreakTime, longBreakTime, setLongBreakTime} = useContext(SettingsContext);
 
   const [pomodoroTime, setPomodoroTime] = useState<any>(0);
   const [shortBreakTime, setShortBreakTime] = useState<any>(0);

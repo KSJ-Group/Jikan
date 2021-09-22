@@ -6,12 +6,12 @@ export const SettingsContext = createContext(
     setIsClock: (isClock: boolean) => {},
     isLoggedIn: false,
     setIsLoggedIn: (isLoggedIn: boolean) => {},
-    pomTime: 1500000,
-    setPomTime: (time: number) => {},
+    pomodoroTime: 1500000,
+    setPomodoroTime: (time: any) => {},
     shortBreakTime: 300000,
-    setShortBreakTime: (time: number) => {},
+    setShortBreakTime: (time: any) => {},
     longBreakTime: 900000,
-    setLongBreakTime: (time: number) => {},
+    setLongBreakTime: (time: any) => {},
     autoStartBreak: false,
     setAutoStartBreak: (auto: boolean) => {},
     showSeconds: false,
@@ -25,7 +25,7 @@ export const SettingsContext = createContext(
 export const SettingsProvider: React.FC = ({ children }) => {
   const [isClock, setIsClock] = useState<boolean>(true);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [pomTime, setPomTime] = useState<number>(1500000);
+  const [pomodoroTime, setPomodoroTime] = useState<number>(1500000);
   const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
   const [longBreakTime, setLongBreakTime] = useState<number>(900000);
   const [autoStartBreak, setAutoStartBreak] = useState<boolean>(false);
@@ -44,9 +44,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
       setIsLoggedIn(isLoggedIn);
       localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
     },
-    pomTime: pomTime,
-    setPomTime: (time: number): void => {
-      setPomTime(pomTime);
+    pomodoroTime: pomodoroTime,
+    setPomodoroTime: (time: number): void => {
+      setPomodoroTime(time);
       localStorage.setItem('pom', time.toString());
     },
     shortBreakTime: shortBreakTime,
@@ -98,7 +98,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
       store.setIsLoggedIn(JSON.parse(cachedLoggedIn));
     }
     if (cachedPom) {
-      store.setPomTime(parseInt(cachedPom));
+      store.setPomodoroTime(parseInt(cachedPom));
     }
     if (cachedShort) {
       store.setShortBreakTime(parseInt(cachedShort));

@@ -24,11 +24,21 @@ const Search: NextPage = () => {
   const isInitialMount = useRef<boolean>(true);
 
   useEffect(() => {
+    let search = localStorage.getItem('search');
+    if (search) {
+      setTerms(search);
+    } else {
+      setTerms('');
+    }
+  }, [])
+
+  useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
       fetchImages(terms, page);
     }
+    localStorage.setItem('search', terms);
   },[terms, page]);
 
 
@@ -57,7 +67,7 @@ const Search: NextPage = () => {
     <div className={styles.search}>
       <div className={styles.searchTitle}>Change Background Image</div>
       <form>
-        <input type='text'  className={styles.searchInput} placeholder='Search image...' onChange={(event: any)=>{changeTerms(event)}}/>
+        <input type='text' value={terms} className={styles.searchInput} placeholder='Search image...' onChange={(event: any)=>{changeTerms(event)}}/>
       </form>
       <div className={styles.images}>
       {images.map((image) => {
