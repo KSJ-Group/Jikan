@@ -1,0 +1,224 @@
+.pomodoro {
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  width: 900px;
+  height: 500px;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+@media screen and (min-width: 2500px) {
+  .container {
+    width: 1200px;
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 80vw;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 80vw;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    width: 80vw;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 80vw;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    width: 80vw;
+    height: 300px;
+  }
+}
+
+.links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  top: 40px;
+  z-index: 3;
+  color: white;
+}
+
+@media screen and (max-width: 678px) {
+  .links {
+    width: 70vw;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .links {
+    top: -10px;
+    width: 70vw;
+    float: wrap;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .links {
+    width: 70vw;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.link {
+  margin: 30px;
+  font-size: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 678px) {
+  .link {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .link {
+    font-size: 16px;
+    margin: 10px;
+  }
+}
+
+.timer {
+  z-index: 2;
+  position: relative;
+  font-size: 235px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  color: white;
+}
+
+@media screen and (min-width: 2500px) {
+  .timer {
+    font-size: 300px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .timer {
+    font-size: 200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .timer {
+    font-size: 150px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .timer {
+    font-size: 150px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timer {
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .timer {
+    font-size: 70px;
+    top: -10px;
+  }
+}
+
+.startBtn {
+  position: relative;
+  top: -50px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #d0d0d0;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 3;
+}
+
+@media screen and (max-width: 850px) {
+  .startBtn {
+    top: -40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .startBtn {
+    top: -30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .startBtn {
+    font-size: 18px;
+    padding: 10px;
+    top: -25px;
+  }
+}
+
+.startBtn:hover {
+  background-color: #bdbdbd;
+}
+/*# sourceMappingURL=Pomodoro.module.css.map */

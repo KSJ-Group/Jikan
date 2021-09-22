@@ -1,0 +1,75 @@
+.nav {
+  height: 50px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mainLinks {
+  display: flex;
+  z-index: 2;
+  position: relative;
+  justify-content: center;
+}
+
+.line {
+  font-size: 25px;
+  margin-top: 20px;
+  cursor: default;
+  z-index: 2;
+  color: black;
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}
+
+.link {
+  text-decoration: none;
+  margin: 20px;
+  font-size: 25px;
+  z-index: 2;
+  transition: 0.1s ease-in;
+  &:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+    margin: 10px;
+  }
+}
+
+.settings {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  right: 20px;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  background-color:rgba(0, 0, 0, 0.2);
+  transition: 0.1s ease-in;
+
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.settingsWord {
+  margin-left: 10px;
+}
+
+.settingsIcon {
+  color: white;
+  &:hover {
+    color:rgb(255, 251, 251);
+  }
+}

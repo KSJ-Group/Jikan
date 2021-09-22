@@ -1,12 +1,21 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Layout from '../comp/Layout';
+import Layout from '../components/Layout';
+import { StylesProvider } from '../components/StylesContext';
+import { SettingsProvider } from '../components/SettingsContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <StylesProvider>
+      <SettingsProvider>
+
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SettingsProvider>
+    </StylesProvider>
+
   )
 }
 

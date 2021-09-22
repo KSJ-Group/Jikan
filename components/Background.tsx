@@ -1,11 +1,17 @@
-import type { NextPage } from 'next';
+import React, { useState, useContext, useEffect } from 'react';
 import Image from 'next/image';
-import styles from '../styles/Background.module.css'
+import { BackgroundContext } from './BackgroundContext';
+import styles from '../styles/Background/Background.module.css';
 
-const Background: NextPage = () => {
+
+const Background: React.FC = () => {
+  const { background, changeLoadStatus } = useContext(BackgroundContext);
+
+
+
   return (
-    <div>
-      <Image src="/pexels-photo-5011944.jpeg" className={styles.image} layout='fill'/>
+    <div className={styles.imageContainer}>
+        <Image src={background} className={styles.image} placeholder='blur' blurDataURL={background} layout='fill' onLoadingComplete={() => { changeLoadStatus(true) }} />
     </div>
   );
 };
