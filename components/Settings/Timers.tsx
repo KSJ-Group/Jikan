@@ -4,46 +4,52 @@ import styles from '../../styles/Settings/Settings.module.css';
 import { minutesAndSecondsToMillis, millisToMinutesAndSeconds } from '../../helper/convertTime';
 
 interface Props {
-  pomTime: number,
+  pomodoroTime: number,
   shortBreakTime: number,
   longBreakTime: number,
-  setPomTime: Function,
+  setPomodoroTime: Function,
   setShortBreakTime: Function,
   setLongBreakTime: Function
 }
 
-const Timers: React.FC<Props> = ({pomTime, shortBreakTime, longBreakTime, setPomTime, setShortBreakTime, setLongBreakTime }) => {
+const Timers: React.FC<Props> = ({pomodoroTime, shortBreakTime, longBreakTime, setPomodoroTime, setShortBreakTime, setLongBreakTime }) => {
+  const [pomStr, setPomStr] = useState<string>(millisToMinutesAndSeconds(pomodoroTime));
+  const [shortStr, setShortStr] = useState<string>(millisToMinutesAndSeconds(shortBreakTime));
+  const [longStr, setLongStr] = useState<string>(millisToMinutesAndSeconds(longBreakTime));
+
   const pomChange = (e: any): void => {
     e.preventDefault();
-    setPomTime(minutesAndSecondsToMillis(e.target.value.toString() + ':00'));
-    console.log(millisToMinutesAndSeconds(pomTime).slice(0, millisToMinutesAndSeconds(pomTime).indexOf(':')))
+    let toMs = minutesAndSecondsToMillis(e.target.value);
+    setPomodoroTime(toMs);
   }
 
   const shortChange = (e: any): void => {
     e.preventDefault();
-    setShortBreakTime(minutesAndSecondsToMillis(e.target.value.toString() + ':00'));
+    let toMs = minutesAndSecondsToMillis(e.target.value);
+    setShortBreakTime(toMs);
   }
 
   const longChange = (e: any): void => {
     e.preventDefault();
-    setLongBreakTime(minutesAndSecondsToMillis(e.target.value.toString() + ':00'));
+    let toMs = minutesAndSecondsToMillis(e.target.value);
+    setLongBreakTime(toMs);
   }
 
   return (
     <div className={styles.timers}>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Pomodoro</Form.Label>
-        <Form.Control type="number" defaultValue={millisToMinutesAndSeconds(pomTime).slice(0, millisToMinutesAndSeconds(pomTime).indexOf(':'))} onChange={(e) => pomChange(e)} className={styles.pomodoro} />
+        <Form.Control type="number" defaultValue={parseInt(pomStr)} onChange={(e) => pomChange(e)} className={styles.pomodoro} />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Short Break</Form.Label>
-        <Form.Control type="number" defaultValue={millisToMinutesAndSeconds(shortBreakTime).slice(0, millisToMinutesAndSeconds(shortBreakTime).indexOf(':'))} onChange={(e) => shortChange(e)} className={styles.shortbreak} />
+        <Form.Control type="number" defaultValue={parseInt(shortStr)} onChange={(e) => shortChange(e)} className={styles.shortbreak} />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Long Break</Form.Label>
-        <Form.Control type="number" defaultValue={millisToMinutesAndSeconds(longBreakTime).slice(0, millisToMinutesAndSeconds(longBreakTime).indexOf(':'))} onChange={(e) => longChange(e)} className={styles.longbreak} />
+        <Form.Control type="number" defaultValue={parseInt(longStr)} onChange={(e) => longChange(e)} className={styles.longbreak} />
       </Form.Group>
     </div>
   );

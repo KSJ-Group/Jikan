@@ -15,6 +15,7 @@ const ShowSeconds: React.FC<Props> = ( {showSeconds, setShowSeconds}) => {
         <Form.Check
           type="switch"
           id="custom-switch"
+          checked={showSeconds}
           onChange={() => setShowSeconds(!showSeconds)}
         />
       </Form.Group>
