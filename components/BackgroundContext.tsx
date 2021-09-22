@@ -32,7 +32,6 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     };
   }, []);
 
-  console.log('in context', loaded);
   return (
     <BackgroundContext.Provider value={store}>
       {children}
