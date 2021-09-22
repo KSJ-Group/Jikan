@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Navbar/Navbar.module.css';
 import Head from 'next/head';
 import Settings from './Settings/Settings';
+import { SettingsContext } from './SettingsContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +16,11 @@ const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
+  const { setIsClock } = useContext(SettingsContext);
 
+  useEffect(() => {
+    setIsClock(clockIsActive);
+  }, [clockIsActive])
   const clickLinkClock = (): void => {
     if (!clockIsActive) {
       setClockIsActive(true);

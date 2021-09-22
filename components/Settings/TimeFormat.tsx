@@ -15,6 +15,7 @@ const TimeFormat: React.FC<Props> = ( {is24Hour, setIs24Hour} ) => {
         <Form.Check
           type="switch"
           id="custom-switch"
+          checked={is24Hour}
           onChange={() => setIs24Hour(!is24Hour)}
         />
       </Form.Group>

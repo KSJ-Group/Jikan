@@ -3,10 +3,11 @@ import { Form, Button } from 'react-bootstrap'
 import styles from '../../styles/Settings/Settings.module.css';
 
 interface Props {
+  selectedFont: string,
   setSelectedFont: Function
 }
 
-const Font: React.FC<Props> = ( {setSelectedFont} ) => {
+const Font: React.FC<Props> = ( { selectedFont, setSelectedFont } ) => {
 
   const changeFont = (e: any) => {
     e.preventDefault();
@@ -18,8 +19,9 @@ const Font: React.FC<Props> = ( {setSelectedFont} ) => {
     <div>
       <Form.Group className={styles.font}>
         <Form.Label>Font</Form.Label>
-        <Form.Select onChange={(e) => changeFont(e)}>
+        <Form.Select defaultValue={selectedFont} onChange={(e) => changeFont(e)}>
           <option value='' hidden></option>
+          <option value={selectedFont}>{selectedFont}</option>
           <option value='Arial'>Arial</option>
           <option value='TimeNewSeiji'>TimeNewSeiji</option>
           <option value='RandomFont'>RandomFont</option>

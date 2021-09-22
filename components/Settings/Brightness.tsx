@@ -7,8 +7,6 @@ interface Props {
 }
 
 const Brightness: React.FC<Props> = ({brightness, setBrightness}) => {
-  // const [brightness, setBrightness] = useState<number>(50)
-
   const changeHandler = (e: any): void => {
     e.preventDefault();
     setBrightness(e.target.value);
@@ -18,8 +16,8 @@ const Brightness: React.FC<Props> = ({brightness, setBrightness}) => {
     <div className={styles.brightness}>
       Brightness
       <div className={styles.sliderDiv}>
-        <input className={styles.brightnessSlider} onChange={changeHandler} type="range" name="volume"
-          min="0" max="100" />
+        <input className={styles.brightnessSlider} defaultValue={brightness} onChange={changeHandler} type="range" name="volume"
+          min="20" max="100" />
         <div className={styles.indicator}>{brightness}%</div>
       </div>
     </div>

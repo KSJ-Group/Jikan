@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
+import { StylesContext } from './StylesContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExpand } from '@fortawesome/free-solid-svg-icons';
+import { BrightnessDiv } from '../styles/global.style';
 
 library.add(
   faExpand
@@ -13,15 +15,11 @@ library.add(
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const { brightness } = useContext(StylesContext);
 
-  // useEffect(() => {
-  //   window.addEventListener('keydown', (e) => {
-  //     if (e.key === 'Escape' && !isFullscreen) {
-  //       console.log('Escape!');
-  //       setIsFullscreen(false);
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    console.log(brightness);
+  }, [brightness])
 
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
@@ -38,14 +36,16 @@ const Layout: React.FC = ({ children }) => {
   }
 
   return (
-    <div id='layout'>
-      <BackgroundProvider>
-        <Navbar />
-        <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg'/><div className='fsText'>Fullscreen</div></div>
-        <Background />
-        { children }
-      </BackgroundProvider>
-    </div>
+    <BrightnessDiv brightness={brightness.toString() + '%'}>
+      <div id='layout'>
+          <BackgroundProvider>
+              <Navbar />
+              <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg' /><div className='fsText'>Fullscreen</div></div>
+              <Background />
+              {children}
+          </BackgroundProvider>
+      </div>
+    </BrightnessDiv>
   );
 };
 

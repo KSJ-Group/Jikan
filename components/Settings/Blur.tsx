@@ -14,6 +14,7 @@ const Blur: React.FC<Props> = ( {blur, setBlur}) => {
         <Form.Check
           type="switch"
           id="custom-switch"
+          checked={blur}
           onChange={() => setBlur(!blur)}
         />
       </Form.Group>
