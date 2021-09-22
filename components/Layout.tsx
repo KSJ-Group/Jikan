@@ -17,10 +17,6 @@ const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const { brightness } = useContext(StylesContext);
 
-  useEffect(() => {
-    console.log(brightness);
-  }, [brightness])
-
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
       if (document.exitFullscreen) {
