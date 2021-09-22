@@ -3,7 +3,6 @@ import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExpand } from '@fortawesome/free-solid-svg-icons';

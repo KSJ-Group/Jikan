@@ -15,7 +15,6 @@ interface ButtonProps {
 
 const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src }) => {
   const { background, changeBackground, changeLoadStatus, loaded } = useContext(BackgroundContext);
-  console.log('in PT', background, src.original);
 
   return (
     <div className={styles.imageContainer}>
