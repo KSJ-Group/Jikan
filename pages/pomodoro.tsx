@@ -20,11 +20,11 @@ const pomodoro: NextPage = () => {
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  // const { pomodoroTime, setPomodoroTime, shortBreakTime, setShortBreakTime, longBreakTime, setLongBreakTime} = useContext(SettingsContext);
+  const { pomodoroTime, shortBreakTime, longBreakTime} = useContext(SettingsContext);
 
-  const [pomodoroTime, setPomodoroTime] = useState<any>(0);
-  const [shortBreakTime, setShortBreakTime] = useState<any>(0);
-  const [longBreakTime, setLongBreakTime] = useState<any>(0);
+  const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
+  const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
+  const [longBreakTime2, setLongBreakTime] = useState<any>(0);
   const [currentTime, setCurrentTime] = useState<any>('');
 
   const [started, setStarted] = useState<boolean>(false);
@@ -37,13 +37,17 @@ const pomodoro: NextPage = () => {
 
   useEffect(() => {
     alert.src = alertTone;
-    setPomodoroTime(millisToMinutesAndSeconds(1500000))
-    setShortBreakTime(millisToMinutesAndSeconds(300000))
-    setLongBreakTime(millisToMinutesAndSeconds(900000))
+    setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
+    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime))
+    setLongBreakTime(millisToMinutesAndSeconds(longBreakTime))
     if (Notification.permission !== 'denied') {
       Notification.requestPermission()
     }
-  }, [])
+  }, [pomodoroTime, shortBreakTime, longBreakTime])
+
+  useEffect(() => {
+    console.log('hi', pomodoroTime2)
+  }, [pomodoroTime2])
 
   const showNotification = () => {
     if (pomodoro) {
@@ -66,22 +70,22 @@ const pomodoro: NextPage = () => {
     setStarted(false);
     if (pomodoro) {
       stopTimer();
-      setShortBreakTime(millisToMinutesAndSeconds(300000));
-      setLongBreakTime(millisToMinutesAndSeconds(900000));
+      setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
+      setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       document.getElementById('link4')?.classList.add('activePomLink');
       document.getElementById('link5')?.classList.remove('activePomLink');
       document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (shortBreak) {
       stopTimer();
-      setPomodoroTime(millisToMinutesAndSeconds(1500000));
-      setLongBreakTime(millisToMinutesAndSeconds(900000));
+      setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
+      setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       document.getElementById('link5')?.classList.add('activePomLink');
       document.getElementById('link4')?.classList.remove('activePomLink');
       document.getElementById('link6')?.classList.remove('activePomLink');
     } else if (longBreak) {
       stopTimer();
-      setPomodoroTime(millisToMinutesAndSeconds(1500000));
-      setShortBreakTime(millisToMinutesAndSeconds(300000));
+      setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
+      setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
       document.getElementById('link6')?.classList.add('activePomLink');
       document.getElementById('link4')?.classList.remove('activePomLink');
       document.getElementById('link5')?.classList.remove('activePomLink');
@@ -159,16 +163,15 @@ const pomodoro: NextPage = () => {
 
   const startTimer = (): void => {
     if (pomodoro) {
-      if (minutesAndSecondsToMillis(pomodoroTime) > 0) {
-        setPomodoroTime((prevState: string) => {
-          let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
-          if (newTime === '0:00') {
-            timeUpHandler();
-          }
-          setCurrentTime(newTime);
-          return newTime;
-        })
-      }
+      setPomodoroTime((prevState: string) => {
+        console.log('Yo!:', prevState);
+        let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
+        if (newTime === '0:00') {
+          timeUpHandler();
+        }
+        setCurrentTime(newTime);
+        return newTime;
+      })
     } else if (shortBreak) {
       setShortBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
@@ -207,9 +210,9 @@ const pomodoro: NextPage = () => {
       alert.stop();
       alert.loop = false;
       setShowTimerModal(false);
-      setPomodoroTime(millisToMinutesAndSeconds(1500000));
-      setShortBreakTime(millisToMinutesAndSeconds(300000));
-      setLongBreakTime(millisToMinutesAndSeconds(900000));
+      setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
+      setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
+      setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       setStarted(false);
     } else {
       if (Notification.permission === 'granted') {
@@ -233,9 +236,9 @@ const pomodoro: NextPage = () => {
           <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
           <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
-        {pomodoro ? <div className={styles.timer}>{pomodoroTime}</div> : null}
-        {shortBreak ? <div className={styles.timer}>{shortBreakTime}</div> : null}
-        {longBreak ? <div className={styles.timer}>{longBreakTime}</div> : null}
+        {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
+        {shortBreak ? <div className={styles.timer}>{shortBreakTime2}</div> : null}
+        {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
         {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
         {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode} /> : null}
         {timerModal ? <TimerDoneModal show={timerModal} handleClose={alarmHandler} /> : null}

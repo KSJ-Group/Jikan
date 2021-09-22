@@ -7,13 +7,20 @@ export const millisToMinutesAndSeconds = (millis: number): string => {
 
 export const minutesAndSecondsToMillis = (time: string): number => {
   let milliseconds: number = 0;
-  if (time.length === 1) {
-    milliseconds = parseInt(time.slice(0, 1)) * 60000;
-    console.log(milliseconds);
-  } else if (time.length === 2) {
-    milliseconds = parseInt(time.slice(0, 2)) * 60000;
-    console.log(milliseconds);
+  let seconds: number = 0;
+  if (time.includes(':')) {
+    console.log(':');
+    let split = time.split(':');
+    milliseconds = parseInt(split[0]) * 60000;
+    seconds = parseInt(split[1]) * 1000;
+  } else {
+    if (time.length === 1) {
+      milliseconds = parseInt(time.slice(0, 1)) * 60000;
+    } else if (time.length === 2) {
+      milliseconds = parseInt(time.slice(0, 2)) * 60000;
+    }
   }
 
- return milliseconds;
+
+ return milliseconds + seconds;
 }
