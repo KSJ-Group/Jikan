@@ -14,7 +14,7 @@ Deployed on Vercel: https://jikan.vercel.app/
 
 ## Tech Stack
 
-**Client:** React, Next.js, Sass, Styled-Components, React-bootstrap, Axios
+**Client:** React, Typescript, Next.js, Sass, Styled-Components, React-bootstrap, Axios
 
 **Server:** Node, Express, GraphQL, Passport.js, Pexels API
 
