@@ -25,7 +25,7 @@ Deployed on Vercel: https://jikan.vercel.app/
 
 Warning: This app is still currently in development!
 
-Install Helping hands with npm
+Install Jikan with npm
 
 ```bash
  git clone https://github.com/KSJ-Group/Jikan/tree/dev
