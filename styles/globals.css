@@ -12,7 +12,6 @@ html, body {
 
 #layout {
   height: 100vh;
-  opacity: 100%; /* Change this to change the brightness */
 }
 
 .inactiveLink {

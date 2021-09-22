@@ -15,6 +15,7 @@ const AutoStartBreak: React.FC<Props> = ({ autoStartBreak, setAutoStartBreak }) 
         <Form.Check
           type="switch"
           id="custom-switch"
+          checked={autoStartBreak}
           onChange={() => setAutoStartBreak(!autoStartBreak)}
         />
       </Form.Group>
