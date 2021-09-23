@@ -20,7 +20,7 @@ const pomodoro: NextPage = () => {
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const { pomodoroTime, shortBreakTime, longBreakTime} = useContext(SettingsContext);
+  const { pomodoroTime, shortBreakTime, longBreakTime } = useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
   const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
@@ -235,9 +235,11 @@ const pomodoro: NextPage = () => {
           <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
           <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
-        {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
-        {shortBreak ? <div className={styles.timer}>{shortBreakTime2}</div> : null}
-        {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
+        <div className={styles.timerDiv}>
+          {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
+          {shortBreak ? <div className={styles.timer}>{shortBreakTime2}</div> : null}
+          {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
+        </div>
         {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
         {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode} /> : null}
         {timerModal ? <TimerDoneModal show={timerModal} handleClose={alarmHandler} /> : null}
