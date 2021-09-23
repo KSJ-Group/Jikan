@@ -57,7 +57,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               </div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
-              <Timers pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} />
+              <Timers pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} setShowSettings={setShowSettings} />
               <AutoStarBreak autoStartBreak={autoStartBreak} setAutoStartBreak={setAutoStartBreak} />
               <Blur blur={blur} setBlur={setBlur} />
               <AlertSound selectedAlert={selectedAlert} setSelectedAlert={setSelectedAlert} />
