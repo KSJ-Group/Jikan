@@ -9,7 +9,6 @@ export const minutesAndSecondsToMillis = (time: string): number => {
   let milliseconds: number = 0;
   let seconds: number = 0;
   if (time.includes(':')) {
-    console.log(':');
     let split = time.split(':');
     milliseconds = parseInt(split[0]) * 60000;
     seconds = parseInt(split[1]) * 1000;

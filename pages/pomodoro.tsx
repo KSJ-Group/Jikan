@@ -8,7 +8,7 @@ import TimerDoneModal from '../components/TimerModal';
 import { SettingsContext } from '../components/SettingsContext';
 import { StylesContext } from '../components/StylesContext';
 import { ClockFont } from '../styles/global.style';
-
+import Settings from '../components/Settings/Settings';
 
 const { Howl } = require('howler');
 
@@ -35,13 +35,17 @@ const pomodoro: NextPage = () => {
   const [targetMode, setTargetMode] = useState<string>('');
 
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
-  const [alertTone, setAlertTone] = useState<string>('alarm.wav');
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
 
   const { selectedFont } = useContext(StylesContext);
+  const { selectedAlert } = useContext(SettingsContext);
 
   useEffect(() => {
-    alert.src = alertTone;
+    alert.src = selectedAlert;
+    console.log(alert.src);
+  }, [selectedAlert])
+
+  useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime))
     setLongBreakTime(millisToMinutesAndSeconds(longBreakTime))
@@ -49,10 +53,6 @@ const pomodoro: NextPage = () => {
       Notification.requestPermission()
     }
   }, [pomodoroTime, shortBreakTime, longBreakTime])
-
-  useEffect(() => {
-    console.log('hi', pomodoroTime2)
-  }, [pomodoroTime2])
 
   const showNotification = () => {
     if (pomodoro) {

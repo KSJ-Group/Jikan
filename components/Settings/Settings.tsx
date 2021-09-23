@@ -26,10 +26,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   const { isClock, isLoggedIn, pomodoroTime, setPomodoroTime, shortBreakTime, setShortBreakTime, longBreakTime, setLongBreakTime, autoStartBreak, setAutoStartBreak, showSeconds, setShowSeconds, is24Hour, setIs24Hour, selectedAlert, setSelectedAlert} = useContext(SettingsContext);
 
-  // useEffect(() => {
-  //   console.log(pomodoroTime);
-  // }, [pomodoroTime])
-
   return (
     <>
       <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end' className={styles.settings}>
