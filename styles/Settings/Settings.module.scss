@@ -12,8 +12,17 @@
   // border-bottom: 1px solid white;
 }
 
-.body {
+.settingsTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.x {
+  position: relative;
+  top: 5px;
+  height: 30px;
+  border-radius: 3px;
 }
 
 .pomodoro {
@@ -68,21 +77,34 @@
 .timers {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   font-size: 18px;
   margin-bottom: 20px;
 }
 
 .pomodoro {
-  width: 90%;
+  width: 26%;
+  margin-right: 6px;
 }
 
 .shortbreak {
-  width: 90%;
+  width: 26%;
+  margin-right: 6px;
 }
 
 .longbreak {
-  width: 90%;
+  width: 26%;
+  margin-right: 10px;
+}
+
+.resetBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 55px;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 .toggle {

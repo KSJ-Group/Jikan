@@ -31,7 +31,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [autoStartBreak, setAutoStartBreak] = useState<boolean>(false);
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
-  const [selectedAlert, setSelectedAlert] = useState<string>('');
+  const [selectedAlert, setSelectedAlert] = useState<string>('alarm.wav');
 
   const store = {
     isClock: isClock,

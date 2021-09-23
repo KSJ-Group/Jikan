@@ -18,37 +18,37 @@ $phone: 450px;
 }
 
 .container {
-  width: 900px;
-  height: 500px;
+  width: 50vw;
+  height: 50vh;
   z-index: 3;
   @include flexCenter();
   flex-direction: column;
-  // background-color: rgba(245, 245, 245, 0.5);
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
+  overflow: hidden;
   @media screen and (min-width: $xxl) {
-    width: 1200px;
-    height: 600px;
+    width: 50vw;
+    height: 50vh;
   }
   @media screen and (max-width: $xl) {
-    width: 80vw;
-    height: 400px;
+    width: 50vw;
+    height: 50vh;
   }
   @media screen and (max-width: $l) {
     width: 80vw;
-    height: 400px;
+    height: 50vh;
   }
   @media screen and (max-width: $m) {
     width: 80vw;
-    height: 400px;
+    height: 50vh;
   }
   @media screen and (max-width: $s) {
     width: 80vw;
-    height: 400px;
+    height: 30vh;
   }
   @media screen and (max-width: $phone) {
     width: 80vw;
-    height: 300px;
+    height: 45vh;
   }
 }
 
@@ -56,63 +56,46 @@ $phone: 450px;
   @include flexCenter();
   flex-direction: row;
   position: relative;
-  top: 40px;
+  // top: 40px;
   z-index: 3;
   color: white;
-  @media screen and (max-width: 678px) {
-    width: 70vw;
-    flex-wrap: wrap;
-  }
-  @media screen and (max-width: $s) {
-    top: -10px;
-    width: 70vw;
-    float: wrap;
-  }
   @media screen and (max-width: $phone) {
-    // top: 10px;
     width: 70vw;
     flex-wrap: wrap;
+    top: 4vh;
   }
 
 }
 
 .link {
   margin: 30px;
-  font-size: 25px;
+  font-size: 2vw;
   border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
   @media screen and (max-width: 678px) {
     margin: 10px;
   }
   @media screen and (max-width: $phone) {
-    font-size: 16px;
+    font-size: 4vw;
     margin: 10px;
+    padding: 5px;
   }
+}
+
+.timerDiv {
+  width: 100%;
+  height: 20vh;
+  @include flexCenter();
 }
 
 .timer {
   z-index: 2;
   position: relative;
-  font-size: 235px;
+  font-size: 11vw;
   font-weight: bold;
   text-align: center;
-  font-family: "Courier New", monospace;
   color: white;
-  @media screen and (min-width: $xxl) {
-    font-size: 300px;
-  }
-  @media screen and (max-width: $xl) {
-    font-size: 200px;
-  }
-  @media screen and (max-width: $l) {
-    font-size: 150px;
-  }
-  @media screen and (max-width: $m) {
-    font-size: 150px;
-  }
-  @media screen and (max-width: $s) {
-    font-size: 100px;
-  }
   @media screen and (max-width: $phone) {
     font-size: 70px;
     top: -10px;
@@ -121,24 +104,18 @@ $phone: 450px;
 
 .startBtn {
   position: relative;
-  top: -50px;
   padding: 20px;
+  // bottom: 10%;
   border-radius: 10px;
   background-color: rgb(208, 208, 208);
   cursor: pointer;
-  font-size: 25px;
+  font-size: 2vw;
   font-weight: bold;
   z-index: 3;
-  @media  screen and (max-width: $m) {
-    top: -40px;
-  }
-  @media screen and (max-width: $s) {
-    top: -30px;
-  }
-  @media  screen and (max-width: $phone) {
-    font-size: 18px;
-    padding: 10px;
-    top: -25px;
+  @media screen and (max-width: $phone) {
+    font-size: 4vw;
+    padding: 15px;
+    bottom: 10vw;
   }
   &:hover {
     background-color: rgb(189, 189, 189);

@@ -13,8 +13,8 @@
 }
 
 .container {
-  width: 900px;
-  height: 500px;
+  width: 50vw;
+  height: 50vh;
   z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,47 +31,48 @@
           flex-direction: column;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 2500px) {
   .container {
-    width: 1200px;
-    height: 600px;
+    width: 50vw;
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 1400px) {
   .container {
-    width: 80vw;
-    height: 400px;
+    width: 50vw;
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .container {
     width: 80vw;
-    height: 400px;
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 850px) {
   .container {
     width: 80vw;
-    height: 400px;
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 600px) {
   .container {
     width: 80vw;
-    height: 400px;
+    height: 30vh;
   }
 }
 
 @media screen and (max-width: 450px) {
   .container {
     width: 80vw;
-    height: 300px;
+    height: 45vh;
   }
 }
 
@@ -90,25 +91,8 @@
       -ms-flex-direction: row;
           flex-direction: row;
   position: relative;
-  top: 40px;
   z-index: 3;
   color: white;
-}
-
-@media screen and (max-width: 678px) {
-  .links {
-    width: 70vw;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .links {
-    top: -10px;
-    width: 70vw;
-    float: wrap;
-  }
 }
 
 @media screen and (max-width: 450px) {
@@ -116,13 +100,15 @@
     width: 70vw;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    top: 4vh;
   }
 }
 
 .link {
   margin: 30px;
-  font-size: 25px;
+  font-size: 2vw;
   border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -134,49 +120,33 @@
 
 @media screen and (max-width: 450px) {
   .link {
-    font-size: 16px;
+    font-size: 4vw;
     margin: 10px;
+    padding: 5px;
   }
+}
+
+.timerDiv {
+  width: 100%;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .timer {
   z-index: 2;
   position: relative;
-  font-size: 235px;
+  font-size: 11vw;
   font-weight: bold;
   text-align: center;
-  font-family: "Courier New", monospace;
   color: white;
-}
-
-@media screen and (min-width: 2500px) {
-  .timer {
-    font-size: 300px;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .timer {
-    font-size: 200px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .timer {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .timer {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .timer {
-    font-size: 100px;
-  }
 }
 
 @media screen and (max-width: 450px) {
@@ -188,33 +158,20 @@
 
 .startBtn {
   position: relative;
-  top: -50px;
   padding: 20px;
   border-radius: 10px;
   background-color: #d0d0d0;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 2vw;
   font-weight: bold;
   z-index: 3;
 }
 
-@media screen and (max-width: 850px) {
-  .startBtn {
-    top: -40px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .startBtn {
-    top: -30px;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .startBtn {
-    font-size: 18px;
-    padding: 10px;
-    top: -25px;
+    font-size: 4vw;
+    padding: 15px;
+    bottom: 10vw;
   }
 }
 

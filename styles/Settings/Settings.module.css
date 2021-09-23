@@ -17,6 +17,26 @@
   background: white;
 }
 
+.settingsTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.x {
+  position: relative;
+  top: 5px;
+  height: 30px;
+  border-radius: 3px;
+}
+
 .pomodoro {
   width: 70px;
 }
@@ -86,23 +106,39 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   font-size: 18px;
   margin-bottom: 20px;
 }
 
 .pomodoro {
-  width: 90%;
+  width: 26%;
+  margin-right: 6px;
 }
 
 .shortbreak {
-  width: 90%;
+  width: 26%;
+  margin-right: 6px;
 }
 
 .longbreak {
-  width: 90%;
+  width: 26%;
+  margin-right: 10px;
+}
+
+.resetBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 75px;
+  width: 55px;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 .toggle {

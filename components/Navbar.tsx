@@ -84,9 +84,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
           <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="lg" />
-          <div className={styles.settingsWord}>
-            Settings
-          </div>
+          <div className={styles.settingsWord}>Settings</div>
         </div>
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
       </nav>

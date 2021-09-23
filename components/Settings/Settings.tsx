@@ -26,10 +26,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   const { isClock, isLoggedIn, pomodoroTime, setPomodoroTime, shortBreakTime, setShortBreakTime, longBreakTime, setLongBreakTime, autoStartBreak, setAutoStartBreak, showSeconds, setShowSeconds, is24Hour, setIs24Hour, selectedAlert, setSelectedAlert} = useContext(SettingsContext);
 
-  // useEffect(() => {
-  //   console.log(pomodoroTime);
-  // }, [pomodoroTime])
-
   return (
     <>
       <Offcanvas show={showSettings} onHide={() => setShowSettings(false)} placement='end' className={styles.settings}>
@@ -37,21 +33,27 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
           {isClock ?
             // Clock settings
             <div>
-              <h2>Clock Settings</h2>
+              <div className={styles.settingsTop}>
+                <h2>Clock Settings</h2>
+                <button className={styles.x} onClick={() => setShowSettings(false)}>Close</button>
+              </div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
-              <Blur blur={blur} setBlur={setBlur} />
               <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+              <Blur blur={blur} setBlur={setBlur} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
               <Search />
             </div> :
             // Pomodoro settings
             <div>
-              <h2>Pomodoro Settings</h2>
+              <div className={styles.settingsTop}>
+                <h2>Pomodoro Settings</h2>
+                <button className={styles.x} onClick={() => setShowSettings(false)}>Close</button>
+              </div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
-              <Timers pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} />
+              <Timers pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} setShowSettings={setShowSettings} />
               <AutoStarBreak autoStartBreak={autoStartBreak} setAutoStartBreak={setAutoStartBreak} />
               <Blur blur={blur} setBlur={setBlur} />
               <AlertSound selectedAlert={selectedAlert} setSelectedAlert={setSelectedAlert} />
