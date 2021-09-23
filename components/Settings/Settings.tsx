@@ -41,8 +41,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
-              <Blur blur={blur} setBlur={setBlur} />
               <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+              <Blur blur={blur} setBlur={setBlur} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
               <Search />
             </div> :

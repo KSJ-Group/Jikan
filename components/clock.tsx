@@ -46,10 +46,6 @@ const Clock: React.FC = () => {
     }
   }, [showSeconds, is24Hour])
 
-  useEffect(() => {
-
-  })
-
   const updateTime = (): void => {
     if (is24Hour) {
       if (showSeconds) {

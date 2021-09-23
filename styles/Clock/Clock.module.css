@@ -1,6 +1,6 @@
 .container {
-  width: 1200px;
-  height: 400px;
+  width: 75vw;
+  height: 35vh;
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,215 +17,95 @@
 
 @media screen and (min-width: 2500px) {
   .container {
-    width: 2200px;
-    height: 700px;
+    width: 70vw;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width: 1400px) {
   .container {
     width: 85vw;
-    height: 400px;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .container {
     width: 90vw;
-    height: 400px;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width: 850px) {
   .container {
     width: 90vw;
-    height: 400px;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width: 600px) {
   .container {
     width: 90vw;
-    height: 400px;
+    height: 35vh;
   }
 }
 
 @media screen and (max-width: 450px) {
   .container {
     width: 90vw;
-    height: 300px;
+    height: 20vh;
   }
 }
 
 .timeA {
-  font-size: 235px;
+  font-size: 13vw;
   font-weight: bold;
   font-family: 'Courier New', monospace;
   color: white;
 }
 
-@media screen and (min-width: 2500px) {
-  .timeA {
-    font-size: 400px;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .timeA {
-    font-size: 200px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .timeA {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .timeA {
-    font-size: 100px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .timeA {
-    font-size: 80px;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .timeA {
-    font-size: 65px;
+    font-size: 15vw;
   }
 }
 
 .timeB {
-  font-size: 235px;
+  font-size: 13vw;
   font-weight: bold;
   font-family: 'Courier New', monospace;
   color: white;
 }
 
-@media screen and (min-width: 2500px) {
-  .timeB {
-    font-size: 400px;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .timeB {
-    font-size: 200px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .timeB {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .timeB {
-    font-size: 100px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .timeB {
-    font-size: 80px;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .timeB {
-    font-size: 65px;
+    font-size: 15vw;
   }
 }
 
 .timeC {
-  font-size: 235px;
+  font-size: 11vw;
   font-weight: bold;
   font-family: 'Courier New', monospace;
   color: white;
 }
 
-@media screen and (min-width: 2500px) {
-  .timeC {
-    font-size: 400px;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .timeC {
-    font-size: 200px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .timeC {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .timeC {
-    font-size: 100px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .timeC {
-    font-size: 80px;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .timeC {
-    font-size: 65px;
+    font-size: 12vw;
   }
 }
 
 .timeD {
-  font-size: 235px;
+  font-size: 13vw;
   font-weight: bold;
   font-family: 'Courier New', monospace;
   color: white;
 }
 
-@media screen and (min-width: 2500px) {
-  .timeD {
-    font-size: 400px;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .timeD {
-    font-size: 200px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .timeD {
-    font-size: 150px;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .timeD {
-    font-size: 100px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .timeD {
-    font-size: 80px;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .timeD {
-    font-size: 65px;
+    font-size: 15vw;
   }
 }
 /*# sourceMappingURL=Clock.module.css.map */
