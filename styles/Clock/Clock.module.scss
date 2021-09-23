@@ -41,7 +41,82 @@ $xxl: 2500px;
   }
 }
 
-.time {
+.timeA {
+  font-size: 235px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: white;
+  @media screen and (min-width: $xxl) {
+    font-size: 400px;
+  }
+  @media screen and (max-width: $xl) {
+    font-size: 200px;
+  }
+  @media screen and (max-width: $l) {
+    font-size: 150px;
+  }
+  @media screen and (max-width: $m) {
+    font-size: 100px;
+  }
+  @media screen and (max-width: $s) {
+    font-size: 80px;
+  }
+  @media screen and (max-width: $phone) {
+    font-size: 65px;
+  }
+}
+
+.timeB {
+  font-size: 235px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: white;
+  @media screen and (min-width: $xxl) {
+    font-size: 400px;
+  }
+  @media screen and (max-width: $xl) {
+    font-size: 200px;
+  }
+  @media screen and (max-width: $l) {
+    font-size: 150px;
+  }
+  @media screen and (max-width: $m) {
+    font-size: 100px;
+  }
+  @media screen and (max-width: $s) {
+    font-size: 80px;
+  }
+  @media screen and (max-width: $phone) {
+    font-size: 65px;
+  }
+}
+
+.timeC {
+  font-size: 235px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: white;
+  @media screen and (min-width: $xxl) {
+    font-size: 400px;
+  }
+  @media screen and (max-width: $xl) {
+    font-size: 200px;
+  }
+  @media screen and (max-width: $l) {
+    font-size: 150px;
+  }
+  @media screen and (max-width: $m) {
+    font-size: 100px;
+  }
+  @media screen and (max-width: $s) {
+    font-size: 80px;
+  }
+  @media screen and (max-width: $phone) {
+    font-size: 65px;
+  }
+}
+
+.timeD {
   font-size: 235px;
   font-weight: bold;
   font-family: 'Courier New', monospace;

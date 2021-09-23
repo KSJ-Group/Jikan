@@ -164,7 +164,6 @@ const pomodoro: NextPage = () => {
   const startTimer = (): void => {
     if (pomodoro) {
       setPomodoroTime((prevState: string) => {
-        console.log('Yo!:', prevState);
         let newTime = millisToMinutesAndSeconds((minutesAndSecondsToMillis(prevState) - 1000));
         if (newTime === '0:00') {
           timeUpHandler();
