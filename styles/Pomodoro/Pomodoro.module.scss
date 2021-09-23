@@ -19,7 +19,7 @@ $phone: 450px;
 
 .container {
   width: 50vw;
-  height: 50vh;
+  height: 55vh;
   z-index: 3;
   @include flexCenter();
   flex-direction: column;
@@ -28,15 +28,15 @@ $phone: 450px;
   overflow: hidden;
   @media screen and (min-width: $xxl) {
     width: 50vw;
-    height: 50vh;
+    height: 55svh;
   }
   @media screen and (max-width: $xl) {
     width: 50vw;
-    height: 50vh;
+    height: 55vh;
   }
   @media screen and (max-width: $l) {
     width: 80vw;
-    height: 50vh;
+    height: 55vh;
   }
   @media screen and (max-width: $m) {
     width: 80vw;
@@ -44,7 +44,7 @@ $phone: 450px;
   }
   @media screen and (max-width: $s) {
     width: 80vw;
-    height: 30vh;
+    height: 50vh;
   }
   @media screen and (max-width: $phone) {
     width: 80vw;
@@ -92,7 +92,7 @@ $phone: 450px;
 .timer {
   z-index: 2;
   position: relative;
-  font-size: 11vw;
+  font-size: 13vw;
   font-weight: bold;
   text-align: center;
   color: white;
