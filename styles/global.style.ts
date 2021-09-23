@@ -8,6 +8,10 @@ interface Background {
   blur: any
 }
 
+interface Font {
+  font: any
+}
+
 export const BrightnessDiv = styled.div<Props>`
   height: 100vh;
   width: 100vw;
@@ -21,4 +25,8 @@ export const BackgroundBlur = styled.div<Background>`
   width: 100vw;
   height: 100vh;
   transition: 0.6s ease-in-out;
+`;
+
+export const ClockFont = styled.div<Font>`
+  font-family: ${props => props.font}, monospace;
 `;

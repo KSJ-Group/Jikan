@@ -143,10 +143,9 @@
 .timer {
   z-index: 2;
   position: relative;
-  font-size: 12vw;
+  font-size: 11vw;
   font-weight: bold;
   text-align: center;
-  font-family: "Courier New", monospace;
   color: white;
 }
 

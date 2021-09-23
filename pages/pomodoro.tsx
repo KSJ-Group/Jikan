@@ -6,6 +6,9 @@ import { millisToMinutesAndSeconds, minutesAndSecondsToMillis } from '../helper/
 import AreYouSureModal from '../components/AreYouSureModal';
 import TimerDoneModal from '../components/TimerModal';
 import { SettingsContext } from '../components/SettingsContext';
+import { StylesContext } from '../components/StylesContext';
+import { ClockFont } from '../styles/global.style';
+
 
 const { Howl } = require('howler');
 
@@ -34,6 +37,8 @@ const pomodoro: NextPage = () => {
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
   const [alertTone, setAlertTone] = useState<string>('alarm.wav');
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
+
+  const { selectedFont } = useContext(StylesContext);
 
   useEffect(() => {
     alert.src = alertTone;
@@ -235,11 +240,13 @@ const pomodoro: NextPage = () => {
           <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
           <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
-        <div className={styles.timerDiv}>
-          {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
-          {shortBreak ? <div className={styles.timer}>{shortBreakTime2}</div> : null}
-          {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
-        </div>
+        <ClockFont font={selectedFont}>
+          <div className={styles.timerDiv}>
+            {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
+            {shortBreak ? <div className={styles.timer}>{shortBreakTime2}</div> : null}
+            {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
+          </div>
+        </ClockFont>
         {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
         {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode} /> : null}
         {timerModal ? <TimerDoneModal show={timerModal} handleClose={alarmHandler} /> : null}

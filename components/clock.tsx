@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import styles from '../styles/Clock/Clock.module.css';
 import moment from 'moment';
 import { SettingsContext } from './SettingsContext';
+import { StylesContext } from './StylesContext';
+import { ClockFont } from '../styles/global.style';
 
 let interval: number;
 
@@ -14,6 +16,7 @@ const Clock: React.FC = () => {
   const [is12, d] = useState<boolean>();
 
   const { showSeconds, is24Hour } = useContext(SettingsContext);
+  const { selectedFont } = useContext(StylesContext);
 
   useEffect(() => {
     clearInterval(interval);
@@ -80,10 +83,12 @@ const Clock: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {is24andSeconds ? <div className={styles.timeA}>{time}</div> : null}
-      {is24 ? <div className={styles.timeB}>{time}</div> : null}
-      {is12andSeconds ? <div className={styles.timeC}>{time}</div> : null}
-      {is12 ? <div className={styles.timeD}>{time}</div> : null}
+      <ClockFont font={selectedFont}>
+        {is24andSeconds ? <div className={styles.timeA}>{time}</div> : null}
+        {is24 ? <div className={styles.timeB}>{time}</div> : null}
+        {is12andSeconds ? <div className={styles.timeC}>{time}</div> : null}
+        {is12 ? <div className={styles.timeD}>{time}</div> : null}
+      </ClockFont>
     </div>
   );
 };
