@@ -3,12 +3,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   z-index: 0;
-}
-
-.imageContainer {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
 }
 /*# sourceMappingURL=Background.module.css.map */
