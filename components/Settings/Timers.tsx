@@ -49,17 +49,17 @@ const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, 
   return (
     <div className={styles.timers}>
       <Form.Group controlId="formBasicEmail" className={styles.pomodoro}>
-        <Form.Label>Pomodoro</Form.Label>
+        <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
         <Form.Control type="number" min="1" defaultValue={parseInt(pomStr)} onChange={(e) => pomChange(e)} />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className={styles.shortbreak}>
-        <Form.Label>Short Break</Form.Label>
+        <Form.Label className={styles.timerLabel}>Short Break</Form.Label>
         <Form.Control type="number" min="1" defaultValue={parseInt(shortStr)} onChange={(e) => shortChange(e)} />
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className={styles.longbreak}>
-        <Form.Label>Long Break</Form.Label>
+        <Form.Label className={styles.timerLabel}>Long Break</Form.Label>
         <Form.Control type="number" min="1" defaultValue={parseInt(longStr)} onChange={(e) => longChange(e)} />
       </Form.Group>
 
