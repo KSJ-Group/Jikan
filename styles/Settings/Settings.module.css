@@ -17,6 +17,26 @@
   background: white;
 }
 
+.settingsTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.x {
+  position: relative;
+  top: 5px;
+  height: 30px;
+  border-radius: 3px;
+}
+
 .pomodoro {
   width: 70px;
 }

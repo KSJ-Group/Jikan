@@ -12,8 +12,17 @@
   // border-bottom: 1px solid white;
 }
 
-.body {
+.settingsTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.x {
+  position: relative;
+  top: 5px;
+  height: 30px;
+  border-radius: 3px;
 }
 
 .pomodoro {

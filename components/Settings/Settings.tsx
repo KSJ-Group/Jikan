@@ -37,7 +37,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
           {isClock ?
             // Clock settings
             <div>
-              <h2>Clock Settings</h2>
+              <div className={styles.settingsTop}>
+                <h2>Clock Settings</h2>
+                <button className={styles.x} onClick={() => setShowSettings(false)}>Close</button>
+              </div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <ShowSeconds showSeconds={showSeconds} setShowSeconds={setShowSeconds} />
@@ -48,7 +51,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             </div> :
             // Pomodoro settings
             <div>
-              <h2>Pomodoro Settings</h2>
+              <div className={styles.settingsTop}>
+                <h2>Pomodoro Settings</h2>
+                <button className={styles.x} onClick={() => setShowSettings(false)}>Close</button>
+              </div>
               {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness brightness={brightness} setBrightness={setBrightness} />
               <Timers pomodoroTime={pomodoroTime} setPomodoroTime={setPomodoroTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreakTime={longBreakTime} setLongBreakTime={setLongBreakTime} />
