@@ -6,7 +6,7 @@ import { SettingsContext } from './SettingsContext';
 let interval: number;
 
 const Clock: React.FC = () => {
-  const [time, setTime] = useState<string>(moment().format('h:mm A'));
+  const [time, setTime] = useState<string>('');
 
   const [is24andSeconds, a] = useState<boolean>();
   const [is24, b] = useState<boolean>();

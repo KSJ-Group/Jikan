@@ -42,6 +42,13 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .line {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+}
+
 .link {
   text-decoration: none;
   margin: 20px;
@@ -58,6 +65,13 @@
 @media screen and (max-width: 600px) {
   .link {
     font-size: 18px;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .link {
+    font-size: 15px;
     margin: 10px;
   }
 }
@@ -90,6 +104,13 @@
 .settingsWord {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin-left: 10px;
+  display: block;
+}
+
+@media screen and (max-width: 950px) {
+  .settingsWord {
+    display: none;
+  }
 }
 
 .settingsIcon {
