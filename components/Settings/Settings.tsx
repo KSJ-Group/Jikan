@@ -14,6 +14,7 @@ import ShowSeconds from './ShowSeconds';
 import Blur from './Blur';
 import TimeFormat from './TimeFormat';
 import Search from './Search';
+import Color from './Color';
 
 interface Props {
   showSettings: boolean,
@@ -44,6 +45,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <Blur blur={blur} setBlur={setBlur} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
               <Search />
+              <Color />
             </div> :
             // Pomodoro settings
             <div>
@@ -59,6 +61,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <AlertSound selectedAlert={selectedAlert} setSelectedAlert={setSelectedAlert} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
               <Search />
+              <Color />
             </div>}
         </Offcanvas.Body>
       </Offcanvas>
