@@ -18,22 +18,40 @@ const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, 
   const [shortStr, setShortStr] = useState<string>(millisToMinutesAndSeconds(shortBreakTime));
   const [longStr, setLongStr] = useState<string>(millisToMinutesAndSeconds(longBreakTime));
 
+  useEffect(() => {
+    if (pomStr === '0') {
+      pomChange('1');
+    }
+    if (shortStr === '0') {
+      setShortStr('1');
+    }
+    if (longStr === '0') {
+      setLongStr('1');
+    }
+  }, [pomStr, shortStr, longStr])
+
   const pomChange = (e: any): void => {
-    e.preventDefault();
-    let toMs = minutesAndSecondsToMillis(e.target.value);
-    setPomodoroTime(toMs);
+    if (parseInt(e.target.value) > 0) {
+      e.preventDefault();
+      let toMs = minutesAndSecondsToMillis(e.target.value);
+      setPomodoroTime(toMs);
+    }
   }
 
   const shortChange = (e: any): void => {
-    e.preventDefault();
-    let toMs = minutesAndSecondsToMillis(e.target.value);
-    setShortBreakTime(toMs);
+    if (parseInt(e.target.value) > 0) {
+      e.preventDefault();
+      let toMs = minutesAndSecondsToMillis(e.target.value);
+      setShortBreakTime(toMs);
+    }
   }
 
   const longChange = (e: any): void => {
-    e.preventDefault();
-    let toMs = minutesAndSecondsToMillis(e.target.value);
-    setLongBreakTime(toMs);
+    if (parseInt(e.target.value) > 0) {
+      e.preventDefault();
+      let toMs = minutesAndSecondsToMillis(e.target.value);
+      setLongBreakTime(toMs);
+    }
   }
 
   const resetTimer = (e: any) => {
