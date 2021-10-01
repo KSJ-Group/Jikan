@@ -8,7 +8,6 @@ export const BackgroundContext = createContext(
     changeLoadStatus: (status:boolean): void => { }
   });
 
-
 export const BackgroundProvider: React.FC = ({ children }) => {
   const [background, setBackground] = useState<string>('/mountains.jpeg');
   const [loaded, setLoaded] = useState(true);
@@ -38,7 +37,6 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     </BackgroundContext.Provider>
   );
 };
-
 
 export const useBackgroundContext = () => {
   return useContext(BackgroundContext);
