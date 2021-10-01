@@ -265,19 +265,21 @@ const pomodoro: NextPage = () => {
           <meta name="description" content="Track time" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className={styles.links}>
+        <div className={styles.linksDiv}>
           <div className={styles.link} id='link4' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Pomodoro</div>
           <div className={styles.link} id='link5' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Short Break</div>
           <div className={styles.link} id='link6' onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}>Long Break</div>
         </div>
-        <ClockFont font={selectedFont}>
-          <div className={styles.timerDiv}>
+        <div className={styles.timerDiv}>
+          <ClockFont font={selectedFont}>
             {pomodoro ? <div className={styles.timer}>{pomodoroTime2}</div> : null}
             {shortBreak ? <div className={styles.timer} id='shortBreak'>{shortBreakTime2}</div> : null}
             {longBreak ? <div className={styles.timer}>{longBreakTime2}</div> : null}
-          </div>
-        </ClockFont>
-        {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
+          </ClockFont>
+        </div>
+        <div className={styles.btnDiv}>
+          {!started ? <div className={styles.startBtn} onClick={() => startClickHandler()}>START</div> : <div className={styles.startBtn} onClick={() => stopClickHandler()}>STOP</div>}
+        </div>
         {showModal ? <AreYouSureModal show={showModal} handleClose={handleClose} switchToPom={switchToPom} switchToShort={switchToShort} switchToLong={switchToLong} targetMode={targetMode} /> : null}
         {timerModal ? <TimerDoneModal show={timerModal} handleClose={alarmHandler} /> : null}
       </div>
