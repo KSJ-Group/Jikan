@@ -11,7 +11,7 @@ export const StylesContext = createContext(
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
-  const [selectedFont, setSelectedFont] = useState<string>("'Courier New', monospace");
+  const [selectedFont, setSelectedFont] = useState<string>('');
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
 
