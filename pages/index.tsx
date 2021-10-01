@@ -10,7 +10,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Jikan | Clock</title>
         <meta name="description" content="Track time" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossOrigin="anonymous"/>
         <script src="https://unpkg.com/react/umd/react.production.min.js" crossOrigin="true"></script>
 

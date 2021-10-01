@@ -3,7 +3,7 @@
 
 Jikan is a clock and timer web application inspired by the Pomodoro Technique. The timer is fully customizable, allowing users to control how they want to manage their time. Since work environment is a huge factor in productivity, users can also choose different background images to set the mood.
 
-Deployed on Vercel: https://jikan.vercel.app/
+Deployed on Vercel: https://jikan-timer.herokuapp.com/
 
 ## Preview
 ![image](https://i.imgur.com/PqUGMdm.png)

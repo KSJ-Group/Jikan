@@ -14,7 +14,7 @@ html, body {
 }
 
 .inactiveLink {
-  color: rgb(235, 235, 235);
+  color: #ebebeb;
 }
 
 .activeLink {
@@ -23,20 +23,26 @@ html, body {
 }
 
 .activePomLink {
-  background-color: rgb(66, 66, 92);
+  background-color: #42425c;
   padding: 5px;
-  color: rgb(231, 231, 231);
+  color: #e7e7e7;
 }
 
 .activePomLink:hover {
-  color: rgb(231, 231, 231);
+  color: #e7e7e7;
 }
 
 .fs {
   position: absolute;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 35px;
   right: 140px;
   top: 8px;
@@ -44,13 +50,15 @@ html, body {
   padding: 10px;
   cursor: pointer;
   color: white;
-  background-color:rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
 }
 
-@media screen and (max-width: 950px)  {
+@media screen and (max-width: 950px) {
   .fs {
-    display: none;
+    position: relative;
+    left: 15px;
   }
 }
 
@@ -58,13 +66,14 @@ html, body {
   margin-left: 10px;
 }
 
-.fs:hover {
-  color:rgb(255, 251, 251);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-@media only screen and (max-width: 600px) {
-  .fs {
+@media screen and (max-width: 950px) {
+  .fsText {
     display: none;
   }
 }
+
+.fs:hover {
+  color: #fffbfb;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/*# sourceMappingURL=global.css.map */
