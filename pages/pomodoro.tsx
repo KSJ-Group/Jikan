@@ -15,7 +15,7 @@ let timer: number;
 var alert = new Howl({
   src: 'alarm.wav',
   loop: true,
-  volume: 0.2
+  volume: 0.1
 });
 
 const pomodoro: NextPage = () => {
@@ -36,14 +36,10 @@ const pomodoro: NextPage = () => {
 
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
+  const [autoStart, setAutoStart] = useState<boolean>(false);
 
   const { selectedFont } = useContext(StylesContext);
   const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
-
-  useEffect(() => {
-    alert.src = selectedAlert;
-    // console.log(alert.src);
-  }, [selectedAlert])
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime))
@@ -73,10 +69,6 @@ const pomodoro: NextPage = () => {
       })
     }
   }
-
-  useEffect(() => {
-    console.log(autoStartBreak);
-  }, [autoStartBreak])
 
   useEffect(() => {
     setStarted(false);
@@ -154,6 +146,9 @@ const pomodoro: NextPage = () => {
   const startClickHandler = (): void => {
     setStarted(true);
     if (pomodoro) {
+      if (autoStartBreak) {
+        setAutoStart(true);
+      }
       timer = window.setInterval(startTimer, 1000);
     } else if (shortBreak) {
       timer = window.setInterval(startTimer, 1000);
@@ -167,6 +162,9 @@ const pomodoro: NextPage = () => {
     if (pomodoro) {
       stopTimer();
     } else if (shortBreak) {
+      if (autoStartBreak) {
+        setAutoStart(false);
+      }
       stopTimer();
     } else if (longBreak) {
       stopTimer();
@@ -247,14 +245,14 @@ const pomodoro: NextPage = () => {
       setTimeout(() => {
         setAlarmOn(false);
         alert.stop();
-      }, 3000);
+      }, 5000);
       setPomodoro(false);
       setShortBreak(true);
     }
   };
 
   useEffect(() => {
-    if (shortBreak && autoStartBreak) {
+    if (shortBreak && autoStartBreak && autoStart) {
       startClickHandler();
     }
   }, [shortBreak])
