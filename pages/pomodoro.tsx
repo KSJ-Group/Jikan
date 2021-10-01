@@ -7,7 +7,7 @@ import AreYouSureModal from '../components/AreYouSureModal';
 import TimerDoneModal from '../components/TimerModal';
 import { SettingsContext } from '../components/SettingsContext';
 import { StylesContext } from '../components/StylesContext';
-import { ClockFont } from '../styles/global.style';
+import { ClockFont } from '../styles/Global/global.style';
 
 const { Howl } = require('howler');
 

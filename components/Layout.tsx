@@ -6,7 +6,7 @@ import { StylesContext } from './StylesContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExpand } from '@fortawesome/free-solid-svg-icons';
-import { BrightnessDiv } from '../styles/global.style';
+import { BrightnessDiv } from '../styles/Global/global.style';
 
 library.add(
   faExpand

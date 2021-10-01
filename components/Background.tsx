@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { BackgroundContext } from './BackgroundContext';
 import styles from '../styles/Background/Background.module.css';
-import { BackgroundBlur } from '../styles/global.style';
+import { BackgroundBlur } from '../styles/Global/global.style';
 import { StylesContext } from './StylesContext';
 
 const Background: React.FC = () => {

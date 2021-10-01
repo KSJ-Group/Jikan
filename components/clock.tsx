@@ -3,7 +3,7 @@ import styles from '../styles/Clock/Clock.module.css';
 import moment from 'moment';
 import { SettingsContext } from './SettingsContext';
 import { StylesContext } from './StylesContext';
-import { ClockFont } from '../styles/global.style';
+import { ClockFont } from '../styles/Global/global.style';
 
 let interval: number;
 
