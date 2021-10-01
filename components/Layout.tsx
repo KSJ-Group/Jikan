@@ -33,12 +33,12 @@ const Layout: React.FC = ({ children }) => {
   return (
     <BrightnessDiv brightness={brightness.toString() + '%'}>
       <div id='layout'>
-          <BackgroundProvider>
-              <Navbar />
-              <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg' /><div className='fsText'>Fullscreen</div></div>
-              <Background />
-              {children}
-          </BackgroundProvider>
+        <BackgroundProvider>
+          <Navbar />
+          <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg' /><div className='fsText'>Fullscreen</div></div>
+          <Background />
+          {children}
+        </BackgroundProvider>
       </div>
     </BrightnessDiv>
   );

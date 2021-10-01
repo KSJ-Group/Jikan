@@ -57,7 +57,8 @@ html, body {
 
 @media screen and (max-width: 950px) {
   .fs {
-    display: none;
+    position: relative;
+    left: 15px;
   }
 }
 
@@ -65,14 +66,14 @@ html, body {
   margin-left: 10px;
 }
 
+@media screen and (max-width: 950px) {
+  .fsText {
+    display: none;
+  }
+}
+
 .fs:hover {
   color: #fffbfb;
   background-color: rgba(0, 0, 0, 0.4);
-}
-
-@media only screen and (max-width: 600px) {
-  .fs {
-    display: none;
-  }
 }
 /*# sourceMappingURL=global.css.map */
