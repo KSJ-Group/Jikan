@@ -16,8 +16,8 @@ const Brightness: React.FC<Props> = ({brightness, setBrightness}) => {
     <div className={styles.brightness}>
       Brightness
       <div className={styles.sliderDiv}>
-        <input className={styles.brightnessSlider} defaultValue={brightness} onChange={changeHandler} type="range" name="volume"
-          min="20" max="100" />
+        <input className={styles.brightnessSlider} defaultValue={brightness} onChange={changeHandler} type="range" name="brightness"
+          min="5" max="100" />
         <div className={styles.indicator}>{brightness}%</div>
       </div>
     </div>

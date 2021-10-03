@@ -13,9 +13,8 @@
 }
 
 .container {
-  width: 50vw;
   height: 55vh;
-  z-index: 3;
+  width: 50vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,54 +28,18 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.4);
-  cursor: default;
   overflow: hidden;
 }
 
-@media screen and (min-width: 2500px) {
-  .container {
-    width: 50vw;
-    height: 55svh;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .container {
-    width: 50vw;
-    height: 55vh;
-  }
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
   .container {
     width: 80vw;
-    height: 55vh;
   }
 }
 
-@media screen and (max-width: 850px) {
-  .container {
-    width: 80vw;
-    height: 50vh;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    width: 80vw;
-    height: 50vh;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .container {
-    width: 80vw;
-    height: 45vh;
-  }
-}
-
-.links {
+.linksDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,49 +49,27 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: relative;
-  z-index: 3;
-  color: white;
-}
-
-@media screen and (max-width: 450px) {
-  .links {
-    width: 70vw;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    top: 4vh;
-  }
+  top: 20px;
+  width: 100%;
+  height: 20%;
 }
 
 .link {
-  margin: 30px;
-  font-size: 2vw;
-  border-radius: 5px;
+  margin: 3%;
   padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-}
-
-@media screen and (max-width: 678px) {
-  .link {
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .link {
-    font-size: 4vw;
-    margin: 10px;
-    padding: 5px;
-  }
+  font-size: 2.5vh;
+  color: white;
 }
 
 .timerDiv {
-  width: 100%;
-  height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -138,44 +79,52 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.timer {
-  z-index: 2;
-  position: relative;
-  font-size: 13vw;
-  font-weight: bold;
-  text-align: center;
+  width: 100%;
+  height: 60%;
+  font-size: 15vw;
   color: white;
+  font-weight: bold;
 }
 
-@media screen and (max-width: 450px) {
-  .timer {
-    font-size: 70px;
-    top: -10px;
+@media screen and (max-width: 800px) {
+  .timerDiv {
+    font-size: 20vw;
   }
+}
+
+.btnDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  height: 20%;
 }
 
 .startBtn {
   position: relative;
   padding: 20px;
   border-radius: 10px;
+  font-size: 3vh;
   background-color: #d0d0d0;
   cursor: pointer;
-  font-size: 2vw;
-  font-weight: bold;
-  z-index: 3;
-}
-
-@media screen and (max-width: 450px) {
-  .startBtn {
-    font-size: 4vw;
-    padding: 15px;
-    bottom: 10vw;
-  }
 }
 
 .startBtn:hover {
   background-color: #bdbdbd;
+}
+
+@media screen and (max-width: 800px) {
+  .startBtn {
+    top: -50px;
+  }
 }
 /*# sourceMappingURL=Pomodoro.module.css.map */
