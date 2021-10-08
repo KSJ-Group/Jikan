@@ -1,35 +1,35 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import type { NextPage } from 'next';
-import axios from 'axios';
-import styles from '../../../styles/Search/Search.module.css';
-import PhotoTile from './PhotoTile';
-import Page from '../Page';
+import React, { useState, useEffect, useRef, useContext } from "react";
+import type { NextPage } from "next";
+import axios from "axios";
+import styles from "../../../styles/Search/Search.module.css";
+import PhotoTile from "./PhotoTile";
+import Page from "../Page";
 
 interface Photo {
-  url: string,
-  avg_color: string,
+  url: string;
+  avg_color: string;
   src: {
-    original: string,
-    medium: string
-  }
+    original: string;
+    medium: string;
+  };
 }
 
 const photos: Photo[] = [];
 
 const Search: NextPage = () => {
-  const [terms, setTerms] = useState<string>('')
-  const [page, setPage] = useState<number>(1)
-  const [images, setImages] = useState<typeof photos>([])
-  const [maxPages, setMaxPages] = useState<number>(0)
+  const [terms, setTerms] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<typeof photos>([]);
+  const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
 
   useEffect(() => {
-    let search = localStorage.getItem('search');
+    let search = localStorage.getItem("search");
     if (search) {
       setTerms(search);
     } else {
-      setTerms('');
-    };
+      setTerms("");
+    }
   }, []);
 
   useEffect(() => {
@@ -37,10 +37,9 @@ const Search: NextPage = () => {
       isInitialMount.current = false;
     } else {
       fetchImages(terms, page);
-    };
-    localStorage.setItem('search', terms);
-  },[terms, page]);
-
+    }
+    localStorage.setItem("search", terms);
+  }, [terms, page]);
 
   const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -49,33 +48,50 @@ const Search: NextPage = () => {
   };
 
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
-    axios.get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
+    axios
+      .get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
         setImages(data.data.photos);
-        setMaxPages(Math.ceil(data.data.total_results/12));
+        setMaxPages(Math.ceil(data.data.total_results / 12));
       })
-      .catch((error) => {console.log(error);})
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const changePage = (direction: boolean): void => {
     let newPage = page;
-    direction ? newPage++: newPage--;
+    direction ? newPage++ : newPage--;
     setPage(newPage);
   };
 
   return (
     <div className={styles.search}>
-      <div className={styles.searchTitle}>Change Background Image</div>
+      <div className={styles.searchTitle}>Image</div>
       <form>
-        <input type='text' value={terms} className={styles.searchInput} placeholder='Search image...' onChange={(event: any)=>{changeTerms(event)}}/>
+        <input
+          type="text"
+          value={terms}
+          className={styles.searchInput}
+          placeholder="Search image..."
+          onChange={(event: any) => {
+            changeTerms(event);
+          }}
+        />
       </form>
       <div className={styles.images}>
-      {images.map((image) => {
-        return (
-          <PhotoTile key={image.url} url={image.url} avg_color={image.avg_color} src={image.src} />
-        )})}
+        {images.map((image) => {
+          return (
+            <PhotoTile
+              key={image.url}
+              url={image.url}
+              avg_color={image.avg_color}
+              src={image.src}
+            />
+          );
+        })}
       </div>
-      <Page changePage={changePage} page={page} maxPages={maxPages}/>
+      <Page changePage={changePage} page={page} maxPages={maxPages} />
     </div>
   );
 };
