@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import type { NextPage } from 'next';
 import axios from 'axios';
-import styles from '../../styles/Search/Search.module.css';
+import styles from '../../../styles/Search/Search.module.css';
 import PhotoTile from './PhotoTile';
-import Page from './Page';
+import Page from '../Page';
 
 interface Photo {
   url: string,
@@ -29,15 +29,15 @@ const Search: NextPage = () => {
       setTerms(search);
     } else {
       setTerms('');
-    }
-  }, [])
+    };
+  }, []);
 
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
       fetchImages(terms, page);
-    }
+    };
     localStorage.setItem('search', terms);
   },[terms, page]);
 

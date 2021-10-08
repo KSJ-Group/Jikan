@@ -13,7 +13,9 @@ import Font from './Font';
 import ShowSeconds from './ShowSeconds';
 import Blur from './Blur';
 import TimeFormat from './TimeFormat';
-import Search from './Search';
+import Search from './Background/Search';
+import Color from './Background/Color';
+import ChangeBackground from './Background/ChangeBackground';
 
 interface Props {
   showSettings: boolean,
@@ -43,7 +45,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
               <Blur blur={blur} setBlur={setBlur} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
-              <Search />
+              <ChangeBackground />
             </div> :
             // Pomodoro settings
             <div>
@@ -58,7 +60,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               <Blur blur={blur} setBlur={setBlur} />
               <AlertSound selectedAlert={selectedAlert} setSelectedAlert={setSelectedAlert} />
               <Font selectedFont={selectedFont} setSelectedFont={setSelectedFont} />
-              <Search />
+              <ChangeBackground />
             </div>}
         </Offcanvas.Body>
       </Offcanvas>

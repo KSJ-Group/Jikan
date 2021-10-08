@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 interface Props {
   brightness: any
@@ -10,6 +10,10 @@ interface Background {
 
 interface Font {
   font: any
+}
+
+interface BackgroundColor {
+  color: any
 }
 
 export const BrightnessDiv = styled.div<Props>`
@@ -30,3 +34,9 @@ export const BackgroundBlur = styled.div<Background>`
 export const ClockFont = styled.div<Font>`
   font-family: ${props => props.font}, monospace;
 `;
+
+export const BackgroundColor = createGlobalStyle<BackgroundColor>`
+  body {
+    background: ${props => props.color};
+  }
+`
