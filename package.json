@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
+    "@types/react-color": "^3.0.5",
     "@types/styled-components": "^5.1.14",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.0",
@@ -24,6 +25,7 @@
     "next": "11.1.2",
     "react": "17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
+    "react-color": "^2.19.3",
     "react-dom": "17.0.2",
     "styled-components": "^5.3.1"
   },
