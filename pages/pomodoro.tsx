@@ -28,8 +28,6 @@ const pomodoro: NextPage = () => {
 
   const { pomodoroTime, shortBreakTime, longBreakTime } =
     useContext(SettingsContext);
-  const { selectedFont } = useContext(StylesContext);
-  const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
   const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
@@ -39,9 +37,13 @@ const pomodoro: NextPage = () => {
   const [started, setStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [targetMode, setTargetMode] = useState<string>("");
+
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [autoStart, setAutoStart] = useState<boolean>(false);
+
+  const { selectedFont } = useContext(StylesContext);
+  const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
@@ -51,12 +53,6 @@ const pomodoro: NextPage = () => {
       Notification.requestPermission();
     }
   }, [pomodoroTime, shortBreakTime, longBreakTime]);
-
-  useEffect(() => {
-    if (shortBreak && autoStartBreak && autoStart) {
-      startClickHandler();
-    }
-  }, [shortBreak]);
 
   useEffect(() => {
     setStarted(false);
@@ -84,7 +80,6 @@ const pomodoro: NextPage = () => {
     }
   }, [pomodoro, shortBreak, longBreak]);
 
-  // Changes notification text based on which timer ends
   const showNotification = () => {
     if (autoStartBreak) {
       const notification = new Notification("Jikan", {
@@ -105,7 +100,6 @@ const pomodoro: NextPage = () => {
     }
   };
 
-  // Handles clicking on differet timer modes
   const linkClickHandler = (target: string): void => {
     if (target === "Pomodoro" && !pomodoro) {
       if (started) {
@@ -131,29 +125,28 @@ const pomodoro: NextPage = () => {
     }
   };
 
-  // Handles closing modal
   const handleClose = (): void => {
     setShowModal(false);
   };
 
-  // -- Switching between timer modes -- //
   const switchToPom = (): void => {
     setPomodoro(true);
     setShortBreak(false);
     setLongBreak(false);
   };
+
   const switchToShort = (): void => {
     setShortBreak(true);
     setPomodoro(false);
     setLongBreak(false);
   };
+
   const switchToLong = (): void => {
     setLongBreak(true);
     setPomodoro(false);
     setShortBreak(false);
   };
 
-  // -- Handles clicking the start button -- //
   const startClickHandler = (): void => {
     setStarted(true);
     if (pomodoro) {
@@ -167,6 +160,21 @@ const pomodoro: NextPage = () => {
       timer = window.setInterval(startTimer, 1000);
     }
   };
+
+  const stopClickHandler = (): void => {
+    setStarted(false);
+    if (pomodoro) {
+      stopTimer();
+    } else if (shortBreak) {
+      if (autoStartBreak) {
+        setAutoStart(false);
+      }
+      stopTimer();
+    } else if (longBreak) {
+      stopTimer();
+    }
+  };
+
   const startTimer = (): void => {
     if (pomodoro) {
       setPomodoroTime((prevState: string) => {
@@ -204,26 +212,11 @@ const pomodoro: NextPage = () => {
     }
   };
 
-  // -- Handles clicking stop button -- //
-  const stopClickHandler = (): void => {
-    setStarted(false);
-    if (pomodoro) {
-      stopTimer();
-    } else if (shortBreak) {
-      if (autoStartBreak) {
-        setAutoStart(false);
-      }
-      stopTimer();
-    } else if (longBreak) {
-      stopTimer();
-    }
-  };
   const stopTimer = (): void => {
     clearInterval(timer);
     timer = 0;
   };
 
-  // Handles what happens when timer reaches 0:00
   const timeUpHandler = (): void => {
     if (pomodoro && autoStartBreak) {
       startBreak();
@@ -234,7 +227,6 @@ const pomodoro: NextPage = () => {
     }
   };
 
-  // Handles playing alarm sound when timer reaches 0:00
   const alarmHandler = (): void => {
     if (alarmOn) {
       setAlarmOn(false);
@@ -253,7 +245,6 @@ const pomodoro: NextPage = () => {
     }
   };
 
-  // Handles auto start break
   const startBreak = (): void => {
     if (autoStartBreak) {
       if (Notification.permission === "granted") {
@@ -269,6 +260,14 @@ const pomodoro: NextPage = () => {
       setShortBreak(true);
     }
   };
+
+  useEffect(() => {
+    if (shortBreak && autoStartBreak && autoStart) {
+      setTimeout(() => {
+        startClickHandler();
+      }, 1000);
+    }
+  }, [shortBreak]);
 
   return (
     <div className={styles.pomodoro}>
