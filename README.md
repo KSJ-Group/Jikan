@@ -10,9 +10,9 @@ Deployed on Netlify: https://jikan-timer.netlify.app/
 
 ![image](https://i.imgur.com/Om7QKBf.png)
 
-![image](https://i.imgur.com/dJIxViF.png);
+![image](https://i.imgur.com/dJIxViF.png)
 
-![image](https://i.imgur.com/Za7Qowf.jpg);
+![image](https://i.imgur.com/Za7Qowf.jpg)
 
 ## Tech Stack
 
