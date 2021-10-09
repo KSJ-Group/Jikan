@@ -5,19 +5,29 @@ export const BackgroundContext = createContext(
     background: '/mountains.jpeg',
     changeBackground: (url: string): void => { },
     loaded: true,
-    changeLoadStatus: (status:boolean): void => { }
+    changeLoadStatus: (status:boolean): void => { },
+    backgroundType: 'image',
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
+  const [backgroundType, setType] = useState<string>('image');
   const [background, setBackground] = useState<string>('/mountains.jpeg');
   const [loaded, setLoaded] = useState(true);
 
   const store = {
     background: background,
-    changeBackground: (url: string): void => {
-      setBackground(url);
-      localStorage.setItem('background', url);
+    changeBackground: (newBackground: string): void => {
+      setBackground(newBackground);
+      if (newBackground[0] === '#') {
+        setType('color')
+      } else {
+        setType('image')
+      }
+      localStorage.setItem('background', newBackground);
+      localStorage.setItem('backgroundType', backgroundType);
     },
+
+    backgroundType: backgroundType,
     loaded: loaded,
     changeLoadStatus: (status:boolean): void => {
       setLoaded(status);
@@ -25,9 +35,9 @@ export const BackgroundProvider: React.FC = ({ children }) => {
   };
 
   useEffect((): any => {
-    let cachedImage = localStorage.getItem('background');
-    if (cachedImage) {
-      store.changeBackground(cachedImage);
+    let cachedBackground = localStorage.getItem('background');
+    if (cachedBackground) {
+      store.changeBackground(cachedBackground);
     };
   }, []);
 
