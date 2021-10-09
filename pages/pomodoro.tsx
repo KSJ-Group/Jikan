@@ -236,6 +236,13 @@ const pomodoro: NextPage = () => {
       setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
       setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       setStarted(false);
+      if (pomodoro) {
+        setCurrentTime(millisToMinutesAndSeconds(pomodoroTime));
+      } else if (shortBreak) {
+        setCurrentTime(millisToMinutesAndSeconds(shortBreakTime));
+      } else if (longBreak) {
+        setCurrentTime(millisToMinutesAndSeconds(longBreakTime));
+      }
     } else {
       if (Notification.permission === "granted") {
         showNotification();
