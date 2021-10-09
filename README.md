@@ -1,16 +1,14 @@
-
 # Jikan
 
 Jikan is a clock and timer web application inspired by the Pomodoro Technique. The timer is fully customizable, allowing users to control how they want to manage their time. Since work environment is a huge factor in productivity, users can also choose different background images to set the mood.
 
-Deployed on Vercel: https://jikan-timer.herokuapp.com/
+Deployed on Netlify: https://jikan-timer.netlify.app/
 
 ## Preview
+
 ![image](https://i.imgur.com/PqUGMdm.png)
 
-
 ![image](https://i.imgur.com/Om7QKBf.png)
-
 
 ## Tech Stack
 
@@ -19,7 +17,6 @@ Deployed on Vercel: https://jikan-timer.herokuapp.com/
 **Server:** Node, Express, GraphQL, Passport.js, Pexels API
 
 **Database:** MongoDB
-
 
 ## Installation
 
@@ -36,6 +33,6 @@ Install Jikan with npm
 
 ## Authors
 
-- [@katscap](https://www.github.com/katscap)
 - [@SeijiMatsumoto](https://www.github.com/SeijiMatsumoto)
+- [@katscap](https://www.github.com/katscap)
 - [@juneisenuj](https://www.github.com/juneisenuj)
