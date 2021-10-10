@@ -249,6 +249,9 @@ const pomodoro: NextPage = () => {
       }
       setAlarmOn(true);
       alert.play();
+      setTimeout(() => {
+        alert.stop();
+      }, 60000);
     }
   };
 
