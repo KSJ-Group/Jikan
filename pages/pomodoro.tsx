@@ -13,13 +13,9 @@ import { StylesContext } from "../components/StylesContext";
 import { ClockFont } from "../styles/Global/global.style";
 
 const { Howl } = require("howler");
+var alert: any;
 
 let timer: number;
-var alert = new Howl({
-  src: "Xylophone-notify.mp3",
-  loop: true,
-  volume: 0.5,
-});
 
 const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
@@ -44,6 +40,15 @@ const pomodoro: NextPage = () => {
 
   const { selectedFont } = useContext(StylesContext);
   const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
+
+  useEffect(() => {
+    console.log(selectedAlert);
+    alert = new Howl({
+      src: "/Alarm Tones/" + selectedAlert,
+      loop: true,
+      volume: 0.5,
+    });
+  }, [selectedAlert]);
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
