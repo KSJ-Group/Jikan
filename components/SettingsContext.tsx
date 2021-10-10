@@ -20,7 +20,7 @@ export const SettingsContext = createContext({
   setIs24Hour: (is24Hour: boolean) => {},
   selectedAlert: "Xylophone.mp3",
   setSelectedAlert: (alert: string) => {},
-  allAlarms: [],
+  allAlarms: ["a"],
   setAllAlarms: (alarms: string[]) => {},
 });
 
@@ -34,7 +34,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
   const [selectedAlert, setSelectedAlert] = useState<string>("Xylophone.mp3");
-  const [allAlarms, setAllAlarms] = useState<string[]>([]);
+  const [allAlarms, setAllAlarms] = useState<string[]>(["a"]);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
