@@ -16,9 +16,9 @@ const { Howl } = require("howler");
 
 let timer: number;
 var alert = new Howl({
-  src: "alarm.wav",
+  src: "Xylophone-notify.mp3",
   loop: true,
-  volume: 0.1,
+  volume: 0.5,
 });
 
 const pomodoro: NextPage = () => {
