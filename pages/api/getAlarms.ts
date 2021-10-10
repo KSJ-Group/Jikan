@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 let alarms: string[] = [];
-fs.readdir("public/Alarm Tones", function (err, files) {
+fs.readdir("public", function (err, files) {
   if (err) {
     return console.log("Unable to scan directory: " + err);
   }

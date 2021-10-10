@@ -39,8 +39,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
       if (data.data.length) {
-        setAllAlarms(data.data.splice(1));
-        localStorage.setItem("allAlarms", JSON.stringify(data.data.splice(1)));
+        let alerts = data.data.filter((name) => name.includes(".mp3"));
+        setAllAlarms(alerts);
+        localStorage.setItem("allAlarms", JSON.stringify(alerts));
       }
     });
   }, []);
