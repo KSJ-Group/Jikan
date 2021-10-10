@@ -45,7 +45,7 @@ const pomodoro: NextPage = () => {
 
   useEffect(() => {
     alert = new Howl({
-      src: "/Alarm Tones/" + selectedAlert,
+      src: selectedAlert,
       loop: true,
       volume: 0.5,
     });

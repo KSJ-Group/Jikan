@@ -17,7 +17,7 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
 
   useEffect(() => {
     alert = new Howl({
-      src: "/Alarm Tones/" + selectedAlert,
+      src: selectedAlert,
       volume: 0.5,
     });
   }, [selectedAlert]);
@@ -36,6 +36,7 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
   };
 
   const previewAlert = (): void => {
+    console.log(selectedAlert);
     alert.play();
   };
 
