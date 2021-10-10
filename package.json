@@ -19,8 +19,10 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
+    "fs": "^0.0.1-security",
     "howler": "^2.2.3",
     "jest": "^27.2.0",
+    "list-react-files": "^0.2.0",
     "moment": "^2.29.1",
     "next": "11.1.2",
     "react": "17.0.2",
@@ -34,5 +36,14 @@
     "babel-plugin-styled-components": "^1.13.2",
     "easygraphql-tester": "^6.0.1",
     "typescript": "4.4.3"
+  },
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "stream": false,
+    "tls": false
   }
 }

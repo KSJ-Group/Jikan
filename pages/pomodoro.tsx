@@ -42,7 +42,6 @@ const pomodoro: NextPage = () => {
   const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
 
   useEffect(() => {
-    console.log(selectedAlert);
     alert = new Howl({
       src: "/Alarm Tones/" + selectedAlert,
       loop: true,
