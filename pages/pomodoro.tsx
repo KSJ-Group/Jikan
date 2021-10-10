@@ -41,6 +41,8 @@ const pomodoro: NextPage = () => {
   const { selectedFont } = useContext(StylesContext);
   const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
 
+  const [switchFromModal, setSwitch] = useState<boolean>(false);
+
   useEffect(() => {
     alert = new Howl({
       src: "/Alarm Tones/" + selectedAlert,
@@ -60,6 +62,13 @@ const pomodoro: NextPage = () => {
 
   useEffect(() => {
     setStarted(false);
+    if (switchFromModal) {
+      setTimeout(() => {
+        setStarted(true);
+        timer = window.setInterval(startTimer, 1000);
+      }, 1000);
+      setSwitch(false);
+    }
     if (pomodoro) {
       stopTimer();
       setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
@@ -158,15 +167,11 @@ const pomodoro: NextPage = () => {
   const startClickHandler = (): void => {
     setStarted(true);
     if (pomodoro) {
-      if (autoStartBreak) {
+      if (autoStartBreak === "Short break" || autoStartBreak === "Long break") {
         setAutoStart(true);
       }
-      timer = window.setInterval(startTimer, 1000);
-    } else if (shortBreak) {
-      timer = window.setInterval(startTimer, 1000);
-    } else if (longBreak) {
-      timer = window.setInterval(startTimer, 1000);
     }
+    timer = window.setInterval(startTimer, 1000);
   };
 
   const stopClickHandler = (): void => {
@@ -174,7 +179,7 @@ const pomodoro: NextPage = () => {
     if (pomodoro) {
       stopTimer();
     } else if (shortBreak) {
-      if (autoStartBreak) {
+      if (autoStartBreak === "Short break" || autoStartBreak === "Long break") {
         setAutoStart(false);
       }
       stopTimer();
@@ -226,7 +231,10 @@ const pomodoro: NextPage = () => {
   };
 
   const timeUpHandler = (): void => {
-    if (pomodoro && autoStartBreak) {
+    if (
+      pomodoro &&
+      (autoStartBreak === "Short break" || autoStartBreak === "Long break")
+    ) {
       startBreak();
     } else {
       stopTimer();
@@ -288,6 +296,22 @@ const pomodoro: NextPage = () => {
       }, 5000);
       setPomodoro(false);
       setLongBreak(true);
+    }
+  };
+
+  const breakFromModal = (choice: string): void => {
+    if (choice === "pomodoro") {
+      setSwitch(true);
+      switchToPom();
+      alert.stop();
+    } else if (choice === "shortBreak") {
+      setSwitch(true);
+      switchToShort();
+      alert.stop();
+    } else if (choice === "longBreak") {
+      setSwitch(true);
+      switchToLong();
+      alert.stop();
     }
   };
 
@@ -378,7 +402,11 @@ const pomodoro: NextPage = () => {
           />
         ) : null}
         {timerModal ? (
-          <TimerDoneModal show={timerModal} handleClose={alarmHandler} />
+          <TimerDoneModal
+            show={timerModal}
+            breakFromModal={breakFromModal}
+            handleClose={alarmHandler}
+          />
         ) : null}
       </div>
     </div>
