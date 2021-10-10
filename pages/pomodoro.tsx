@@ -85,9 +85,13 @@ const pomodoro: NextPage = () => {
   }, [pomodoro, shortBreak, longBreak]);
 
   const showNotification = () => {
-    if (autoStartBreak) {
+    if (autoStartBreak === "Short break") {
       const notification = new Notification("Jikan", {
         body: "Good job! Your pomodoro time is up. Short break auto-starting.",
+      });
+    } else if (autoStartBreak === "Long break") {
+      const notification = new Notification("Jikan", {
+        body: "Good job! Your pomodoro time is up. Long break auto-starting.",
       });
     } else if (pomodoro) {
       const notification = new Notification("Jikan", {
@@ -260,7 +264,7 @@ const pomodoro: NextPage = () => {
   };
 
   const startBreak = (): void => {
-    if (autoStartBreak) {
+    if (autoStartBreak === "Short break") {
       if (Notification.permission === "granted") {
         showNotification();
       }
@@ -272,16 +276,32 @@ const pomodoro: NextPage = () => {
       }, 5000);
       setPomodoro(false);
       setShortBreak(true);
+    } else if (autoStartBreak === "Long break") {
+      if (Notification.permission === "granted") {
+        showNotification();
+      }
+      setAlarmOn(true);
+      alert.play();
+      setTimeout(() => {
+        setAlarmOn(false);
+        alert.stop();
+      }, 5000);
+      setPomodoro(false);
+      setLongBreak(true);
     }
   };
 
   useEffect(() => {
-    if (shortBreak && autoStartBreak && autoStart) {
+    if (shortBreak && autoStartBreak === "Short break" && autoStart) {
+      setTimeout(() => {
+        startClickHandler();
+      }, 1000);
+    } else if (longBreak && autoStartBreak === "Long break" && autoStart) {
       setTimeout(() => {
         startClickHandler();
       }, 1000);
     }
-  }, [shortBreak]);
+  }, [shortBreak, longBreak]);
 
   return (
     <div className={styles.pomodoro}>

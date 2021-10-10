@@ -113,10 +113,16 @@
 
 .toggle {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 18px;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .alertContainer {
