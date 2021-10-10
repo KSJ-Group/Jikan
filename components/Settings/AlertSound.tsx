@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Form } from "react-bootstrap";
 import styles from "../../styles/Settings/Settings.module.css";
-import axios from "axios";
+import { SettingsContext } from "../SettingsContext";
 
 interface Props {
   selectedAlert: string;
@@ -10,14 +10,17 @@ interface Props {
 
 const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
   const [availAlerts, setAlerts] = useState<string[]>([]);
+  const { allAlarms } = useContext(SettingsContext);
 
   useEffect(() => {
-    axios.get("/api/getAlarms").then((data) => {
-      if (data.data.length) {
-        setAlerts(data.data);
-      }
-    });
-  }, []);
+    if (allAlarms) {
+      setAlerts(allAlarms);
+    }
+  }, [allAlarms]);
+
+  useEffect(() => {
+    console.log(selectedAlert);
+  }, [selectedAlert]);
 
   const changeAlert = (e: any) => {
     e.preventDefault();
@@ -29,13 +32,10 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
     <div>
       <Form.Group className={styles.alert}>
         <Form.Label>Alert Sound</Form.Label>
-        <Form.Select
-          defaultValue={selectedAlert}
-          onChange={(e) => changeAlert(e)}
-        >
+        <Form.Select value={selectedAlert} onChange={(e) => changeAlert(e)}>
           {availAlerts.map((alert) => (
             <option key={alert} value={alert}>
-              {alert}
+              {alert.slice(0, alert.indexOf("."))}
             </option>
           ))}
         </Form.Select>

@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
+import axios from "axios";
 
 export const SettingsContext = createContext({
   isClock: true,
@@ -17,8 +18,10 @@ export const SettingsContext = createContext({
   setShowSeconds: (showSeconds: boolean) => {},
   is24Hour: false,
   setIs24Hour: (is24Hour: boolean) => {},
-  selectedAlert: "Xylophone-notify.mp3",
+  selectedAlert: "Xylophone.mp3",
   setSelectedAlert: (alert: string) => {},
+  allAlarms: [],
+  setAllAlarms: (alarms: string[]) => {},
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -30,9 +33,17 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [autoStartBreak, setAutoStartBreak] = useState<boolean>(false);
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
-  const [selectedAlert, setSelectedAlert] = useState<string>(
-    "Xylophone-notify.mp3"
-  );
+  const [selectedAlert, setSelectedAlert] = useState<string>("Xylophone.mp3");
+  const [allAlarms, setAllAlarms] = useState<string[]>([]);
+
+  useEffect(() => {
+    axios.get("/api/getAlarms").then((data) => {
+      if (data.data.length) {
+        setAllAlarms(data.data.splice(1));
+        localStorage.setItem("allAlarms", JSON.stringify(data.data.splice(1)));
+      }
+    });
+  }, []);
 
   const store = {
     isClock: isClock,
@@ -80,6 +91,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
       setSelectedAlert(alert);
       localStorage.setItem("alert", alert);
     },
+    allAlarms: allAlarms,
+    setAllAlarms: (alarms: string[]): void => {
+      setAllAlarms(alarms);
+      localStorage.setItem("allAlarms", JSON.stringify(alarms));
+    },
   };
 
   useEffect((): any => {
@@ -92,6 +108,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     let cachedSeconds = localStorage.getItem("showSeconds");
     let cached24 = localStorage.getItem("24");
     let cachedAlert = localStorage.getItem("alert");
+    let cachedAlarms = localStorage.getItem("allAlarms");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -118,6 +135,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedAlert) {
       store.setSelectedAlert(cachedAlert);
+    }
+    if (cachedAlarms) {
+      store.setAllAlarms(JSON.parse(cachedAlarms));
     }
   }, []);
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Offcanvas } from "react-bootstrap";
-import { BackgroundContext } from "../BackgroundContext";
 import { SettingsContext } from "../SettingsContext";
 import { StylesContext } from "../StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
@@ -13,8 +12,6 @@ import Font from "./Font";
 import ShowSeconds from "./ShowSeconds";
 import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
-import Search from "./Background/Search";
-import Color from "./Background/Color";
 import ChangeBackground from "./Background/ChangeBackground";
 
 interface Props {
@@ -23,7 +20,6 @@ interface Props {
 }
 
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
-  const { loaded } = useContext(BackgroundContext);
   const {
     selectedFont,
     setSelectedFont,
