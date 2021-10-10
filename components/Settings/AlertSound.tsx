@@ -8,9 +8,19 @@ interface Props {
   setSelectedAlert: Function;
 }
 
+const { Howl } = require("howler");
+var alert: any;
+
 const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
   const [availAlerts, setAlerts] = useState<string[]>([]);
   const { allAlarms } = useContext(SettingsContext);
+
+  useEffect(() => {
+    alert = new Howl({
+      src: "/Alarm Tones/" + selectedAlert,
+      volume: 0.5,
+    });
+  }, [selectedAlert]);
 
   useEffect(() => {
     if (allAlarms) {
@@ -18,18 +28,18 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
     }
   }, [allAlarms]);
 
-  useEffect(() => {
-    console.log(selectedAlert);
-  }, [selectedAlert]);
-
   const changeAlert = (e: any) => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;
     setSelectedAlert(target.value);
   };
 
+  const previewAlert = (): void => {
+    alert.play();
+  };
+
   return (
-    <div>
+    <div className={styles.alertContainer}>
       <Form.Group className={styles.alert}>
         <Form.Label>Alert Sound</Form.Label>
         <Form.Select value={selectedAlert} onChange={(e) => changeAlert(e)}>
@@ -40,6 +50,11 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
           ))}
         </Form.Select>
       </Form.Group>
+      <div>
+        <button onClick={previewAlert} className={styles.previewBtn}>
+          Preview
+        </button>
+      </div>
     </div>
   );
 };

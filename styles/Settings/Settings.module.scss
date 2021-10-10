@@ -119,9 +119,26 @@
   font-size: 18px;
 }
 
+.alertContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .alert {
   font-size: 18px;
   margin-bottom: 10px;
+  width: 90%;
+  margin-right: 10px;
+}
+
+.previewBtn {
+  position: relative;
+  top: 11px;
+  height: 38px;
+  width: 80px;
+  border-radius: 8px;
 }
 
 .font {
