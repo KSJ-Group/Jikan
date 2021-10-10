@@ -25,7 +25,6 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
   useEffect(() => {
     if (allAlarms.length > 1) {
       setAlerts(allAlarms);
-      console.log(allAlarms);
     }
   }, [allAlarms]);
 
@@ -36,7 +35,6 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
   };
 
   const previewAlert = (): void => {
-    console.log(selectedAlert);
     alert.play();
   };
 
