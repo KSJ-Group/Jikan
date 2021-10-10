@@ -41,6 +41,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
       if (data.data.length) {
         let alerts = data.data.filter((name) => name.includes(".mp3"));
         setAllAlarms(alerts);
+        console.log(alerts);
         localStorage.setItem("allAlarms", JSON.stringify(alerts));
       }
     });
