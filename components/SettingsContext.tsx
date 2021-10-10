@@ -20,7 +20,18 @@ export const SettingsContext = createContext({
   setIs24Hour: (is24Hour: boolean) => {},
   selectedAlert: "Xylophone.mp3",
   setSelectedAlert: (alert: string) => {},
-  allAlarms: ["a"],
+  allAlarms: [
+    "Classic analog alarm.mp3",
+    "Classic digital alarm.mp3",
+    "Fast pings.mp3",
+    "Japan Airport Alert.mp3",
+    "Obnoxious.mp3",
+    "Short pings.mp3",
+    "Sonar.mp3",
+    "Super Mario Bros.mp3",
+    "Tri-tone ping.mp3",
+    "Xylophone.mp3",
+  ],
   setAllAlarms: (alarms: string[]) => {},
 });
 
@@ -34,7 +45,18 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
   const [selectedAlert, setSelectedAlert] = useState<string>("Xylophone.mp3");
-  const [allAlarms, setAllAlarms] = useState<string[]>(["a"]);
+  const [allAlarms, setAllAlarms] = useState<string[]>([
+    "Classic analog alarm.mp3",
+    "Classic digital alarm.mp3",
+    "Fast pings.mp3",
+    "Japan Airport Alert.mp3",
+    "Obnoxious.mp3",
+    "Short pings.mp3",
+    "Sonar.mp3",
+    "Super Mario Bros.mp3",
+    "Tri-tone ping.mp3",
+    "Xylophone.mp3",
+  ]);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
