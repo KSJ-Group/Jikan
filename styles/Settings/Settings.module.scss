@@ -111,11 +111,18 @@
   font-size: 15px;
 }
 
-.toggle {
+.autoStart {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 18px;
 }
 
