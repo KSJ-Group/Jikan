@@ -24,7 +24,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
         <Modal.Body>Timer done! Select an option below.</Modal.Body>
         <Modal.Footer>
           <Button
-            variant="outline-primary"
+            variant="outline-dark"
             onClick={() => {
               breakFromModal("pomodoro");
               handleClose();
@@ -33,7 +33,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
             Start Pomodoro
           </Button>
           <Button
-            variant="outline-primary"
+            variant="outline-dark"
             onClick={() => {
               breakFromModal("shortBreak");
               handleClose();
@@ -42,7 +42,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
             Start Short Break
           </Button>
           <Button
-            variant="outline-primary"
+            variant="outline-dark"
             onClick={() => {
               breakFromModal("longBreak");
               handleClose();
