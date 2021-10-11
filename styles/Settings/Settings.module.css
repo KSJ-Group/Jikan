@@ -38,6 +38,7 @@
   top: 5px;
   height: 30px;
   border-radius: 3px;
+  background-color: #efefef;
 }
 
 .pomodoro {
@@ -146,6 +147,7 @@
   width: 55px;
   border-radius: 5px;
   font-size: 15px;
+  background-color: #efefef;
 }
 
 .autoStart {
@@ -219,6 +221,7 @@
   height: 38px;
   width: 80px;
   border-radius: 8px;
+  background: #efefef;
 }
 
 .font {
