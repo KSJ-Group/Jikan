@@ -18,6 +18,7 @@ var alert: any;
 let timer: number;
 
 const pomodoro: NextPage = () => {
+  const [isMobile, setIsMobile] = useState<boolean>(true);
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
@@ -44,6 +45,18 @@ const pomodoro: NextPage = () => {
   const [switchFromModal, setSwitch] = useState<boolean>(false);
 
   useEffect(() => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
+
+  useEffect(() => {
     alert = new Howl({
       src: selectedAlert,
       loop: true,
@@ -55,14 +68,8 @@ const pomodoro: NextPage = () => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
     setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
-    if (
-      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      if (Notification.permission !== "denied") {
-        Notification.requestPermission();
-      }
+    if (!isMobile && Notification.permission !== "denied") {
+      Notification.requestPermission();
     }
   }, [pomodoroTime, shortBreakTime, longBreakTime]);
 
@@ -266,14 +273,8 @@ const pomodoro: NextPage = () => {
         setCurrentTime(millisToMinutesAndSeconds(longBreakTime));
       }
     } else {
-      if (
-        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        if (Notification.permission === "granted") {
-          showNotification();
-        }
+      if (!isMobile && Notification.permission === "granted") {
+        showNotification();
       }
       setAlarmOn(true);
       alert.play();
@@ -285,14 +286,8 @@ const pomodoro: NextPage = () => {
 
   const startBreak = (): void => {
     if (autoStartBreak === "Short break") {
-      if (
-        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        if (Notification.permission === "granted") {
-          showNotification();
-        }
+      if (!isMobile && Notification.permission === "granted") {
+        showNotification();
       }
       setAlarmOn(true);
       alert.play();
@@ -303,14 +298,8 @@ const pomodoro: NextPage = () => {
       setPomodoro(false);
       setShortBreak(true);
     } else if (autoStartBreak === "Long break") {
-      if (
-        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        if (Notification.permission === "granted") {
-          showNotification();
-        }
+      if (!isMobile && Notification.permission === "granted") {
+        showNotification();
       }
       setAlarmOn(true);
       alert.play();
