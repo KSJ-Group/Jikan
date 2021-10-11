@@ -68,8 +68,10 @@ const pomodoro: NextPage = () => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
     setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
-    if (!isMobile && Notification.permission !== "denied") {
-      Notification.requestPermission();
+    if (!isMobile) {
+      if (Notification.permission !== "denied") {
+        Notification.requestPermission();
+      }
     }
   }, [pomodoroTime, shortBreakTime, longBreakTime]);
 
@@ -107,26 +109,28 @@ const pomodoro: NextPage = () => {
   }, [pomodoro, shortBreak, longBreak]);
 
   const showNotification = () => {
-    if (autoStartBreak === "Short break") {
-      const notification = new Notification("Jikan", {
-        body: "Good job! Your pomodoro time is up. Short break auto-starting.",
-      });
-    } else if (autoStartBreak === "Long break") {
-      const notification = new Notification("Jikan", {
-        body: "Good job! Your pomodoro time is up. Long break auto-starting.",
-      });
-    } else if (pomodoro) {
-      const notification = new Notification("Jikan", {
-        body: "Good job! Your pomodoro time is up.",
-      });
-    } else if (shortBreak) {
-      const notification = new Notification("Jikan", {
-        body: "Your short break is over!",
-      });
-    } else {
-      const notification = new Notification("Jikan", {
-        body: "Your long break is over!",
-      });
+    if (!isMobile) {
+      if (autoStartBreak === "Short break") {
+        const notification = new Notification("Jikan", {
+          body: "Good job! Your pomodoro time is up. Short break auto-starting.",
+        });
+      } else if (autoStartBreak === "Long break") {
+        const notification = new Notification("Jikan", {
+          body: "Good job! Your pomodoro time is up. Long break auto-starting.",
+        });
+      } else if (pomodoro) {
+        const notification = new Notification("Jikan", {
+          body: "Good job! Your pomodoro time is up.",
+        });
+      } else if (shortBreak) {
+        const notification = new Notification("Jikan", {
+          body: "Your short break is over!",
+        });
+      } else {
+        const notification = new Notification("Jikan", {
+          body: "Your long break is over!",
+        });
+      }
     }
   };
 
@@ -273,8 +277,10 @@ const pomodoro: NextPage = () => {
         setCurrentTime(millisToMinutesAndSeconds(longBreakTime));
       }
     } else {
-      if (!isMobile && Notification.permission === "granted") {
-        showNotification();
+      if (!isMobile) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
@@ -286,8 +292,10 @@ const pomodoro: NextPage = () => {
 
   const startBreak = (): void => {
     if (autoStartBreak === "Short break") {
-      if (!isMobile && Notification.permission === "granted") {
-        showNotification();
+      if (!isMobile) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
@@ -298,8 +306,10 @@ const pomodoro: NextPage = () => {
       setPomodoro(false);
       setShortBreak(true);
     } else if (autoStartBreak === "Long break") {
-      if (!isMobile && Notification.permission === "granted") {
-        showNotification();
+      if (!isMobile) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
