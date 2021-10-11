@@ -34,27 +34,28 @@ const Timers: React.FC<Props> = ({
   const [longStr, setLongStr] = useState<string>(
     millisToMinutesAndSeconds(longBreakTime)
   );
-  const [minutes, setMinutes] = useState<string[]>([]);
-  const [shortMinutes, setShortMinutes] = useState<string[]>([]);
-  const [longMinutes, setLongMinutes] = useState<string[]>([]);
+  const [currentPom, setCurrentPom] = useState<number>(25);
+  const [currentShort, setCurrentShort] = useState<number>(5);
+  const [currentLong, setCurrentLong] = useState<number>(15);
+
+  const [minutes, setMinutes] = useState<number[]>([]);
+  const [shortMinutes, setShortMinutes] = useState<number[]>([]);
+  const [longMinutes, setLongMinutes] = useState<number[]>([]);
 
   useEffect(() => {
     for (let i = 1; i <= 90; i++) {
-      setMinutes((prev) => [...prev, i.toString()]);
+      setMinutes((prev) => [...prev, i]);
       if (i <= 15) {
-        setShortMinutes((prev) => [...prev, i.toString()]);
+        setShortMinutes((prev) => [...prev, i]);
       }
       if (i <= 30) {
-        setLongMinutes((prev) => [...prev, i.toString()]);
+        setLongMinutes((prev) => [...prev, i]);
       }
     }
+    setCurrentPom(parseInt(millisToMinutesAndSeconds(pomodoroTime)));
+    setCurrentShort(parseInt(millisToMinutesAndSeconds(shortBreakTime)));
+    setCurrentLong(parseInt(millisToMinutesAndSeconds(longBreakTime)));
   }, []);
-
-  useEffect(() => {
-    if (minutes.length > 0) {
-      console.log(minutes);
-    }
-  }, [minutes]);
 
   useEffect(() => {
     if (pomStr === "0") {
@@ -73,6 +74,7 @@ const Timers: React.FC<Props> = ({
       e.preventDefault();
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setPomodoroTime(toMs);
+      setCurrentPom(parseInt(e.target.value));
     }
   };
 
@@ -81,6 +83,7 @@ const Timers: React.FC<Props> = ({
       e.preventDefault();
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setShortBreakTime(toMs);
+      setCurrentShort(parseInt(e.target.value));
     }
   };
 
@@ -89,6 +92,7 @@ const Timers: React.FC<Props> = ({
       e.preventDefault();
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setLongBreakTime(toMs);
+      setCurrentLong(parseInt(e.target.value));
     }
   };
 
@@ -106,7 +110,7 @@ const Timers: React.FC<Props> = ({
     <div className={styles.timers}>
       <Form.Group controlId="formBasicEmail" className={styles.pomodoro}>
         <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
-        <Form.Select value={parseInt(pomStr)} onChange={(e) => pomChange(e)}>
+        <Form.Select value={currentPom} onChange={(e) => pomChange(e)}>
           {minutes.map((minute) => (
             <option key={minute + "pom"} value={minute}>
               {minute}
@@ -117,7 +121,7 @@ const Timers: React.FC<Props> = ({
 
       <Form.Group controlId="formBasicPassword" className={styles.shortbreak}>
         <Form.Label className={styles.timerLabel}>Short Break</Form.Label>
-        <Form.Select value={parseInt(shortStr)} onChange={(e) => pomChange(e)}>
+        <Form.Select value={currentShort} onChange={(e) => shortChange(e)}>
           {shortMinutes.map((minute) => (
             <option key={minute + "short"} value={minute}>
               {minute}
@@ -128,7 +132,7 @@ const Timers: React.FC<Props> = ({
 
       <Form.Group controlId="formBasicPassword" className={styles.longbreak}>
         <Form.Label className={styles.timerLabel}>Long Break</Form.Label>
-        <Form.Select value={parseInt(longStr)} onChange={(e) => pomChange(e)}>
+        <Form.Select value={currentLong} onChange={(e) => longChange(e)}>
           {longMinutes.map((minute) => (
             <option key={minute + "long"} value={minute}>
               {minute}
