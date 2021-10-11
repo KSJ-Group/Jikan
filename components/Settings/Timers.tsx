@@ -1,34 +1,72 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Form, Button } from 'react-bootstrap'
-import styles from '../../styles/Settings/Settings.module.css';
-import { minutesAndSecondsToMillis, millisToMinutesAndSeconds } from '../../helper/convertTime';
+import React, { useState, useEffect, useContext } from "react";
+import { Form, Button } from "react-bootstrap";
+import styles from "../../styles/Settings/Settings.module.css";
+import {
+  minutesAndSecondsToMillis,
+  millisToMinutesAndSeconds,
+} from "../../helper/convertTime";
 
 interface Props {
-  pomodoroTime: number,
-  shortBreakTime: number,
-  longBreakTime: number,
-  setPomodoroTime: Function,
-  setShortBreakTime: Function,
-  setLongBreakTime: Function,
-  setShowSettings: Function
+  pomodoroTime: number;
+  shortBreakTime: number;
+  longBreakTime: number;
+  setPomodoroTime: Function;
+  setShortBreakTime: Function;
+  setLongBreakTime: Function;
+  setShowSettings: Function;
 }
 
-const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, setPomodoroTime, setShortBreakTime, setLongBreakTime, setShowSettings }) => {
-  const [pomStr, setPomStr] = useState<string>(millisToMinutesAndSeconds(pomodoroTime));
-  const [shortStr, setShortStr] = useState<string>(millisToMinutesAndSeconds(shortBreakTime));
-  const [longStr, setLongStr] = useState<string>(millisToMinutesAndSeconds(longBreakTime));
+const Timers: React.FC<Props> = ({
+  pomodoroTime,
+  shortBreakTime,
+  longBreakTime,
+  setPomodoroTime,
+  setShortBreakTime,
+  setLongBreakTime,
+  setShowSettings,
+}) => {
+  const [pomStr, setPomStr] = useState<string>(
+    millisToMinutesAndSeconds(pomodoroTime)
+  );
+  const [shortStr, setShortStr] = useState<string>(
+    millisToMinutesAndSeconds(shortBreakTime)
+  );
+  const [longStr, setLongStr] = useState<string>(
+    millisToMinutesAndSeconds(longBreakTime)
+  );
+  const [minutes, setMinutes] = useState<string[]>([]);
+  const [shortMinutes, setShortMinutes] = useState<string[]>([]);
+  const [longMinutes, setLongMinutes] = useState<string[]>([]);
 
   useEffect(() => {
-    if (pomStr === '0') {
-      pomChange('1');
+    for (let i = 1; i <= 90; i++) {
+      setMinutes((prev) => [...prev, i.toString()]);
+      if (i <= 15) {
+        setShortMinutes((prev) => [...prev, i.toString()]);
+      }
+      if (i <= 30) {
+        setLongMinutes((prev) => [...prev, i.toString()]);
+      }
     }
-    if (shortStr === '0') {
-      setShortStr('1');
+  }, []);
+
+  useEffect(() => {
+    if (minutes.length > 0) {
+      console.log(minutes);
     }
-    if (longStr === '0') {
-      setLongStr('1');
+  }, [minutes]);
+
+  useEffect(() => {
+    if (pomStr === "0") {
+      pomChange("1");
     }
-  }, [pomStr, shortStr, longStr])
+    if (shortStr === "0") {
+      setShortStr("1");
+    }
+    if (longStr === "0") {
+      setLongStr("1");
+    }
+  }, [pomStr, shortStr, longStr]);
 
   const pomChange = (e: any): void => {
     if (parseInt(e.target.value) > 0) {
@@ -36,7 +74,7 @@ const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, 
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setPomodoroTime(toMs);
     }
-  }
+  };
 
   const shortChange = (e: any): void => {
     if (parseInt(e.target.value) > 0) {
@@ -44,7 +82,7 @@ const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, 
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setShortBreakTime(toMs);
     }
-  }
+  };
 
   const longChange = (e: any): void => {
     if (parseInt(e.target.value) > 0) {
@@ -52,36 +90,56 @@ const Timers: React.FC<Props> = ({ pomodoroTime, shortBreakTime, longBreakTime, 
       let toMs = minutesAndSecondsToMillis(e.target.value);
       setLongBreakTime(toMs);
     }
-  }
+  };
 
   const resetTimer = (e: any) => {
     setPomodoroTime(1500000);
-    setPomStr('25');
+    setPomStr("25");
     setShortBreakTime(300000);
-    setShortStr('5');
+    setShortStr("5");
     setLongBreakTime(900000);
-    setLongStr('15');
+    setLongStr("15");
     setShowSettings(false);
-  }
+  };
 
   return (
     <div className={styles.timers}>
       <Form.Group controlId="formBasicEmail" className={styles.pomodoro}>
         <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
-        <Form.Control type="number" min="1" defaultValue={parseInt(pomStr)} onChange={(e) => pomChange(e)} />
+        <Form.Select value={parseInt(pomStr)} onChange={(e) => pomChange(e)}>
+          {minutes.map((minute) => (
+            <option key={minute + "pom"} value={minute}>
+              {minute}
+            </option>
+          ))}
+        </Form.Select>
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className={styles.shortbreak}>
         <Form.Label className={styles.timerLabel}>Short Break</Form.Label>
-        <Form.Control type="number" min="1" defaultValue={parseInt(shortStr)} onChange={(e) => shortChange(e)} />
+        <Form.Select value={parseInt(shortStr)} onChange={(e) => pomChange(e)}>
+          {shortMinutes.map((minute) => (
+            <option key={minute + "short"} value={minute}>
+              {minute}
+            </option>
+          ))}
+        </Form.Select>
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword" className={styles.longbreak}>
         <Form.Label className={styles.timerLabel}>Long Break</Form.Label>
-        <Form.Control type="number" min="1" defaultValue={parseInt(longStr)} onChange={(e) => longChange(e)} />
+        <Form.Select value={parseInt(longStr)} onChange={(e) => pomChange(e)}>
+          {longMinutes.map((minute) => (
+            <option key={minute + "long"} value={minute}>
+              {minute}
+            </option>
+          ))}
+        </Form.Select>
       </Form.Group>
 
-      <button onClick={resetTimer} className={styles.resetBtn}>Reset</button>
+      <button onClick={resetTimer} className={styles.resetBtn}>
+        Reset
+      </button>
     </div>
   );
 };
