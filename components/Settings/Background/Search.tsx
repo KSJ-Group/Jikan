@@ -73,7 +73,7 @@ const Search: NextPage = () => {
           type="text"
           value={terms}
           className={styles.searchInput}
-          placeholder="Search image..."
+          placeholder="Mountains, cars, animals, dark, etc."
           onChange={(event: any) => {
             changeTerms(event);
           }}
