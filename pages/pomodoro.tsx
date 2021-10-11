@@ -55,12 +55,12 @@ const pomodoro: NextPage = () => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
     setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
-    if (Notification.permission !== "denied") {
-      if (
-        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
+    if (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      if (Notification.permission !== "denied") {
         Notification.requestPermission();
       }
     }
@@ -266,8 +266,14 @@ const pomodoro: NextPage = () => {
         setCurrentTime(millisToMinutesAndSeconds(longBreakTime));
       }
     } else {
-      if (Notification.permission === "granted") {
-        showNotification();
+      if (
+        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
@@ -279,8 +285,14 @@ const pomodoro: NextPage = () => {
 
   const startBreak = (): void => {
     if (autoStartBreak === "Short break") {
-      if (Notification.permission === "granted") {
-        showNotification();
+      if (
+        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
@@ -291,8 +303,14 @@ const pomodoro: NextPage = () => {
       setPomodoro(false);
       setShortBreak(true);
     } else if (autoStartBreak === "Long break") {
-      if (Notification.permission === "granted") {
-        showNotification();
+      if (
+        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
       }
       setAlarmOn(true);
       alert.play();
