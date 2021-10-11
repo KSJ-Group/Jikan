@@ -56,7 +56,13 @@ const pomodoro: NextPage = () => {
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
     setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
     if (Notification.permission !== "denied") {
-      Notification.requestPermission();
+      if (
+        !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        Notification.requestPermission();
+      }
     }
   }, [pomodoroTime, shortBreakTime, longBreakTime]);
 
