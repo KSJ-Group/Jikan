@@ -79,11 +79,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 setShowSeconds={setShowSeconds}
               />
               <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-              <Blur blur={blur} setBlur={setBlur} />
               <Font
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
+              <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
           ) : (
@@ -116,7 +116,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 autoStartBreak={autoStartBreak}
                 setAutoStartBreak={setAutoStartBreak}
               />
-              <Blur blur={blur} setBlur={setBlur} />
               <AlertSound
                 selectedAlert={selectedAlert}
                 setSelectedAlert={setSelectedAlert}
@@ -125,6 +124,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
+              <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
           )}

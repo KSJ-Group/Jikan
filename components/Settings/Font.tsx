@@ -20,7 +20,7 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
   return (
     <div>
       <Form.Group className={styles.font}>
-        <Form.Label>Time Font</Form.Label>
+        <Form.Label>Font</Form.Label>
         <Form.Select
           defaultValue={selectedFont}
           onChange={(e) => changeFont(e)}
