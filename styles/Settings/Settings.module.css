@@ -11,10 +11,8 @@
 .settings {
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-.header {
-  background: white;
+  background-color: #222222;
+  color: #f8f8f8;
 }
 
 .settingsTop {
