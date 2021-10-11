@@ -23,12 +23,6 @@ const Home: NextPage = () => {
           property="og:image"
           content="https://i.imgur.com/xI4X2JS.jpg"
         />
-        <meta
-          content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
-          name="viewport"
-        />
-        <meta name="viewport" content="width=device-width" />
-
         <link
           rel="icon"
           href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
