@@ -81,7 +81,7 @@ const pomodoro: NextPage = () => {
       setTimeout(() => {
         setStarted(true);
         timer = window.setInterval(startTimer, 1000);
-      }, 1000);
+      }, 500);
       setSwitch(false);
     }
     if (pomodoro) {
