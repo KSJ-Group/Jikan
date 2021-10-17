@@ -8,9 +8,14 @@
           flex-direction: row;
 }
 
+.settingsDiv {
+  border: none;
+}
+
 .settings {
   color: #f8f8f8;
   overflow-x: hidden;
+  border: none;
 }
 
 .body {
