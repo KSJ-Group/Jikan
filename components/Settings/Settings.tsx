@@ -52,7 +52,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   } = useContext(SettingsContext);
 
   return (
-    <>
+    <div className={styles.settingsDiv}>
       <Offcanvas
         show={showSettings}
         onHide={() => setShowSettings(false)}
@@ -135,7 +135,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
           )}
         </Offcanvas.Body>
       </Offcanvas>
-    </>
+    </div>
   );
 };
 

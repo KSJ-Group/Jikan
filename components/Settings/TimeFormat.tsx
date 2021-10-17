@@ -11,7 +11,7 @@ const TimeFormat: React.FC<Props> = ({ is24Hour, setIs24Hour }) => {
   return (
     <div className={styles.timeFormat}>
       <Form.Group className={styles.toggle}>
-        <Form.Label>24 Hour Format?</Form.Label>
+        <Form.Label>24 hour format</Form.Label>
         <Form.Check
           type="switch"
           id="custom-switch"

@@ -10,7 +10,7 @@ const Blur: React.FC<Props> = ({ blur, setBlur }) => {
   return (
     <div className={styles.blur}>
       <Form.Group className={styles.toggle}>
-        <Form.Label>Background blur?</Form.Label>
+        <Form.Label>Background blur</Form.Label>
         <Form.Check
           type="switch"
           id="custom-switch"
