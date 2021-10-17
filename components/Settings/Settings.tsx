@@ -13,6 +13,7 @@ import ShowSeconds from "./ShowSeconds";
 import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
+import Music from "./Music";
 
 interface Props {
   showSettings: boolean;
@@ -26,7 +27,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     brightness,
     setBrightness,
     blur,
-    setBlur,
+    setBlur
   } = useContext(StylesContext);
 
   const {
@@ -46,6 +47,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setIs24Hour,
     selectedAlert,
     setSelectedAlert,
+    selectedMusic,
+    setMusic
   } = useContext(SettingsContext);
 
   return (
@@ -83,6 +86,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
+              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
@@ -124,6 +128,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
+              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import styles from "../../styles/Settings/Settings.module.css";
 
@@ -22,7 +22,7 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
       <Form.Group className={styles.font}>
         <Form.Label>Font</Form.Label>
         <Form.Select
-          defaultValue={selectedFont}
+          value={selectedFont}
           onChange={(e) => changeFont(e)}
         >
           {availFonts.map((font) => (

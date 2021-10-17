@@ -3,23 +3,23 @@ import axios from "axios";
 
 export const SettingsContext = createContext({
   isClock: true,
-  setIsClock: (isClock: boolean) => {},
+  setIsClock: (isClock: boolean) => { },
   isLoggedIn: false,
-  setIsLoggedIn: (isLoggedIn: boolean) => {},
+  setIsLoggedIn: (isLoggedIn: boolean) => { },
   pomodoroTime: 1500000,
-  setPomodoroTime: (time: any) => {},
+  setPomodoroTime: (time: any) => { },
   shortBreakTime: 300000,
-  setShortBreakTime: (time: any) => {},
+  setShortBreakTime: (time: any) => { },
   longBreakTime: 900000,
-  setLongBreakTime: (time: any) => {},
+  setLongBreakTime: (time: any) => { },
   autoStartBreak: "Off",
-  setAutoStartBreak: (auto: string) => {},
+  setAutoStartBreak: (auto: string) => { },
   showSeconds: false,
-  setShowSeconds: (showSeconds: boolean) => {},
+  setShowSeconds: (showSeconds: boolean) => { },
   is24Hour: false,
-  setIs24Hour: (is24Hour: boolean) => {},
+  setIs24Hour: (is24Hour: boolean) => { },
   selectedAlert: "Xylophone.mp3",
-  setSelectedAlert: (alert: string) => {},
+  setSelectedAlert: (alert: string) => { },
   allAlarms: [
     "Classic analog alarm.mp3",
     "Classic digital alarm.mp3",
@@ -32,7 +32,9 @@ export const SettingsContext = createContext({
     "Tri-tone ping.mp3",
     "Xylophone.mp3",
   ],
-  setAllAlarms: (alarms: string[]) => {},
+  setAllAlarms: (alarms: string[]) => { },
+  selectedMusic: 'None',
+  setMusic: (music: string) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -57,6 +59,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     "Tri-tone ping.mp3",
     "Xylophone.mp3",
   ]);
+  const [selectedMusic, setMusic] = useState<string>('None');
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -119,6 +122,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
       setAllAlarms(alarms);
       localStorage.setItem("allAlarms", JSON.stringify(alarms));
     },
+    selectedMusic: selectedMusic,
+    setMusic: (music: string): void => {
+      setMusic(music);
+      localStorage.setItem("music", music);
+    }
   };
 
   useEffect((): any => {
@@ -132,6 +140,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     let cached24 = localStorage.getItem("24");
     let cachedAlert = localStorage.getItem("alert");
     let cachedAlarms = localStorage.getItem("allAlarms");
+    let cachedMusic = localStorage.getItem('music');
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -161,6 +170,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedAlarms) {
       store.setAllAlarms(JSON.parse(cachedAlarms));
+    }
+    if (cachedMusic) {
+      store.setMusic(cachedMusic);
     }
   }, []);
 

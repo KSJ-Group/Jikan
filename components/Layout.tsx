@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExpand } from '@fortawesome/free-solid-svg-icons';
 import { BrightnessDiv } from '../styles/Global/global.style';
+import YouTube from './YouTube';
 
 library.add(
   faExpand
@@ -38,6 +39,7 @@ const Layout: React.FC = ({ children }) => {
           <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg' /><div className='fsText'>Fullscreen</div></div>
           <Background />
           {children}
+          <YouTube />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>
