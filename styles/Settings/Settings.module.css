@@ -165,6 +165,18 @@
   font-size: 18px;
 }
 
+.timeFormat {
+  margin-bottom: 10px;
+}
+
+.showSeconds {
+  margin: 10px 0 10px;
+}
+
+.blur {
+  margin: 10px 0 10px;
+}
+
 .toggle {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -228,5 +240,25 @@
 .font {
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.music {
+  margin: 10px 0 20px;
+}
+
+.musicDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.stop {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=Settings.module.css.map */

@@ -123,6 +123,18 @@
   font-size: 18px;
 }
 
+.timeFormat {
+  margin-bottom: 10px;
+}
+
+.showSeconds {
+  margin: 10px 0 10px;
+}
+
+.blur {
+  margin: 10px 0 10px;
+}
+
 .toggle {
   display: flex;
   flex-direction: row;
@@ -163,4 +175,19 @@
 .font {
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.music {
+  margin: 10px 0 20px;
+}
+
+.musicDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.stop {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }

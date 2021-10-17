@@ -5,11 +5,14 @@ import { SettingsContext } from './SettingsContext';
 const YouTube: React.FC = () => {
   const {
     selectedMusic
-  } = useContext(SettingsContext)
+  } = useContext(SettingsContext);
 
   return (
-    <div className={styles.iframe}>
-      <iframe width="560" height="315" src={selectedMusic} title="YouTube video player"></iframe>
+    <div>
+      <iframe className={styles.iframe} id='youtubePlayer' width="560" height="315" src={selectedMusic} title="YouTube video player" />
+      <div className={styles.controls}>
+        ⏯︎
+      </div>
     </div>
   );
 };

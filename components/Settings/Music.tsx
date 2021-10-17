@@ -11,7 +11,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
   const music = [
     {
       title: 'None',
-      url: ''
+      url: 'None'
     },
     {
       title: 'Lofi Hip Hop',
@@ -64,20 +64,27 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
     }
   };
 
+  const stopMusic = (): void => {
+    setMusic('None');
+  };
+
   return (
-    <div>
+    <div className={styles.music}>
       <Form.Group className={styles.font}>
         <Form.Label>Music</Form.Label>
-        <Form.Select
-          value={currentTitle}
-          onChange={(e) => changeMusic(e)}
-        >
-          {availMusic.map((music) => (
-            <option key={music.title} value={music.title}>
-              {music.title}
-            </option>
-          ))}
-        </Form.Select>
+        <div className={styles.musicDiv}>
+          <Form.Select
+            value={currentTitle}
+            onChange={(e) => changeMusic(e)}
+          >
+            {availMusic.map((music) => (
+              <option key={music.title} value={music.title}>
+                {music.title}
+              </option>
+            ))}
+          </Form.Select>
+          <button className={styles.stop} onClick={stopMusic}>Stop</button>
+        </div>
       </Form.Group>
     </div>
   );

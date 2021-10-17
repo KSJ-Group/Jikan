@@ -7,9 +7,9 @@ interface Props {
   setIs24Hour: Function
 }
 
-const TimeFormat: React.FC<Props> = ( {is24Hour, setIs24Hour} ) => {
+const TimeFormat: React.FC<Props> = ({ is24Hour, setIs24Hour }) => {
   return (
-    <div>
+    <div className={styles.timeFormat}>
       <Form.Group className={styles.toggle}>
         <Form.Label>24 Hour Format?</Form.Label>
         <Form.Check

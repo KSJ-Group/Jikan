@@ -6,9 +6,9 @@ interface Props {
   blur: boolean,
   setBlur: Function
 }
-const Blur: React.FC<Props> = ( {blur, setBlur}) => {
+const Blur: React.FC<Props> = ({ blur, setBlur }) => {
   return (
-    <div>
+    <div className={styles.blur}>
       <Form.Group className={styles.toggle}>
         <Form.Label>Background blur?</Form.Label>
         <Form.Check
