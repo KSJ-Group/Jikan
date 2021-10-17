@@ -78,9 +78,9 @@ const Navbar: React.FC = () => {
       </Head>
       <nav className={styles.nav}>
         <div className={styles.mainLinks}>
-          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Digital Clock</a></Link>
+          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Clock</a></Link>
           <div className={styles.line}>|</div>
-          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
+          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
           <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="lg" />
