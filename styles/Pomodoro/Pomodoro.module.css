@@ -118,15 +118,15 @@
 
 .startBtn {
   position: relative;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 10px 20px 10px;
+  border-radius: 5px;
   font-size: 3vh;
-  background-color: #d0d0d0;
+  background-color: #f1f1f1;
   cursor: pointer;
 }
 
 .startBtn:hover {
-  background-color: #bdbdbd;
+  background-color: #e6e6e6;
 }
 
 @media screen and (max-width: 800px) {

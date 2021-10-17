@@ -406,11 +406,11 @@ const pomodoro: NextPage = () => {
               className={styles.startBtn}
               onClick={() => startClickHandler()}
             >
-              START
+              Start
             </div>
           ) : (
             <div className={styles.startBtn} onClick={() => stopClickHandler()}>
-              STOP
+              Stop
             </div>
           )}
         </div>
