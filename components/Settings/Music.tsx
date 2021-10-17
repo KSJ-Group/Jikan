@@ -83,7 +83,6 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
               </option>
             ))}
           </Form.Select>
-          <button className={styles.stop} onClick={stopMusic}>Stop</button>
         </div>
       </Form.Group>
     </div>

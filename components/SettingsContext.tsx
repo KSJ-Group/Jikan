@@ -171,9 +171,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     if (cachedAlarms) {
       store.setAllAlarms(JSON.parse(cachedAlarms));
     }
-    if (cachedMusic) {
-      store.setMusic(cachedMusic);
-    }
   }, []);
 
   return (

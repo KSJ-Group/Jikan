@@ -10,20 +10,3 @@
   position: absolute;
   bottom: -400px;
 }
-
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 10;
-  bottom: 0;
-  right: 0;
-  margin: 20px;
-  font-size: 40px;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
