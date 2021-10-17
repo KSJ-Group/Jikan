@@ -23,7 +23,7 @@ const AutoStartBreak: React.FC<Props> = ({
   return (
     <div>
       <Form.Group className={styles.autoStart}>
-        <Form.Label>Auto-start breaks?</Form.Label>
+        <Form.Label>Auto-start breaks</Form.Label>
         <div className={styles.toggles}>
           {choices.map((choice) => {
             return (
