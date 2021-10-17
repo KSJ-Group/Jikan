@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
-          <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="lg" />
+          <img className={styles.menuIcon} src='/images/menu.png' alt='menu icon' />
           <div className={styles.settingsWord}>Settings</div>
         </div>
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />

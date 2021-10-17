@@ -14,6 +14,7 @@ import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
+import Image from 'next';
 
 interface Props {
   showSettings: boolean;
@@ -65,6 +66,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <div>
               <div className={styles.settingsTop}>
                 <h2>Clock Settings</h2>
+                <img src="/images/profile.png" alt='profile icon' className={styles.profileIcon} />
                 <button
                   className={styles.x}
                   onClick={() => setShowSettings(false)}
@@ -72,7 +74,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   Close
                 </button>
               </div>
-              {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness
                 brightness={brightness}
                 setBrightness={setBrightness}
@@ -95,6 +96,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             <div>
               <div className={styles.settingsTop}>
                 <h2>Pomodoro Settings</h2>
+                <img src="/images/profile.png" alt='profile icon' className={styles.profileIcon2} />
                 <button
                   className={styles.x}
                   onClick={() => setShowSettings(false)}
@@ -102,7 +104,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   Close
                 </button>
               </div>
-              {isLoggedIn ? <div>Profile</div> : <Login />}
               <Brightness
                 brightness={brightness}
                 setBrightness={setBrightness}

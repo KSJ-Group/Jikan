@@ -120,4 +120,18 @@
 .settingsIcon:hover {
   color: #fffbfb;
 }
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.fullscreen {
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
 /*# sourceMappingURL=Navbar.module.css.map */
