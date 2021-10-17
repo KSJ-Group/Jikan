@@ -39,27 +39,6 @@ const AutoStartBreak: React.FC<Props> = ({
               />
             );
           })}
-          {/* <Form.Check
-            type="radio"
-            id="default-radio"
-            value="None"
-            label="None"
-            onChange={(e) => setAutoStartBreak(e.target.value)}
-          />
-          <Form.Check
-            type="radio"
-            id="default-radio"
-            value="Short break"
-            label="Short break"
-            onChange={(e) => setAutoStartBreak(e.target.value)}
-          />
-          <Form.Check
-            type="radio"
-            id="default-radio"
-            value="Long break"
-            label="Long break"
-            onChange={(e) => setAutoStartBreak(e.target.value)}
-          /> */}
         </div>
       </Form.Group>
     </div>
