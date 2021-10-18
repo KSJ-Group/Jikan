@@ -52,6 +52,19 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setMusic
   } = useContext(SettingsContext);
 
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
 
   return (
     <div className={styles.settingsDiv}>
@@ -88,7 +101,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
+              {!isMobile ? <Music selectedMusic={selectedMusic} setMusic={setMusic} /> : null}
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
@@ -129,7 +142,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
+              {!isMobile ? <Music selectedMusic={selectedMusic} setMusic={setMusic} /> : null}
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
