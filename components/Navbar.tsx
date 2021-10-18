@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const { setIsClock } = useContext(SettingsContext);
-
+  // temp
   useEffect(() => {
     setIsClock(clockIsActive);
   }, [clockIsActive])
