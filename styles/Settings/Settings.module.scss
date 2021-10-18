@@ -50,9 +50,10 @@
 .x {
   position: relative;
   margin-top: 6px;
-  height: 30px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #efefef;
+  border: none;
 }
 
 .pomodoro {
@@ -159,6 +160,7 @@
   border-radius: 5px;
   font-size: 15px;
   background-color: #efefef;
+  border: none;
 }
 
 .autoStart {
@@ -216,6 +218,7 @@
   border-radius: 5px;
   background: #efefef;
   text-align: center;
+  border: none;
 }
 
 .font {
@@ -236,6 +239,7 @@
   margin-left: 10px;
   padding: 5px;
   border-radius: 5px;
+  border: none;
 }
 
 .aboutContainer {
