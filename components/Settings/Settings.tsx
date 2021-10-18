@@ -15,6 +15,7 @@ import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
+import Blacklist from "./Blacklist";
 
 interface Props {
   showSettings: boolean;
@@ -102,6 +103,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 setSelectedFont={setSelectedFont}
               />
               {!isMobile ? <Music selectedMusic={selectedMusic} setMusic={setMusic} /> : null}
+              {/* <Blacklist /> */}
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>

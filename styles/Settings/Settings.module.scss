@@ -295,3 +295,80 @@
     background-color: rgb(21, 59, 102);
   }
 }
+
+.blacklistContainer {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.blacklistContainer > div {
+  font-size: 18px;
+}
+
+.blockBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  margin-top: 8px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+.eachURL {
+  display: flex;
+  :nth-child(2) {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
+
+.blModal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.blList div {
+  font-size: 20px;
+}
+
+.removeLink {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.addNewLink {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.blInput {
+  margin-top: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.582);
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+input.blInput:focus {
+  outline-width: 0;
+}
+
+.addBtn {
+  background-color: rgb(21, 59, 102);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
