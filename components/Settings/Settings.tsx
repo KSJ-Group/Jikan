@@ -110,7 +110,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
-              {/* {!isMobile ? <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} /> : null} */}
               <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
               {/* <Blacklist /> */}
               <Blur blur={blur} setBlur={setBlur} />
@@ -153,7 +152,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
               />
-              {!isMobile ? <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} /> : null}
+              <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
               <Blur blur={blur} setBlur={setBlur} />
               <ChangeBackground />
             </div>
