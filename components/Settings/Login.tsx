@@ -32,8 +32,7 @@ const Login = () => {
   }, [])
 
   const responseFailure = (res) => {
-    console.log(res)
-    console.log(res.profileObj);
+    console.log('Login failed:', res)
   }
 
   return (
