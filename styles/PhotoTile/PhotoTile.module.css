@@ -1,8 +1,14 @@
 .imageContainer {
   height: 115px;
-  width: 165px;
-  margin: 9px;
+  width: 46%;
+  margin: 7px;
   overflow: hidden;
+}
+
+@media screen and (max-width: 425px) {
+  .imageContainer {
+    width: 44vw;
+  }
 }
 
 .image {

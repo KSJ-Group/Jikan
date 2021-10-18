@@ -10,12 +10,21 @@
 
 .settingsDiv {
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .settings {
   color: #f8f8f8;
   overflow-x: hidden;
   border: none;
+  width: 425px;
+}
+
+@media screen and (max-width: 425px) {
+  .settings {
+    width: 100vw;
+  }
 }
 
 .body {
@@ -23,6 +32,24 @@
   overflow-x: hidden;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin: 0;
+}
+
+.subBody {
+  overflow-x: scroll;
+  overflow-y: visible;
+  height: 90vh;
+  width: 400px;
+}
+
+@media screen and (max-width: 425px) {
+  .subBody {
+    width: 92vw;
+  }
+}
+
+.subBody::-webkit-scrollbar {
+  display: none;
 }
 
 .settingsTop {
@@ -76,6 +103,7 @@
   border-radius: 5px;
   background-color: #efefef;
   border: none;
+  font-weight: bold;
 }
 
 .pomodoro {
@@ -142,9 +170,15 @@
 }
 
 .brightness {
-  width: 100%;
+  width: 99%;
   margin: 10px 0 20px;
   font-size: 18px;
+}
+
+@media screen and (max-width: 425px) {
+  .brightness {
+    width: 90vw;
+  }
 }
 
 .sliderDiv {
@@ -232,15 +266,40 @@
 }
 
 .timeFormat {
+  width: 405px;
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 425px) {
+  .timeFormat {
+    width: 94vw;
+  }
+}
+
 .showSeconds {
+  width: 405px;
   margin: 10px 0 10px;
 }
 
+@media screen and (max-width: 425px) {
+  .showSeconds {
+    width: 94vw;
+  }
+}
+
 .blur {
+  width: 405px;
   margin: 10px 0 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .blur {
+    width: 94vw;
+  }
+}
+
+.changeBG {
+  width: 95%;
 }
 
 .toggle {
@@ -337,6 +396,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+  left: 10px;
 }
 
 .about {

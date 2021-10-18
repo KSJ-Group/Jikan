@@ -84,79 +84,81 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <Login />
-          {isClock ? (
-            // Clock settings
-            <div>
-              <div className={styles.settingsTop}>
-                <div className={styles.settingsTitle}>Clock Settings</div>
-                <button
-                  className={styles.x}
-                  onClick={() => setShowSettings(false)}
-                >
-                  Close
-                </button>
+          <div className={styles.subBody}>
+            <Login />
+            {isClock ? (
+              // Clock settings
+              <div>
+                <div className={styles.settingsTop}>
+                  <div className={styles.settingsTitle}>Clock Settings</div>
+                  <button
+                    className={styles.x}
+                    onClick={() => setShowSettings(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
+                <ShowSeconds
+                  showSeconds={showSeconds}
+                  setShowSeconds={setShowSeconds}
+                />
+                <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
+                {/* <Blacklist /> */}
+                <Blur blur={blur} setBlur={setBlur} />
+                <ChangeBackground />
               </div>
-              <Brightness
-                brightness={brightness}
-                setBrightness={setBrightness}
-              />
-              <ShowSeconds
-                showSeconds={showSeconds}
-                setShowSeconds={setShowSeconds}
-              />
-              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-              <Font
-                selectedFont={selectedFont}
-                setSelectedFont={setSelectedFont}
-              />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
-              {/* <Blacklist /> */}
-              <Blur blur={blur} setBlur={setBlur} />
-              <ChangeBackground />
-            </div>
-          ) : (
-            // Pomodoro settings
-            <div>
-              <div className={styles.settingsTop}>
-                <div className={styles.settingsTitle}>Pomodoro Settings</div>
-                <button
-                  className={styles.x}
-                  onClick={() => setShowSettings(false)}
-                >
-                  Close
-                </button>
+            ) : (
+              // Pomodoro settings
+              <div>
+                <div className={styles.settingsTop}>
+                  <div className={styles.settingsTitle}>Pomodoro Settings</div>
+                  <button
+                    className={styles.x}
+                    onClick={() => setShowSettings(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
+                <Timers
+                  pomodoroTime={pomodoroTime}
+                  setPomodoroTime={setPomodoroTime}
+                  shortBreakTime={shortBreakTime}
+                  setShortBreakTime={setShortBreakTime}
+                  longBreakTime={longBreakTime}
+                  setLongBreakTime={setLongBreakTime}
+                  setShowSettings={setShowSettings}
+                />
+                <AutoStarBreak
+                  autoStartBreak={autoStartBreak}
+                  setAutoStartBreak={setAutoStartBreak}
+                />
+                <AlertSound
+                  selectedAlert={selectedAlert}
+                  setSelectedAlert={setSelectedAlert}
+                />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
+                <Blur blur={blur} setBlur={setBlur} />
+                <ChangeBackground />
               </div>
-              <Brightness
-                brightness={brightness}
-                setBrightness={setBrightness}
-              />
-              <Timers
-                pomodoroTime={pomodoroTime}
-                setPomodoroTime={setPomodoroTime}
-                shortBreakTime={shortBreakTime}
-                setShortBreakTime={setShortBreakTime}
-                longBreakTime={longBreakTime}
-                setLongBreakTime={setLongBreakTime}
-                setShowSettings={setShowSettings}
-              />
-              <AutoStarBreak
-                autoStartBreak={autoStartBreak}
-                setAutoStartBreak={setAutoStartBreak}
-              />
-              <AlertSound
-                selectedAlert={selectedAlert}
-                setSelectedAlert={setSelectedAlert}
-              />
-              <Font
-                selectedFont={selectedFont}
-                setSelectedFont={setSelectedFont}
-              />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
-              <Blur blur={blur} setBlur={setBlur} />
-              <ChangeBackground />
-            </div>
-          )}
+            )}
+          </div>
         </Offcanvas.Body>
         <AboutModal setShowSettings={setShowSettings} />
       </Offcanvas>
