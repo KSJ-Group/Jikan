@@ -14,7 +14,7 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
     setSelectedFont(target.value);
   };
 
-  const fonts = ["Courier", "Monaco", "Tahoma", "Trebuchet MS", "Verdana"];
+  const fonts = ["Andale Mono", "Courier New", "Monaco", "Tahoma", "Trebuchet MS", "Verdana"];
   const [availFonts, setFonts] = useState<string[]>(fonts);
 
   return (
