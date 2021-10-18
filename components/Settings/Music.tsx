@@ -26,6 +26,14 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
       url: '//www.youtube.com/embed/8N-eLvmheSE?autoplay=1'
     },
     {
+      title: 'Fallout Radio',
+      url: '//www.youtube.com/embed/Ya3WXzEBL1E?autoplay=1'
+    },
+    {
+      title: 'Indie / Pop / Rock',
+      url: '//www.youtube.com/embed/1itSqkbXIlU?autoplay=1'
+    },
+    {
       title: 'Lofi Hip Hop',
       url: '//www.youtube.com/embed/5qap5aO4i9A?autoplay=1'
     },
