@@ -32,7 +32,7 @@
   margin-top: 20px;
   cursor: default;
   z-index: 2;
-  color: black;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -119,5 +119,19 @@
 
 .settingsIcon:hover {
   color: #fffbfb;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.fullscreen {
+  width: 20px;
+  height: 20px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 /*# sourceMappingURL=Navbar.module.css.map */

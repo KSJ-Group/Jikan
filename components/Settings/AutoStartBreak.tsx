@@ -1,26 +1,47 @@
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import styles from '../../styles/Settings/Settings.module.css';
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import styles from "../../styles/Settings/Settings.module.css";
 
 interface Props {
-  autoStartBreak: boolean,
-  setAutoStartBreak: Function
+  autoStartBreak: string;
+  setAutoStartBreak: Function;
 }
 
-const AutoStartBreak: React.FC<Props> = ({ autoStartBreak, setAutoStartBreak }) => {
+const AutoStartBreak: React.FC<Props> = ({
+  autoStartBreak,
+  setAutoStartBreak,
+}) => {
+  const choices = ["Off", "Short break", "Long break"];
+
+  const checkIfChecked = (choice: string): boolean => {
+    if (choice === autoStartBreak) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div>
-      <Form.Group className={styles.toggle}>
-        <Form.Label>Auto-start breaks?</Form.Label>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          checked={autoStartBreak}
-          onChange={() => setAutoStartBreak(!autoStartBreak)}
-        />
+      <Form.Group className={styles.autoStart}>
+        <Form.Label>Auto-start breaks</Form.Label>
+        <div className={styles.toggles}>
+          {choices.map((choice) => {
+            return (
+              <Form.Check
+                key={choice}
+                type="radio"
+                name="name"
+                value={choice}
+                label={choice}
+                id={choice + "id"}
+                defaultChecked={checkIfChecked(choice)}
+                onChange={(e) => setAutoStartBreak(e.target.value)}
+              />
+            );
+          })}
+        </div>
       </Form.Group>
     </div>
-
   );
 };
 

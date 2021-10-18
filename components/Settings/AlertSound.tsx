@@ -1,31 +1,60 @@
-import React, { useState } from 'react';
-import { Form } from 'react-bootstrap'
-import styles from '../../styles/Settings/Settings.module.css';
+import React, { useEffect, useState, useContext } from "react";
+import { Form } from "react-bootstrap";
+import styles from "../../styles/Settings/Settings.module.css";
+import { SettingsContext } from "../SettingsContext";
 
 interface Props {
-  selectedAlert: string,
-  setSelectedAlert: Function
+  selectedAlert: string;
+  setSelectedAlert: Function;
 }
 
-const AlertSound: React.FC<Props> = ( { selectedAlert, setSelectedAlert} ) => {
+const { Howl } = require("howler");
+var alert: any;
+
+const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert }) => {
+  const [availAlerts, setAlerts] = useState<string[]>([]);
+  const { allAlarms } = useContext(SettingsContext);
+
+  useEffect(() => {
+    alert = new Howl({
+      src: selectedAlert,
+      volume: 0.5,
+    });
+  }, [selectedAlert]);
+
+  useEffect(() => {
+    if (allAlarms.length > 1) {
+      setAlerts(allAlarms);
+    }
+  }, [allAlarms]);
 
   const changeAlert = (e: any) => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;
     setSelectedAlert(target.value);
-  }
+  };
 
-  const alerts = ['alarm.wav', 'alarm2.mp3', 'alarm3.mp3', 'alarm4.mp3'];
-  const [availAlerts, setAlerts] = useState<string[]>(alerts);
+  const previewAlert = (): void => {
+    alert.play();
+  };
 
   return (
-    <div>
+    <div className={styles.alertContainer}>
       <Form.Group className={styles.alert}>
         <Form.Label>Alert Sound</Form.Label>
-        <Form.Select defaultValue={selectedAlert} onChange={(e) => changeAlert(e)}>
-          { availAlerts.map(alert => <option key={alert} value={alert}>{alert}</option>) }
+        <Form.Select value={selectedAlert} onChange={(e) => changeAlert(e)}>
+          {availAlerts.map((alert) => (
+            <option key={alert} value={alert}>
+              {alert.slice(0, alert.indexOf("."))}
+            </option>
+          ))}
         </Form.Select>
       </Form.Group>
+      <div>
+        <button onClick={previewAlert} className={styles.previewBtn}>
+          Preview
+        </button>
+      </div>
     </div>
   );
 };

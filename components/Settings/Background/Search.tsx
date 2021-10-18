@@ -65,15 +65,20 @@ const Search: NextPage = () => {
     setPage(newPage);
   };
 
+  const doNothing = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    // do nothing
+    e.preventDefault();
+  }
+
   return (
     <div className={styles.search}>
       <div className={styles.searchTitle}>Image</div>
-      <form>
+      <form onSubmit={(e: any) => doNothing(e)}>
         <input
           type="text"
           value={terms}
           className={styles.searchInput}
-          placeholder="Search image..."
+          placeholder="Mountains, cars, animals, dark, etc."
           onChange={(event: any) => {
             changeTerms(event);
           }}

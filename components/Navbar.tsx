@@ -5,13 +5,6 @@ import Head from 'next/head';
 import Settings from './Settings/Settings';
 import { SettingsContext } from './SettingsContext';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Font from './Settings/Font';
-
-library.add(faBars)
-
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
@@ -78,12 +71,12 @@ const Navbar: React.FC = () => {
       </Head>
       <nav className={styles.nav}>
         <div className={styles.mainLinks}>
-          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Digital Clock</a></Link>
+          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Clock</a></Link>
           <div className={styles.line}>|</div>
-          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro Timer</a></Link>
+          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro</a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
-          <FontAwesomeIcon className={styles.settingsIcon} icon={faBars} size="lg" />
+          <img className={styles.menuIcon} src='/images/menu.png' alt='menu icon' />
           <div className={styles.settingsWord}>Settings</div>
         </div>
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />

@@ -3,26 +3,56 @@
   flex-direction: row;
 }
 
-.settings {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+.settingsDiv {
+  border: none;
 }
 
-.header {
-  background: white;
-  // border-bottom: 1px solid white;
+.settings {
+  color: rgb(248, 248, 248);
+  overflow-x: hidden;
+  border: none;
+}
+
+.body {
+  background-color: rgb(34, 34, 34);
+  overflow-x: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .settingsTop {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.topLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.settingsTitle {
+  font-size: 30px;
+}
+
+.profileIcon {
+  position: relative;
+  margin-top: 3px;
+  // margin-left: -20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  filter: invert(1);
 }
 
 .x {
   position: relative;
-  top: 5px;
+  margin-top: 6px;
   height: 30px;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color: #efefef;
 }
 
 .pomodoro {
@@ -38,24 +68,44 @@
 }
 
 .login {
-  display: inline-flex;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   width: 100%;
-  margin: 15px;
+  margin: 15px 0 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid white;
 }
 
-.loginLink {
-  font-size: 18px;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
+.subDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.loginBtn {
+  width: 100px;
+}
+
+.logoutBtn {
+  width: 100px;
+}
+
+.greeting {
+  width: 100%;
+  padding-bottom: 5px;
+  font-size: 25px;
+}
+
+.modalBody {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .brightness {
   width: 100%;
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
   font-size: 18px;
 }
 
@@ -77,7 +127,6 @@
 .timers {
   display: flex;
   flex-direction: row;
-  // justify-content: space-evenly;
   font-size: 18px;
   margin-bottom: 20px;
 }
@@ -109,22 +158,97 @@
   width: 55px;
   border-radius: 5px;
   font-size: 15px;
+  background-color: #efefef;
+}
+
+.autoStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.timeFormat {
+  margin-bottom: 10px;
+}
+
+.showSeconds {
+  margin: 10px 0 10px;
+}
+
+.blur {
+  margin: 10px 0 10px;
 }
 
 .toggle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px;
   font-size: 18px;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.alertContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .alert {
   font-size: 18px;
   margin-bottom: 10px;
+  width: 90%;
+  margin-right: 10px;
+}
+
+.previewBtn {
+  position: relative;
+  top: 11px;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  text-align: center;
 }
 
 .font {
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.music {
+  margin: 10px 0 20px;
+}
+
+.musicDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.stop {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.aboutContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.about {
+  position: fixed;
+  bottom: 10px;
+  font-size: 20px;
+  background-color: rgba(248, 248, 248, 0.349);
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
 }

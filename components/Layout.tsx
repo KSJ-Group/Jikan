@@ -3,14 +3,9 @@ import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faExpand } from '@fortawesome/free-solid-svg-icons';
 import { BrightnessDiv } from '../styles/Global/global.style';
-
-library.add(
-  faExpand
-);
+import YouTube from './YouTube';
+import styles from '../styles/Navbar/Navbar.module.css';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -35,9 +30,13 @@ const Layout: React.FC = ({ children }) => {
       <div id='layout'>
         <BackgroundProvider>
           <Navbar />
-          <div onClick={() => toggleFullscreen()} className='fs'><FontAwesomeIcon icon={faExpand} size='lg' /><div className='fsText'>Fullscreen</div></div>
+          <div onClick={() => toggleFullscreen()} className='fs'>
+            <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
+            <div className='fsText'>Fullscreen</div>
+          </div>
           <Background />
           {children}
+          <YouTube />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

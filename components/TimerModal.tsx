@@ -5,9 +5,10 @@ import Button from "react-bootstrap/Button";
 interface Props {
   show: boolean;
   handleClose: any;
+  breakFromModal(choice: string): void;
 }
 
-const TimerModal: React.FC<Props> = ({ show, handleClose }) => {
+const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
   return (
     <>
       <Modal
@@ -20,15 +21,42 @@ const TimerModal: React.FC<Props> = ({ show, handleClose }) => {
         <Modal.Header closeButton>
           <Modal.Title>Timer Done</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Timer done!</Modal.Body>
+        <Modal.Body>Timer done! Select an option below.</Modal.Body>
         <Modal.Footer>
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              breakFromModal("pomodoro");
+              handleClose();
+            }}
+          >
+            Start Pomodoro
+          </Button>
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              breakFromModal("shortBreak");
+              handleClose();
+            }}
+          >
+            Start Short Break
+          </Button>
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              breakFromModal("longBreak");
+              handleClose();
+            }}
+          >
+            Start Long Break
+          </Button>
           <Button
             variant="primary"
             onClick={() => {
               handleClose();
             }}
           >
-            Done
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

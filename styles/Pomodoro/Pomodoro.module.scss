@@ -35,7 +35,7 @@
   align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
-  top: 20px;
+  // top: 20px;
   width: 100%;
   height: 20%;
 }
@@ -52,7 +52,7 @@
 .timerDiv {
   @include flexCenter();
   width: 100%;
-  height: 60%;
+  height: 50%;
   font-size: 15vw;
   color: white;
   font-weight: bold;
@@ -66,135 +66,22 @@
   align-items: flex-start;
   width: 100%;
   height: 20%;
+  @media screen and (max-width: 1000px) {
+    align-items: flex-end;
+  }
 }
 
 .startBtn {
   position: relative;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 10px 20px 10px;
+  border-radius: 5px;
   font-size: 3vh;
-  background-color: rgb(208, 208, 208);
+  background-color: rgb(241, 241, 241);
   cursor: pointer;
   &:hover {
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(230, 230, 230);
   }
   @media screen and (max-width: 800px) {
-    top: -50px;
+    top: -20px;
   }
 }
-
-// @mixin flexCenter() {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .pomodoro {
-//   height: 100vh;
-//   width: 100vw;
-//   @include flexCenter();
-// }
-
-// .container {
-//   width: 50vw;
-//   height: 55vh;
-//   z-index: 3;
-//   @include flexCenter();
-//   flex-direction: column;
-//   background-color: rgba(0, 0, 0, 0.4);
-//   cursor: default;
-//   overflow: hidden;
-//   @media screen and (min-width: $xxl) {
-//     width: 50vw;
-//     height: 55svh;
-//   }
-//   @media screen and (max-width: $xl) {
-//     width: 50vw;
-//     height: 55vh;
-//   }
-//   @media screen and (max-width: $l) {
-//     width: 80vw;
-//     height: 55vh;
-//   }
-//   @media screen and (max-width: $m) {
-//     width: 80vw;
-//     height: 50vh;
-//   }
-//   @media screen and (max-width: $s) {
-//     width: 80vw;
-//     height: 50vh;
-//   }
-//   @media screen and (max-width: $phone) {
-//     width: 80vw;
-//     height: 45vh;
-//   }
-// }
-
-// .links {
-//   @include flexCenter();
-//   flex-direction: row;
-//   position: relative;
-//   // top: 40px;
-//   z-index: 3;
-//   color: white;
-//   @media screen and (max-width: $phone) {
-//     width: 70vw;
-//     flex-wrap: wrap;
-//     top: 4vh;
-//   }
-// }
-
-// .link {
-//   margin: 30px;
-//   font-size: 2vw;
-//   border-radius: 5px;
-//   padding: 10px;
-//   cursor: pointer;
-//   @media screen and (max-width: 678px) {
-//     margin: 10px;
-//   }
-//   @media screen and (max-width: $phone) {
-//     font-size: 4vw;
-//     margin: 10px;
-//     padding: 5px;
-//   }
-// }
-
-// .timerDiv {
-//   width: 100%;
-//   height: 20vh;
-//   @include flexCenter();
-// }
-
-// .timer {
-//   z-index: 2;
-//   position: relative;
-//   font-size: 13vw;
-//   font-weight: bold;
-//   text-align: center;
-//   color: white;
-//   @media screen and (max-width: $phone) {
-//     font-size: 70px;
-//     top: -10px;
-//   }
-// }
-
-// .startBtn {
-//   position: relative;
-//   padding: 20px;
-//   // bottom: 10%;
-//   border-radius: 10px;
-//   background-color: rgb(208, 208, 208);
-//   cursor: pointer;
-//   font-size: 2vw;
-//   font-weight: bold;
-//   z-index: 3;
-//   @media screen and (max-width: $phone) {
-//     font-size: 4vw;
-//     padding: 15px;
-//     bottom: 10vw;
-//   }
-//   &:hover {
-//     background-color: rgb(189, 189, 189);
-//   }
-// }

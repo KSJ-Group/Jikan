@@ -7,11 +7,11 @@ interface Props {
   setShowSeconds: Function
 }
 
-const ShowSeconds: React.FC<Props> = ( {showSeconds, setShowSeconds}) => {
+const ShowSeconds: React.FC<Props> = ({ showSeconds, setShowSeconds }) => {
   return (
-    <div>
+    <div className={styles.showSeconds}>
       <Form.Group className={styles.toggle}>
-        <Form.Label>Show seconds?</Form.Label>
+        <Form.Label>Show seconds</Form.Label>
         <Form.Check
           type="switch"
           id="custom-switch"
