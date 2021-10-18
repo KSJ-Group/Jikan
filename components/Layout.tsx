@@ -30,6 +30,12 @@ const Layout: React.FC = ({ children }) => {
     }
   }
 
+  const handleClick = (): void => {
+    if (selectedMusic !== 'None') {
+      window.open(selectedMusic, "_blank");
+    }
+  }
+
   return (
     <BrightnessDiv brightness={brightness.toString() + '%'}>
       <div id='layout'>
@@ -42,7 +48,9 @@ const Layout: React.FC = ({ children }) => {
           <Background />
           {children}
           <YouTube />
-          {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : <img src='/images/record.png' alt='vinyl record' className={styles.record2} />}
+          <div onClick={handleClick}>
+            {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : <img src='/images/record.png' alt='vinyl record' className={styles.record2} />}
+          </div>
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

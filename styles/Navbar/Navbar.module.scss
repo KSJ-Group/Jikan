@@ -113,6 +113,13 @@
   height: 60px;
   object-fit: contain;
   animation: spinner 3s linear infinite;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    width: 62px;
+    height: 62px;
+    margin: 9px;
+  }
 }
 
 .record2 {
