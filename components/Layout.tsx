@@ -111,9 +111,13 @@ const Layout: React.FC = ({ children }) => {
           <Background />
           {children}
           <YouTube />
-          <div onClick={handleClick}>
-            {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : <img src='/images/record.png' alt='vinyl record' className={styles.record2} />}
-          </div>
+          {selectedMusic !== 'None' ?
+            <div className={styles.recordDiv} onClick={handleClick}>
+              <img src='/images/record.png' alt='vinyl record' className={styles.record} />
+            </div> :
+            <div className={styles.recordDiv2} onClick={handleClick}>
+              <img src='/images/record.png' alt='vinyl record' className={styles.record2} />
+            </div>}
         </BackgroundProvider>
       </div>
     </BrightnessDiv>
