@@ -58,6 +58,14 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
     }
   }, [selectedMusic])
 
+  useEffect(() => {
+    if (currentTitle !== 'None') {
+      setPlaying(true);
+    } else {
+      setPlaying(false);
+    }
+  }, [currentTitle])
+
   const changeMusic = (e: any): void => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;
