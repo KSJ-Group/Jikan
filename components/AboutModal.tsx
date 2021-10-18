@@ -43,11 +43,11 @@ const AboutModal: React.FC<Props> = ({ setShowSettings }) => {
 
             <h2>Creators</h2>
             <div>
-              This application was built by a team of three:
+              <div>Connect with us:</div>
               <ul>
-                <li><a href='https://linkedin.com/in/seiji-matsumoto' target="_blank">Seiji Matsumoto</a></li>
-                <li><a href='https://www.linkedin.com/in/katielaw1997/' target="_blank">Katie Law</a></li>
-                <li><a href='https://www.linkedin.com/in/juneh-lee/' target="_blank">June Lee</a></li>
+                <li>Seiji Matsumoto <a href='https://linkedin.com/in/seiji-matsumoto' target="_blank">LinkedIn</a> | <a href='https://github.com/SeijiMatsumoto' target="_blank">GitHub</a></li>
+                <li>Katie Law <a href='https://www.linkedin.com/in/katielaw1997/' target="_blank">LinkedIn</a> | <a href='https://github.com/katscap' target="_blank">GitHub</a></li>
+                <li>June Lee <a href='https://www.linkedin.com/in/juneh-lee/' target="_blank">LinkedIn</a> | <a href='https://github.com/juneisenuj' target="_blank">GitHub</a></li>
               </ul>
               <p />
 
