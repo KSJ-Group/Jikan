@@ -116,47 +116,47 @@ export const SettingsContext = createContext({
     },
     {
       title: 'Fallout Radio',
-      url: '//www.youtube.com/embed/Ya3WXzEBL1E?autoplay=1'
+      url: 'Ya3WXzEBL1E'
     },
     {
       title: 'Indie / Pop / Rock',
-      url: '//www.youtube.com/embed/1itSqkbXIlU?autoplay=1'
+      url: '1itSqkbXIlU'
     },
     {
       title: 'Lofi Hip Hop',
-      url: '//www.youtube.com/embed/5qap5aO4i9A?autoplay=1'
+      url: '5qap5aO4i9A'
     },
     {
       title: 'Nintendo Radio',
-      url: '//www.youtube.com/embed/tOnOutGHcRQ?autoplay=1'
+      url: 'tOnOutGHcRQ'
     },
     {
       title: 'Relaxing Sleep',
-      url: '//www.youtube.com/embed/n4M8j6ic1Ts?autoplay=1'
+      url: 'n4M8j6ic1Ts'
     },
     {
       title: 'Soothing Rain',
-      url: '//www.youtube.com/embed/ZddHkhVUf2c?autoplay=1'
+      url: 'ZddHkhVUf2c'
     },
     {
       title: 'Sounds of Nature',
-      url: '//www.youtube.com/embed/gfo2xZ2SMjc?autoplay=1'
+      url: 'gfo2xZ2SMjc'
     },
     {
       title: 'Spooky Halloween Music',
-      url: '//www.youtube.com/embed/qJSLmjzLnAM?autoplay=1'
+      url: 'qJSLmjzLnAM'
     },
     {
       title: 'The Beatles Greatest Hits',
-      url: '//www.youtube.com/embed/XAtsnyaJziM?autoplay=1'
+      url: 'XAtsnyaJziM'
     },
     {
       title: 'The Good Life',
-      url: '//www.youtube.com/embed/36YnV9STBqc?autoplay=1'
+      url: '36YnV9STBqc'
     },
     {
       title: 'Weekend Jazz',
-      url: '//www.youtube.com/embed/uKTUW9niMYg?autoplay=1'
+      url: 'uKTUW9niMYg'
     },
   ]
 });
@@ -203,43 +203,43 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
     {
       title: 'Fallout Radio',
-      url: '//www.youtube.com/embed/Ya3WXzEBL1E?autoplay=1'
+      url: 'Ya3WXzEBL1E'
     },
     {
       title: 'Indie / Pop / Rock',
-      url: '//www.youtube.com/embed/1itSqkbXIlU?autoplay=1'
+      url: '1itSqkbXIlU'
     },
     {
       title: 'Lofi Hip Hop',
-      url: '//www.youtube.com/embed/5qap5aO4i9A?autoplay=1'
+      url: '5qap5aO4i9A'
     },
     {
       title: 'Nintendo Radio',
-      url: '//www.youtube.com/embed/tOnOutGHcRQ?autoplay=1'
+      url: 'tOnOutGHcRQ'
     },
     {
       title: 'Relaxing Sleep',
-      url: '//www.youtube.com/embed/n4M8j6ic1Ts?autoplay=1'
+      url: 'n4M8j6ic1Ts'
     },
     {
       title: 'Soothing Rain',
-      url: '//www.youtube.com/embed/ZddHkhVUf2c?autoplay=1'
+      url: 'ZddHkhVUf2c'
     },
     {
       title: 'Sounds of Nature',
-      url: '//www.youtube.com/embed/gfo2xZ2SMjc?autoplay=1'
+      url: 'gfo2xZ2SMjc'
     },
     {
       title: 'Spooky Halloween Music',
-      url: '//www.youtube.com/embed/qJSLmjzLnAM?autoplay=1'
+      url: 'qJSLmjzLnAM'
     },
     {
       title: 'The Good Life',
-      url: '//www.youtube.com/embed/36YnV9STBqc?autoplay=1'
+      url: '36YnV9STBqc'
     },
     {
       title: 'Weekend Jazz',
-      url: '//www.youtube.com/embed/uKTUW9niMYg?autoplay=1'
+      url: 'uKTUW9niMYg'
     },
   ]);
 
