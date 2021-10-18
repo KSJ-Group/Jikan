@@ -348,4 +348,22 @@
 .infoModal {
   width: 100vw;
 }
+
+.emailDiv {
+  padding: 10px;
+  background-color: #153b66;
+  border-radius: 10px;
+  text-align: center;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.emailBtn {
+  text-decoration: none;
+  color: white;
+}
+
+.emailBtn:hover {
+  color: white;
+}
 /*# sourceMappingURL=Settings.module.css.map */
