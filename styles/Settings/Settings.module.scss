@@ -257,19 +257,41 @@
   width: 100vw;
 }
 
+.modalDiv a {
+  text-decoration: none;
+  color: rgb(21, 59, 102);
+}
+
+.modalDiv div {
+  margin-top: 15px;
+}
+
 .emailDiv {
   padding: 10px;
   background-color: rgb(21, 59, 102);
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   width: 100px;
   margin: 0 auto;
+  color: white;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: rgb(18, 42, 70);
+  }
 }
 
 .emailBtn {
   text-decoration: none;
-  color: white;
   &:hover {
     color: white;
+  }
+}
+
+.modalBtn {
+  background-color: white;
+  color: rgb(21, 59, 102);
+  &:hover {
+    color: white;
+    background-color: rgb(21, 59, 102);
   }
 }

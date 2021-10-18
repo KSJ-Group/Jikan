@@ -349,21 +349,46 @@
   width: 100vw;
 }
 
+.modalDiv a {
+  text-decoration: none;
+  color: #153b66;
+}
+
+.modalDiv div {
+  margin-top: 15px;
+}
+
 .emailDiv {
   padding: 10px;
   background-color: #153b66;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   width: 100px;
   margin: 0 auto;
+  color: white;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.emailDiv:hover {
+  background-color: #122a46;
 }
 
 .emailBtn {
   text-decoration: none;
-  color: white;
 }
 
 .emailBtn:hover {
   color: white;
+}
+
+.modalBtn {
+  background-color: white;
+  color: #153b66;
+}
+
+.modalBtn:hover {
+  color: white;
+  background-color: #153b66;
 }
 /*# sourceMappingURL=Settings.module.css.map */
