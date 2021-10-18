@@ -43,7 +43,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
     },
     {
       title: 'Spooky Halloween Music',
-      url: 'https://www.youtube.com/embed/v=qJSLmjzLnAM?autoplay=1'
+      url: 'https://www.youtube.com/embed/qJSLmjzLnAM?autoplay=1'
     }
   ]
   const [availMusic, setAvailMusic] = useState<{ title: string, url: string }[]>(music);
