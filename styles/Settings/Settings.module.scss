@@ -27,10 +27,11 @@
 }
 
 .subBody {
-  overflow-x: scroll;
-  overflow-y: visible;
-  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
   width: 400px;
+
   @media screen and (max-width: 425px) {
     width: 92vw;
   }
@@ -287,15 +288,18 @@
   display: flex;
   justify-content: center;
   position: relative;
-  left: 10px;
+  height: 120px;
+  background-color: rgb(34, 34, 34);
 }
 
 .about {
-  position: fixed;
-  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
   background-color: rgba(248, 248, 248, 0.349);
   padding: 3px;
+  margin: 10px;
   border-radius: 5px;
   cursor: pointer;
 }
