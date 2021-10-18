@@ -206,6 +206,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 450px) {
+  .recordDiv {
+    top: 60px;
+  }
+}
+
 .recordDiv2 {
   position: absolute;
   bottom: 0;
@@ -224,6 +230,12 @@
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   margin: 10px;
+}
+
+@media screen and (max-width: 450px) {
+  .recordDiv2 {
+    top: 60px;
+  }
 }
 
 .record {

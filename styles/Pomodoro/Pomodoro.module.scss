@@ -28,6 +28,9 @@
   @media screen and (max-width: 800px) {
     width: 80vw;
   }
+  @media screen and (max-width: 450px) {
+    margin-top: -200px;
+  }
 }
 
 .linksDiv {

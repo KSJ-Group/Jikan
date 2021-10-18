@@ -133,6 +133,9 @@
   transform: scale(1);
   animation: pulse 2s infinite;
   cursor: pointer;
+  @media screen and (max-width: 450px) {
+    top: 60px;
+  }
 }
 
 .recordDiv2 {
@@ -149,6 +152,9 @@
   &:hover {
     transform: scale(1.05);
     margin: 10px;
+  }
+  @media screen and (max-width: 450px) {
+    top: 60px;
   }
 }
 

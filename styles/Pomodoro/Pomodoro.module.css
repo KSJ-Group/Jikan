@@ -39,6 +39,12 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .container {
+    margin-top: -200px;
+  }
+}
+
 .linksDiv {
   display: -webkit-box;
   display: -ms-flexbox;
