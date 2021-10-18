@@ -42,7 +42,7 @@ const Layout: React.FC = ({ children }) => {
           <Background />
           {children}
           <YouTube />
-          {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : null}
+          {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : <img src='/images/record.png' alt='vinyl record' className={styles.record2} />}
         </BackgroundProvider>
       </div>
     </BrightnessDiv>
