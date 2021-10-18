@@ -5,13 +5,6 @@ import Head from 'next/head';
 import Settings from './Settings/Settings';
 import { SettingsContext } from './SettingsContext';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Font from './Settings/Font';
-
-library.add(faBars)
-
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);

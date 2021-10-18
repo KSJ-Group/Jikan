@@ -14,7 +14,6 @@ import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
-import Image from 'next';
 
 interface Props {
   showSettings: boolean;
@@ -52,6 +51,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setMusic
   } = useContext(SettingsContext);
 
+
   return (
     <div className={styles.settingsDiv}>
       <Offcanvas
@@ -61,12 +61,12 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
+          <Login />
           {isClock ? (
             // Clock settings
             <div>
               <div className={styles.settingsTop}>
-                <h2>Clock Settings</h2>
-                <img src="/images/profile.png" alt='profile icon' className={styles.profileIcon} />
+                <div className={styles.settingsTitle}>Clock Settings</div>
                 <button
                   className={styles.x}
                   onClick={() => setShowSettings(false)}
@@ -95,8 +95,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             // Pomodoro settings
             <div>
               <div className={styles.settingsTop}>
-                <h2>Pomodoro Settings</h2>
-                <img src="/images/profile.png" alt='profile icon' className={styles.profileIcon2} />
+                <div className={styles.settingsTitle}>Pomodoro Settings</div>
                 <button
                   className={styles.x}
                   onClick={() => setShowSettings(false)}
