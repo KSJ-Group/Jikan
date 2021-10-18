@@ -3,6 +3,7 @@ import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
+import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import YouTube from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
@@ -10,6 +11,10 @@ import styles from '../styles/Navbar/Navbar.module.css';
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const { brightness } = useContext(StylesContext);
+
+  const {
+    selectedMusic
+  } = useContext(SettingsContext);
 
   const toggleFullscreen = (): void => {
     if (isFullscreen) {
@@ -37,6 +42,7 @@ const Layout: React.FC = ({ children }) => {
           <Background />
           {children}
           <YouTube />
+          {selectedMusic !== 'None' ? <img src='/images/record.png' alt='vinyl record' className={styles.record} /> : null}
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

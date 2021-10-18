@@ -133,4 +133,31 @@
   -webkit-filter: invert(1);
           filter: invert(1);
 }
+
+@-webkit-keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.record {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-animation: spinner 3s linear infinite;
+          animation: spinner 3s linear infinite;
+}
 /*# sourceMappingURL=Navbar.module.css.map */

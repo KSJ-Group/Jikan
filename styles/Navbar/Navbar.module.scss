@@ -97,3 +97,20 @@
   height: 20px;
   filter: invert(1);
 }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.record {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  animation: spinner 3s linear infinite;
+}
