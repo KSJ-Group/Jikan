@@ -93,7 +93,6 @@ const Clock: React.FC = () => {
         {is12andSeconds ? <div className={styles.timeC}>{time}</div> : null}
         {is12 ? <div className={styles.timeD}>{time}</div> : null}
       </ClockFont>
-
     </div>
   );
 };

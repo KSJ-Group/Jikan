@@ -359,6 +359,10 @@ const pomodoro: NextPage = () => {
     }
   }, [shortBreak, longBreak]);
 
+  useEffect(() => {
+    console.log('Font:', selectedFont)
+  }, [selectedFont])
+
   return (
     <div className={styles.pomodoro}>
       <div className={styles.container}>
@@ -372,6 +376,11 @@ const pomodoro: NextPage = () => {
             rel="icon"
             href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
           />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet" />
         </Head>
         <div className={styles.linksDiv}>
           <div
@@ -399,15 +408,15 @@ const pomodoro: NextPage = () => {
         <div className={styles.timerDiv}>
           <ClockFont font={selectedFont}>
             {pomodoro ? (
-              <div className={styles.timer}>{pomodoroTime2}</div>
+              <div>{pomodoroTime2}</div>
             ) : null}
             {shortBreak ? (
-              <div className={styles.timer} id="shortBreak">
+              <div id="shortBreak">
                 {shortBreakTime2}
               </div>
             ) : null}
             {longBreak ? (
-              <div className={styles.timer}>{longBreakTime2}</div>
+              <div>{longBreakTime2}</div>
             ) : null}
           </ClockFont>
         </div>
@@ -425,25 +434,29 @@ const pomodoro: NextPage = () => {
             </div>
           )}
         </div>
-        {showModal ? (
-          <AreYouSureModal
-            show={showModal}
-            handleClose={handleClose}
-            switchToPom={switchToPom}
-            switchToShort={switchToShort}
-            switchToLong={switchToLong}
-            targetMode={targetMode}
-          />
-        ) : null}
-        {timerModal ? (
-          <TimerDoneModal
-            show={timerModal}
-            breakFromModal={breakFromModal}
-            handleClose={alarmHandler}
-          />
-        ) : null}
-      </div>
-    </div>
+        {
+          showModal ? (
+            <AreYouSureModal
+              show={showModal}
+              handleClose={handleClose}
+              switchToPom={switchToPom}
+              switchToShort={switchToShort}
+              switchToLong={switchToLong}
+              targetMode={targetMode}
+            />
+          ) : null
+        }
+        {
+          timerModal ? (
+            <TimerDoneModal
+              show={timerModal}
+              breakFromModal={breakFromModal}
+              handleClose={alarmHandler}
+            />
+          ) : null
+        }
+      </div >
+    </div >
   );
 };
 

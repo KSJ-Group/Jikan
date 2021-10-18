@@ -2,12 +2,12 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const StylesContext = createContext(
   {
-    selectedFont: 'Courier New',
-    setSelectedFont: (font: string) => {},
+    selectedFont: '',
+    setSelectedFont: (font: string) => { },
     brightness: 100,
-    setBrightness: (percentage: number) => {},
+    setBrightness: (percentage: number) => { },
     blur: false,
-    setBlur: (blur: boolean) => {}
+    setBlur: (blur: boolean) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
