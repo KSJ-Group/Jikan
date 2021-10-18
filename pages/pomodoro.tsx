@@ -368,8 +368,10 @@ const pomodoro: NextPage = () => {
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          <meta name="description" content="Track time" />
-          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="icon"
+            href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
+          />
         </Head>
         <div className={styles.linksDiv}>
           <div
