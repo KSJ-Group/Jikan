@@ -57,6 +57,15 @@ const pomodoro: NextPage = () => {
   }, []);
 
   useEffect(() => {
+    window.addEventListener('beforeunload', function (e) {
+      if (started) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    })
+  }, [started])
+
+  useEffect(() => {
     alert = new Howl({
       src: selectedAlert,
       loop: true,

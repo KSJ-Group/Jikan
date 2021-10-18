@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "getFileNames.js",
-    "pages/api/getAlarms.ts"
+    "pages/api/getAlarms.ts",
+    "pages/api/blocker.js"
   ],
   "exclude": ["node_modules"]
 }

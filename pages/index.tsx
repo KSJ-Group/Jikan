@@ -5,6 +5,7 @@ import styles from "../styles/Main/Main.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home: NextPage = () => {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -57,6 +58,7 @@ const Home: NextPage = () => {
           src="https://kit.fontawesome.com/5a44324c7d.js"
           crossOrigin="anonymous"
         ></script>
+
       </Head>
       <Clock />
     </div>
