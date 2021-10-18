@@ -135,7 +135,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             </div>
           )}
         </Offcanvas.Body>
-        <AboutModal />
+        <AboutModal setShowSettings={setShowSettings} />
       </Offcanvas>
     </div>
   );

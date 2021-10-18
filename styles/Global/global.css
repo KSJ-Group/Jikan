@@ -78,7 +78,9 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal {
-  width: 900px;
+@media screen and (max-width: 600px) {
+  .modal {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=global.css.map */

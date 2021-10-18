@@ -3,7 +3,11 @@ import Modal from 'react-bootstrap/Modal';
 import styles from '../styles/Settings/Settings.module.css';
 import Button from 'react-bootstrap/Button';
 
-const AboutModal: React.FC = () => {
+interface Props {
+  setShowSettings: Function
+}
+
+const AboutModal: React.FC<Props> = ({ setShowSettings }) => {
   const [showModal, setShow] = useState<boolean>(false);
 
   const handleClose = () => {
@@ -11,6 +15,7 @@ const AboutModal: React.FC = () => {
   }
 
   const handleOpen = () => {
+    // setShowSettings(false);
     setShow(true);
   }
 
