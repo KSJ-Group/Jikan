@@ -72,12 +72,8 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-// @media only screen and (max-width: 600px) {
-//   .fs {
-//     display: none;
-//   }
-// }
-
-// .offcanvas {
-//   background-color: rgba(0, 0, 0, 0);
-// }
+.modal {
+  // width: 90vw;
+  // max-width: 90vw;
+  width: 900px;
+}

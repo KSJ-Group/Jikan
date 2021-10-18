@@ -68,10 +68,6 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
     }
   };
 
-  const stopMusic = (): void => {
-    setMusic('None');
-  };
-
   return (
     <div className={styles.music}>
       <Form.Group className={styles.font}>

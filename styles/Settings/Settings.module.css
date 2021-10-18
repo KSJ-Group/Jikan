@@ -325,4 +325,23 @@
   padding: 5px;
   border-radius: 5px;
 }
+
+.aboutContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about {
+  position: fixed;
+  bottom: 10px;
+  font-size: 20px;
+  background-color: rgba(248, 248, 248, 0.349);
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=Settings.module.css.map */

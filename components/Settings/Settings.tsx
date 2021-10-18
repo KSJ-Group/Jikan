@@ -14,6 +14,7 @@ import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
+import AboutModal from "../AboutModal";
 
 interface Props {
   showSettings: boolean;
@@ -134,6 +135,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
             </div>
           )}
         </Offcanvas.Body>
+        <AboutModal />
       </Offcanvas>
     </div>
   );
