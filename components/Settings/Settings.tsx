@@ -67,6 +67,13 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     }
   }, []);
 
+
+  const handleClick = (): void => {
+    if (selectedMusic !== 'None') {
+      window.open(selectedMusic, "_blank");
+    }
+  }
+
   return (
     <div className={styles.settingsDiv}>
       <Offcanvas
