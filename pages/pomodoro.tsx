@@ -359,10 +359,6 @@ const pomodoro: NextPage = () => {
     }
   }, [shortBreak, longBreak]);
 
-  useEffect(() => {
-    console.log('Font:', selectedFont)
-  }, [selectedFont])
-
   return (
     <div className={styles.pomodoro}>
       <div className={styles.container}>
@@ -372,15 +368,6 @@ const pomodoro: NextPage = () => {
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          <link
-            rel="icon"
-            href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
-          />
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet" />
         </Head>
         <div className={styles.linksDiv}>
           <div
