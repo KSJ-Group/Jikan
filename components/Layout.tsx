@@ -5,7 +5,7 @@ import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
 import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
-import YouTube from './YouTube';
+import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
 
 const Layout: React.FC = ({ children }) => {
@@ -52,7 +52,7 @@ const Layout: React.FC = ({ children }) => {
           </div>
           <Background />
           {children}
-          <YouTube />
+          <YouTubePlayer />
           {selectedMusic !== 'None' ?
             <div className={styles.recordDiv} onClick={handleClick}>
               <img src='/images/record.png' alt='vinyl record' className={styles.record} />
