@@ -5,7 +5,7 @@ export const BackgroundContext = createContext(
     background: '/mountains.jpeg',
     changeBackground: (url: string): void => { },
     loaded: true,
-    changeLoadStatus: (status:boolean): void => { },
+    changeLoadStatus: (status: boolean): void => { },
     backgroundType: 'image',
   });
 
@@ -29,7 +29,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
 
     backgroundType: backgroundType,
     loaded: loaded,
-    changeLoadStatus: (status:boolean): void => {
+    changeLoadStatus: (status: boolean): void => {
       setLoaded(status);
     }
   };
