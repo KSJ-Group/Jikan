@@ -13,6 +13,10 @@
   color: rgb(248, 248, 248);
   border: none;
   overflow-x: hidden;
+  width: 425px;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
 }
 
 .body {

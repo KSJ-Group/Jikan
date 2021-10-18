@@ -16,6 +16,13 @@
   color: #f8f8f8;
   border: none;
   overflow-x: hidden;
+  width: 425px;
+}
+
+@media screen and (max-width: 425px) {
+  .settings {
+    width: 100%;
+  }
 }
 
 .body {
