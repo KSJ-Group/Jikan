@@ -48,6 +48,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
   ]
   const [availMusic, setAvailMusic] = useState<{ title: string, url: string }[]>(music);
   const [currentTitle, setCurrent] = useState<string>('');
+  const [musicPlaying, setPlaying] = useState<boolean>(false);
 
   useEffect(() => {
     for (let i = 0; i < availMusic.length; i++) {
@@ -57,16 +58,27 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
     }
   }, [selectedMusic])
 
-  const changeMusic = (e: any) => {
+  const changeMusic = (e: any): void => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;
     for (let i = 0; i < availMusic.length; i++) {
       if (availMusic[i].title === target.value) {
         setMusic(availMusic[i].url);
+        if (target.value === 'None') {
+          setPlaying(false);
+        } else {
+          setPlaying(true);
+        }
         break;
       }
     }
+
   };
+
+  const stopMusic = (): void => {
+    setMusic('None');
+    setPlaying(false);
+  }
 
   return (
     <div className={styles.music}>
@@ -83,6 +95,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic }) => {
               </option>
             ))}
           </Form.Select>
+          {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
         </div>
       </Form.Group>
     </div>
