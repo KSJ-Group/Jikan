@@ -16,15 +16,8 @@
 
 .settings {
   color: #f8f8f8;
-  overflow-x: hidden;
   border: none;
-  width: 425px;
-}
-
-@media screen and (max-width: 425px) {
-  .settings {
-    width: 100vw;
-  }
+  overflow-x: hidden;
 }
 
 .body {
@@ -39,13 +32,6 @@
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
-  width: 400px;
-}
-
-@media screen and (max-width: 425px) {
-  .subBody {
-    width: 92vw;
-  }
 }
 
 .subBody::-webkit-scrollbar {
@@ -175,12 +161,6 @@
   font-size: 18px;
 }
 
-@media screen and (max-width: 425px) {
-  .brightness {
-    width: 90vw;
-  }
-}
-
 .sliderDiv {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -266,36 +246,18 @@
 }
 
 .timeFormat {
-  width: 405px;
+  width: 102%;
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 425px) {
-  .timeFormat {
-    width: 94vw;
-  }
-}
-
 .showSeconds {
-  width: 405px;
+  width: 102%;
   margin: 10px 0 10px;
-}
-
-@media screen and (max-width: 425px) {
-  .showSeconds {
-    width: 94vw;
-  }
 }
 
 .blur {
-  width: 405px;
+  width: 102%;
   margin: 10px 0 10px;
-}
-
-@media screen and (max-width: 425px) {
-  .blur {
-    width: 94vw;
-  }
 }
 
 .changeBG {
@@ -397,7 +359,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  height: 120px;
+  height: 80px;
   background-color: #222222;
 }
 

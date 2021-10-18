@@ -1,16 +1,13 @@
 .page {
   position: relative;
   left: 8px;
-  width: 380px;
+  width: 90%;
   color: white;
   &:hover {
     cursor: pointer;
   }
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: 425px) {
-    width: 90vw;
-  }
 }
 
 .btn {

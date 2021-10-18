@@ -1,7 +1,7 @@
 .page {
   position: relative;
   left: 8px;
-  width: 380px;
+  width: 90%;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13,12 +13,6 @@
 
 .page:hover {
   cursor: pointer;
-}
-
-@media screen and (max-width: 425px) {
-  .page {
-    width: 90vw;
-  }
 }
 
 .btn {
