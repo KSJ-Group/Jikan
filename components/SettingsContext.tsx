@@ -85,6 +85,10 @@ export const SettingsContext = createContext({
       url: '//www.youtube.com/embed/qJSLmjzLnAM?autoplay=1'
     },
     {
+      title: 'The Beatles Greatest Hits',
+      url: '//www.youtube.com/embed/XAtsnyaJziM?autoplay=1'
+    },
+    {
       title: 'The Good Life',
       url: '//www.youtube.com/embed/36YnV9STBqc?autoplay=1'
     },
