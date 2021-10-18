@@ -344,4 +344,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.infoModal {
+  width: 100vw;
+}
 /*# sourceMappingURL=Settings.module.css.map */
