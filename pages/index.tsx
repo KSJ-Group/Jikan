@@ -10,10 +10,8 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Jikan | Clock</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       </Head>
       <Clock />
     </div>
