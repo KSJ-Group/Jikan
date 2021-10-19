@@ -167,6 +167,7 @@
 }
 
 .sliderDiv {
+  width: 99%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

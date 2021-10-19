@@ -149,15 +149,15 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   autoStartBreak={autoStartBreak}
                   setAutoStartBreak={setAutoStartBreak}
                 />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
                 <AlertSound
                   selectedAlert={selectedAlert}
                   setSelectedAlert={setSelectedAlert}
                   alertVolume={alertVolume}
                   setAlertVolume={setAlertVolume}
-                />
-                <Font
-                  selectedFont={selectedFont}
-                  setSelectedFont={setSelectedFont}
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 <Blur blur={blur} setBlur={setBlur} />
