@@ -5,8 +5,9 @@ import YouTube from "react-youtube";
 
 const YouTubePlayer = () => {
   const { selectedMusic } = useContext(SettingsContext);
+  const [player, setPlayer] = useState(null);
 
-  const opts = {
+  const config = {
     height: "0",
     width: "0",
     playerVars: {
@@ -16,8 +17,24 @@ const YouTubePlayer = () => {
     },
   };
 
+  const _onReady = (event) => {
+    console.log(event.target);
+    setPlayer(event.target);
+  };
+
+  useEffect(() => {
+    if (player) {
+      player.setVolume(20);
+    }
+  }, [player]);
+
   return (
-    <YouTube className={styles.iframe} videoId={selectedMusic} opts={opts} />
+    <YouTube
+      className={styles.iframe}
+      videoId={selectedMusic}
+      opts={config}
+      onReady={_onReady}
+    />
   );
 };
 
