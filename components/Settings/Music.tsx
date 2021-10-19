@@ -79,7 +79,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
       <div className={styles.volumeDiv}>
         <label>Music volume</label>
         <div className={styles.sliderDiv}>
-          <input className={styles.brightnessSlider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
+          <input id="slider" className={styles.brightnessSlider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
             min="0" max="100" />
           <div className={styles.indicator}>{musicVolume}%</div>
         </div>

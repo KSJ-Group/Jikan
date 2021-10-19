@@ -16,7 +16,6 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Blacklist from "./Blacklist";
-import $ from 'jquery';
 
 interface Props {
   showSettings: boolean;
@@ -60,6 +59,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   } = useContext(SettingsContext);
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  // const [sliderClicked, setClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (
@@ -71,48 +71,53 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     } else {
       setIsMobile(false);
     }
-    swipe();
   }, []);
 
-  const swipe = () => {
-    document.addEventListener('touchstart', handleTouchStart, false);
-    document.addEventListener('touchmove', handleTouchMove, false);
-    var xDown = null;
-    var yDown = null;
+  // useEffect(() => {
+  //   if (showSettings) {
+  //     swipe();
+  //   }
+  // }, [showSettings])
 
-    function getTouches(evt) {
-      return evt.touches ||             // browser API
-        evt.originalEvent.touches; // jQuery
-    }
+  // const swipe = () => {
+  //   document.addEventListener('touchstart', handleTouchStart, false);
+  //   document.addEventListener('touchmove', handleTouchMove, false);
+  //   var xDown = null;
+  //   var yDown = null;
 
-    function handleTouchStart(evt) {
-      const firstTouch = getTouches(evt)[0];
-      xDown = firstTouch.clientX;
-      yDown = firstTouch.clientY;
-    };
+  //   function getTouches(evt) {
+  //     return evt.touches ||             // browser API
+  //       evt.originalEvent.touches; // jQuery
+  //   }
 
-    function handleTouchMove(evt) {
-      if (!xDown || !yDown) {
-        return;
-      }
+  //   function handleTouchStart(evt) {
+  //     const firstTouch = getTouches(evt)[0];
+  //     xDown = firstTouch.clientX;
+  //     yDown = firstTouch.clientY;
+  //   };
 
-      var xUp = evt.touches[0].clientX;
-      var yUp = evt.touches[0].clientY;
+  //   function handleTouchMove(evt) {
+  //     if (!xDown || !yDown) {
+  //       return;
+  //     }
 
-      var xDiff = xDown - xUp;
-      var yDiff = yDown - yUp;
+  //     var xUp = evt.touches[0].clientX;
+  //     var yUp = evt.touches[0].clientY;
 
-      if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
-        if (xDiff < 0 && showSettings) {
-          console.log('right swipe!')
-          setShowSettings(false);
-        }
-      }
-      /* reset values */
-      xDown = null;
-      yDown = null;
-    };
-  }
+  //     var xDiff = xDown - xUp;
+  //     var yDiff = yDown - yUp;
+
+  //     if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+  //       if (xDiff < 0 && !sliderClicked) {
+  //         console.log('right swipe!')
+  //         setShowSettings(false);
+  //       }
+  //     }
+  //     /* reset values */
+  //     xDown = null;
+  //     yDown = null;
+  //   };
+  // }
 
   return (
     <div className={styles.settingsDiv} id="touchsurface">
@@ -141,15 +146,17 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <ShowSeconds
-                  showSeconds={showSeconds}
-                  setShowSeconds={setShowSeconds}
-                />
-                <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-                <Font
-                  selectedFont={selectedFont}
-                  setSelectedFont={setSelectedFont}
-                />
+                <div id="swipelocation">
+                  <ShowSeconds
+                    showSeconds={showSeconds}
+                    setShowSeconds={setShowSeconds}
+                  />
+                  <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                  <Font
+                    selectedFont={selectedFont}
+                    setSelectedFont={setSelectedFont}
+                  />
+                </div>
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
                 <Blur blur={blur} setBlur={setBlur} />
@@ -171,23 +178,25 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Timers
-                  pomodoroTime={pomodoroTime}
-                  setPomodoroTime={setPomodoroTime}
-                  shortBreakTime={shortBreakTime}
-                  setShortBreakTime={setShortBreakTime}
-                  longBreakTime={longBreakTime}
-                  setLongBreakTime={setLongBreakTime}
-                  setShowSettings={setShowSettings}
-                />
-                <AutoStarBreak
-                  autoStartBreak={autoStartBreak}
-                  setAutoStartBreak={setAutoStartBreak}
-                />
-                <Font
-                  selectedFont={selectedFont}
-                  setSelectedFont={setSelectedFont}
-                />
+                <div id="swipelocation">
+                  <Timers
+                    pomodoroTime={pomodoroTime}
+                    setPomodoroTime={setPomodoroTime}
+                    shortBreakTime={shortBreakTime}
+                    setShortBreakTime={setShortBreakTime}
+                    longBreakTime={longBreakTime}
+                    setLongBreakTime={setLongBreakTime}
+                    setShowSettings={setShowSettings}
+                  />
+                  <AutoStarBreak
+                    autoStartBreak={autoStartBreak}
+                    setAutoStartBreak={setAutoStartBreak}
+                  />
+                  <Font
+                    selectedFont={selectedFont}
+                    setSelectedFont={setSelectedFont}
+                  />
+                </div>
                 <AlertSound
                   selectedAlert={selectedAlert}
                   setSelectedAlert={setSelectedAlert}

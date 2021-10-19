@@ -66,7 +66,7 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert, alertVol
       <div className={styles.volumeDiv}>
         <label>Alert volume</label>
         <div className={styles.sliderDiv}>
-          <input className={styles.brightnessSlider} defaultValue={alertVolume} onChange={changeHandler} type="range" name="volume"
+          <input id="slider" className={styles.brightnessSlider} defaultValue={alertVolume} onChange={changeHandler} type="range" name="volume"
             min="0" max="100" />
           <div className={styles.indicator}>{alertVolume}%</div>
         </div>
