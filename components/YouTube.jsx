@@ -44,13 +44,19 @@ const YouTubePlayer = () => {
   return (
     <div className={styles.youtube}>
       <div className={styles.sideBtn} onClick={() => setShowYoutube(true)}>
-        <YouTube
-          id="youtube-player"
-          // className={styles.iframe}
-          videoId={selectedMusic}
-          opts={config}
-          onReady={_onReady}
-        />
+        {selectedMusic === "None" ? (
+          <div className={styles.chooseMusic}>
+            Choose music in settings or tap the vinyl record to play a random
+            one!
+          </div>
+        ) : (
+          <YouTube
+            id="youtube-player"
+            videoId={selectedMusic}
+            opts={config}
+            onReady={_onReady}
+          />
+        )}
         ♫
       </div>
     </div>

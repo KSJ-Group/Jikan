@@ -69,12 +69,16 @@ export const SettingsContext = createContext({
       url: 'tOnOutGHcRQ'
     },
     {
+      title: 'Relaxing Jazz',
+      url: 'Dx5qFachd3A'
+    },
+    {
       title: 'Relaxing Sleep',
       url: 'n4M8j6ic1Ts'
     },
     {
       title: 'Soothing Rain',
-      url: 'ZddHkhVUf2c'
+      url: 'kXUqhIjdowQ'
     },
     {
       title: 'Sounds of Nature',
@@ -91,10 +95,6 @@ export const SettingsContext = createContext({
     {
       title: 'The Good Life',
       url: '36YnV9STBqc'
-    },
-    {
-      title: 'Weekend Jazz',
-      url: 'uKTUW9niMYg'
     },
   ],
   musicVolume: 20,
@@ -160,12 +160,16 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: 'tOnOutGHcRQ'
     },
     {
+      title: 'Relaxing Jazz',
+      url: 'Dx5qFachd3A'
+    },
+    {
       title: 'Relaxing Sleep',
       url: 'n4M8j6ic1Ts'
     },
     {
       title: 'Soothing Rain',
-      url: 'ZddHkhVUf2c'
+      url: 'kXUqhIjdowQ'
     },
     {
       title: 'Sounds of Nature',
@@ -182,10 +186,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     {
       title: 'The Good Life',
       url: '36YnV9STBqc'
-    },
-    {
-      title: 'Weekend Jazz',
-      url: 'uKTUW9niMYg'
     },
   ]);
   const [musicVolume, setMusicVolume] = useState<number>(20);
