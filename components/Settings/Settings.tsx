@@ -71,58 +71,48 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     } else {
       setIsMobile(false);
     }
-    $("#touchsurface").on("swipe", function () {
-      setShowSettings(false);
-      console.log('swipe!')
-    });
+    swipe();
   }, []);
 
+  const swipe = () => {
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+    var xDown = null;
+    var yDown = null;
 
+    function getTouches(evt) {
+      return evt.touches ||             // browser API
+        evt.originalEvent.touches; // jQuery
+    }
 
-  // const [touchsurface, setTouchsurface] = useState<any>(null);
-  // useEffect(() => {
-  //   setTouchsurface(document.querySelector('#touchsurface'));
-  // }, [])
-  // var startX,
-  //   startY,
-  //   dist,
-  //   threshold = 10, //required min distance traveled to be considered swipe
-  //   allowedTime = 200, // maximum time allowed to travel that distance
-  //   elapsedTime,
-  //   startTime
+    function handleTouchStart(evt) {
+      const firstTouch = getTouches(evt)[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
+    };
 
-  // function handleswipe(isrightswipe) {
-  //   if (isrightswipe) {
-  //     setShowSettings(false)
-  //     console.log('Swipe right');
-  //   }
-  // }
-  // if (touchsurface !== null) {
-  //   touchsurface.addEventListener('touchstart', function (e) {
-  //     touchsurface.innerHTML = ''
-  //     var touchobj = e.changedTouches[0]
-  //     dist = 0
-  //     startX = touchobj.pageX
-  //     startY = touchobj.pageY
-  //     startTime = new Date().getTime() // record time when finger first makes contact with surface
-  //     e.preventDefault()
-  //   }, false)
+    function handleTouchMove(evt) {
+      if (!xDown || !yDown) {
+        return;
+      }
 
-  //   touchsurface.addEventListener('touchmove', function (e) {
-  //     e.preventDefault() // prevent scrolling when inside DIV
-  //   }, false)
+      var xUp = evt.touches[0].clientX;
+      var yUp = evt.touches[0].clientY;
 
-  //   touchsurface.addEventListener('touchend', function (e) {
-  //     var touchobj = e.changedTouches[0]
-  //     dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
-  //     elapsedTime = new Date().getTime() - startTime // get time elapsed
-  //     // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
-  //     var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
-  //     handleswipe(swiperightBol)
-  //     e.preventDefault()
-  //   }, false)
-  // }
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
 
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+        if (xDiff < 0 && showSettings) {
+          console.log('right swipe!')
+          setShowSettings(false);
+        }
+      }
+      /* reset values */
+      xDown = null;
+      yDown = null;
+    };
+  }
 
   return (
     <div className={styles.settingsDiv} id="touchsurface">
