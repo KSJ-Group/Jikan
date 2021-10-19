@@ -132,8 +132,16 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: 'None'
     },
     {
-      title: 'Anime Lofi',
+      title: 'Acoustic Folk',
+      url: 'JoPeBwSJeVc'
+    },
+    {
+      title: 'Anime Lofi Mix',
       url: 'w3LWHIz3bMc'
+    },
+    {
+      title: 'Anime Music',
+      url: 'NJvaGDTJEQU'
     },
     {
       title: 'Calm Piano',
@@ -146,10 +154,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     {
       title: 'Fallout Radio',
       url: 'Ya3WXzEBL1E'
-    },
-    {
-      title: 'Video Game Tunes',
-      url: '8txpDvFnh5o'
     },
     {
       title: 'Indie / Pop / Rock',
@@ -166,6 +170,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
     {
       title: 'Oldies But Goodies',
       url: 'iQf0tiIBO2Y'
+    },
+    {
+      title: 'R&B Chill',
+      url: 'L9Q1HUdUMp0'
     },
     {
       title: 'Relaxing Jazz',
@@ -188,12 +196,20 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: 'qJSLmjzLnAM'
     },
     {
+      title: 'Studio Ghibli',
+      url: 'P8j-_MOSrec'
+    },
+    {
       title: 'The Beatles Greatest Hits',
       url: 'XAtsnyaJziM'
     },
     {
       title: 'The Good Life',
       url: '36YnV9STBqc'
+    },
+    {
+      title: 'Video Game Tunes',
+      url: '8txpDvFnh5o'
     },
   ]);
   const [musicVolume, setMusicVolume] = useState<number>(20);

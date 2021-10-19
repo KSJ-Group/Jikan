@@ -6,28 +6,25 @@ $xl: 1400px;
 $xxl: 2500px;
 
 .container {
-  width: 75vw;
+  padding: 3vw;
   height: 35vh;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
   @media screen and (min-width: $xxl) {
-    width: 70vw;
     height: 35vh;
   }
   @media screen and (max-width: $xl) {
-    width: 85vw;
     height: 35vh;
   }
   @media screen and (max-width: $l) {
-    width: 90vw;
     height: 35vh;
   }
   @media screen and (max-width: $m) {
-    width: 90vw;
     height: 35vh;
   }
   @media screen and (max-width: $s) {
