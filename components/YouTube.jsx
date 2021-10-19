@@ -7,7 +7,7 @@ import { Offcanvas } from "react-bootstrap";
 const YouTubePlayer = () => {
   const { selectedMusic, musicVolume } = useContext(SettingsContext);
   const [player, setPlayer] = useState(null);
-  const [showYoutube, setShowYoutube] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const config = {
     height: "200px",
@@ -43,20 +43,19 @@ const YouTubePlayer = () => {
 
   return (
     <div className={styles.youtube}>
-      <div className={styles.sideBtn} onClick={() => setShowYoutube(true)}>
+      <div className={styles.sideBtn}>
         {selectedMusic === "None" ? (
           <div className={styles.chooseMusic}>
-            Choose music in settings or tap the vinyl record to play a random
-            one!
+            Choose music in settings or tap the vinyl record to play random
+            music!
           </div>
-        ) : (
-          <YouTube
-            id="youtube-player"
-            videoId={selectedMusic}
-            opts={config}
-            onReady={_onReady}
-          />
-        )}
+        ) : null}
+        <YouTube
+          id="youtube-player"
+          videoId={selectedMusic}
+          opts={config}
+          onReady={_onReady}
+        />
         ♫
       </div>
     </div>

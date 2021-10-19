@@ -50,8 +50,12 @@
 }
 
 .chooseMusic {
+  position: absolute;
+  z-index: 100;
   width: 350px;
   height: 200px;
+  background-color: rgb(44, 44, 44);
+  color: white;
   padding: 30px;
   display: flex;
   justify-content: center;
