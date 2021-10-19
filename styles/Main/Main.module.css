@@ -78,11 +78,11 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    height: 235px;
+    height: 255px;
     width: 100vw;
     padding: 0;
     margin-left: 0;
-    margin-bottom: -215px;
+    margin-bottom: -220px;
   }
   .sideBtn:hover {
     margin-left: 0;
