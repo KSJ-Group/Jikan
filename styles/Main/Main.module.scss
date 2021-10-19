@@ -6,8 +6,59 @@
   position: relative;
 }
 
-.iframe {
+.youtube {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
   position: absolute;
-  bottom: -400px;
-  z-index: 10;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.16);
+  @media screen and (max-width: 450px) {
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+.sideBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  margin-left: -350px;
+  padding-right: 10px;
+  width: 380px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: rgba(180, 180, 180, 0.596);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  font-weight: bold;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 50;
+  &:hover {
+    margin-left: -10px;
+  }
+  @media screen and (max-width: 450px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    height: 235px;
+    width: 100vw;
+    padding: 0;
+    margin-left: 0;
+    margin-bottom: -215px;
+    &:hover {
+      margin-left: 0;
+      margin-bottom: -10px;
+    }
+  }
+}
+
+.iframe {
+  // z-index: 10;
+  @media screen and (max-width: 450px) {
+    margin-top: 10px;
+  }
 }
