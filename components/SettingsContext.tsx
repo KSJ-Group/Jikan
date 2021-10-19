@@ -41,8 +41,16 @@ export const SettingsContext = createContext({
       url: 'None'
     },
     {
-      title: 'Anime Lofi',
+      title: 'Acoustic Folk',
+      url: 'JoPeBwSJeVc'
+    },
+    {
+      title: 'Anime Lofi Mix',
       url: 'w3LWHIz3bMc'
+    },
+    {
+      title: 'Anime Music',
+      url: 'NJvaGDTJEQU'
     },
     {
       title: 'Calm Piano',
@@ -69,6 +77,14 @@ export const SettingsContext = createContext({
       url: 'tOnOutGHcRQ'
     },
     {
+      title: 'Oldies But Goodies',
+      url: 'iQf0tiIBO2Y'
+    },
+    {
+      title: 'R&B Chill',
+      url: 'L9Q1HUdUMp0'
+    },
+    {
       title: 'Relaxing Jazz',
       url: 'Dx5qFachd3A'
     },
@@ -89,12 +105,20 @@ export const SettingsContext = createContext({
       url: 'qJSLmjzLnAM'
     },
     {
+      title: 'Studio Ghibli',
+      url: 'P8j-_MOSrec'
+    },
+    {
       title: 'The Beatles Greatest Hits',
       url: 'XAtsnyaJziM'
     },
     {
       title: 'The Good Life',
       url: '36YnV9STBqc'
+    },
+    {
+      title: 'Video Game Tunes',
+      url: '8txpDvFnh5o'
     },
   ],
   musicVolume: 20,
