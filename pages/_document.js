@@ -6,6 +6,10 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
+          <meta
             name="description"
             content="Take control of your productivity. Use Jikan as a simple clock or a Pomodoro timer to effectively use your productive time wisely with inserted breaks. Customize the clock's style to your liking."
           />
