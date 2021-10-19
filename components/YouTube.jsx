@@ -10,11 +10,6 @@ const YouTubePlayer = () => {
   const config = {
     height: "0",
     width: "0",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-      controls: 0,
-    },
   };
 
   const _onReady = (event) => {
@@ -24,6 +19,7 @@ const YouTubePlayer = () => {
   useEffect(() => {
     if (player) {
       player.setVolume(20);
+      player.playVideo();
     }
   }, [player]);
 

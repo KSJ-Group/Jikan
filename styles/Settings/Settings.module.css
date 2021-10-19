@@ -532,4 +532,16 @@ input.blInput:focus {
   border: none;
   padding: 5px 10px;
 }
+
+.volumeDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 8px;
+  font-size: 18px;
+}
 /*# sourceMappingURL=Settings.module.css.map */

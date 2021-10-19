@@ -6,9 +6,11 @@ interface Props {
   selectedMusic: string;
   setMusic: Function;
   music: { title: string, url: string }[];
+  musicVolume: number;
+  setMusicVolume: Function;
 }
 
-const Music: React.FC<Props> = ({ selectedMusic, setMusic, music }) => {
+const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, setMusicVolume }) => {
   const [availMusic, setAvailMusic] = useState<{ title: string, url: string }[]>(music);
   const [currentTitle, setCurrent] = useState<string>('');
   const [musicPlaying, setPlaying] = useState<boolean>(false);
@@ -51,6 +53,11 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music }) => {
     setPlaying(false);
   }
 
+  const changeHandler = (e: any): void => {
+    e.preventDefault();
+    setMusicVolume(e.target.value);
+  }
+
   return (
     <div className={styles.music}>
       <Form.Group className={styles.font}>
@@ -69,6 +76,14 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music }) => {
           {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
         </div>
       </Form.Group>
+      <div className={styles.volumeDiv}>
+        <label>Music volume</label>
+        <div className={styles.sliderDiv}>
+          <input className={styles.brightnessSlider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
+            min="0" max="100" />
+          <div className={styles.indicator}>{musicVolume}%</div>
+        </div>
+      </div>
     </div>
   );
 };

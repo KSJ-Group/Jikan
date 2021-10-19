@@ -51,7 +51,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setSelectedAlert,
     selectedMusic,
     setMusic,
-    music
+    music,
+    musicVolume,
+    setMusicVolume
   } = useContext(SettingsContext);
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -111,7 +113,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
@@ -153,7 +155,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} />
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
