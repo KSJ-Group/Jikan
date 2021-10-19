@@ -12,7 +12,7 @@ import { SettingsContext } from "../components/SettingsContext";
 import { StylesContext } from "../components/StylesContext";
 import { ClockFont } from "../styles/Global/global.style";
 
-const { Howl } = require("howler");
+const { Howl, Howler } = require("howler");
 var alert: any;
 
 let timer: number;
@@ -43,7 +43,7 @@ const pomodoro: NextPage = () => {
   const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
-  const [newVolume, setNewVolume] = useState<number>(0.5);
+  const [newVolume, setNewVolume] = useState<number>(0);
 
   useEffect(() => {
     if (
@@ -80,7 +80,7 @@ const pomodoro: NextPage = () => {
   }, [alertVolume]);
 
   useEffect(() => {
-    alert.volume(newVolume);
+    Howler.volume(newVolume);
   }, [newVolume]);
 
   useEffect(() => {
