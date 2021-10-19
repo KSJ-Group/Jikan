@@ -32,9 +32,7 @@
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    padding-bottom: 150px;
   }
 }
 
@@ -52,7 +50,7 @@
   margin-left: -350px;
   padding-right: 10px;
   width: 380px;
-  height: 200px;
+  height: 195px;
   overflow: hidden;
   border-radius: 15px;
   background-color: rgba(180, 180, 180, 0.596);
@@ -71,28 +69,10 @@
 
 @media screen and (max-width: 450px) {
   .sideBtn {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    height: 255px;
-    width: 100vw;
-    padding: 0;
-    margin-left: 0;
-    margin-bottom: -220px;
+    margin-left: -350px;
   }
   .sideBtn:hover {
-    margin-left: 0;
-    margin-bottom: -10px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .iframe {
-    margin-top: 10px;
+    margin-left: -10px;
   }
 }
 /*# sourceMappingURL=Main.module.css.map */

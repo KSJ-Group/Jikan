@@ -46,7 +46,7 @@ const YouTubePlayer = () => {
       <div className={styles.sideBtn} onClick={() => setShowYoutube(true)}>
         <YouTube
           id="youtube-player"
-          className={styles.iframe}
+          // className={styles.iframe}
           videoId={selectedMusic}
           opts={config}
           onReady={_onReady}
