@@ -18,7 +18,6 @@ const YouTubePlayer = () => {
   };
 
   const _onReady = (event) => {
-    console.log(event.target);
     setPlayer(event.target);
   };
 
