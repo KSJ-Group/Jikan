@@ -60,10 +60,10 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
 
   return (
     <div className={styles.music}>
-      <div className={styles.font}>
-        <label>Music</label>
+      <Form.Group className={styles.font}>
+        <Form.Label>Music</Form.Label>
         <div className={styles.musicDiv}>
-          <select
+          <Form.Select
             value={currentTitle}
             onChange={(e) => changeMusic(e)}
           >
@@ -72,10 +72,10 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
                 {music.title}
               </option>
             ))}
-          </select>
+          </Form.Select>
           {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
         </div>
-      </div>
+      </Form.Group>
       <div className={styles.volumeDiv}>
         <label>Music volume</label>
         <div className={styles.sliderDiv}>
