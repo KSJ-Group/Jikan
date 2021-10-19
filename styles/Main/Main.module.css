@@ -60,7 +60,7 @@
   font-weight: bold;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  cursor: pointer;
+  cursor: default;
   z-index: 50;
 }
 
