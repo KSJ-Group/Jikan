@@ -222,9 +222,9 @@
 
 .alertContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
 }
 
 .alert {
@@ -236,7 +236,7 @@
 
 .previewBtn {
   position: relative;
-  top: 11px;
+  top: 35px;
   height: 38px;
   width: 80px;
   border-radius: 5px;
@@ -409,6 +409,6 @@ input.blInput:focus {
 .volumeDiv {
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
+  margin: 5px 0 5px;
   font-size: 18px;
 }

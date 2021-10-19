@@ -98,7 +98,9 @@ export const SettingsContext = createContext({
     },
   ],
   musicVolume: 20,
-  setMusicVolume: (volume: number) => { }
+  setMusicVolume: (volume: number) => { },
+  alertVolume: 50,
+  setAlertVolume: (volume: number) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -187,6 +189,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
   ]);
   const [musicVolume, setMusicVolume] = useState<number>(20);
+  const [alertVolume, setAlertVolume] = useState<number>(50);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -261,8 +264,12 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setMusicVolume: (volume: number): void => {
       setMusicVolume(volume);
       localStorage.setItem("musicVolume", volume.toString());
+    },
+    alertVolume: alertVolume,
+    setAlertVolume: (volume: number): void => {
+      setAlertVolume(volume);
+      localStorage.setItem("alertVolume", volume.toString());
     }
-
   };
 
   useEffect((): any => {
@@ -277,6 +284,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     let cachedAlert = localStorage.getItem("alert");
     let cachedAlarms = localStorage.getItem("allAlarms");
     let cachedMusicVol = localStorage.getItem("musicVolume");
+    let cachedAlertVol = localStorage.getItem("alertVolume");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -309,6 +317,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedMusicVol) {
       store.setMusicVolume(parseInt(cachedMusicVol));
+    }
+    if (cachedAlertVol) {
+      store.setAlertVolume(parseInt(cachedAlertVol));
     }
   }, []);
 

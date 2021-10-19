@@ -53,7 +53,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setMusic,
     music,
     musicVolume,
-    setMusicVolume
+    setMusicVolume,
+    alertVolume,
+    setAlertVolume
   } = useContext(SettingsContext);
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -150,6 +152,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 <AlertSound
                   selectedAlert={selectedAlert}
                   setSelectedAlert={setSelectedAlert}
+                  alertVolume={alertVolume}
+                  setAlertVolume={setAlertVolume}
                 />
                 <Font
                   selectedFont={selectedFont}

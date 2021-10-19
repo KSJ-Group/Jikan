@@ -40,9 +40,10 @@ const pomodoro: NextPage = () => {
   const [autoStart, setAutoStart] = useState<boolean>(false);
 
   const { selectedFont } = useContext(StylesContext);
-  const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
+  const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
+  const [newVolume, setNewVolume] = useState<number>(0.5);
 
   useEffect(() => {
     if (
@@ -72,6 +73,15 @@ const pomodoro: NextPage = () => {
       volume: 0.5,
     });
   }, [selectedAlert]);
+
+
+  useEffect(() => {
+    setNewVolume(alertVolume / 100);
+  }, [alertVolume]);
+
+  useEffect(() => {
+    alert.volume(newVolume);
+  }, [newVolume]);
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));

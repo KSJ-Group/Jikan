@@ -4,7 +4,7 @@ import { SettingsContext } from "./SettingsContext";
 import YouTube from "react-youtube";
 
 const YouTubePlayer = () => {
-  const { selectedMusic } = useContext(SettingsContext);
+  const { selectedMusic, musicVolume } = useContext(SettingsContext);
   const [player, setPlayer] = useState(null);
 
   const config = {
@@ -18,10 +18,22 @@ const YouTubePlayer = () => {
 
   useEffect(() => {
     if (player) {
-      player.setVolume(20);
+      player.setVolume(musicVolume);
       player.playVideo();
     }
   }, [player]);
+
+  useEffect(() => {
+    if (player) {
+      player.setVolume(musicVolume);
+    }
+  }, [musicVolume]);
+
+  useEffect(() => {
+    if (player) {
+      player.playVideo();
+    }
+  }, [selectedMusic]);
 
   return (
     <YouTube

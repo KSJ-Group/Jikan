@@ -300,16 +300,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .alert {
@@ -321,7 +318,7 @@
 
 .previewBtn {
   position: relative;
-  top: 11px;
+  top: 35px;
   height: 38px;
   width: 80px;
   border-radius: 5px;
@@ -541,7 +538,7 @@ input.blInput:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 8px;
+  margin: 5px 0 5px;
   font-size: 18px;
 }
 /*# sourceMappingURL=Settings.module.css.map */
