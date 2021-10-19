@@ -148,6 +148,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: 'Ya3WXzEBL1E'
     },
     {
+      title: 'Video Game Tunes',
+      url: '8txpDvFnh5o'
+    },
+    {
       title: 'Indie / Pop / Rock',
       url: '1itSqkbXIlU'
     },
@@ -158,6 +162,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
     {
       title: 'Nintendo Radio',
       url: 'tOnOutGHcRQ'
+    },
+    {
+      title: 'Oldies But Goodies',
+      url: 'iQf0tiIBO2Y'
     },
     {
       title: 'Relaxing Jazz',
