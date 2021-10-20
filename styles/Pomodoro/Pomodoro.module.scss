@@ -71,7 +71,6 @@
 .btnDiv {
   @include flexCenter();
   align-items: flex-start;
-  border: 1px solid red;
   width: 100%;
   // height: 30%;
   @media screen and (max-width: 1000px) {
