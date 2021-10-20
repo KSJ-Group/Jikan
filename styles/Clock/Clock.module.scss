@@ -6,8 +6,7 @@ $xl: 1400px;
 $xxl: 2500px;
 
 .container {
-  padding: 3vw;
-  height: 35vh;
+  padding: 1vw 3vw;
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -16,28 +15,22 @@ $xxl: 2500px;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
   @media screen and (min-width: $xxl) {
-    height: 35vh;
   }
   @media screen and (max-width: $xl) {
-    height: 35vh;
   }
   @media screen and (max-width: $l) {
-    height: 35vh;
   }
   @media screen and (max-width: $m) {
-    height: 35vh;
   }
   @media screen and (max-width: $s) {
-    width: 90vw;
-    height: 35vh;
+    margin-top: -200px;
   }
   @media screen and (max-width: $phone) {
-    width: 90vw;
-    height: 20vh;
     margin-top: -200px;
   }
 }
 
+// 24 hours and show seconds
 .timeA {
   font-size: 13vw;
   font-weight: bold;
@@ -47,17 +40,19 @@ $xxl: 2500px;
   }
 }
 
+// 24 hours
 .timeB {
   font-size: 13vw;
   font-weight: bold;
   color: white;
   @media screen and (max-width: $phone) {
-    font-size: 15vw;
+    font-size: 25vw;
   }
 }
 
+// 12 hours and show seconds
 .timeC {
-  font-size: 11vw;
+  font-size: 13vw;
   font-weight: bold;
   color: white;
   @media screen and (max-width: $phone) {
@@ -65,11 +60,12 @@ $xxl: 2500px;
   }
 }
 
+// 12 hours
 .timeD {
   font-size: 13vw;
   font-weight: bold;
   color: white;
   @media screen and (max-width: $phone) {
-    font-size: 15vw;
+    font-size: 20vw;
   }
 }
