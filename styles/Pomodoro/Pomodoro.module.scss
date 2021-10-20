@@ -54,6 +54,10 @@
   cursor: pointer;
   font-size: 2.5vh;
   color: white;
+  @media screen and (max-width: 800px) {
+    // top: -20px;
+    font-size: 2vh;
+  }
 }
 
 .timerDiv {
@@ -73,8 +77,11 @@
   align-items: flex-start;
   width: 100%;
   // height: 30%;
+  position: relative;
+  bottom: 20px;
   @media screen and (max-width: 1000px) {
     align-items: flex-end;
+    bottom: 10px;
   }
 }
 
@@ -90,5 +97,6 @@
   }
   @media screen and (max-width: 800px) {
     // top: -20px;
+    font-size: 2vh;
   }
 }

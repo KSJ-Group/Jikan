@@ -76,6 +76,12 @@
   color: white;
 }
 
+@media screen and (max-width: 800px) {
+  .link {
+    font-size: 2vh;
+  }
+}
+
 .timerDiv {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -112,6 +118,8 @@
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
+  position: relative;
+  bottom: 20px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -119,6 +127,7 @@
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
+    bottom: 10px;
   }
 }
 
@@ -133,5 +142,11 @@
 
 .startBtn:hover {
   background-color: #e6e6e6;
+}
+
+@media screen and (max-width: 800px) {
+  .startBtn {
+    font-size: 2vh;
+  }
 }
 /*# sourceMappingURL=Pomodoro.module.css.map */
