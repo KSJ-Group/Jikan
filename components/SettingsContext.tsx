@@ -57,6 +57,14 @@ export const SettingsContext = createContext({
       url: 'XULUBg_ZcAU'
     },
     {
+      title: 'Coffee Shop Ambiance',
+      url: 'dx3GxpitvbY'
+    },
+    {
+      title: 'Christmas Tunes',
+      url: 'mDTH8UuGxEY'
+    },
+    {
       title: 'Deep Focus',
       url: '8N-eLvmheSE'
     },
@@ -86,11 +94,11 @@ export const SettingsContext = createContext({
     },
     {
       title: 'Relaxing Sleep',
-      url: 'n4M8j6ic1Ts'
+      url: 'HCOO8FdXR1c'
     },
     {
       title: 'Soothing Rain',
-      url: 'kXUqhIjdowQ'
+      url: '5tA0Onw2wyQ'
     },
     {
       title: 'Sounds of Nature',
@@ -168,6 +176,14 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: 'XULUBg_ZcAU'
     },
     {
+      title: 'Coffee Shop Ambiance',
+      url: 'dx3GxpitvbY'
+    },
+    {
+      title: 'Christmas Tunes',
+      url: 'mDTH8UuGxEY'
+    },
+    {
       title: 'Deep Focus',
       url: '8N-eLvmheSE'
     },
@@ -197,11 +213,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
     {
       title: 'Relaxing Sleep',
-      url: 'n4M8j6ic1Ts'
+      url: 'HCOO8FdXR1c'
     },
     {
       title: 'Soothing Rain',
-      url: 'kXUqhIjdowQ'
+      url: '5tA0Onw2wyQ'
     },
     {
       title: 'Sounds of Nature',
