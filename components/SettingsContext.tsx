@@ -77,10 +77,6 @@ export const SettingsContext = createContext({
       url: 'tOnOutGHcRQ'
     },
     {
-      title: 'Oldies But Goodies',
-      url: 'iQf0tiIBO2Y'
-    },
-    {
       title: 'R&B Chill',
       url: 'L9Q1HUdUMp0'
     },
@@ -190,10 +186,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     {
       title: 'Nintendo Radio',
       url: 'tOnOutGHcRQ'
-    },
-    {
-      title: 'Oldies But Goodies',
-      url: 'iQf0tiIBO2Y'
     },
     {
       title: 'R&B Chill',
