@@ -48,7 +48,7 @@ const Timers: React.FC<Props> = ({
       if (i <= 15) {
         setShortMinutes((prev) => [...prev, i]);
       }
-      if (i <= 30) {
+      if (i >= 15 && i <= 30) {
         setLongMinutes((prev) => [...prev, i]);
       }
     }
