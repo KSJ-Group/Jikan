@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .nav {
   height: 50px;
   z-index: 2;
@@ -190,14 +191,41 @@
   }
 }
 
+@-webkit-keyframes slidein {
+  0% {
+    left: 10px;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    left: 70px;
+    opacity: 100%;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    left: 10px;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    left: 70px;
+    opacity: 100%;
+  }
+}
+
 .recordDiv {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   margin: 10px;
   width: 60px;
   height: 60px;
-  overflow: hidden;
   border-radius: 50px;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -212,14 +240,24 @@
   }
 }
 
-.recordDiv2 {
+.recordDiv:hover::after {
+  content: "Press to stop music";
   position: absolute;
+  -webkit-animation: slidein 0.5s ease-in-out;
+          animation: slidein 0.5s ease-in-out;
+  left: 70px;
+  top: 17px;
+  color: white;
+  width: 220px;
+}
+
+.recordDiv2 {
+  position: fixed;
   bottom: 0;
   left: 0;
   margin: 10px;
   width: 60px;
   height: 60px;
-  overflow: hidden;
   border-radius: 50px;
   cursor: pointer;
   -webkit-transition: 0.2s ease-in-out;
@@ -230,6 +268,17 @@
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   margin: 10px;
+}
+
+.recordDiv2:hover::after {
+  content: "Press to play random music ♫";
+  position: absolute;
+  -webkit-animation: slidein 0.5s ease-in-out;
+          animation: slidein 0.5s ease-in-out;
+  left: 70px;
+  top: 17px;
+  color: white;
+  width: 220px;
 }
 
 @media screen and (max-width: 450px) {
