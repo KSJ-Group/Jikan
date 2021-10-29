@@ -17,7 +17,7 @@ class MyDocument extends Document {
           <meta
             name="image"
             property="og:image"
-            content="https://i.imgur.com/xI4X2JS.jpg"
+            content="https://i.imgur.com/j40uhyI.jpg"
           />
           <link
             rel="icon"
