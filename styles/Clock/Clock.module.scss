@@ -14,14 +14,6 @@ $xxl: 2500px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
-  @media screen and (min-width: $xxl) {
-  }
-  @media screen and (max-width: $xl) {
-  }
-  @media screen and (max-width: $l) {
-  }
-  @media screen and (max-width: $m) {
-  }
   @media screen and (max-width: $s) {
     margin-top: -200px;
   }
