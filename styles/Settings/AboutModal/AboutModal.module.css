@@ -50,4 +50,28 @@
   color: white;
   background-color: #153b66;
 }
+
+.emailDiv {
+  padding: 10px;
+  background-color: #153b66;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  margin: 0 auto;
+  color: white;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.emailDiv:hover {
+  background-color: #122a46;
+}
+
+.emailBtn {
+  text-decoration: none;
+}
+
+.emailBtn:hover {
+  color: white;
+}
 /*# sourceMappingURL=AboutModal.module.css.map */

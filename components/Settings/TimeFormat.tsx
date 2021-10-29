@@ -11,15 +11,17 @@ interface Props {
 const TimeFormat: React.FC<Props> = ({ is24Hour, setIs24Hour }) => {
   return (
     <div className={styles.timeFormatContainer}>
-      <Form.Group className={globalStyles.toggle}>
-        <Form.Label>24 hour format</Form.Label>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          checked={is24Hour}
-          onChange={() => setIs24Hour(!is24Hour)}
-        />
-      </Form.Group>
+      <div className={globalStyles.settingModuleContainer}>
+        <Form.Group className={globalStyles.toggle}>
+          <Form.Label className={globalStyles.toggleLabel}>24 hour format</Form.Label>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            checked={is24Hour}
+            onChange={() => setIs24Hour(!is24Hour)}
+          />
+        </Form.Group>
+      </div>
     </div>
   );
 };

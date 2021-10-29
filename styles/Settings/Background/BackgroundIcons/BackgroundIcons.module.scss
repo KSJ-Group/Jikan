@@ -1,7 +1,16 @@
+.bgContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
 .optionContainer {
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  align-items: center;
+  margin-top: 10px;
   width: 100%;
 }
 

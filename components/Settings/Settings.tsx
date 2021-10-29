@@ -102,11 +102,13 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <ShowSeconds
-                  showSeconds={showSeconds}
-                  setShowSeconds={setShowSeconds}
-                />
-                <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                <div className={styles.toggleRow}>
+                  <ShowSeconds
+                    showSeconds={showSeconds}
+                    setShowSeconds={setShowSeconds}
+                  />
+                  <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                </div>
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
@@ -166,7 +168,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         </Offcanvas.Body>
         <AboutModal setShowSettings={setShowSettings} />
       </Offcanvas>
-    </div>
+    </div >
   );
 };
 

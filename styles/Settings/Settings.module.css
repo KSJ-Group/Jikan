@@ -48,6 +48,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 50px;
+  margin-bottom: 20px;
 }
 
 .topLeft {
@@ -77,8 +78,14 @@
   font-weight: bold;
 }
 
-.changeBG {
-  width: 95%;
+.toggleRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .toggle {
@@ -93,6 +100,10 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-size: 18px;
+}
+
+.toggleLabel {
+  margin-right: 6px;
 }
 
 .font {
@@ -114,130 +125,6 @@
 .slider {
   width: 90%;
   margin-right: 18px;
-}
-
-.emailDiv {
-  padding: 10px;
-  background-color: #153b66;
-  border-radius: 5px;
-  text-align: center;
-  width: 100px;
-  margin: 0 auto;
-  color: white;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.emailDiv:hover {
-  background-color: #122a46;
-}
-
-.emailBtn {
-  text-decoration: none;
-}
-
-.emailBtn:hover {
-  color: white;
-}
-
-.blacklistContainer {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.blacklistContainer > div {
-  font-size: 18px;
-}
-
-.blockBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 35px;
-  margin-top: 8px;
-  border-radius: 5px;
-  background-color: white;
-  color: black;
-}
-
-.eachURL {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.eachURL :nth-child(2) {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.blModal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.blList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.blList div {
-  font-size: 20px;
-}
-
-.removeLink {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.addNewLink {
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.blInput {
-  margin-top: 20px;
-  border: none;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.582);
-  margin-right: 10px;
-  font-size: 20px;
-}
-
-input.blInput:focus {
-  outline-width: 0;
-}
-
-.addBtn {
-  background-color: #153b66;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  padding: 5px 10px;
 }
 
 .weatherSettings {
@@ -265,5 +152,23 @@ input.blInput:focus {
           flex-direction: column;
   margin: 5px 0 5px;
   font-size: 18px;
+}
+
+.settingModuleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 15px 10px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: black;
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=Settings.module.css.map */

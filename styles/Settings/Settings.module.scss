@@ -35,6 +35,7 @@
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  margin-bottom: 20px;
 }
 
 .topLeft {
@@ -55,6 +56,72 @@
   background-color: #efefef;
   border: none;
   font-weight: bold;
+}
+
+.toggleRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.toggleLabel {
+  margin-right: 6px;
+}
+
+.font {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.sliderDiv {
+  width: 99%;
+  display: flex;
+  flex-direction: row;
+}
+
+.slider {
+  width: 90%;
+  margin-right: 18px;
+}
+
+.weatherSettings {
+  margin-bottom: 20px;
+}
+
+.updateBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.volumeDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px;
+  font-size: 18px;
+}
+
+.settingModuleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 10px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: black;
+  margin-bottom: 20px;
 }
 
 // .profileIcon {
@@ -102,149 +169,80 @@
 //   width: 100%;
 // }
 
-.changeBG {
-  width: 95%;
-}
+// Blacklist stuff
+// .blacklistContainer {
+//   width: 100%;
+//   margin-bottom: 20px;
+// }
 
-.toggle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 18px;
-}
+// .blacklistContainer > div {
+//   font-size: 18px;
+// }
 
-.font {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+// .blockBtn {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: 35px;
+//   margin-top: 8px;
+//   border-radius: 5px;
+//   background-color: white;
+//   color: black;
+// }
 
-.sliderDiv {
-  width: 99%;
-  display: flex;
-  flex-direction: row;
-}
+// .eachURL {
+//   display: flex;
+//   :nth-child(2) {
+//     margin-left: 10px;
+//     cursor: pointer;
+//   }
+// }
 
-.slider {
-  width: 90%;
-  margin-right: 18px;
-}
+// .blModal {
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+// }
 
-.emailDiv {
-  padding: 10px;
-  background-color: rgb(21, 59, 102);
-  border-radius: 5px;
-  text-align: center;
-  width: 100px;
-  margin: 0 auto;
-  color: white;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    background-color: rgb(18, 42, 70);
-  }
-}
+// .blList {
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   width: 100%;
+//   margin-top: 20px;
+// }
 
-.emailBtn {
-  text-decoration: none;
-  &:hover {
-    color: white;
-  }
-}
+// .blList div {
+//   font-size: 20px;
+// }
 
-.blacklistContainer {
-  width: 100%;
-  margin-bottom: 20px;
-}
+// .removeLink {
+//   cursor: pointer;
+//   font-weight: bold;
+// }
 
-.blacklistContainer > div {
-  font-size: 18px;
-}
+// .addNewLink {
+//   margin-top: 20px;
+//   cursor: pointer;
+// }
 
-.blockBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 35px;
-  margin-top: 8px;
-  border-radius: 5px;
-  background-color: white;
-  color: black;
-}
+// .blInput {
+//   margin-top: 20px;
+//   border: none;
+//   border-bottom: 1px solid rgba(128, 128, 128, 0.582);
+//   margin-right: 10px;
+//   font-size: 20px;
+// }
 
-.eachURL {
-  display: flex;
-  :nth-child(2) {
-    margin-left: 10px;
-    cursor: pointer;
-  }
-}
+// input.blInput:focus {
+//   outline-width: 0;
+// }
 
-.blModal {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.blList {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.blList div {
-  font-size: 20px;
-}
-
-.removeLink {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.addNewLink {
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.blInput {
-  margin-top: 20px;
-  border: none;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.582);
-  margin-right: 10px;
-  font-size: 20px;
-}
-
-input.blInput:focus {
-  outline-width: 0;
-}
-
-.addBtn {
-  background-color: rgb(21, 59, 102);
-  color: white;
-  border-radius: 5px;
-  border: none;
-  padding: 5px 10px;
-}
-
-.weatherSettings {
-  margin-bottom: 20px;
-}
-
-.updateBtn {
-  position: relative;
-  height: 38px;
-  width: 80px;
-  border-radius: 5px;
-  background: #efefef;
-  border: none;
-  margin-left: 10px;
-  font-size: 16px;
-}
-
-.volumeDiv {
-  display: flex;
-  flex-direction: column;
-  margin: 5px 0 5px;
-  font-size: 18px;
-}
+// .addBtn {
+//   background-color: rgb(21, 59, 102);
+//   color: white;
+//   border-radius: 5px;
+//   border: none;
+//   padding: 5px 10px;
+// }

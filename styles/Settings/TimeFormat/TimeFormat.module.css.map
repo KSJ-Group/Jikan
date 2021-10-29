@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,IAAI;CACpB",
+    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;CAElB",
     "sources": [
         "TimeFormat.module.scss"
     ],

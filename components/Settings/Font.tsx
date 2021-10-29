@@ -19,20 +19,22 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
   const [availFonts, setFonts] = useState<string[]>(fonts);
 
   return (
-    <div className={styles.fontContainer}>
-      <Form.Group className={globalStyles.font}>
-        <Form.Label>Font</Form.Label>
-        <Form.Select
-          value={selectedFont}
-          onChange={(e) => changeFont(e)}
-        >
-          {availFonts.map((font) => (
-            <option key={font} value={font}>
-              {font}
-            </option>
-          ))}
-        </Form.Select>
-      </Form.Group>
+    <div className={globalStyles.settingModuleContainer}>
+      <div className={styles.fontContainer}>
+        <Form.Group className={globalStyles.font}>
+          <Form.Label>Font</Form.Label>
+          <Form.Select
+            value={selectedFont}
+            onChange={(e) => changeFont(e)}
+          >
+            {availFonts.map((font) => (
+              <option key={font} value={font}>
+                {font}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+      </div>
     </div>
   );
 };

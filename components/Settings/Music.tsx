@@ -60,29 +60,31 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
   }
 
   return (
-    <div className={styles.musicContainer}>
-      <Form.Group className={globalStyles.font}>
-        <Form.Label>Music</Form.Label>
-        <div className={styles.musicDiv}>
-          <Form.Select
-            value={currentTitle}
-            onChange={(e) => changeMusic(e)}
-          >
-            {availMusic.map((music) => (
-              <option key={music.title} value={music.title}>
-                {music.title}
-              </option>
-            ))}
-          </Form.Select>
-          {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
-        </div>
-      </Form.Group>
-      <div className={globalStyles.volumeDiv}>
-        <label>Music volume</label>
-        <div className={globalStyles.sliderDiv}>
-          <input id="slider" className={globalStyles.slider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
-            min="0" max="100" />
-          <div>{musicVolume}%</div>
+    <div className={globalStyles.settingModuleContainer}>
+      <div className={styles.musicContainer}>
+        <Form.Group className={globalStyles.font}>
+          <Form.Label>Music</Form.Label>
+          <div className={styles.musicDiv}>
+            <Form.Select
+              value={currentTitle}
+              onChange={(e) => changeMusic(e)}
+            >
+              {availMusic.map((music) => (
+                <option key={music.title} value={music.title}>
+                  {music.title}
+                </option>
+              ))}
+            </Form.Select>
+            {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
+          </div>
+        </Form.Group>
+        <div className={globalStyles.volumeDiv}>
+          <label>Music volume</label>
+          <div className={globalStyles.sliderDiv}>
+            <input id="slider" className={globalStyles.slider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
+              min="0" max="100" />
+            <div>{musicVolume}%</div>
+          </div>
         </div>
       </div>
     </div>

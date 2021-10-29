@@ -11,15 +11,17 @@ interface Props {
 const ShowSeconds: React.FC<Props> = ({ showSeconds, setShowSeconds }) => {
   return (
     <div className={styles.showSecondsContainer}>
-      <Form.Group className={globalStyles.toggle}>
-        <Form.Label>Show seconds</Form.Label>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          checked={showSeconds}
-          onChange={() => setShowSeconds(!showSeconds)}
-        />
-      </Form.Group>
+      <div className={globalStyles.settingModuleContainer}>
+        <Form.Group className={globalStyles.toggle}>
+          <Form.Label className={globalStyles.toggleLabel}>Show seconds</Form.Label>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            checked={showSeconds}
+            onChange={() => setShowSeconds(!showSeconds)}
+          />
+        </Form.Group>
+      </div>
     </div>
   );
 };

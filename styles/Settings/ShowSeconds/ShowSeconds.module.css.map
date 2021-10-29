@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,qBAAqB,CAAC;EACpB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,WAAW;CACpB",
+    "mappings": "AAAA,AAAA,qBAAqB,CAAC;EACpB,KAAK,EAAE,IAAI;CACZ",
     "sources": [
         "ShowSeconds.module.scss"
     ],
