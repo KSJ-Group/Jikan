@@ -58,17 +58,6 @@ body {
 
 @media screen and (max-width: 950px) {
   .fs {
-    position: relative;
-    left: 15px;
-  }
-}
-
-.fsText {
-  margin-left: 10px;
-}
-
-@media screen and (max-width: 950px) {
-  .fsText {
     display: none;
   }
 }
@@ -76,6 +65,10 @@ body {
 .fs:hover {
   color: #fffbfb;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.fsText {
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 600px) {
