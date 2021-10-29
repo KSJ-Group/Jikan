@@ -20,9 +20,10 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src }) => {
     <div className={styles.imageContainer}>
       <img className={styles.image} src={src.medium} alt={url} onClick={(event) => {
         changeBackground(src.original);
+        console.log(src.original);
         changeLoadStatus(false);
       }} />
-      {!loaded && background===src.original ? <Spinner className={styles.spinner} animation="border" role="status">
+      {!loaded && background === src.original ? <Spinner className={styles.spinner} animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner> : null}
     </div>
