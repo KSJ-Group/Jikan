@@ -333,7 +333,7 @@
 }
 
 .music {
-  margin: 10px 0 20px;
+  margin: 10px 0 10px;
 }
 
 .musicDiv {
@@ -541,5 +541,20 @@ input.blInput:focus {
           flex-direction: column;
   margin: 5px 0 5px;
   font-size: 18px;
+}
+
+.weatherSettings {
+  margin-bottom: 20px;
+}
+
+.updateBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=Settings.module.css.map */

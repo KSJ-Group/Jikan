@@ -15,6 +15,7 @@ import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
+import Weather from "./Weather";
 import Blacklist from "./Blacklist";
 
 interface Props {
@@ -55,22 +56,24 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     musicVolume,
     setMusicVolume,
     alertVolume,
-    setAlertVolume
+    setAlertVolume,
+    zip,
+    setZip,
   } = useContext(SettingsContext);
 
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  // const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //       navigator.userAgent
+  //     )
+  //   ) {
+  //     setIsMobile(true);
+  //   } else {
+  //     setIsMobile(false);
+  //   }
+  // }, []);
 
   return (
     <div className={styles.settingsDiv} id="touchsurface">
@@ -112,6 +115,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 </div>
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
+                {/* <Weather zip={zip} setZip={setZip} /> */}
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
@@ -157,6 +161,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setAlertVolume={setAlertVolume}
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                {/* <Weather zip={zip} setZip={setZip} /> */}
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>

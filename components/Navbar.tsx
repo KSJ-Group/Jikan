@@ -8,8 +8,8 @@ import { SettingsContext } from './SettingsContext';
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
-  const [showSettings, setShowSettings] = useState<boolean>(false);
-  const { setIsClock } = useContext(SettingsContext);
+  // const [showSettings, setShowSettings] = useState<boolean>(false);
+  const { setIsClock, showSettings, setShowSettings } = useContext(SettingsContext);
 
   useEffect(() => {
     setIsClock(clockIsActive);
