@@ -5,7 +5,8 @@ import YouTube from "react-youtube";
 import { Offcanvas } from "react-bootstrap";
 
 const YouTubePlayer = () => {
-  const { selectedMusic, musicVolume } = useContext(SettingsContext);
+  const { selectedMusic, musicVolume, setShowSettings } =
+    useContext(SettingsContext);
   const [player, setPlayer] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -46,8 +47,13 @@ const YouTubePlayer = () => {
       <div className={styles.sideBtn}>
         {selectedMusic === "None" ? (
           <div className={styles.chooseMusic}>
-            Choose music in settings or tap the vinyl record to play random
-            music!
+            <button
+              className={styles.settingsBtn}
+              onClick={() => setShowSettings(true)}
+            >
+              Open Settings to choose music
+            </button>
+            <div>Or click the vinyl record to play random music!</div>
           </div>
         ) : null}
         <YouTube

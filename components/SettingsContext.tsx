@@ -131,6 +131,8 @@ export const SettingsContext = createContext({
   setAlertVolume: (volume: number) => { },
   zip: '',
   setZip: (zip: string) => { },
+  showSettings: false,
+  setShowSettings: (show: boolean) => { },
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -249,6 +251,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [musicVolume, setMusicVolume] = useState<number>(20);
   const [alertVolume, setAlertVolume] = useState<number>(50);
   const [zip, setZip] = useState<string>('');
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -333,6 +336,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setZip: (zip: string): void => {
       setZip(zip);
       localStorage.setItem("zip", zip);
+    },
+    showSettings: showSettings,
+    setShowSettings: (show: boolean): void => {
+      setShowSettings(show);
     }
   };
 
