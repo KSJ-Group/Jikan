@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import globalStyles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/Music/Music.module.scss";
 
 interface Props {
   selectedMusic: string;
@@ -59,8 +60,8 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
   }
 
   return (
-    <div className={styles.music}>
-      <Form.Group className={styles.font}>
+    <div className={styles.musicContainer}>
+      <Form.Group className={globalStyles.font}>
         <Form.Label>Music</Form.Label>
         <div className={styles.musicDiv}>
           <Form.Select
@@ -76,12 +77,12 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
           {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
         </div>
       </Form.Group>
-      <div className={styles.volumeDiv}>
+      <div className={globalStyles.volumeDiv}>
         <label>Music volume</label>
-        <div className={styles.sliderDiv}>
-          <input id="slider" className={styles.brightnessSlider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
+        <div className={globalStyles.sliderDiv}>
+          <input id="slider" className={globalStyles.slider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
             min="0" max="100" />
-          <div className={styles.indicator}>{musicVolume}%</div>
+          <div>{musicVolume}%</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import styles from '../../styles/Settings/Settings.module.css';
+import globalStyles from '../../styles/Settings/Settings.module.css';
+import styles from '../../styles/Settings/Blur/Blur.module.css';
 
 interface Props {
   blur: boolean,
@@ -8,8 +9,8 @@ interface Props {
 }
 const Blur: React.FC<Props> = ({ blur, setBlur }) => {
   return (
-    <div className={styles.blur}>
-      <Form.Group className={styles.toggle}>
+    <div className={styles.blurContainer}>
+      <Form.Group className={globalStyles.toggle}>
         <Form.Label>Background blur</Form.Label>
         <Form.Check
           type="switch"

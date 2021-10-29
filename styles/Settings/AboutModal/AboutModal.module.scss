@@ -1,0 +1,41 @@
+.aboutContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 80px;
+  background-color: rgb(34, 34, 34);
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgba(248, 248, 248, 0.349);
+  padding: 3px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.infoModal {
+  width: 100vw;
+}
+
+.modalDiv a {
+  text-decoration: none;
+  color: rgb(21, 59, 102);
+}
+
+.modalDiv div {
+  margin-top: 15px;
+}
+
+.modalBtn {
+  background-color: white;
+  color: rgb(21, 59, 102);
+  &:hover {
+    color: white;
+    background-color: rgb(21, 59, 102);
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/Timers/Timers.module.css";
 import {
   minutesAndSecondsToMillis,
   millisToMinutesAndSeconds,
@@ -107,7 +107,7 @@ const Timers: React.FC<Props> = ({
   };
 
   return (
-    <div className={styles.timers}>
+    <div className={styles.timersConatiner}>
       <Form.Group controlId="formBasicEmail" className={styles.pomodoro}>
         <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
         <Form.Select value={currentPom} onChange={(e) => pomChange(e)}>

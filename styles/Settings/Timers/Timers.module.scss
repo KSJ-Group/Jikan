@@ -1,0 +1,37 @@
+.timersConatiner {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.pomodoro {
+  width: 26%;
+  margin-right: 6px;
+}
+
+.timerLabel {
+  font-size: 15px;
+}
+
+.shortbreak {
+  width: 26%;
+  margin-right: 6px;
+}
+
+.longbreak {
+  width: 26%;
+  margin-right: 10px;
+}
+
+.resetBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 55px;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #efefef;
+  border: none;
+}

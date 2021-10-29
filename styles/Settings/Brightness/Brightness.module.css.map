@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,WAAW;EACnB,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "Brightness.module.scss"
+    ],
+    "names": [],
+    "file": "Brightness.module.css"
+}

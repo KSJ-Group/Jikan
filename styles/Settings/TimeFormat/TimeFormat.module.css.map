@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "TimeFormat.module.scss"
+    ],
+    "names": [],
+    "file": "TimeFormat.module.css"
+}

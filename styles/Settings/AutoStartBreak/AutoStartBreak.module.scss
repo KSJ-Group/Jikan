@@ -1,0 +1,13 @@
+.autoStartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

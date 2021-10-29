@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import styles from '../../styles/Settings/Settings.module.css';
+import globalStyles from '../../styles/Settings/Settings.module.css';
+import styles from '../../styles/Settings/ShowSeconds/ShowSeconds.module.css';
 
 interface Props {
   showSeconds: boolean,
@@ -9,8 +10,8 @@ interface Props {
 
 const ShowSeconds: React.FC<Props> = ({ showSeconds, setShowSeconds }) => {
   return (
-    <div className={styles.showSeconds}>
-      <Form.Group className={styles.toggle}>
+    <div className={styles.showSecondsContainer}>
+      <Form.Group className={globalStyles.toggle}>
         <Form.Label>Show seconds</Form.Label>
         <Form.Check
           type="switch"

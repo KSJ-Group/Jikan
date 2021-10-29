@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import styles from '../styles/Settings/Settings.module.css';
+import styles from '../styles/Settings/AboutModal/AboutModal.module.css';
 import Button from 'react-bootstrap/Button';
 
 interface Props {

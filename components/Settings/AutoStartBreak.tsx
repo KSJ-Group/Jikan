@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/AutoStartBreak/AutoStartBreak.module.css";
 
 interface Props {
   autoStartBreak: string;
@@ -22,7 +22,7 @@ const AutoStartBreak: React.FC<Props> = ({
 
   return (
     <div>
-      <Form.Group className={styles.autoStart}>
+      <Form.Group className={styles.autoStartContainer}>
         <Form.Label>Auto-start breaks</Form.Label>
         <div className={styles.toggles}>
           {choices.map((choice) => {

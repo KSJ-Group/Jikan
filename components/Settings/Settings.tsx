@@ -76,7 +76,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   // }, []);
 
   return (
-    <div className={styles.settingsDiv} id="touchsurface">
+    <div className={styles.settingsDiv}>
       <Offcanvas
         show={showSettings}
         onHide={() => setShowSettings(false)}
@@ -102,17 +102,15 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <div id="swipelocation">
-                  <ShowSeconds
-                    showSeconds={showSeconds}
-                    setShowSeconds={setShowSeconds}
-                  />
-                  <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-                  <Font
-                    selectedFont={selectedFont}
-                    setSelectedFont={setSelectedFont}
-                  />
-                </div>
+                <ShowSeconds
+                  showSeconds={showSeconds}
+                  setShowSeconds={setShowSeconds}
+                />
+                <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
                 {/* <Weather zip={zip} setZip={setZip} /> */}
@@ -135,25 +133,23 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <div id="swipelocation">
-                  <Timers
-                    pomodoroTime={pomodoroTime}
-                    setPomodoroTime={setPomodoroTime}
-                    shortBreakTime={shortBreakTime}
-                    setShortBreakTime={setShortBreakTime}
-                    longBreakTime={longBreakTime}
-                    setLongBreakTime={setLongBreakTime}
-                    setShowSettings={setShowSettings}
-                  />
-                  <AutoStarBreak
-                    autoStartBreak={autoStartBreak}
-                    setAutoStartBreak={setAutoStartBreak}
-                  />
-                  <Font
-                    selectedFont={selectedFont}
-                    setSelectedFont={setSelectedFont}
-                  />
-                </div>
+                <Timers
+                  pomodoroTime={pomodoroTime}
+                  setPomodoroTime={setPomodoroTime}
+                  shortBreakTime={shortBreakTime}
+                  setShortBreakTime={setShortBreakTime}
+                  longBreakTime={longBreakTime}
+                  setLongBreakTime={setLongBreakTime}
+                  setShowSettings={setShowSettings}
+                />
+                <AutoStarBreak
+                  autoStartBreak={autoStartBreak}
+                  setAutoStartBreak={setAutoStartBreak}
+                />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
                 <AlertSound
                   selectedAlert={selectedAlert}
                   setSelectedAlert={setSelectedAlert}
