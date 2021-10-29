@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .nav {
   height: 50px;
   z-index: 2;
@@ -102,7 +103,6 @@
 }
 
 .settingsWord {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin-left: 10px;
   display: block;
 }
@@ -133,5 +133,175 @@
   height: 20px;
   -webkit-filter: invert(1);
           filter: invert(1);
+}
+
+@-webkit-keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@-webkit-keyframes slidein {
+  0% {
+    left: 10px;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    left: 70px;
+    opacity: 100%;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    left: 10px;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    left: 70px;
+    opacity: 100%;
+  }
+}
+
+.recordDiv {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-animation: pulse 2s infinite;
+          animation: pulse 2s infinite;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .recordDiv {
+    top: 60px;
+  }
+}
+
+.recordDiv:hover::after {
+  content: "Press to stop music";
+  position: absolute;
+  -webkit-animation: slidein 0.5s ease-in-out;
+          animation: slidein 0.5s ease-in-out;
+  left: 70px;
+  top: 17px;
+  color: white;
+  width: 220px;
+}
+
+.recordDiv2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.recordDiv2:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  margin: 10px;
+}
+
+.recordDiv2:hover::after {
+  content: "Press to play random music ♫";
+  position: absolute;
+  -webkit-animation: slidein 0.5s ease-in-out;
+          animation: slidein 0.5s ease-in-out;
+  left: 70px;
+  top: 17px;
+  color: white;
+  width: 220px;
+}
+
+@media screen and (max-width: 450px) {
+  .recordDiv2 {
+    top: 60px;
+  }
+}
+
+.record {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-animation: spinner 3s linear infinite;
+          animation: spinner 3s linear infinite;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.record2 {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=Navbar.module.css.map */

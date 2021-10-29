@@ -9,14 +9,29 @@
 
 .settings {
   color: rgb(248, 248, 248);
-  overflow-x: hidden;
   border: none;
+  overflow-x: hidden;
+  width: 425px;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
 }
 
 .body {
   background-color: rgb(34, 34, 34);
   overflow-x: hidden;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin: 0;
+}
+
+.subBody {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.subBody::-webkit-scrollbar {
+  display: none;
 }
 
 .settingsTop {
@@ -40,7 +55,6 @@
 .profileIcon {
   position: relative;
   margin-top: 3px;
-  // margin-left: -20px;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -50,9 +64,11 @@
 .x {
   position: relative;
   margin-top: 6px;
-  height: 30px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #efefef;
+  border: none;
+  font-weight: bold;
 }
 
 .pomodoro {
@@ -104,12 +120,13 @@
 }
 
 .brightness {
-  width: 100%;
+  width: 99%;
   margin: 10px 0 20px;
   font-size: 18px;
 }
 
 .sliderDiv {
+  width: 99%;
   display: flex;
   flex-direction: row;
 }
@@ -159,6 +176,7 @@
   border-radius: 5px;
   font-size: 15px;
   background-color: #efefef;
+  border: none;
 }
 
 .autoStart {
@@ -170,15 +188,22 @@
 }
 
 .timeFormat {
+  width: 102%;
   margin-bottom: 10px;
 }
 
 .showSeconds {
+  width: 102%;
   margin: 10px 0 10px;
 }
 
 .blur {
+  width: 102%;
   margin: 10px 0 10px;
+}
+
+.changeBG {
+  width: 95%;
 }
 
 .toggle {
@@ -196,9 +221,9 @@
 
 .alertContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
 }
 
 .alert {
@@ -210,12 +235,12 @@
 
 .previewBtn {
   position: relative;
-  top: 11px;
+  top: 35px;
   height: 38px;
   width: 80px;
   border-radius: 5px;
   background: #efefef;
-  text-align: center;
+  border: none;
 }
 
 .font {
@@ -224,7 +249,7 @@
 }
 
 .music {
-  margin: 10px 0 20px;
+  margin: 10px 0 10px;
 }
 
 .musicDiv {
@@ -236,19 +261,171 @@
   margin-left: 10px;
   padding: 5px;
   border-radius: 5px;
+  border: none;
+  background-color: #efefef;
 }
 
 .aboutContainer {
   display: flex;
   justify-content: center;
+  position: relative;
+  height: 80px;
+  background-color: rgb(34, 34, 34);
 }
 
 .about {
-  position: fixed;
-  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
   background-color: rgba(248, 248, 248, 0.349);
   padding: 3px;
+  margin: 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.infoModal {
+  width: 100vw;
+}
+
+.modalDiv a {
+  text-decoration: none;
+  color: rgb(21, 59, 102);
+}
+
+.modalDiv div {
+  margin-top: 15px;
+}
+
+.emailDiv {
+  padding: 10px;
+  background-color: rgb(21, 59, 102);
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  margin: 0 auto;
+  color: white;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: rgb(18, 42, 70);
+  }
+}
+
+.emailBtn {
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
+}
+
+.modalBtn {
+  background-color: white;
+  color: rgb(21, 59, 102);
+  &:hover {
+    color: white;
+    background-color: rgb(21, 59, 102);
+  }
+}
+
+.blacklistContainer {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.blacklistContainer > div {
+  font-size: 18px;
+}
+
+.blockBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  margin-top: 8px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+.eachURL {
+  display: flex;
+  :nth-child(2) {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
+
+.blModal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.blList div {
+  font-size: 20px;
+}
+
+.removeLink {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.addNewLink {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.blInput {
+  margin-top: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.582);
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+input.blInput:focus {
+  outline-width: 0;
+}
+
+.addBtn {
+  background-color: rgb(21, 59, 102);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.volumeDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px;
+  font-size: 18px;
+}
+
+.weatherSettings {
+  margin-bottom: 20px;
+}
+
+// .weatherInput {
+// }
+
+.updateBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 16px;
 }

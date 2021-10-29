@@ -6,14 +6,33 @@ import { ServerResponse } from "http";
 
 const typeDefs = gql`
   type Query {
-    hello: String!
+    hello: UserData!
   }
 `;
 
 const resolvers = {
   Query: {
     hello: (_parents, _args, _context) => {
-      return "Hello!";
+      return {
+        id: 1,
+        email: "maurice@moss.com",
+        password: "abcdefg",
+        settings: {
+          brightness: 100,
+          showSeconds: false,
+          is24Hour: false,
+          blur: false,
+          font: "Courier New",
+          background: "/images/fall.jpg",
+          timers: {
+            pomodoroTime: 150000,
+            shortBreakTime: 300000,
+            longBreakTime: 900000,
+          },
+          autoStartBreak: false,
+          alertSound: "alarm.wav",
+        },
+      };
     },
   },
 };

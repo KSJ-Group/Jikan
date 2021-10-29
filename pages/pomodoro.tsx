@@ -12,7 +12,7 @@ import { SettingsContext } from "../components/SettingsContext";
 import { StylesContext } from "../components/StylesContext";
 import { ClockFont } from "../styles/Global/global.style";
 
-const { Howl } = require("howler");
+const { Howl, Howler } = require("howler");
 var alert: any;
 
 let timer: number;
@@ -40,9 +40,10 @@ const pomodoro: NextPage = () => {
   const [autoStart, setAutoStart] = useState<boolean>(false);
 
   const { selectedFont } = useContext(StylesContext);
-  const { selectedAlert, autoStartBreak } = useContext(SettingsContext);
+  const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
+  const [newVolume, setNewVolume] = useState<number>(0);
 
   useEffect(() => {
     if (
@@ -57,12 +58,30 @@ const pomodoro: NextPage = () => {
   }, []);
 
   useEffect(() => {
+    window.addEventListener('beforeunload', function (e) {
+      if (started) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    })
+  }, [started])
+
+  useEffect(() => {
     alert = new Howl({
       src: selectedAlert,
       loop: true,
       volume: 0.5,
     });
   }, [selectedAlert]);
+
+
+  useEffect(() => {
+    setNewVolume(alertVolume / 100);
+  }, [alertVolume]);
+
+  useEffect(() => {
+    Howler.volume(newVolume);
+  }, [newVolume]);
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
@@ -359,8 +378,12 @@ const pomodoro: NextPage = () => {
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          <meta name="description" content="Track time" />
-          <link rel="icon" href="/favicon.ico" />
+          {/* <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+          /> */}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         </Head>
         <div className={styles.linksDiv}>
           <div
@@ -388,15 +411,15 @@ const pomodoro: NextPage = () => {
         <div className={styles.timerDiv}>
           <ClockFont font={selectedFont}>
             {pomodoro ? (
-              <div className={styles.timer}>{pomodoroTime2}</div>
+              <div>{pomodoroTime2}</div>
             ) : null}
             {shortBreak ? (
-              <div className={styles.timer} id="shortBreak">
+              <div id="shortBreak">
                 {shortBreakTime2}
               </div>
             ) : null}
             {longBreak ? (
-              <div className={styles.timer}>{longBreakTime2}</div>
+              <div>{longBreakTime2}</div>
             ) : null}
           </ClockFont>
         </div>
@@ -414,25 +437,29 @@ const pomodoro: NextPage = () => {
             </div>
           )}
         </div>
-        {showModal ? (
-          <AreYouSureModal
-            show={showModal}
-            handleClose={handleClose}
-            switchToPom={switchToPom}
-            switchToShort={switchToShort}
-            switchToLong={switchToLong}
-            targetMode={targetMode}
-          />
-        ) : null}
-        {timerModal ? (
-          <TimerDoneModal
-            show={timerModal}
-            breakFromModal={breakFromModal}
-            handleClose={alarmHandler}
-          />
-        ) : null}
-      </div>
-    </div>
+        {
+          showModal ? (
+            <AreYouSureModal
+              show={showModal}
+              handleClose={handleClose}
+              switchToPom={switchToPom}
+              switchToShort={switchToShort}
+              switchToLong={switchToLong}
+              targetMode={targetMode}
+            />
+          ) : null
+        }
+        {
+          timerModal ? (
+            <TimerDoneModal
+              show={timerModal}
+              breakFromModal={breakFromModal}
+              handleClose={alarmHandler}
+            />
+          ) : null
+        }
+      </div >
+    </div >
   );
 };
 

@@ -1,6 +1,5 @@
 .container {
-  width: 75vw;
-  height: 35vh;
+  padding: 1vw 3vw;
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,49 +10,20 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
 }
 
-@media screen and (min-width: 2500px) {
-  .container {
-    width: 70vw;
-    height: 35vh;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .container {
-    width: 85vw;
-    height: 35vh;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .container {
-    width: 90vw;
-    height: 35vh;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .container {
-    width: 90vw;
-    height: 35vh;
-  }
-}
-
 @media screen and (max-width: 600px) {
   .container {
-    width: 90vw;
-    height: 35vh;
+    margin-top: -200px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .container {
-    width: 90vw;
-    height: 20vh;
+    margin-top: -200px;
   }
 }
 
@@ -77,12 +47,12 @@
 
 @media screen and (max-width: 450px) {
   .timeB {
-    font-size: 15vw;
+    font-size: 25vw;
   }
 }
 
 .timeC {
-  font-size: 11vw;
+  font-size: 13vw;
   font-weight: bold;
   color: white;
 }
@@ -101,7 +71,7 @@
 
 @media screen and (max-width: 450px) {
   .timeD {
-    font-size: 15vw;
+    font-size: 20vw;
   }
 }
 /*# sourceMappingURL=Clock.module.css.map */

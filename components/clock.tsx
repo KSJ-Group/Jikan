@@ -19,6 +19,10 @@ const Clock: React.FC = () => {
   const { selectedFont } = useContext(StylesContext);
 
   useEffect(() => {
+    setTime(moment().format('h:mm A'));
+  }, [])
+
+  useEffect(() => {
     clearInterval(interval);
     interval = 0;
     interval = window.setInterval(updateTime, 1000);

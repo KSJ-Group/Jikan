@@ -1,20 +1,23 @@
 .optionContainer {
-  display:flex;
+  display: flex;
   flex-direction: row;
   margin: 5px;
+  width: 100%;
 }
 
 .imageOption {
   height: 115px;
-  width: 165px;
+  width: 50%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  margin: 5px;
-  text-align:center;
+  text-align: center;
+  &:nth-child(1) {
+    margin-right: 15px;
+  }
 }
 
 .imageContainer {
   height: 85px;
-  width: 164px;
+  width: 100%;
   overflow: hidden;
 }
 

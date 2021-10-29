@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Color from './Color';
 import Search from './Search';
 import Options from './Options';
+import styles from "../../../styles/Settings/Settings.module.css";
 
 const ChangeBackground: React.FC = () => {
   const [display, setDisplay] = useState<string>('');
@@ -19,8 +20,8 @@ const ChangeBackground: React.FC = () => {
   };
 
   return (
-    <div>
-      <Options changeDisplay={changeDisplay}/>
+    <div className={styles.changeBG}>
+      <Options changeDisplay={changeDisplay} />
       {openDisplay()}
     </div>
   );

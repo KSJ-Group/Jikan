@@ -34,7 +34,105 @@ export const SettingsContext = createContext({
   ],
   setAllAlarms: (alarms: string[]) => { },
   selectedMusic: 'None',
-  setMusic: (music: string) => { }
+  setMusic: (music: string) => { },
+  music: [
+    {
+      title: 'None',
+      url: 'None'
+    },
+    {
+      title: 'Acoustic Folk',
+      url: 'JoPeBwSJeVc'
+    },
+    {
+      title: 'Anime Lofi Mix',
+      url: 'w3LWHIz3bMc'
+    },
+    {
+      title: 'Anime Music',
+      url: 'NJvaGDTJEQU'
+    },
+    {
+      title: 'Calm Piano',
+      url: 'XULUBg_ZcAU'
+    },
+    {
+      title: 'Coffee Shop Ambiance',
+      url: 'dx3GxpitvbY'
+    },
+    {
+      title: 'Christmas Tunes',
+      url: 'mDTH8UuGxEY'
+    },
+    {
+      title: 'Deep Focus',
+      url: '8N-eLvmheSE'
+    },
+    {
+      title: 'Fallout Radio',
+      url: 'Ya3WXzEBL1E'
+    },
+    {
+      title: 'Indie / Pop / Rock',
+      url: '1itSqkbXIlU'
+    },
+    {
+      title: 'Lofi Hip Hop',
+      url: '5qap5aO4i9A'
+    },
+    {
+      title: 'Nintendo Radio',
+      url: 'tOnOutGHcRQ'
+    },
+    {
+      title: 'R&B Chill',
+      url: 'L9Q1HUdUMp0'
+    },
+    {
+      title: 'Relaxing Jazz',
+      url: 'Dx5qFachd3A'
+    },
+    {
+      title: 'Relaxing Sleep',
+      url: 'HCOO8FdXR1c'
+    },
+    {
+      title: 'Soothing Rain',
+      url: '5tA0Onw2wyQ'
+    },
+    {
+      title: 'Sounds of Nature',
+      url: 'gfo2xZ2SMjc'
+    },
+    {
+      title: 'Spooky Halloween Music',
+      url: 'qJSLmjzLnAM'
+    },
+    {
+      title: 'Studio Ghibli',
+      url: 'P8j-_MOSrec'
+    },
+    {
+      title: 'The Beatles Greatest Hits',
+      url: 'XAtsnyaJziM'
+    },
+    {
+      title: 'The Good Life',
+      url: '36YnV9STBqc'
+    },
+    {
+      title: 'Video Game Tunes',
+      url: '8txpDvFnh5o'
+    },
+  ],
+  musicVolume: 20,
+  setMusicVolume: (volume: number) => { },
+  alertVolume: 50,
+  setAlertVolume: (volume: number) => { },
+  zip: '',
+  setZip: (zip: string) => { },
+  showSettings: false,
+  setShowSettings: (show: boolean) => { },
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -60,6 +158,100 @@ export const SettingsProvider: React.FC = ({ children }) => {
     "Xylophone.mp3",
   ]);
   const [selectedMusic, setMusic] = useState<string>('None');
+  const [music, setAllMusic] = useState<{ title: string, url: string }[]>([
+    {
+      title: 'None',
+      url: 'None'
+    },
+    {
+      title: 'Acoustic Folk',
+      url: 'JoPeBwSJeVc'
+    },
+    {
+      title: 'Anime Lofi Mix',
+      url: 'w3LWHIz3bMc'
+    },
+    {
+      title: 'Anime Music',
+      url: 'NJvaGDTJEQU'
+    },
+    {
+      title: 'Calm Piano',
+      url: 'XULUBg_ZcAU'
+    },
+    {
+      title: 'Coffee Shop Ambiance',
+      url: 'dx3GxpitvbY'
+    },
+    {
+      title: 'Christmas Tunes',
+      url: 'mDTH8UuGxEY'
+    },
+    {
+      title: 'Deep Focus',
+      url: '8N-eLvmheSE'
+    },
+    {
+      title: 'Fallout Radio',
+      url: 'Ya3WXzEBL1E'
+    },
+    {
+      title: 'Indie / Pop / Rock',
+      url: '1itSqkbXIlU'
+    },
+    {
+      title: 'Lofi Hip Hop',
+      url: '5qap5aO4i9A'
+    },
+    {
+      title: 'Nintendo Radio',
+      url: 'tOnOutGHcRQ'
+    },
+    {
+      title: 'R&B Chill',
+      url: 'L9Q1HUdUMp0'
+    },
+    {
+      title: 'Relaxing Jazz',
+      url: 'Dx5qFachd3A'
+    },
+    {
+      title: 'Relaxing Sleep',
+      url: 'HCOO8FdXR1c'
+    },
+    {
+      title: 'Soothing Rain',
+      url: '5tA0Onw2wyQ'
+    },
+    {
+      title: 'Sounds of Nature',
+      url: 'gfo2xZ2SMjc'
+    },
+    {
+      title: 'Spooky Halloween Music',
+      url: 'qJSLmjzLnAM'
+    },
+    {
+      title: 'Studio Ghibli',
+      url: 'P8j-_MOSrec'
+    },
+    {
+      title: 'The Beatles Greatest Hits',
+      url: 'XAtsnyaJziM'
+    },
+    {
+      title: 'The Good Life',
+      url: '36YnV9STBqc'
+    },
+    {
+      title: 'Video Game Tunes',
+      url: '8txpDvFnh5o'
+    },
+  ]);
+  const [musicVolume, setMusicVolume] = useState<number>(20);
+  const [alertVolume, setAlertVolume] = useState<number>(50);
+  const [zip, setZip] = useState<string>('');
+  const [showSettings, setShowSettings] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -125,7 +317,29 @@ export const SettingsProvider: React.FC = ({ children }) => {
     selectedMusic: selectedMusic,
     setMusic: (music: string): void => {
       setMusic(music);
-      localStorage.setItem("music", music);
+    },
+    music: music,
+    setAllMusic: (music: { title: string, url: string }[]): void => {
+      setAllMusic(music);
+    },
+    musicVolume: musicVolume,
+    setMusicVolume: (volume: number): void => {
+      setMusicVolume(volume);
+      localStorage.setItem("musicVolume", volume.toString());
+    },
+    alertVolume: alertVolume,
+    setAlertVolume: (volume: number): void => {
+      setAlertVolume(volume);
+      localStorage.setItem("alertVolume", volume.toString());
+    },
+    zip: zip,
+    setZip: (zip: string): void => {
+      setZip(zip);
+      localStorage.setItem("zip", zip);
+    },
+    showSettings: showSettings,
+    setShowSettings: (show: boolean): void => {
+      setShowSettings(show);
     }
   };
 
@@ -140,7 +354,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     let cached24 = localStorage.getItem("24");
     let cachedAlert = localStorage.getItem("alert");
     let cachedAlarms = localStorage.getItem("allAlarms");
-    let cachedMusic = localStorage.getItem('music');
+    let cachedMusicVol = localStorage.getItem("musicVolume");
+    let cachedAlertVol = localStorage.getItem("alertVolume");
+    let cachedZip = localStorage.getItem("zip");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -170,6 +386,15 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedAlarms) {
       store.setAllAlarms(JSON.parse(cachedAlarms));
+    }
+    if (cachedMusicVol) {
+      store.setMusicVolume(parseInt(cachedMusicVol));
+    }
+    if (cachedAlertVol) {
+      store.setAlertVolume(parseInt(cachedAlertVol));
+    }
+    if (cachedZip) {
+      store.setZip(cachedZip);
     }
   }, []);
 

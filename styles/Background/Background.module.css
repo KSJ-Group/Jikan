@@ -3,7 +3,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   z-index: 0;
-  -webkit-filter: blur(4px);
-          filter: blur(4px);
+  width: 100vw;
+  height: 100vh;
 }
 /*# sourceMappingURL=Background.module.css.map */

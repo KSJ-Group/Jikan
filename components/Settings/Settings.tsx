@@ -15,6 +15,8 @@ import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
+import Weather from "./Weather";
+import Blacklist from "./Blacklist";
 
 interface Props {
   showSettings: boolean;
@@ -49,12 +51,32 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     selectedAlert,
     setSelectedAlert,
     selectedMusic,
-    setMusic
+    setMusic,
+    music,
+    musicVolume,
+    setMusicVolume,
+    alertVolume,
+    setAlertVolume,
+    zip,
+    setZip,
   } = useContext(SettingsContext);
 
+  // const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   if (
+  //     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //       navigator.userAgent
+  //     )
+  //   ) {
+  //     setIsMobile(true);
+  //   } else {
+  //     setIsMobile(false);
+  //   }
+  // }, []);
 
   return (
-    <div className={styles.settingsDiv}>
+    <div className={styles.settingsDiv} id="touchsurface">
       <Offcanvas
         show={showSettings}
         onHide={() => setShowSettings(false)}
@@ -62,80 +84,91 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <Login />
-          {isClock ? (
-            // Clock settings
-            <div>
-              <div className={styles.settingsTop}>
-                <div className={styles.settingsTitle}>Clock Settings</div>
-                <button
-                  className={styles.x}
-                  onClick={() => setShowSettings(false)}
-                >
-                  Close
-                </button>
+          <div className={styles.subBody}>
+            {/* <Login /> */}
+            {isClock ? (
+              // Clock settings
+              <div>
+                <div className={styles.settingsTop}>
+                  <div className={styles.settingsTitle}>Clock Settings</div>
+                  <button
+                    className={styles.x}
+                    onClick={() => setShowSettings(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
+                <div id="swipelocation">
+                  <ShowSeconds
+                    showSeconds={showSeconds}
+                    setShowSeconds={setShowSeconds}
+                  />
+                  <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+                  <Font
+                    selectedFont={selectedFont}
+                    setSelectedFont={setSelectedFont}
+                  />
+                </div>
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                {/* <Blacklist /> */}
+                {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Blur blur={blur} setBlur={setBlur} />
+                <ChangeBackground />
               </div>
-              <Brightness
-                brightness={brightness}
-                setBrightness={setBrightness}
-              />
-              <ShowSeconds
-                showSeconds={showSeconds}
-                setShowSeconds={setShowSeconds}
-              />
-              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-              <Font
-                selectedFont={selectedFont}
-                setSelectedFont={setSelectedFont}
-              />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
-              <Blur blur={blur} setBlur={setBlur} />
-              <ChangeBackground />
-            </div>
-          ) : (
-            // Pomodoro settings
-            <div>
-              <div className={styles.settingsTop}>
-                <div className={styles.settingsTitle}>Pomodoro Settings</div>
-                <button
-                  className={styles.x}
-                  onClick={() => setShowSettings(false)}
-                >
-                  Close
-                </button>
+            ) : (
+              // Pomodoro settings
+              <div>
+                <div className={styles.settingsTop}>
+                  <div className={styles.settingsTitle}>Pomodoro Settings</div>
+                  <button
+                    className={styles.x}
+                    onClick={() => setShowSettings(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
+                <div id="swipelocation">
+                  <Timers
+                    pomodoroTime={pomodoroTime}
+                    setPomodoroTime={setPomodoroTime}
+                    shortBreakTime={shortBreakTime}
+                    setShortBreakTime={setShortBreakTime}
+                    longBreakTime={longBreakTime}
+                    setLongBreakTime={setLongBreakTime}
+                    setShowSettings={setShowSettings}
+                  />
+                  <AutoStarBreak
+                    autoStartBreak={autoStartBreak}
+                    setAutoStartBreak={setAutoStartBreak}
+                  />
+                  <Font
+                    selectedFont={selectedFont}
+                    setSelectedFont={setSelectedFont}
+                  />
+                </div>
+                <AlertSound
+                  selectedAlert={selectedAlert}
+                  setSelectedAlert={setSelectedAlert}
+                  alertVolume={alertVolume}
+                  setAlertVolume={setAlertVolume}
+                />
+                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Blur blur={blur} setBlur={setBlur} />
+                <ChangeBackground />
               </div>
-              <Brightness
-                brightness={brightness}
-                setBrightness={setBrightness}
-              />
-              <Timers
-                pomodoroTime={pomodoroTime}
-                setPomodoroTime={setPomodoroTime}
-                shortBreakTime={shortBreakTime}
-                setShortBreakTime={setShortBreakTime}
-                longBreakTime={longBreakTime}
-                setLongBreakTime={setLongBreakTime}
-                setShowSettings={setShowSettings}
-              />
-              <AutoStarBreak
-                autoStartBreak={autoStartBreak}
-                setAutoStartBreak={setAutoStartBreak}
-              />
-              <AlertSound
-                selectedAlert={selectedAlert}
-                setSelectedAlert={setSelectedAlert}
-              />
-              <Font
-                selectedFont={selectedFont}
-                setSelectedFont={setSelectedFont}
-              />
-              <Music selectedMusic={selectedMusic} setMusic={setMusic} />
-              <Blur blur={blur} setBlur={setBlur} />
-              <ChangeBackground />
-            </div>
-          )}
+            )}
+          </div>
         </Offcanvas.Body>
-        <AboutModal />
+        <AboutModal setShowSettings={setShowSettings} />
       </Offcanvas>
     </div>
   );
