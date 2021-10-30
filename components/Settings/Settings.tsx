@@ -111,7 +111,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
-                {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Weather zip={zip} setZip={setZip} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}

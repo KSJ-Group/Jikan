@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from "react-bootstrap";
 import styles from '../../styles/Settings/Settings.module.css';
-// import handler from '../../pages/api/weather';
+import getHandler from '../../pages/api/images/weather';
 
 interface Props {
   zip: string;
@@ -17,8 +17,7 @@ const Weather: React.FC<Props> = ({ zip, setZip }) => {
 
   const sendRequest = (): void => {
     if (zip.length === 5) {
-      console.log('Send request to API:', zip);
-      // handler(zip);
+      getHandler(zip);
     } else {
       console.log('Invalid');
     }
