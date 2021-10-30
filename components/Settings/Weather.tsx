@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Form } from "react-bootstrap";
 import globalStyles from '../../styles/Settings/Settings.module.css';
 import styles from '../../styles/Settings/Weather/Weather.module.css';
@@ -43,6 +43,13 @@ const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
       console.log('Invalid');
     }
   };
+
+  useEffect(() => {
+    const reg = /^\d+$/;
+    if (zip.length === 5 && reg.test(zip)) {
+      sendRequest();
+    }
+  }, [])
 
   const clearRequest = (): void => {
     setCurrentWeather({
