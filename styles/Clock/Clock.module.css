@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 450px) {
   .timeB {
-    font-size: 25vw;
+    font-size: 28vw;
   }
 }
 
@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 450px) {
   .timeC {
-    font-size: 12vw;
+    font-size: 13vw;
   }
 }
 
@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 450px) {
   .timeD {
-    font-size: 20vw;
+    font-size: 18vw;
   }
 }
 /*# sourceMappingURL=Clock.module.css.map */
