@@ -1,0 +1,24 @@
+.weatherSettings {
+  width: 100%;
+}
+
+.weatherRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.updateBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 15px;
+  border: 0.1px solid rgb(168, 168, 168);
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background: #dddddd;
+  }
+}
