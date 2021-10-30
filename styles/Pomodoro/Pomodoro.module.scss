@@ -44,7 +44,6 @@
   position: relative;
   top: 20px;
   width: 100%;
-  // height: 30%;
 }
 
 .link {
@@ -55,7 +54,6 @@
   font-size: 2.5vh;
   color: white;
   @media screen and (max-width: 800px) {
-    // top: -20px;
     font-size: 2vh;
   }
 }
@@ -63,7 +61,6 @@
 .timerDiv {
   @include flexCenter();
   width: 100%;
-  // height: 40%;
   font-size: 15vw;
   color: white;
   font-weight: bold;
@@ -76,7 +73,6 @@
   @include flexCenter();
   align-items: flex-start;
   width: 100%;
-  // height: 30%;
   position: relative;
   bottom: 20px;
   @media screen and (max-width: 1000px) {
@@ -92,6 +88,7 @@
   font-size: 3vh;
   background-color: rgb(241, 241, 241);
   cursor: pointer;
+  transition: 0.2s ease-in-out;
   &:hover {
     background-color: rgb(230, 230, 230);
   }

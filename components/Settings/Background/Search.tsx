@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import type { NextPage } from "next";
 import axios from "axios";
-import styles from "../../../styles/Search/Search.module.css";
+import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
 

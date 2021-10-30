@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap'
-import styles from '../../styles/Settings/Settings.module.css';
+import globalStyles from '../../styles/Settings/Settings.module.css';
+import styles from '../../styles/Settings/TimeFormat/TimeFormat.module.css';
 
 interface Props {
   is24Hour: boolean,
@@ -9,16 +10,18 @@ interface Props {
 
 const TimeFormat: React.FC<Props> = ({ is24Hour, setIs24Hour }) => {
   return (
-    <div className={styles.timeFormat}>
-      <Form.Group className={styles.toggle}>
-        <Form.Label>24 hour format</Form.Label>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          checked={is24Hour}
-          onChange={() => setIs24Hour(!is24Hour)}
-        />
-      </Form.Group>
+    <div className={styles.timeFormatContainer}>
+      <div className={globalStyles.settingModuleContainer}>
+        <Form.Group className={globalStyles.toggle}>
+          <Form.Label className={globalStyles.toggleLabel}>24 hour format</Form.Label>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            checked={is24Hour}
+            onChange={() => setIs24Hour(!is24Hour)}
+          />
+        </Form.Group>
+      </div>
     </div>
   );
 };

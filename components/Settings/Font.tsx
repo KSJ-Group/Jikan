@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import globalStyles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/Font/Font.module.css";
 
 interface Props {
   selectedFont: string;
@@ -18,20 +19,22 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
   const [availFonts, setFonts] = useState<string[]>(fonts);
 
   return (
-    <div>
-      <Form.Group className={styles.font}>
-        <Form.Label>Font</Form.Label>
-        <Form.Select
-          value={selectedFont}
-          onChange={(e) => changeFont(e)}
-        >
-          {availFonts.map((font) => (
-            <option key={font} value={font}>
-              {font}
-            </option>
-          ))}
-        </Form.Select>
-      </Form.Group>
+    <div className={globalStyles.settingModuleContainer}>
+      <div className={styles.fontContainer}>
+        <Form.Group className={globalStyles.font}>
+          <Form.Label>Font</Form.Label>
+          <Form.Select
+            value={selectedFont}
+            onChange={(e) => changeFont(e)}
+          >
+            {availFonts.map((font) => (
+              <option key={font} value={font}>
+                {font}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+      </div>
     </div>
   );
 };

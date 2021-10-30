@@ -76,7 +76,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   // }, []);
 
   return (
-    <div className={styles.settingsDiv} id="touchsurface">
+    <div className={styles.settingsDiv}>
       <Offcanvas
         show={showSettings}
         onHide={() => setShowSettings(false)}
@@ -98,24 +98,24 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                     Close
                   </button>
                 </div>
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
-                />
-                <div id="swipelocation">
+                <div className={styles.toggleRow}>
                   <ShowSeconds
                     showSeconds={showSeconds}
                     setShowSeconds={setShowSeconds}
                   />
                   <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-                  <Font
-                    selectedFont={selectedFont}
-                    setSelectedFont={setSelectedFont}
-                  />
                 </div>
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
                 {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
@@ -131,29 +131,23 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                     Close
                   </button>
                 </div>
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
+                <Timers
+                  pomodoroTime={pomodoroTime}
+                  setPomodoroTime={setPomodoroTime}
+                  shortBreakTime={shortBreakTime}
+                  setShortBreakTime={setShortBreakTime}
+                  longBreakTime={longBreakTime}
+                  setLongBreakTime={setLongBreakTime}
+                  setShowSettings={setShowSettings}
                 />
-                <div id="swipelocation">
-                  <Timers
-                    pomodoroTime={pomodoroTime}
-                    setPomodoroTime={setPomodoroTime}
-                    shortBreakTime={shortBreakTime}
-                    setShortBreakTime={setShortBreakTime}
-                    longBreakTime={longBreakTime}
-                    setLongBreakTime={setLongBreakTime}
-                    setShowSettings={setShowSettings}
-                  />
-                  <AutoStarBreak
-                    autoStartBreak={autoStartBreak}
-                    setAutoStartBreak={setAutoStartBreak}
-                  />
-                  <Font
-                    selectedFont={selectedFont}
-                    setSelectedFont={setSelectedFont}
-                  />
-                </div>
+                <AutoStarBreak
+                  autoStartBreak={autoStartBreak}
+                  setAutoStartBreak={setAutoStartBreak}
+                />
+                <Font
+                  selectedFont={selectedFont}
+                  setSelectedFont={setSelectedFont}
+                />
                 <AlertSound
                   selectedAlert={selectedAlert}
                   setSelectedAlert={setSelectedAlert}
@@ -162,6 +156,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
@@ -170,7 +168,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         </Offcanvas.Body>
         <AboutModal setShowSettings={setShowSettings} />
       </Offcanvas>
-    </div>
+    </div >
   );
 };
 

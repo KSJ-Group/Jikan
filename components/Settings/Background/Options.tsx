@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../../../styles/BackgroundIcons/BackgroundIcons.module.css";
-import styles2 from "../../../styles/Search/Search.module.css";
+import styles from "../../../styles/Settings/Background/BackgroundIcons/BackgroundIcons.module.css";
+import styles2 from "../../../styles/Settings/Background/Search/Search.module.css";
 
 interface OptionsProps {
   changeDisplay: (option: string) => void;
@@ -8,7 +8,7 @@ interface OptionsProps {
 
 const Options = ({ changeDisplay }: OptionsProps) => {
   return (
-    <>
+    <div className={styles.bgContainer}>
       <div className={styles2.searchTitle}>Change Background</div>
       <div className={styles.optionContainer}>
         <div
@@ -44,7 +44,7 @@ const Options = ({ changeDisplay }: OptionsProps) => {
           Color
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

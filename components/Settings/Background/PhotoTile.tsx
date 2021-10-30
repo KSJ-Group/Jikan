@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import type { NextPage } from 'next';
 import { BackgroundContext } from '../../BackgroundContext';
-import styles from '../../../styles/PhotoTile/PhotoTile.module.css';
+import styles from '../../../styles/Settings/Background/PhotoTile/PhotoTile.module.css';
 import { Spinner } from 'react-bootstrap'
 
 interface ButtonProps {

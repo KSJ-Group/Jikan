@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Form } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/AlertSound/AlertSound.module.css";
+import globalStyles from "../../styles/Settings/Settings.module.css";
 import { SettingsContext } from "../SettingsContext";
 
 interface Props {
@@ -47,28 +48,30 @@ const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert, alertVol
 
 
   return (
-    <div className={styles.alertContainer}>
-      <div className={styles.musicDiv}>
-        <Form.Group className={styles.alert}>
+    <div className={globalStyles.settingModuleContainer}>
+      <div className={styles.alertContainer}>
+        <div>
           <Form.Label>Alert Sound</Form.Label>
-          <Form.Select value={selectedAlert} onChange={(e) => changeAlert(e)}>
-            {availAlerts.map((alert) => (
-              <option key={alert} value={alert}>
-                {alert.slice(0, alert.indexOf("."))}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-        <button onClick={previewAlert} className={styles.previewBtn}>
-          Preview
-        </button>
-      </div>
-      <div className={styles.volumeDiv}>
-        <label>Alert volume</label>
-        <div className={styles.sliderDiv}>
-          <input id="slider" className={styles.brightnessSlider} defaultValue={alertVolume} onChange={changeHandler} type="range" name="volume"
-            min="0" max="100" />
-          <div className={styles.indicator}>{alertVolume}%</div>
+          <Form.Group className={styles.alert}>
+            <Form.Select value={selectedAlert} onChange={(e) => changeAlert(e)}>
+              {availAlerts.map((alert) => (
+                <option key={alert} value={alert}>
+                  {alert.slice(0, alert.indexOf("."))}
+                </option>
+              ))}
+            </Form.Select>
+            <button onClick={previewAlert} className={styles.previewBtn}>
+              Preview
+            </button>
+          </Form.Group>
+        </div>
+        <div className={globalStyles.volumeDiv}>
+          <label>Alert volume</label>
+          <div className={globalStyles.sliderDiv}>
+            <input id="slider" className={globalStyles.slider} defaultValue={alertVolume} onChange={changeHandler} type="range" name="volume"
+              min="0" max="100" />
+            <div>{alertVolume}%</div>
+          </div>
         </div>
       </div>
     </div>

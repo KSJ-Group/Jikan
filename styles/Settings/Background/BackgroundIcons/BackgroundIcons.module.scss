@@ -1,0 +1,42 @@
+.bgContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.optionContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.imageOption {
+  height: 115px;
+  width: 50%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  text-align: center;
+  &:nth-child(1) {
+    margin-right: 15px;
+  }
+}
+
+.imageContainer {
+  height: 85px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}

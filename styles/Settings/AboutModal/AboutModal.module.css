@@ -1,0 +1,78 @@
+.aboutContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  height: 80px;
+  background-color: #222222;
+}
+
+.aboutBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  background-color: rgba(248, 248, 248, 0.349);
+  padding: 3px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.infoModal {
+  width: 100vw;
+}
+
+.modalDiv a {
+  text-decoration: none;
+  color: #153b66;
+}
+
+.modalDiv div {
+  margin-top: 15px;
+}
+
+.modalBtn {
+  background-color: #b8b8b8;
+  color: black;
+  border: none;
+}
+
+.modalBtn:hover {
+  color: black;
+  background-color: #a0a0a0;
+}
+
+.emailDiv {
+  padding: 10px;
+  background-color: #153b66;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  margin: 0 auto;
+  color: white;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.emailDiv:hover {
+  background-color: #122a46;
+}
+
+.emailBtn {
+  text-decoration: none;
+}
+
+.emailBtn:hover {
+  color: white;
+}
+/*# sourceMappingURL=AboutModal.module.css.map */

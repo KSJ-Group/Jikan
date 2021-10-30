@@ -1,0 +1,37 @@
+.imageContainer {
+  height: 115px;
+  width: 45%;
+  margin: 7px;
+  overflow: hidden;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+@media screen and (max-width: 425px) {
+  .imageContainer {
+    width: 44vw;
+  }
+}
+
+.image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.image:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
+}
+
+.spinner {
+  z-index: 100;
+  position: relative;
+  top: -70px;
+  left: 67px;
+}
+/*# sourceMappingURL=PhotoTile.module.css.map */

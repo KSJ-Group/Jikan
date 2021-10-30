@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import styles from "../../styles/Settings/Settings.module.css";
+import globalStyles from "../../styles/Settings/Settings.module.css";
+import styles from "../../styles/Settings/Music/Music.module.scss";
 
 interface Props {
   selectedMusic: string;
@@ -59,29 +60,31 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
   }
 
   return (
-    <div className={styles.music}>
-      <Form.Group className={styles.font}>
-        <Form.Label>Music</Form.Label>
-        <div className={styles.musicDiv}>
-          <Form.Select
-            value={currentTitle}
-            onChange={(e) => changeMusic(e)}
-          >
-            {availMusic.map((music) => (
-              <option key={music.title} value={music.title}>
-                {music.title}
-              </option>
-            ))}
-          </Form.Select>
-          {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
-        </div>
-      </Form.Group>
-      <div className={styles.volumeDiv}>
-        <label>Music volume</label>
-        <div className={styles.sliderDiv}>
-          <input id="slider" className={styles.brightnessSlider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
-            min="0" max="100" />
-          <div className={styles.indicator}>{musicVolume}%</div>
+    <div className={globalStyles.settingModuleContainer}>
+      <div className={styles.musicContainer}>
+        <Form.Group className={globalStyles.font}>
+          <Form.Label>Music</Form.Label>
+          <div className={styles.musicDiv}>
+            <Form.Select
+              value={currentTitle}
+              onChange={(e) => changeMusic(e)}
+            >
+              {availMusic.map((music) => (
+                <option key={music.title} value={music.title}>
+                  {music.title}
+                </option>
+              ))}
+            </Form.Select>
+            {musicPlaying ? <button onClick={stopMusic} className={styles.stop}>Stop</button> : null}
+          </div>
+        </Form.Group>
+        <div className={globalStyles.volumeDiv}>
+          <label>Music volume</label>
+          <div className={globalStyles.sliderDiv}>
+            <input id="slider" className={globalStyles.slider} defaultValue={musicVolume} onChange={changeHandler} type="range" name="volume"
+              min="0" max="100" />
+            <div>{musicVolume}%</div>
+          </div>
         </div>
       </div>
     </div>
