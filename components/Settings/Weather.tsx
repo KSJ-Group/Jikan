@@ -6,9 +6,10 @@ import getHandler from '../../pages/api/images/weather';
 interface Props {
   zip: string;
   setZip: Function;
+  setCurrentWeather: Function;
 }
 
-const Weather: React.FC<Props> = ({ zip, setZip }) => {
+const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
 
   const changeHandler = (e: any): void => {
     e.preventDefault();
@@ -17,7 +18,18 @@ const Weather: React.FC<Props> = ({ zip, setZip }) => {
 
   const sendRequest = (): void => {
     if (zip.length === 5) {
-      getHandler(zip);
+      getHandler(zip)
+        .then(res => {
+          console.log(res);
+          const weatherData = {
+            city: res.location.name,
+            tempC: res.current.temp_c,
+            tempF: res.current.temp_f,
+            weather: res.current.condition.text,
+            icon: res.current.condition.icon
+          }
+          setCurrentWeather(weatherData);
+        })
     } else {
       console.log('Invalid');
     }

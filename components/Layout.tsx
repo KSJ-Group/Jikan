@@ -16,6 +16,8 @@ const Layout: React.FC = ({ children }) => {
     selectedMusic,
     setMusic,
     music,
+    currentWeather,
+    zip
   } = useContext(SettingsContext);
 
   const toggleFullscreen = (): void => {
@@ -60,6 +62,16 @@ const Layout: React.FC = ({ children }) => {
             <div className={styles.recordDiv2} onClick={handleClick}>
               <img src='/images/record.png' alt='vinyl record' className={styles.record2} />
             </div>}
+          {currentWeather.city ? <div className={styles.weatherContainer} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
+            <div className={styles.weatherLeft}>
+              <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
+            </div>
+            <div className={styles.weatherRight}>
+              <div>{currentWeather.city}</div>
+              <div>{currentWeather.tempC}° C | {currentWeather.tempF}° F</div>
+              <div>{currentWeather.weather}</div>
+            </div>
+          </div> : null}
         </BackgroundProvider>
       </div>
     </BrightnessDiv>
