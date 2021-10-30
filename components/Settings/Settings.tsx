@@ -59,6 +59,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setAlertVolume,
     zip,
     setZip,
+    setCurrentWeather
   } = useContext(SettingsContext);
 
   // const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -111,7 +112,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
-                <Weather zip={zip} setZip={setZip} />
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
@@ -155,7 +156,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setAlertVolume={setAlertVolume}
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}

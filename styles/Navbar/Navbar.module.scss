@@ -205,3 +205,41 @@
   width: 100%;
   height: 100%;
 }
+
+.weatherContainer {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.103);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.247);
+  }
+  @media screen and (max-width: 450px) {
+    top: 70px;
+    height: 0;
+    background-color: none;
+  }
+}
+
+.weatherIcon {
+  width: 100px;
+  height: 100px;
+}
+
+.weatherRight {
+  display: flex;
+  flex-direction: column;
+  :nth-child(1) {
+    font-weight: bold;
+  }
+}

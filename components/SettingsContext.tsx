@@ -133,6 +133,14 @@ export const SettingsContext = createContext({
   setZip: (zip: string) => { },
   showSettings: false,
   setShowSettings: (show: boolean) => { },
+  currentWeather: {
+    city: '',
+    tempC: '',
+    tempF: '',
+    weather: '',
+    icon: '',
+  },
+  setCurrentWeather: (weather: any) => { },
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -252,6 +260,13 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [alertVolume, setAlertVolume] = useState<number>(50);
   const [zip, setZip] = useState<string>('');
   const [showSettings, setShowSettings] = useState<boolean>(false);
+  const [currentWeather, setCurrentWeather] = useState<any>({
+    city: '',
+    tempC: '',
+    tempF: '',
+    weather: '',
+    icon: '',
+  });
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -340,6 +355,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
     showSettings: showSettings,
     setShowSettings: (show: boolean): void => {
       setShowSettings(show);
+    },
+    currentWeather: currentWeather,
+    setCurrentWeather: (weather: any) => {
+      setCurrentWeather(weather);
     }
   };
 
