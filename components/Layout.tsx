@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
@@ -15,7 +15,7 @@ const Layout: React.FC = ({ children }) => {
   const {
     selectedMusic,
     setMusic,
-    music
+    music,
   } = useContext(SettingsContext);
 
   const toggleFullscreen = (): void => {
