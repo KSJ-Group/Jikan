@@ -98,10 +98,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                     Close
                   </button>
                 </div>
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
-                />
                 <div className={styles.toggleRow}>
                   <ShowSeconds
                     showSeconds={showSeconds}
@@ -116,6 +112,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Blacklist /> */}
                 {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
@@ -131,10 +131,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                     Close
                   </button>
                 </div>
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
-                />
                 <Timers
                   pomodoroTime={pomodoroTime}
                   setPomodoroTime={setPomodoroTime}
@@ -160,6 +156,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
                 {/* <Weather zip={zip} setZip={setZip} /> */}
+                <Brightness
+                  brightness={brightness}
+                  setBrightness={setBrightness}
+                />
                 <Blur blur={blur} setBlur={setBlur} />
                 <ChangeBackground />
               </div>
