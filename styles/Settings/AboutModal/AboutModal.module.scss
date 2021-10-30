@@ -6,13 +6,13 @@
   background-color: rgb(34, 34, 34);
 }
 
-.about {
+.aboutBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   background-color: rgba(248, 248, 248, 0.349);
-  padding: 3px;
+  padding: 3px 10px;
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -32,11 +32,12 @@
 }
 
 .modalBtn {
-  background-color: white;
-  color: rgb(21, 59, 102);
+  background-color: rgb(184, 184, 184);
+  color: black;
+  border: none;
   &:hover {
-    color: white;
-    background-color: rgb(21, 59, 102);
+    color: black;
+    background-color: rgb(160, 160, 160);
   }
 }
 

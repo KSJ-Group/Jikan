@@ -7,6 +7,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  font-size: 18px;
 }
 
 .alert {
@@ -30,7 +31,13 @@
   margin-left: 10px;
   border-radius: 5px;
   background: #efefef;
-  border: none;
+  border: 0.5px solid black;
   font-size: 15px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.previewBtn:hover {
+  background: #dddddd;
 }
 /*# sourceMappingURL=AlertSound.module.css.map */

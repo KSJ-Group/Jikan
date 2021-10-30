@@ -1,7 +1,5 @@
 .search {
   z-index: 2;
-  // width: 400px;
-  // margin-bottom: 50px;
 }
 
 .images {
@@ -9,6 +7,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  left: 4px;
 }
 
 .searchTitle {

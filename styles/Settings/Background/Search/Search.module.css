@@ -13,6 +13,7 @@
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  left: 4px;
 }
 
 .searchTitle {

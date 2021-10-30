@@ -74,8 +74,13 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #efefef;
-  border: none;
-  font-weight: bold;
+  border: 0.5px solid black;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.x:hover {
+  background: #dddddd;
 }
 
 .toggleRow {
@@ -99,6 +104,9 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 18px;
 }
 

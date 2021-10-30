@@ -10,7 +10,7 @@
   background-color: #222222;
 }
 
-.about {
+.aboutBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,7 +22,7 @@
           align-items: center;
   font-size: 20px;
   background-color: rgba(248, 248, 248, 0.349);
-  padding: 3px;
+  padding: 3px 10px;
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -42,13 +42,14 @@
 }
 
 .modalBtn {
-  background-color: white;
-  color: #153b66;
+  background-color: #b8b8b8;
+  color: black;
+  border: none;
 }
 
 .modalBtn:hover {
-  color: white;
-  background-color: #153b66;
+  color: black;
+  background-color: #a0a0a0;
 }
 
 .emailDiv {
