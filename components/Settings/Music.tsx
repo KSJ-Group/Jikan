@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import globalStyles from "../../styles/Settings/Settings.module.css";
-import styles from "../../styles/Settings/Music/Music.module.scss";
+import styles from "../../styles/Settings/Music/Music.module.css";
 
 interface Props {
   selectedMusic: string;
