@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import { BackgroundProvider } from './BackgroundContext';
@@ -7,16 +7,19 @@ import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
+import getHandler from '../pages/api/images/weather';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const { brightness } = useContext(StylesContext);
+  const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   const {
     selectedMusic,
     setMusic,
     music,
     currentWeather,
+    setCurrentWeather,
     zip
   } = useContext(SettingsContext);
 
@@ -33,6 +36,23 @@ const Layout: React.FC = ({ children }) => {
       setIsFullscreen(true);
     }
   }
+
+  useEffect(() => {
+    if (initialLoad && zip.length === 5) {
+      getHandler(zip)
+        .then(res => {
+          const weatherData = {
+            city: res.location.name,
+            tempC: res.current.temp_c,
+            tempF: res.current.temp_f,
+            weather: res.current.condition.text,
+            icon: res.current.condition.icon
+          }
+          setCurrentWeather(weatherData);
+        })
+      setInitialLoad(false);
+    }
+  }, [zip])
 
   const handleClick = (): void => {
     if (selectedMusic !== 'None') {

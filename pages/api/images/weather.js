@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export default async function getWeather(zip: string) {
+export default async function getWeather(zip) {
   return axios
     .get(
-      `http://api.weatherapi.com/v1/current.json?key=dcb37445c9f44f6ba79154233212910&q=${zip}&aqi=no`
+      `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER}&q=${zip}&aqi=no`
     )
     .then((response) => {
       return response.data;

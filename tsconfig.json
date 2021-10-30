@@ -22,7 +22,8 @@
     "getFileNames.js",
     "pages/api/getAlarms.ts",
     "pages/api/blocker.js",
-    "components/YouTube.jsx"
+    "components/YouTube.jsx",
+    "pages/api/images/weather.js"
   ],
   "exclude": ["node_modules"]
 }

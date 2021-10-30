@@ -6,7 +6,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  height: 80px;
+  height: 60px;
   background-color: #222222;
 }
 
@@ -23,7 +23,7 @@
   font-size: 20px;
   background-color: rgba(248, 248, 248, 0.349);
   padding: 3px 10px;
-  margin: 10px;
+  margin: -5px 0 10px;
   border-radius: 5px;
   cursor: pointer;
 }

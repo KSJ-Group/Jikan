@@ -26,7 +26,6 @@ const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
     if (zip.length === 5 && reg.test(zip)) {
       getHandler(zip)
         .then(res => {
-          console.log(res);
           const weatherData = {
             city: res.location.name,
             tempC: res.current.temp_c,
@@ -43,13 +42,6 @@ const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
       console.log('Invalid');
     }
   };
-
-  useEffect(() => {
-    const reg = /^\d+$/;
-    if (zip.length === 5 && reg.test(zip)) {
-      sendRequest();
-    }
-  }, [])
 
   const clearRequest = (): void => {
     setCurrentWeather({
