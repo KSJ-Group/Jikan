@@ -343,6 +343,8 @@
 }
 
 .weatherIcon {
+  position: relative;
+  top: 10px;
   width: 100px;
   height: 100px;
 }
@@ -355,6 +357,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 10px;
+  padding-right: 10px;
 }
 
 .weatherRight :nth-child(1) {
