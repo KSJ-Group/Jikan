@@ -336,15 +336,26 @@
 
 @media screen and (max-width: 450px) {
   .weatherContainer {
-    top: 70px;
+    top: 75px;
     height: 0;
+    right: -15px;
     background-color: none;
+    text-align: right;
   }
 }
 
 .weatherIcon {
+  display: block;
+  position: relative;
+  top: 10px;
   width: 100px;
   height: 100px;
+}
+
+@media screen and (max-width: 450px) {
+  .weatherIcon {
+    display: none;
+  }
 }
 
 .weatherRight {
@@ -355,6 +366,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 10px;
+  padding-right: 10px;
 }
 
 .weatherRight :nth-child(1) {

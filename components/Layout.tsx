@@ -41,12 +41,13 @@ const Layout: React.FC = ({ children }) => {
     if (initialLoad && zip.length === 5) {
       getHandler(zip)
         .then(res => {
+          const lastUpdated = res.current.last_updated.slice(5);
           const weatherData = {
             city: res.location.name,
             tempC: res.current.temp_c,
             tempF: res.current.temp_f,
             weather: res.current.condition.text,
-            icon: res.current.condition.icon
+            icon: res.current.condition.icon,
           }
           setCurrentWeather(weatherData);
         })
