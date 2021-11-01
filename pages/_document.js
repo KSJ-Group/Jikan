@@ -48,7 +48,6 @@ class MyDocument extends Document {
             src="https://kit.fontawesome.com/5a44324c7d.js"
             crossOrigin="anonymous"
           ></script>
-          <script src="jquery-3.5.1.min.js"></script>
 
           <link
             rel="icon"

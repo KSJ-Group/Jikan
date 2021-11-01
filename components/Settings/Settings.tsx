@@ -17,6 +17,7 @@ import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
 import Blacklist from "./Blacklist";
+import handleLogin from '../../pages/api/spotify';
 
 interface Props {
   showSettings: boolean;
@@ -87,6 +88,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         <Offcanvas.Body className={styles.body}>
           <div className={styles.subBody}>
             {/* <Login /> */}
+            <button onClick={handleLogin}>Spotify</button>
             {isClock ? (
               // Clock settings
               <div>
