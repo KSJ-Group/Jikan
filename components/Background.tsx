@@ -23,16 +23,18 @@ const Background: React.FC = () => {
     <div>
       {backgroundType === "image" ? (
         <BackgroundBlur blur={blurAmount}>
-          <Image
-            src={background}
-            className={styles.image}
-            placeholder="blur"
-            blurDataURL={background}
-            layout="fill"
-            onLoadingComplete={() => {
-              changeLoadStatus(true);
-            }}
-          />
+          <div className={styles.imageDiv}>
+            <Image
+              src={background}
+              className={styles.image}
+              placeholder="blur"
+              blurDataURL={background}
+              layout="fill"
+              onLoadingComplete={() => {
+                changeLoadStatus(true);
+              }}
+            />
+          </div>
         </BackgroundBlur>
       ) : (
         <BackgroundColor color={background}></BackgroundColor>
