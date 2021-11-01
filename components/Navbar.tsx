@@ -49,6 +49,15 @@ const Navbar: React.FC = () => {
     }
   }, [clockIsActive, pomIsActive])
 
+  useEffect(() => {
+    const settings = document.querySelector('.offcanvas');
+    if (showSettings) {
+      settings?.classList.add('settings-styling');
+    } else {
+      settings?.classList.remove('settings-styling');
+    }
+  }, [showSettings])
+
   return (
     <>
       <Head>
