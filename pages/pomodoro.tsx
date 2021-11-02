@@ -373,17 +373,12 @@ const pomodoro: NextPage = () => {
     <div className={styles.pomodoro}>
       <div className={styles.container}>
         <Head>
-          {currentTime ? (
-            <title>{currentTime} | Jikan</title>
+          {currentTime && started ? (
+            <title>Jikan | {currentTime}</title>
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          {/* <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
-          /> */}
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         </Head>
         <div className={styles.linksDiv}>
           <div
