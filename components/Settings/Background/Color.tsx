@@ -8,7 +8,7 @@ const Color = () => {
 
   return (
     <div className={styles.colorContainer}>
-      <div className={styles.colorTitle}>Color</div>
+      <div className={styles.colorTitle}>Select Color</div>
       <ChromePicker
         className={styles.colorPicker}
         color={background}
