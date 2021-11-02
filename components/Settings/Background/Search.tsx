@@ -72,7 +72,7 @@ const Search: NextPage = () => {
 
   return (
     <div className={styles.search}>
-      <div className={styles.searchTitle}>Image</div>
+      <div className={styles.searchTitle}>Search Image</div>
       <form onSubmit={(e: any) => doNothing(e)}>
         <input
           type="text"

@@ -4,6 +4,7 @@ import moment from 'moment';
 import { SettingsContext } from './SettingsContext';
 import { StylesContext } from './StylesContext';
 import { ClockFont } from '../styles/Global/global.style';
+import Head from "next/head";
 
 let interval: number;
 
@@ -87,6 +88,10 @@ const Clock: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        {time ? <title>Jikan | {time.slice(0, time.indexOf(' '))}</title> :
+          <title>Jikan | Clock</title>}
+      </Head>
       <ClockFont font={selectedFont}>
         {is24andSeconds ? <div className={styles.timeA}>{time}</div> : null}
         {is24 ? <div className={styles.timeB}>{time}</div> : null}
