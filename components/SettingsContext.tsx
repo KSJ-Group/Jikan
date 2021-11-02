@@ -127,7 +127,7 @@ export const SettingsContext = createContext({
   ],
   musicVolume: 20,
   setMusicVolume: (volume: number) => { },
-  alertVolume: 50,
+  alertVolume: 80,
   setAlertVolume: (volume: number) => { },
   zip: '',
   setZip: (zip: string) => { },
@@ -257,7 +257,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
   ]);
   const [musicVolume, setMusicVolume] = useState<number>(20);
-  const [alertVolume, setAlertVolume] = useState<number>(50);
+  const [alertVolume, setAlertVolume] = useState<number>(80);
   const [zip, setZip] = useState<string>('');
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [currentWeather, setCurrentWeather] = useState<any>({

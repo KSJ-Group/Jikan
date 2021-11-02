@@ -7,7 +7,7 @@ import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
-import getHandler from '../pages/api/images/weather';
+import getHandler from '../pages/api/weather';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);

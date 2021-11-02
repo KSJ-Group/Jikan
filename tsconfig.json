@@ -23,7 +23,8 @@
     "pages/api/getAlarms.ts",
     "pages/api/blocker.js",
     "components/YouTube.jsx",
-    "pages/api/images/weather.js"
+    "pages/api/weather.js",
+    "pages/api/spotify.js"
   ],
   "exclude": ["node_modules"]
 }

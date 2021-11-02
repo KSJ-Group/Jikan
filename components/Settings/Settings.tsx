@@ -16,7 +16,6 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
-import Blacklist from "./Blacklist";
 
 interface Props {
   showSettings: boolean;
