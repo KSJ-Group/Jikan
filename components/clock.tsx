@@ -89,7 +89,7 @@ const Clock: React.FC = () => {
   return (
     <div className={styles.container}>
       <Head>
-        {time ? <title>Jikan | {time.indexOf(' ') > 0 ? time.slice(0, time.indexOf(' ')) : time}</title> :
+        {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
       </Head>
       <ClockFont font={selectedFont}>
