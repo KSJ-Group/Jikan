@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@astrajs/collections": "^0.3.1",
     "@erikwatson/snowfall": "^3.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
@@ -46,6 +47,7 @@
     "@types/youtube-player": "^5.5.5",
     "babel-plugin-styled-components": "^1.13.2",
     "easygraphql-tester": "^6.0.1",
+    "netlify-cli": "^6.14.12",
     "typescript": "4.4.3"
   },
   "browser": {
