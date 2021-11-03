@@ -33,12 +33,10 @@ class MyDocument extends Document {
             src="https://unpkg.com/react/umd/react.production.min.js"
             crossOrigin="true"
           ></script>
-
           <script
             src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
             crossOrigin="true"
           ></script>
-
           <script
             src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
             crossOrigin="true"
@@ -48,7 +46,6 @@ class MyDocument extends Document {
             src="https://kit.fontawesome.com/5a44324c7d.js"
             crossOrigin="anonymous"
           ></script>
-
           <link
             rel="icon"
             href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
