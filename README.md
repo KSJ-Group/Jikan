@@ -1,11 +1,12 @@
-# Jikan ⏲
+# ⏲ Jikan ⏲
 
 **Deployed Link:** [https://jikan-timer.com](https://jikan-timer.com)
 
-**Jikan** is a clock and timer web application inspired by the Pomodoro Technique.
+**Jikan** is a full-stack clock and timer web application inspired by the Pomodoro Technique.
 The timer is fully customizable, allowing users to control how they want to manage their time.
 Since work environment is a huge factor in productivity, users can also customize a variety of
-settings to set the mood and to match user preference.
+settings to set the mood and to match user preference. Users have the ability to login with Google
+to store settings and access them from different devices or browsers.
 
 **_So what is the pomodoro technique?_** |
 Pomodoro Technique is a productivity method in which a certain time can be set to be productive (default 25 minutes),
@@ -17,7 +18,7 @@ your phone or other distractions during your short Pomodoro time, as you know yo
 The pomodoro technique is not a perfect surefire way to be productive. You will need to have discipline and willpower
 to want to be productive. Try it today by visiting the link below!
 
-⏰ ****[https://jikan-timer.com](https://jikan-timer.com/)**** ⏰
+⏰ \***\*[https://jikan-timer.com](https://jikan-timer.com/)\*\*** ⏰
 
 For more detailed information on the pomodoro technique, visit the following link: [Article](https://www.forbes.com/sites/bryancollinseurope/2020/03/03/the-pomodoro-technique/)
 
@@ -45,8 +46,9 @@ have it open on an external monitor or another device, but it can also be run in
 
 #### Clock
 
-- Main clock
+- Digital Clock
   - Settings
+    - Google Login
     - Show seconds
     - 12hr / 24hr format
     - Change font
@@ -58,6 +60,7 @@ have it open on an external monitor or another device, but it can also be run in
     - Change background image (Pexels API image or solid color)
 - Pomodoro Timer
   - Settings
+    - Google Login
     - Set custom times for pomodoro, short break, long break
     - Turn on auto-start breaks
     - Change font
@@ -73,6 +76,8 @@ have it open on an external monitor or another device, but it can also be run in
 **Client:** React, TypeScript, Next.js, Sass, Styled-Components, React-bootstrap, Axios
 
 **Server:** Next.js, Pexels API, WeatherAPI
+
+**Backend:** AstraDB, Node.js, Netlify Functions
 
 ## Installation
 

@@ -21,7 +21,8 @@ const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
     setZip(e.target.value);
   };
 
-  const sendRequest = (): void => {
+  const sendRequest = (e: any): void => {
+    e.preventDefault();
     const reg = /^\d+$/;
     if (zip.length === 5 && reg.test(zip)) {
       getHandler(zip)
@@ -59,14 +60,16 @@ const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
 
   return (
     <div className={globalStyles.settingModuleContainer}>
-      <Form.Group className={globalStyles.font}>
-        <Form.Label>Weather</Form.Label>
-        <div className={styles.weatherRow}>
-          <Form.Control id='weather-input' className={styles.zipInput} defaultValue={zip} placeholder="Zipcode" maxLength={5} onChange={(e: any) => changeHandler(e)} />
-          <input type="button" value="Update" className={styles.updateBtn} onClick={sendRequest} />
-          <input type="button" value="Clear" className={styles.updateBtn} onClick={clearRequest} />
-        </div>
-      </Form.Group>
+      <form onSubmit={(e: any) => sendRequest(e)}>
+        <Form.Group className={globalStyles.font}>
+          <Form.Label>Weather</Form.Label>
+          <div className={styles.weatherRow}>
+            <Form.Control id='weather-input' className={styles.zipInput} defaultValue={zip} placeholder="Zipcode" maxLength={5} onChange={(e: any) => changeHandler(e)} />
+            <input type="button" value="Update" className={styles.updateBtn} onClick={(e: any) => sendRequest(e)} />
+            <input type="button" value="Clear" className={styles.updateBtn} onClick={clearRequest} />
+          </div>
+        </Form.Group>
+      </form>
     </div>
   );
 };

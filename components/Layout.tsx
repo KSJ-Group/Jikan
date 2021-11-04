@@ -8,6 +8,7 @@ import { BrightnessDiv } from '../styles/Global/global.style';
 import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
 import getHandler from '../pages/api/weather';
+import Login from './Settings/Login';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -93,6 +94,7 @@ const Layout: React.FC = ({ children }) => {
               <div>{currentWeather.weather}</div>
             </div>
           </div> : null}
+          <div className={styles.offScreen}><Login /></div>
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

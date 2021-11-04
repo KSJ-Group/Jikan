@@ -141,6 +141,8 @@ export const SettingsContext = createContext({
     icon: '',
   },
   setCurrentWeather: (weather: any) => { },
+  settingsElement: document.getElementById('')!,
+  setSettingsElement: (element: HTMLElement) => { },
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -267,6 +269,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     weather: '',
     icon: '',
   });
+  const [settingsElement, setSettingsElement] = useState<HTMLElement>(document.getElementById('')!)
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -359,6 +362,10 @@ export const SettingsProvider: React.FC = ({ children }) => {
     currentWeather: currentWeather,
     setCurrentWeather: (weather: any) => {
       setCurrentWeather(weather);
+    },
+    settingsElement: settingsElement,
+    setSettingsElement: (element: HTMLElement) => {
+      setSettingsElement(element);
     }
   };
 

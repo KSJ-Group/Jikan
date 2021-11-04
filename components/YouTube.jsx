@@ -53,7 +53,7 @@ const YouTubePlayer = () => {
             >
               Open Settings to choose music
             </button>
-            <div>Or click the vinyl record to play random music!</div>
+            <div>Click vinyl record in the corner to play random music</div>
           </div>
         ) : null}
         <YouTube

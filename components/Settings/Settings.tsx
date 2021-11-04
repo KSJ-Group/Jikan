@@ -58,7 +58,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setAlertVolume,
     zip,
     setZip,
-    setCurrentWeather
+    setCurrentWeather,
+    settingsElement,
+    setSettingsElement
   } = useContext(SettingsContext);
 
   // const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -75,6 +77,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   //   }
   // }, []);
 
+  useEffect(() => {
+    const el: HTMLElement = document.getElementById('settings-element')!;
+    setSettingsElement(el);
+  });
+
   return (
     <div className={styles.settingsDiv}>
       <Offcanvas
@@ -84,8 +91,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody}>
-            {/* <Login /> */}
+          <div className={styles.subBody} id="settings-element">
+            <Login />
             {isClock ? (
               // Clock settings
               <div>
