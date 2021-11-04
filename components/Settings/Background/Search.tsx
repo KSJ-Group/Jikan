@@ -85,7 +85,7 @@ const Search: NextPage = () => {
 
   return (
     <div className={styles.search}>
-      <div className={styles.searchTitle}>Search Image</div>
+      <div className={styles.searchTitle}>Search Images from Pexels</div>
       <form onSubmit={(e: any) => submitSearch(e)}>
         <Form.Group className={styles.searchRow}>
           <Form.Control
