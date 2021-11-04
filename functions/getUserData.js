@@ -4,7 +4,6 @@ exports.handler = async function (event, context) {
   const astraClient = await createClient({
     astraDatabaseId: process.env.ASTRA_DB_ID,
     astraDatabaseRegion: process.env.ASTRA_DB_REGION,
-    // applicationToken: process.env.ASTRA_DB_TOKEN,
     username: process.env.ASTRA_DB_USERNAME,
     password: process.env.ASTRA_DB_PASSWORD,
   });
@@ -13,18 +12,14 @@ exports.handler = async function (event, context) {
     .namespace(process.env.ASTRA_DB_KEYSPACE)
     .collection("users");
 
-  console.log(usersCollection);
-
   // create a new user (specifying documentId)
   try {
-    const user = await usersCollection.find({
-      name: { $eq: "cliff" },
-    });
+    const user = await usersCollection.get(event.queryStringParameters.email);
+    // console.log("User data:", user);
     return {
       statusCode: 200,
-      body: JSON.stringify(user.data),
+      body: JSON.stringify(user),
     };
-    console.log("Success");
   } catch (e) {
     console.log("Error", e);
     return {

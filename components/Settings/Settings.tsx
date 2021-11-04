@@ -85,7 +85,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
       >
         <Offcanvas.Body className={styles.body}>
           <div className={styles.subBody}>
-            {/* <Login /> */}
+            <Login />
             {isClock ? (
               // Clock settings
               <div>
