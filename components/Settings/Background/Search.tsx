@@ -4,6 +4,8 @@ import axios from "axios";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
+import { Form } from "react-bootstrap";
+import { SettingsContext } from "../../SettingsContext";
 
 interface Photo {
   url: string;
@@ -22,6 +24,7 @@ const Search: NextPage = () => {
   const [images, setImages] = useState<typeof photos>([]);
   const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
+  const { settingsElement } = useContext(SettingsContext);
 
   useEffect(() => {
     let search = localStorage.getItem("search");
@@ -32,14 +35,19 @@ const Search: NextPage = () => {
     }
   }, []);
 
-  useEffect(() => {
+  const initial = () => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
       fetchImages(terms, page);
     }
     localStorage.setItem("search", terms);
-  }, [terms, page]);
+  }
+
+  useEffect(() => {
+    initial();
+  }, [page]);
+
 
   const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -53,6 +61,10 @@ const Search: NextPage = () => {
       .then((data) => {
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
+        settingsElement!.scrollTo({
+          top: 900,
+          behavior: 'smooth'
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -65,24 +77,33 @@ const Search: NextPage = () => {
     setPage(newPage);
   };
 
-  const doNothing = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const submitSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     // do nothing
     e.preventDefault();
+    initial();
   }
 
   return (
     <div className={styles.search}>
       <div className={styles.searchTitle}>Search Image</div>
-      <form onSubmit={(e: any) => doNothing(e)}>
-        <input
-          type="text"
-          value={terms}
-          className={styles.searchInput}
-          placeholder="Mountains, cars, animals, dark, etc."
-          onChange={(event: any) => {
-            changeTerms(event);
-          }}
-        />
+      <form onSubmit={(e: any) => submitSearch(e)}>
+        <Form.Group className={styles.searchRow}>
+          <Form.Control
+            type="text"
+            value={terms}
+            className={styles.searchInput}
+            placeholder="Mountains, cars, animals, dark, etc."
+            onChange={(event: any) => {
+              changeTerms(event);
+            }}
+          />
+          <input
+            type="submit"
+            value="Submit"
+            className={styles.searchBtn}
+            onClick={initial}
+          />
+        </Form.Group>
       </form>
       <div className={styles.images}>
         {images.map((image) => {
