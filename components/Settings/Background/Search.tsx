@@ -61,7 +61,7 @@ const Search: NextPage = () => {
       .then((data) => {
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
-        settingsElement!.scrollTo({
+        settingsElement.scrollTo({
           top: 900,
           behavior: 'smooth'
         });
