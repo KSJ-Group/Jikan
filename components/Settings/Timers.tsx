@@ -113,8 +113,8 @@ const Timers: React.FC<Props> = ({
         <Form.Group controlId="formBasicEmail" className={styles.pomodoro}>
           <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
           <Form.Select value={currentPom} onChange={(e) => pomChange(e)}>
-            {minutes.map((minute) => (
-              <option key={minute + "pom"} value={minute}>
+            {minutes.map((minute, i) => (
+              <option key={minute + i + "pom"} value={minute}>
                 {minute}
               </option>
             ))}
@@ -124,8 +124,8 @@ const Timers: React.FC<Props> = ({
         <Form.Group controlId="formBasicPassword" className={styles.shortbreak}>
           <Form.Label className={styles.timerLabel}>Short Break</Form.Label>
           <Form.Select value={currentShort} onChange={(e) => shortChange(e)}>
-            {shortMinutes.map((minute) => (
-              <option key={minute + "short"} value={minute}>
+            {shortMinutes.map((minute, i) => (
+              <option key={minute + i + "short"} value={minute}>
                 {minute}
               </option>
             ))}
@@ -135,8 +135,8 @@ const Timers: React.FC<Props> = ({
         <Form.Group controlId="formBasicPassword" className={styles.longbreak}>
           <Form.Label className={styles.timerLabel}>Long Break</Form.Label>
           <Form.Select value={currentLong} onChange={(e) => longChange(e)}>
-            {longMinutes.map((minute) => (
-              <option key={minute + "long"} value={minute}>
+            {longMinutes.map((minute, i) => (
+              <option key={minute + i + "long"} value={minute}>
                 {minute}
               </option>
             ))}

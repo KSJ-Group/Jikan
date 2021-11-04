@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styles from '../../styles/Settings/Settings.module.css'
+import styles from '../../styles/Settings/Login/Login.module.css'
 import { SettingsContext } from "../SettingsContext";
 import { StylesContext } from "../StylesContext";
 import { BackgroundContext } from '../BackgroundContext';
@@ -49,6 +49,7 @@ const Login = () => {
     setMusicVolume,
     setAlertVolume,
     setZip,
+    setShowSettings
   } = useContext(SettingsContext);
 
   const {
@@ -64,6 +65,14 @@ const Login = () => {
     setIsLoggedIn(true);
   }
 
+  const logout = () => {
+    setIsLoggedIn(false);
+  }
+
+  const responseFailure = (res) => {
+    console.log('Login failed:', res)
+  }
+
   useEffect(() => {
     const cachedEmail = localStorage.getItem('email');
     const cachedName = localStorage.getItem('name');
@@ -76,7 +85,7 @@ const Login = () => {
   }, [])
 
   useEffect(() => {
-    if (userSettings) {
+    if (userSettings && isLoggedIn) {
       // console.log(userSettings);
       setSelectedFont(userSettings.selectedFont);
       setBrightness(parseInt(userSettings.brightness));
@@ -99,44 +108,8 @@ const Login = () => {
   }, [userSettings])
 
   useEffect(() => {
-    if (email && firstName) {
-      getUserData(email)
-        .then((response) => {
-          // If user exists
-          if (response) {
-            getUserData(email)
-              .then((response3) => {
-                if (response3) {
-                  setUserSettings(response3);
-                }
-              })
-          } else {
-            // Add new user!
-            addNewUser(
-              email,
-              firstName,
-              selectedFont,
-              brightness.toString(),
-              JSON.stringify(blur),
-              pomodoroTime.toString(),
-              shortBreakTime.toString(),
-              longBreakTime.toString(),
-              JSON.stringify(autoStartBreak),
-              JSON.stringify(showSeconds),
-              JSON.stringify(is24Hour),
-              selectedAlert,
-              musicVolume.toString(),
-              alertVolume.toString(),
-              zip,
-              background,
-            )
-              .then((response4) => {
-                setUserSettings(response4);
-              })
-          }
-        });
-    }
-    if (settingsChanged) {
+    updateData();
+    if (settingsChanged && isLoggedIn) {
       postUserSettings(
         email,
         firstName,
@@ -174,13 +147,51 @@ const Login = () => {
     background
   ])
 
-  const responseFailure = (res) => {
-    console.log('Login failed:', res)
+  const updateData = () => {
+    if (email && firstName && isLoggedIn) {
+      getUserData(email)
+        .then((response) => {
+          // If user exists
+          if (response) {
+            getUserData(email)
+              .then((response3) => {
+                if (response3) {
+                  setUserSettings(response3);
+                }
+              })
+          } else {
+            // Add new user!
+            addNewUser(
+              email,
+              firstName,
+              selectedFont,
+              brightness.toString(),
+              JSON.stringify(blur),
+              pomodoroTime.toString(),
+              shortBreakTime.toString(),
+              longBreakTime.toString(),
+              JSON.stringify(autoStartBreak),
+              JSON.stringify(showSeconds),
+              JSON.stringify(is24Hour),
+              selectedAlert,
+              musicVolume.toString(),
+              alertVolume.toString(),
+              zip,
+              background,
+            )
+              .then((response4) => {
+                setUserSettings(response4);
+              })
+          }
+        });
+    }
   }
 
-  const logout = () => {
-    setIsLoggedIn(false);
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateData();
+    }
+  }, [isLoggedIn])
 
   return (
     <div>
@@ -192,6 +203,11 @@ const Login = () => {
             buttonText="Logout"
             onLogoutSuccess={logout}
             className={styles.logoutBtn}
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className={styles.logoutBtn} disabled={renderProps.disabled}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/240px-Google_%22G%22_Logo.svg.png" alt="google icon" className={styles.googleLogo} /> Logout
+              </button>
+            )}
           />
         </div>
       ) :
@@ -204,6 +220,11 @@ const Login = () => {
             onSuccess={responseSuccess}
             onFailure={responseFailure}
             cookiePolicy={'single_host_origin'}
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/240px-Google_%22G%22_Logo.svg.png" alt="google icon" className={styles.googleLogo} /> Login
+              </button>
+            )}
           />
         </div>
       }
