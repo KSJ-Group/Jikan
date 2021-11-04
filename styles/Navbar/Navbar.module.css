@@ -336,7 +336,7 @@
 
 @media screen and (max-width: 450px) {
   .weatherContainer {
-    top: 75px;
+    top: 85px;
     height: 0;
     right: -15px;
     background-color: none;
