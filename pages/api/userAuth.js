@@ -58,7 +58,6 @@ async function addNewUser(
       },
     })
     .then((response) => {
-      // console.log("Add new user:", response.data);
       return response.data;
     })
     .catch((err) => {
@@ -84,7 +83,6 @@ async function postUserSettings(
   zip,
   background
 ) {
-  console.log("Post User Settings");
   return axios
     .get(".netlify/functions/updateUserData", {
       params: {
@@ -107,7 +105,6 @@ async function postUserSettings(
       },
     })
     .then((response) => {
-      // console.log("Successfully updated in database", response.data);
       return response.data;
     })
     .catch((err) => {
