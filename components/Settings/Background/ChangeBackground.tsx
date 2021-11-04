@@ -4,12 +4,14 @@ import Search from './Search';
 import Options from './Options';
 import globalStyles from "../../../styles/Settings/Settings.module.css";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
-import { SettingsContext } from "../../SettingsContext";
 
-const ChangeBackground: React.FC = () => {
+interface Props {
+  el: any;
+}
+
+const ChangeBackground: React.FC<Props> = ({ el }) => {
   const [display, setDisplay] = useState<string>('');
   const [initial, setInitial] = useState<boolean>(true);
-  const { settingsElement } = useContext(SettingsContext);
 
   const changeDisplay = (option: string) => {
     setDisplay(option);
@@ -17,20 +19,20 @@ const ChangeBackground: React.FC = () => {
 
   const openDisplay = () => {
     if (display === 'image') {
-      if (settingsElement && initial) {
+      if (el && initial) {
         setTimeout(() => {
-          settingsElement.scrollTo({
+          el.scrollTo({
             top: 900,
             behavior: 'smooth'
           });
         }, 200);
         setInitial(false);
       }
-      return <Search />
+      return <Search el={el} />
     } else if (display === 'color') {
-      if (settingsElement && initial) {
+      if (el && initial) {
         setTimeout(() => {
-          settingsElement.scrollTo({
+          el.scrollTo({
             top: 870,
             behavior: 'smooth'
           });
