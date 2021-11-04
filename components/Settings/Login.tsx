@@ -10,7 +10,6 @@ const {
   getUserData,
   addNewUser,
   postUserSettings,
-  deleteUser,
 } = require('../../pages/api/userAuth');
 
 const Login = () => {
@@ -36,7 +35,6 @@ const Login = () => {
     showSeconds,
     is24Hour,
     selectedAlert,
-    selectedMusic,
     musicVolume,
     alertVolume,
     zip,
@@ -82,9 +80,6 @@ const Login = () => {
   useEffect(() => {
     if (userSettings) {
       // console.log(userSettings);
-
-      // apply all settsings pulled from database
-
       setSelectedFont(userSettings.selectedFont);
       setBrightness(parseInt(userSettings.brightness));
       setBlur(JSON.parse(userSettings.blur));
