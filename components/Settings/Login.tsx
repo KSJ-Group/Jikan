@@ -57,7 +57,6 @@ const Login = () => {
   } = useContext(BackgroundContext)
 
   const responseSuccess = (res) => {
-    // console.log(res.profileObj);
     setFirstName(res.profileObj.givenName);
     setEmail(res.profileObj.email);
     localStorage.setItem('name', res.profileObj.givenName);
@@ -74,7 +73,6 @@ const Login = () => {
     if (cachedName) {
       setFirstName(cachedName);
     }
-
   }, [])
 
   useEffect(() => {
