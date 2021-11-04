@@ -59,8 +59,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     zip,
     setZip,
     setCurrentWeather,
-    settingsElement,
-    setSettingsElement
   } = useContext(SettingsContext);
 
   // const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -77,9 +75,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   //   }
   // }, []);
 
+  const [el, setEl] = useState<HTMLElement>();
+
   useEffect(() => {
-    const el: HTMLElement = document.getElementById('settings-element')!;
-    setSettingsElement(el);
+    setEl(document.getElementById('settings-element')!);
   });
 
   return (
@@ -124,7 +123,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setBrightness={setBrightness}
                 />
                 <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground />
+                <ChangeBackground el={el} />
               </div>
             ) : (
               // Pomodoro settings
@@ -168,7 +167,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setBrightness={setBrightness}
                 />
                 <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground />
+                <ChangeBackground el={el} />
               </div>
             )}
           </div>

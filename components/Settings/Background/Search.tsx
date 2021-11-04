@@ -5,7 +5,6 @@ import styles from "../../../styles/Settings/Background/Search/Search.module.css
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
 import { Form } from "react-bootstrap";
-import { SettingsContext } from "../../SettingsContext";
 
 interface Photo {
   url: string;
@@ -18,13 +17,16 @@ interface Photo {
 
 const photos: Photo[] = [];
 
-const Search: NextPage = () => {
+interface Props {
+  el: any;
+}
+
+const Search: React.FC<Props> = ({ el }) => {
   const [terms, setTerms] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [images, setImages] = useState<typeof photos>([]);
   const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
-  const { settingsElement } = useContext(SettingsContext);
 
   useEffect(() => {
     let search = localStorage.getItem("search");
@@ -61,7 +63,7 @@ const Search: NextPage = () => {
       .then((data) => {
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
-        settingsElement!.scrollTo({
+        el!.scrollTo({
           top: 900,
           behavior: 'smooth'
         });
