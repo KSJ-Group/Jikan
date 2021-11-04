@@ -1,11 +1,12 @@
 /**
  * --- TODO LIST ----
- * [X] Scroll down automatically when searching for background image
- * [X] Press enter to submit zipcode and search images
+ * [] Add [?] button by login that will show pop-up explaining why user might want to sign in
  * [] Add Spotify API
  * [] Create a user stats page with number of pomodoro cycles complete, calendar, graphs, and charts
  * [] Create a React Native App
  * [] Create a Chrome Extension
+ * [X] Scroll down automatically when searching for background image
+ * [X] Press enter to submit zipcode and search images
  * [X] Create database and connect to frontend
  * [X] Add authentication
  * [X] Add Weather API
