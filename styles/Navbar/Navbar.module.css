@@ -390,5 +390,7 @@
 .refresh .refreshIcon {
   width: 15px;
   height: 15px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 /*# sourceMappingURL=Navbar.module.css.map */
