@@ -60,7 +60,7 @@ const Layout: React.FC = ({ children }) => {
       getWeather();
       setInterval(() => {
         getWeather();
-      }, 360000)
+      }, 3600000)
       setInitialLoad(false);
     }
   }, [zip])
