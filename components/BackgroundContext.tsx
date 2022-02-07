@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const BackgroundContext = createContext(
   {
-    background: 'https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg',
+    background: 'https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?cs=srgb&dl=pexels-sohail-na-807598.jpg&fm=jpg',
     changeBackground: (url: string): void => { },
     loaded: true,
     changeLoadStatus: (status: boolean): void => { },
