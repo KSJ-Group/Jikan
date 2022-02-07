@@ -236,7 +236,7 @@
 .weatherIcon {
   display: block;
   position: relative;
-  top: 10px;
+  // top: 10px;
   width: 100px;
   height: 100px;
   @media screen and (max-width: 450px) {
@@ -251,5 +251,22 @@
   padding-right: 10px;
   :nth-child(1) {
     font-weight: bold;
+  }
+  .lastUpdated {
+    margin-top: 5px;
+    font-size: 8px;
+    color: rgb(197, 197, 197);
+  }
+}
+
+.refresh {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  margin: 3px;
+  .refreshIcon {
+    width: 15px;
+    height: 15px;
   }
 }

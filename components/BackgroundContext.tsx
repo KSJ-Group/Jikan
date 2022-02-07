@@ -11,7 +11,7 @@ export const BackgroundContext = createContext(
 
 export const BackgroundProvider: React.FC = ({ children }) => {
   const [backgroundType, setType] = useState<string>('image');
-  const [background, setBackground] = useState<string>('https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg');
+  const [background, setBackground] = useState<string>('https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?cs=srgb&dl=pexels-sohail-na-807598.jpg&fm=jpg');
   const [loaded, setLoaded] = useState(true);
 
   const store = {
