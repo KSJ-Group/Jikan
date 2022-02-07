@@ -9,11 +9,13 @@ import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
 import getHandler from '../pages/api/weather';
 import Login from './Settings/Login';
+import moment from 'moment';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const { brightness } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
 
   const {
     selectedMusic,
@@ -38,20 +40,27 @@ const Layout: React.FC = ({ children }) => {
     }
   }
 
+  const getWeather = () => {
+    setLastUpdated(moment().calendar());
+    getHandler(zip)
+      .then(res => {
+        const weatherData = {
+          city: res.location.name,
+          tempC: res.current.temp_c,
+          tempF: res.current.temp_f,
+          weather: res.current.condition.text,
+          icon: res.current.condition.icon,
+        }
+        setCurrentWeather(weatherData);
+      })
+  }
+
   useEffect(() => {
     if (initialLoad && zip.length === 5) {
-      getHandler(zip)
-        .then(res => {
-          const lastUpdated = res.current.last_updated.slice(5);
-          const weatherData = {
-            city: res.location.name,
-            tempC: res.current.temp_c,
-            tempF: res.current.temp_f,
-            weather: res.current.condition.text,
-            icon: res.current.condition.icon,
-          }
-          setCurrentWeather(weatherData);
-        })
+      getWeather();
+      setInterval(() => {
+        getWeather();
+      }, 360000)
       setInitialLoad(false);
     }
   }, [zip])
@@ -84,14 +93,18 @@ const Layout: React.FC = ({ children }) => {
             <div className={styles.recordDiv2} onClick={handleClick}>
               <img src='/images/record.png' alt='vinyl record' className={styles.record2} />
             </div>}
-          {currentWeather.city ? <div className={styles.weatherContainer} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
-            <div className={styles.weatherLeft}>
+          {currentWeather.city ? <div className={styles.weatherContainer}>
+            <div className={styles.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
               <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
             </div>
-            <div className={styles.weatherRight}>
+            <div className={styles.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
               <div>{currentWeather.city}</div>
               <div>{currentWeather.tempC}° C | {currentWeather.tempF}° F</div>
               <div>{currentWeather.weather}</div>
+              <div className={styles.lastUpdated}>Last updated: {lastUpdated}</div>
+            </div>
+            <div className={styles.refresh} onClick={getWeather}>
+              <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
             </div>
           </div> : null}
           <div className={styles.offScreen}><Login /></div>
