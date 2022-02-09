@@ -60,6 +60,7 @@ const Layout: React.FC = ({ children }) => {
       getWeather();
       setInterval(() => {
         getWeather();
+        console.log('Update in interval:', moment.calendar());
       }, 3600000)
       setInitialLoad(false);
     }
