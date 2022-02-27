@@ -37,8 +37,10 @@ const YouTubePlayer = () => {
   }, [musicVolume]);
 
   useEffect(() => {
-    if (player) {
+    if (player && selectedMusic !== "None") {
       player.playVideo();
+    } else if (selectedMusic === "None") {
+      setPlayer(null);
     }
   }, [selectedMusic]);
 
@@ -56,12 +58,14 @@ const YouTubePlayer = () => {
             <div>Click vinyl record in the corner to play random music</div>
           </div>
         ) : null}
-        <YouTube
-          id="youtube-player"
-          videoId={selectedMusic}
-          opts={config}
-          onReady={_onReady}
-        />
+        {selectedMusic !== "None" ? (
+          <YouTube
+            id="youtube-player"
+            videoId={selectedMusic}
+            opts={config}
+            onReady={_onReady}
+          />
+        ) : null}
         ♫
       </div>
     </div>
