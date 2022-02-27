@@ -177,19 +177,19 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
     {
       title: 'Anime Lofi Mix',
-      url: 'w3LWHIz3bMc'
+      url: 'WDXPJWIgX-o'
     },
+    // {
+    //   title: 'Anime Music',
+    //   url: 'NJvaGDTJEQU'
+    // },
     {
-      title: 'Anime Music',
-      url: 'NJvaGDTJEQU'
-    },
-    {
-      title: 'Calm Piano',
-      url: 'XULUBg_ZcAU'
+      title: 'Beautiful Piano',
+      url: 'xWRHTpqQMGM'
     },
     {
       title: 'Coffee Shop Ambiance',
-      url: 'dx3GxpitvbY'
+      url: 'mkgylOJSdhE'
     },
     {
       title: 'Christmas Tunes',
@@ -197,7 +197,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
     {
       title: 'Deep Focus',
-      url: '8N-eLvmheSE'
+      url: 'yfYjEkaN-1s'
+    },
+    {
+      title: 'Dubstep, Trap, EDM, Electro House',
+      url: '8NzYo0jmYek'
     },
     {
       title: 'Fallout Radio',
@@ -208,12 +212,12 @@ export const SettingsProvider: React.FC = ({ children }) => {
       url: '1itSqkbXIlU'
     },
     {
-      title: 'Lofi Hip Hop',
+      title: 'lofi hip hop radio - beats to relax/study to',
       url: '5qap5aO4i9A'
     },
     {
       title: 'Nintendo Radio',
-      url: 'tOnOutGHcRQ'
+      url: 'MBA_x8kP-yo'
     },
     {
       title: 'R&B Chill',
@@ -225,35 +229,31 @@ export const SettingsProvider: React.FC = ({ children }) => {
     },
     {
       title: 'Relaxing Sleep',
-      url: 'HCOO8FdXR1c'
+      url: 'MzCOqGCPvkE'
     },
     {
       title: 'Soothing Rain',
-      url: '5tA0Onw2wyQ'
+      url: '42M3esYyHdw'
     },
     {
-      title: 'Sounds of Nature',
-      url: 'gfo2xZ2SMjc'
+      title: 'Ocean Waves',
+      url: 'rZ7VVGvrfiA'
     },
+    // {
+    //   title: 'Spooky Halloween Music',
+    //   url: 'qJSLmjzLnAM'
+    // },
+    // {
+    //   title: 'Studio Ghibli',
+    //   url: 'P8j-_MOSrec'
+    // },
     {
-      title: 'Spooky Halloween Music',
-      url: 'qJSLmjzLnAM'
-    },
-    {
-      title: 'Studio Ghibli',
-      url: 'P8j-_MOSrec'
-    },
-    {
-      title: 'The Beatles Greatest Hits',
-      url: 'XAtsnyaJziM'
+      title: 'Oldies But Goodies',
+      url: 'x0Y-VAmnMOI'
     },
     {
       title: 'The Good Life',
       url: '36YnV9STBqc'
-    },
-    {
-      title: 'Video Game Tunes',
-      url: '8txpDvFnh5o'
     },
   ]);
   const [musicVolume, setMusicVolume] = useState<number>(20);
