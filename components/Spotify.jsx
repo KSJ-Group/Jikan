@@ -47,7 +47,7 @@ const Spotify = () => {
       //   handleLogin();
       // }
     }
-  }, []);
+  });
 
   const handleGetPlaylists = () => {
     axios
