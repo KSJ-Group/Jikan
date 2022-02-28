@@ -16,6 +16,7 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
+import Spotify from "./Spotify/Spotify";
 
 interface Props {
   showSettings: boolean;
@@ -102,7 +103,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setSelectedFont={setSelectedFont}
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                {/* <Blacklist /> */}
+                <Spotify />
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
@@ -147,6 +148,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setAlertVolume={setAlertVolume}
                 />
                 <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                <Spotify />
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
