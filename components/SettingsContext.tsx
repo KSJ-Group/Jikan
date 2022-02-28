@@ -290,12 +290,12 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const SPACE_DELIMITER = "%20";
   const SCOPES = [
     "streaming",
-    "playlist-read-private",
     "user-read-email",
     "user-read-private",
     "user-read-playback-state",
     "user-read-currently-playing",
     "user-modify-playback-state",
+    "playlist-read-private",
   ];
   const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
 
