@@ -53,7 +53,7 @@ const Spotify = () => {
     axios
       .get(PLAYLISTS_ENDPOINT, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
@@ -97,7 +97,7 @@ const Spotify = () => {
     axios
       .get(PLAYLIST_ENDPOINT + currentPlaylist.id + "/tracks/", {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
