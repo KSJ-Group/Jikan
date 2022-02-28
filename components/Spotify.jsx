@@ -61,8 +61,8 @@ const Spotify = () => {
       })
       .catch((err) => {
         console.log(err);
-        window.location.href = "https://jikan-timer.com";
-        handleLogin();
+        // window.location.href = "https://jikan-timer.com";
+        // handleLogin();
       });
   };
 
@@ -105,8 +105,8 @@ const Spotify = () => {
       })
       .catch((err) => {
         console.log(err);
-        window.location.href = "https://jikan-timer.com";
-        handleLogin();
+        // window.location.href = "https://jikan-timer.com";
+        // handleLogin();
       });
   };
 
