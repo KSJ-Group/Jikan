@@ -43,9 +43,9 @@ const Spotify = () => {
       localStorage.setItem("tokenType", token_type);
       localStorage.setItem("expiresIn", expires_in);
     } else {
-      if (localStorage.getItem("accessToken")) {
-        handleLogin();
-      }
+      // if (localStorage.getItem("accessToken")) {
+      //   handleLogin();
+      // }
     }
   }, []);
 
