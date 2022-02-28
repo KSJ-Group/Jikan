@@ -31,6 +31,7 @@ const Spotify = () => {
       return accumulater;
     }, {});
 
+    console.log(paramsSplitUp);
     return paramsSplitUp;
   };
 
@@ -38,8 +39,6 @@ const Spotify = () => {
     if (window.location.hash) {
       const { access_token, expires_in, token_type } =
         getReturnedParamsFromSpotifyAuth(window.location.hash);
-      console.log(window.location.hash);
-      console.log("Access token:", access_token);
       setToken(access_token);
       localStorage.setItem("accessToken", access_token);
       localStorage.setItem("tokenType", token_type);
