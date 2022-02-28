@@ -144,7 +144,7 @@
   margin: 10px;
   width: 60px;
   height: 60px;
-  // overflow: hidden;
+  z-index: 5;
   border-radius: 50px;
   transform: scale(1);
   animation: pulse 2s infinite;
@@ -170,7 +170,7 @@
   margin: 10px;
   width: 60px;
   height: 60px;
-  // overflow: hidden;
+  z-index: 5;
   border-radius: 50px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
@@ -179,7 +179,7 @@
     margin: 10px;
   }
   &:hover::after {
-    content: "Press to play random music ♫";
+    content: "Start YouTube music ♫";
     position: absolute;
     animation: slidein 0.5s ease-in-out;
     left: 70px;
@@ -187,7 +187,7 @@
     color: white;
     width: 220px;
   }
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 800px) {
     top: 60px;
   }
 }
@@ -202,8 +202,8 @@
 
 .record2 {
   object-fit: contain;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 
 .weatherContainer {
@@ -217,6 +217,7 @@
   margin: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.103);
+  // background-color: white;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -224,12 +225,15 @@
   &:hover {
     background-color: rgba(0, 0, 0, 0.247);
   }
-  @media screen and (max-width: 450px) {
-    top: 85px;
-    height: 0;
+  @media screen and (max-width: 800px) {
+    top: 50px;
+    max-height: 100px;
     right: -15px;
     background-color: none;
     text-align: right;
+    &:hover {
+      background-color: none;
+    }
   }
 }
 
@@ -257,6 +261,9 @@
     font-size: 8px;
     color: rgb(197, 197, 197);
   }
+  @media screen and (max-width: 800px) {
+    padding-right: 20px;
+  }
 }
 
 .refresh {
@@ -269,5 +276,9 @@
     width: 15px;
     height: 15px;
     filter: invert(1);
+  }
+
+  @media screen and (max-width: 800px) {
+    top: -10px;
   }
 }

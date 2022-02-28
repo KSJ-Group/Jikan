@@ -3,12 +3,24 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 
 interface Props {
   token: string;
-  currentTrack: any;
   tracks: any;
 }
 
-const Player: React.FC<Props> = ({ token, currentTrack, tracks }) => {
+const Player: React.FC<Props> = ({ token, tracks }) => {
   const [uris, setUris] = useState<string[]>([]);
+
+  const shuffle = (array: string[]): string[] => {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+  }
+
 
   useEffect(() => {
     if (tracks.length) {
@@ -16,7 +28,7 @@ const Player: React.FC<Props> = ({ token, currentTrack, tracks }) => {
       tracks.forEach((track: any) => {
         temp.push(track.track.uri)
       })
-      setUris(temp);
+      setUris(shuffle(temp));
     }
   }, [tracks])
 
@@ -26,10 +38,9 @@ const Player: React.FC<Props> = ({ token, currentTrack, tracks }) => {
         <SpotifyPlayer
           token={token}
           uris={uris}
-          autoPlay
           styles={{
             activeColor: '#fff',
-            bgColor: '#333',
+            bgColor: '#3333336c',
             color: '#fff',
             loaderColor: '#fff',
             sliderColor: '#1cb954',

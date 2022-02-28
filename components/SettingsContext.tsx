@@ -141,6 +141,17 @@ export const SettingsContext = createContext({
     icon: '',
   },
   setCurrentWeather: (weather: any) => { },
+  token: '',
+  setToken: (token: string) => { },
+  tracks: [],
+  setTracks: (tracks: any) => { },
+  playlists: [],
+  setPlaylists: (playlists: any) => { },
+  currentPlaylist: null,
+  setCurrentPlaylist: (playlist: any) => { },
+  playlistName: '',
+  setPlaylistName: (name: string) => { },
+  // handleLogin: () => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -267,6 +278,26 @@ export const SettingsProvider: React.FC = ({ children }) => {
     weather: '',
     icon: '',
   });
+  const [token, setToken] = useState<string>('');
+  const [tracks, setTracks] = useState<any>([]);
+  const [playlists, setPlaylists] = useState<any>([]);
+  const [currentPlaylist, setCurrentPlaylist] = useState<any>();
+  const [playlistName, setPlaylistName] = useState<any>("");
+
+  const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+  const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000";
+  const SPACE_DELIMITER = "%20";
+  const SCOPES = [
+    "streaming",
+    "playlist-read-private",
+    "user-read-email",
+    "user-read-private",
+    "user-read-playback-state",
+    "user-read-currently-playing",
+    "user-modify-playback-state",
+  ];
+  const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -360,6 +391,29 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setCurrentWeather: (weather: any) => {
       setCurrentWeather(weather);
     },
+    token: token,
+    setToken: (token: string): void => {
+      setToken(token);
+    },
+    tracks: tracks,
+    setTracks: (tracks: any): void => {
+      setTracks(tracks);
+    },
+    playlists: playlists,
+    setPlaylists: (playlists: any): void => {
+      setPlaylists(playlists);
+    },
+    currentPlaylist: currentPlaylist,
+    setCurrentPlaylist: (playlist: any): void => {
+      setCurrentPlaylist(playlist);
+    },
+    playlistName: playlistName,
+    setPlaylistName: (name: string): void => {
+      setPlaylistName(name);
+    },
+    handleLogin: () => {
+      window.location.href = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=false`;
+    }
   };
 
   useEffect((): any => {

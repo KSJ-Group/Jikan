@@ -7,7 +7,7 @@
 .loginBtn {
   position: relative;
   height: 38px;
-  width: 80px;
+  // width: 80px;
   border-radius: 5px;
   background: #efefef;
   border: none;
@@ -24,10 +24,6 @@
   max-height: 300px;
   overflow: scroll;
   padding: 0;
-
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
 }
 
 .trackContainer {
@@ -72,4 +68,10 @@
   margin-right: 12px;
   display: flex;
   align-items: center;
+}
+
+.signInContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

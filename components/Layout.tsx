@@ -10,6 +10,7 @@ import styles from '../styles/Navbar/Navbar.module.css';
 import getHandler from '../pages/api/weather';
 import Login from './Settings/Login';
 import moment from 'moment';
+import Spotify from './Spotify';
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -23,7 +24,9 @@ const Layout: React.FC = ({ children }) => {
     music,
     currentWeather,
     setCurrentWeather,
-    zip
+    zip,
+    token,
+    tracks
   } = useContext(SettingsContext);
 
   const toggleFullscreen = (): void => {
@@ -108,6 +111,7 @@ const Layout: React.FC = ({ children }) => {
             </div>
           </div> : null}
           <div className={styles.offScreen}><Login /></div>
+          <Spotify />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

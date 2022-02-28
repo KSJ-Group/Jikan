@@ -63,7 +63,7 @@ const Music: React.FC<Props> = ({ selectedMusic, setMusic, music, musicVolume, s
     <div className={globalStyles.settingModuleContainer}>
       <div className={styles.musicContainer}>
         <Form.Group className={globalStyles.font}>
-          <Form.Label>Music</Form.Label>
+          <Form.Label>Youtube Live Music</Form.Label>
           <div className={styles.musicDiv}>
             <Form.Select
               value={currentTitle}
