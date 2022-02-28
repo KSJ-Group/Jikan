@@ -50,20 +50,23 @@ const Spotify = () => {
   });
 
   const handleGetPlaylists = () => {
-    axios
-      .get(PLAYLISTS_ENDPOINT, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setPlaylists(res.data.items);
-      })
-      .catch((err) => {
-        console.log(err);
-        // window.location.href = "https://jikan-timer.com";
-        // handleLogin();
-      });
+    if (token.length) {
+      axios
+        .get(PLAYLISTS_ENDPOINT, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setPlaylists(res.data.items);
+        })
+        .catch((err) => {
+          console.log(err);
+          setPlaylists(["Error"]);
+          // window.location.href = "https://jikan-timer.com";
+          // handleLogin();
+        });
+    }
   };
 
   const removeHash = () => {
@@ -74,7 +77,7 @@ const Spotify = () => {
     );
   };
   useEffect(() => {
-    if (token) {
+    if (token.length) {
       handleGetPlaylists();
       removeHash();
     }
@@ -94,20 +97,22 @@ const Spotify = () => {
   }, [playlistName]);
 
   const handleGetPlaylistTracks = () => {
-    axios
-      .get(PLAYLIST_ENDPOINT + currentPlaylist.id + "/tracks/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setTracks(res.data.items);
-      })
-      .catch((err) => {
-        console.log(err);
-        // window.location.href = "https://jikan-timer.com";
-        // handleLogin();
-      });
+    if (token.length) {
+      axios
+        .get(PLAYLIST_ENDPOINT + currentPlaylist.id + "/tracks/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setTracks(res.data.items);
+        })
+        .catch((err) => {
+          console.log(err);
+          // window.location.href = "https://jikan-timer.com";
+          // handleLogin();
+        });
+    }
   };
 
   useEffect(() => {
