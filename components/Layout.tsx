@@ -110,8 +110,8 @@ const Layout: React.FC = ({ children }) => {
               <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
             </div>
           </div> : null}
-          <div className={styles.offScreen}><Login /></div>
-          <Spotify />
+          {/* <div className={styles.offScreen}><Login /></div> */}
+          {tracks && <Spotify />}
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

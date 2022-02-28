@@ -46,7 +46,7 @@ const Spotify = () => {
           ) : (
             <div className={styles.signInContainer}>
               <button className={styles.loginBtn} onClick={handleLogin}>
-                Sign in to retrieve playlists
+                Sign in to retrieve your Spotify playlists
               </button>
             </div>
           )}
