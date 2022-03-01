@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "./SettingsContext";
 import Player from "./Player";
 import styles from "../styles/Music/Spotify.module.css";
@@ -31,7 +31,6 @@ const Spotify = () => {
       return accumulater;
     }, {});
 
-    // console.log(paramsSplitUp);
     return paramsSplitUp;
   };
 
@@ -63,8 +62,6 @@ const Spotify = () => {
         })
         .catch((err) => {
           console.log(err);
-          // window.location.href = "https://jikan-timer.com";
-          // handleLogin();
         });
     }
   };
@@ -85,7 +82,6 @@ const Spotify = () => {
 
   useEffect(() => {
     if (playlists.length) {
-      console.log("Playlists:", playlists);
       setCurrentPlaylist(playlists[0]);
     }
   }, [playlists]);
@@ -100,9 +96,11 @@ const Spotify = () => {
   const handleGetPlaylistTracks = () => {
     if (token.length) {
       axios
-        .get(PLAYLIST_ENDPOINT + currentPlaylist.id + "/tracks/", {
+        .get(PLAYLIST_ENDPOINT + currentPlaylist.id + "/tracks", {
           headers: {
             Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
         })
         .then((res) => {
@@ -110,8 +108,6 @@ const Spotify = () => {
         })
         .catch((err) => {
           console.log(err);
-          // window.location.href = "https://jikan-timer.com";
-          // handleLogin();
         });
     }
   };

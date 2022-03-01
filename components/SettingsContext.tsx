@@ -151,7 +151,7 @@ export const SettingsContext = createContext({
   setCurrentPlaylist: (playlist: any) => { },
   playlistName: '',
   setPlaylistName: (name: string) => { },
-  // handleLogin: () => { }
+  // authorizedUsers: ['seijim27@gmail.com']
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -283,9 +283,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [playlists, setPlaylists] = useState<any>([]);
   const [currentPlaylist, setCurrentPlaylist] = useState<any>();
   const [playlistName, setPlaylistName] = useState<any>("");
+  // const [authorizedUsers, setAuthorizedUsers] = useState<string[]>(["seijim27@gmail.com"]);
 
   const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
+  // const REDIRECT_URL_AFTER_LOGIN = "http://localhost:3000";
   const REDIRECT_URL_AFTER_LOGIN = "https://jikan-timer.com";
   const SPACE_DELIMITER = "%20";
   const SCOPES = [

@@ -18,6 +18,14 @@ const Player: React.FC<Props> = ({ token, tracks }) => {
         array[randomIndex], array[currentIndex]];
     }
 
+    // remove local songs
+    array = array.filter((uri: string) => {
+      if (!uri.includes('local')) {
+        return true;
+      } else {
+        return false;
+      }
+    })
     return array;
   }
 
