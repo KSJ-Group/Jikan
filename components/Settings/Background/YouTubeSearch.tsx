@@ -15,6 +15,7 @@ const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const isInitialMount = useRef<boolean>(true);
     const [videos, setVideos] = useState<typeof Videos>([]);
+    const settings: any = document.getElementById('settings-body');
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
@@ -23,6 +24,10 @@ const YouTubeSearch = () => {
         } else {
           setTerms("");
         }
+
+        if (settings) {
+            settings.scrollTo({top: 450, behavior: 'smooth'});
+          }
     }, []);
 
     useEffect(() => {
@@ -47,6 +52,9 @@ const YouTubeSearch = () => {
             .get(`/api/videos?terms=${searchTerms}`)
             .then((data) => {
                 processData(data.data.items);
+                if (settings) {
+                    settings.scrollTo({top: 1100, behavior: 'smooth'});
+                }
             })
             .catch((err) => {
                 console.log('Err', err);

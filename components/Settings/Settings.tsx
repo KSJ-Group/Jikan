@@ -50,8 +50,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     selectedAlert,
     setSelectedAlert,
     selectedMusic,
-    setMusic,
-    music,
     musicVolume,
     setMusicVolume,
     alertVolume,
@@ -60,20 +58,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setZip,
     setCurrentWeather
   } = useContext(SettingsContext);
-
-  // const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   if (
-  //     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-  //       navigator.userAgent
-  //     )
-  //   ) {
-  //     setIsMobile(true);
-  //   } else {
-  //     setIsMobile(false);
-  //   }
-  // }, []);
 
   return (
     <div className={styles.settingsDiv}>
@@ -84,7 +68,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody}>
+          <div className={styles.subBody}  id="settings-body">
             {/* <Login /> */}
             {isClock ? (
               // Clock settings

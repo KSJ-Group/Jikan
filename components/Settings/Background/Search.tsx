@@ -23,12 +23,17 @@ const Search: NextPage = () => {
   const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
 
+  const settings: any = document.getElementById('settings-body');
+
   useEffect(() => {
     let search = localStorage.getItem("search");
     if (search) {
       setTerms(search);
     } else {
       setTerms("");
+    }
+    if (settings) {
+      settings.scrollTo({top: 450, behavior: 'smooth'});
     }
   }, []);
 
@@ -56,6 +61,9 @@ const Search: NextPage = () => {
       .then((data) => {
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
+        if (settings) {
+          settings.scrollTo({top: 1000, behavior: 'smooth'});
+        }
       })
       .catch((error) => {
         console.log(error);
