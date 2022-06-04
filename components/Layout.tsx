@@ -5,7 +5,6 @@ import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
 import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
-import YouTubePlayer from './YouTube';
 import styles from '../styles/Navbar/Navbar.module.css';
 import getHandler from '../pages/api/weather';
 
@@ -75,14 +74,6 @@ const Layout: React.FC = ({ children }) => {
           </div>
           <Background />
           {children}
-          <YouTubePlayer />
-          {selectedMusic !== 'None' ?
-            <div className={styles.recordDiv} onClick={handleClick}>
-              <img src='/images/record.png' alt='vinyl record' className={styles.record} />
-            </div> :
-            <div className={styles.recordDiv2} onClick={handleClick}>
-              <img src='/images/record.png' alt='vinyl record' className={styles.record2} />
-            </div>}
           {currentWeather.city ? <div className={styles.weatherContainer} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
             <div className={styles.weatherLeft}>
               <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />

@@ -2,6 +2,37 @@
   z-index: 2;
 }
 
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 15px;
+  border: 0.1px solid #a8a8a8;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.searchBtn:hover {
+  background: #dddddd;
+}
+
 .images {
   position: relative;
   display: -webkit-box;

@@ -109,8 +109,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                {/* <Blacklist /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
@@ -154,7 +152,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   alertVolume={alertVolume}
                   setAlertVolume={setAlertVolume}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}

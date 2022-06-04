@@ -35,8 +35,6 @@ const Search: NextPage = () => {
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
-    } else {
-      fetchImages(terms, page);
     }
     localStorage.setItem("search", terms);
   }, [terms, page]);
@@ -46,6 +44,11 @@ const Search: NextPage = () => {
     setTerms(event.target.value);
     setPage(1);
   };
+
+  const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    fetchImages(terms, page);
+  }
 
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
     axios
@@ -64,16 +67,11 @@ const Search: NextPage = () => {
     direction ? newPage++ : newPage--;
     setPage(newPage);
   };
-
-  const doNothing = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // do nothing
-    e.preventDefault();
-  }
-
+  
   return (
     <div className={styles.search}>
-      <div className={styles.searchTitle}>Search Image</div>
-      <form onSubmit={(e: any) => doNothing(e)}>
+      <div className={styles.searchTitle}>Search Images from Pexel</div>
+      <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
         <input
           type="text"
           value={terms}
@@ -82,6 +80,12 @@ const Search: NextPage = () => {
           onChange={(event: any) => {
             changeTerms(event);
           }}
+        />
+        <input
+          className={styles.searchBtn}
+          type="button"
+          value="Search"
+          onClick={(e: any) => submitForm(e)}
         />
       </form>
       <div className={styles.images}>
