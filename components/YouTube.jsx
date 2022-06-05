@@ -30,11 +30,9 @@ const YouTubePlayer = ({ id }) => {
   const playPause = () => {
     if (player) {
       if (isPlaying) {
-        console.log('Pause video');
         player.target.pauseVideo();
         setIsPlaying(false);
       } else {
-        console.log('Play video');
         player.target.playVideo();
         setIsPlaying(true);
       }
@@ -44,7 +42,6 @@ const YouTubePlayer = ({ id }) => {
   const muteUnmute = () => {
     if (player) {
       if (isMuted) {
-        // player.target
         player.target.setVolume(100);
         setIsMuted(false);
       } else {
@@ -54,6 +51,13 @@ const YouTubePlayer = ({ id }) => {
     } 
   }
 
+  const checkChange = () => {
+    if (player.target.getPlayerState() === 1) {
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+    }
+  }
 
   return (
     <div className={styles.youtube}>
@@ -62,6 +66,7 @@ const YouTubePlayer = ({ id }) => {
           videoId={id}
           opts={config}
           onReady={_onReady}
+          onStateChange={checkChange}
           onError={() => setBackground('https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg')}
         />
         <div className={styles.controls}>
