@@ -5,7 +5,6 @@ import styles from "../styles/Main/Main.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home: NextPage = () => {
-
   return (
     <div className={styles.container}>
       <Head>

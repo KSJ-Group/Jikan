@@ -70,7 +70,7 @@ const Layout: React.FC = ({ children }) => {
           <Navbar />
           <div onClick={() => toggleFullscreen()} className='fs'>
             <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
-            <div className='fsText'>Fullscreen</div>
+            <div className='fsText'><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
           </div>
           <Background />
           {children}
