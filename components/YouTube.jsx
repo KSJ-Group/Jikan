@@ -19,6 +19,7 @@ const YouTubePlayer = ({ id }) => {
   useEffect(() => {
     if (background !== 'None') {
       setIsPlaying(false);
+      setIsMuted(false);
     }
   }, [background])
 
