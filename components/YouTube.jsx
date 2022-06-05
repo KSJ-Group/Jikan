@@ -5,7 +5,7 @@ import { BackgroundContext } from "./BackgroundContext";
 let player = null;
 
 const YouTubePlayer = ({ id }) => {
-  const { setBackground } = useContext(BackgroundContext);
+  const { setBackground, background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const config = {
@@ -15,6 +15,12 @@ const YouTubePlayer = ({ id }) => {
       controls: 0,
     },
   };
+
+  useEffect(() => {
+    if (background !== 'None') {
+      setIsPlaying(false);
+    }
+  }, [background])
 
   const _onReady = (event) => {
     player = event;
