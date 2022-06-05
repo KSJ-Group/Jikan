@@ -75,10 +75,23 @@ const Search: NextPage = () => {
     direction ? newPage++ : newPage--;
     setPage(newPage);
   };
+
+  const chooseSuggestion = (e, term) => {
+    e.preventDefault();
+    setTerms(term);
+}
   
   return (
     <div className={styles.search}>
       <div className={styles.searchTitle}>Search Images from Pexel</div>
+      <div className={styles.suggestionWrapper}>
+          <span className={styles.text}>Suggestions:</span>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Dogs')}>Dogs</button>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>
+      </div>
       <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
         <input
           type="text"

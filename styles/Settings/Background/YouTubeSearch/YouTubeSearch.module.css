@@ -2,6 +2,31 @@
   z-index: 2;
 }
 
+.suggestionWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.suggestionWrapper .text {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.suggestionWrapper .suggestionBtn {
+  border-radius: 30px;
+  border: 1px solid black;
+  font-size: 10px;
+  margin-right: 5px;
+  background-color: white;
+}
+
 .form {
   display: -webkit-box;
   display: -ms-flexbox;

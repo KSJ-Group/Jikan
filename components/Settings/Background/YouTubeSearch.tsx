@@ -82,9 +82,22 @@ const YouTubeSearch = () => {
         changeBackground(id);
     }
 
+    const chooseSuggestion = (e, term) => {
+        e.preventDefault();
+        setTerms(term);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.searchTitle}>Search YouTube</div>
+            <div className={styles.suggestionWrapper}>
+                <span className={styles.text}>Suggestions:</span>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Lo-Fi')}>Lo-Fi</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Jazz')}>Jazz</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cafe')}>Cafe</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Study')}>Study</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Anime')}>Anime</button>
+            </div>
             <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
                 <input
                 type="text"

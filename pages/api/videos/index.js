@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   let { terms } = req.query;
   const response = await youtube.get('/search', {
     params: {
-        q: terms
+        q: terms + ' music'
     }
   })
   // console.log(response.data.items);
