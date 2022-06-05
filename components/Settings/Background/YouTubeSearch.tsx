@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "../../../styles/Settings/Background/YouTubeSearch/YouTubeSearch.module.css";
 import axios from "axios";
+import { BackgroundContext } from "../../BackgroundContext";
 
 interface Video {
     videoId: String
@@ -16,6 +17,7 @@ const YouTubeSearch = () => {
     const isInitialMount = useRef<boolean>(true);
     const [videos, setVideos] = useState<typeof Videos>([]);
     const settings: any = document.getElementById('settings-body');
+    const { setMusic, background, changeBackground } = useContext(BackgroundContext);
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
@@ -75,6 +77,11 @@ const YouTubeSearch = () => {
         setVideos(processed);
     }
 
+    const selectVideo = (id: string) => {
+        console.log('ID:', id);
+        changeBackground(id);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.searchTitle}>Search YouTube</div>
@@ -98,7 +105,7 @@ const YouTubeSearch = () => {
             <div className={styles.searchResults}>
                 {videos.map((video: any )=> {
                     return(
-                        <div className={styles.videoResult} key={video.videoId}>
+                        <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>
                             <div className={styles.imgWrapper}>
                                 <img className={styles.thumbnail} src={video.thumbnail} />
                             </div>

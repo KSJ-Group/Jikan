@@ -49,7 +49,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setIs24Hour,
     selectedAlert,
     setSelectedAlert,
-    selectedMusic,
     musicVolume,
     setMusicVolume,
     alertVolume,

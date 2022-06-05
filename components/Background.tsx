@@ -4,6 +4,7 @@ import { BackgroundContext } from "./BackgroundContext";
 import styles from "../styles/Settings/Background/Background.module.css";
 import { BackgroundBlur, BackgroundColor } from "../styles/Global/global.style";
 import { StylesContext } from "./StylesContext";
+import YouTubePlayer from "./YouTube";
 
 const Background: React.FC = () => {
   const { background, changeLoadStatus, backgroundType } =
@@ -18,6 +19,12 @@ const Background: React.FC = () => {
       setBlurAmount("0");
     }
   }, [blur]);
+
+  useEffect(() => {
+    if (background.length) {
+      console.log('New Id:', background)
+    }
+  }, [background])
 
   return (
     <div>
@@ -37,7 +44,9 @@ const Background: React.FC = () => {
           </div>
         </BackgroundBlur>
       ) : (
-        <BackgroundColor color={background}></BackgroundColor>
+        <YouTubePlayer 
+          id={background}
+        />
       )}
     </div >
   );
