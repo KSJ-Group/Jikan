@@ -79,6 +79,7 @@ const Search: NextPage = () => {
   const chooseSuggestion = (e, term) => {
     e.preventDefault();
     setTerms(term);
+    fetchImages(term, 1);
 }
   
   return (
@@ -87,7 +88,7 @@ const Search: NextPage = () => {
       <div className={styles.suggestionWrapper}>
           <span className={styles.text}>Suggestions:</span>
           <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Dogs')}>Dogs</button>
+          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Animals')}>Animals</button>
           <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
           <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
           <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>

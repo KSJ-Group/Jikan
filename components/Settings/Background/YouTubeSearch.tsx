@@ -85,6 +85,7 @@ const YouTubeSearch = () => {
     const chooseSuggestion = (e, term) => {
         e.preventDefault();
         setTerms(term);
+        fetchVideos(term);
     }
 
     return (
