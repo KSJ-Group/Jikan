@@ -55,7 +55,7 @@ const YouTubeSearch = () => {
             .then((data) => {
                 processData(data.data.items);
                 if (settings) {
-                    settings.scrollTo({top: 1100, behavior: 'smooth'});
+                    settings.scrollTo({top: 850, behavior: 'smooth'});
                 }
             })
             .catch((err) => {

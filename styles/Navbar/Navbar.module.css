@@ -247,7 +247,7 @@
   background-color: rgba(0, 0, 0, 0.247);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 740px) {
   .weatherContainer {
     top: 75px;
     height: 0;
@@ -265,7 +265,7 @@
   height: 100px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 740px) {
   .weatherIcon {
     display: none;
   }

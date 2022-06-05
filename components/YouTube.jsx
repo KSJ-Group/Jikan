@@ -13,7 +13,6 @@ const YouTubePlayer = ({ id }) => {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
       controls: 0,
-      modestbranding: 1
     },
   };
 

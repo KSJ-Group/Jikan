@@ -62,7 +62,7 @@ const Search: NextPage = () => {
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
         if (settings) {
-          settings.scrollTo({top: 1000, behavior: 'smooth'});
+          settings.scrollTo({top: 850, behavior: 'smooth'});
         }
       })
       .catch((error) => {
