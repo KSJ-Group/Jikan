@@ -4,12 +4,25 @@ import styles from '../styles/Navbar/Navbar.module.css';
 import Head from 'next/head';
 import Settings from './Settings/Settings';
 import { SettingsContext } from './SettingsContext';
+import styled from "styled-components";
+import { StylesContext } from './StylesContext';
+
+interface Font {
+  font: any;
+}
+
+const StyledFont = styled.span<Font>`
+  font-family: ${(props) => props.font}, monospace;
+  position: relative;
+  top: 1px;
+`
 
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   // const [showSettings, setShowSettings] = useState<boolean>(false);
   const { setIsClock, showSettings, setShowSettings } = useContext(SettingsContext);
+  const { selectedFont } = useContext(StylesContext);
 
   useEffect(() => {
     setIsClock(clockIsActive);
@@ -80,13 +93,13 @@ const Navbar: React.FC = () => {
       </Head>
       <nav className={styles.nav}>
         <div className={styles.mainLinks}>
-          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}>Clock</a></Link>
+          <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}><StyledFont font={selectedFont}>Clock</StyledFont></a></Link>
           <div className={styles.line}>|</div>
-          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}>Pomodoro</a></Link>
+          <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}><StyledFont font={selectedFont}>Pomodoro</StyledFont></a></Link>
         </div>
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
           <img className={styles.menuIcon} src='/images/menu.png' alt='menu icon' />
-          <div className={styles.settingsWord}>Settings</div>
+          <div className={styles.settingsWord}><StyledFont font={selectedFont}>Settings</StyledFont></div>
         </div>
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
       </nav>

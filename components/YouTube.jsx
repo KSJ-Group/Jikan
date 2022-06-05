@@ -1,73 +1,66 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "../styles/Main/Main.module.css";
-import { SettingsContext } from "./SettingsContext";
 import YouTube from "react-youtube";
-import { Offcanvas } from "react-bootstrap";
+import { BackgroundContext } from "./BackgroundContext";
+let player = null;
 
-const YouTubePlayer = () => {
-  const { selectedMusic, musicVolume, setShowSettings } =
-    useContext(SettingsContext);
-  const [player, setPlayer] = useState(null);
-  const [showMessage, setShowMessage] = useState(false);
-
+const YouTubePlayer = ({ id }) => {
+  const { setBackground } = useContext(BackgroundContext);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const config = {
-    height: "200px",
-    width: "350px",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0,
+      controls: 0,
     },
   };
 
   const _onReady = (event) => {
-    setPlayer(event.target);
+    player = event;
   };
 
-  useEffect(() => {
+  const playPause = () => {
     if (player) {
-      player.setVolume(musicVolume);
-      player.playVideo();
+      if (isPlaying) {
+        console.log('Pause video');
+        player.target.pauseVideo();
+        setIsPlaying(false);
+      } else {
+        console.log('Play video');
+        player.target.playVideo();
+        setIsPlaying(true);
+      }
     }
-  }, [player]);
+  }
 
-  useEffect(() => {
+  const muteUnmute = () => {
     if (player) {
-      player.setVolume(musicVolume);
-    }
-  }, [musicVolume]);
+      if (isMuted) {
+        // player.target
+        player.target.setVolume(100);
+        setIsMuted(false);
+      } else {
+        player.target.setVolume(0);
+        setIsMuted(true);
+      }
+    } 
+  }
 
-  useEffect(() => {
-    if (player && selectedMusic !== "None") {
-      player.playVideo();
-    } else if (selectedMusic === "None") {
-      setPlayer(null);
-    }
-  }, [selectedMusic]);
 
   return (
     <div className={styles.youtube}>
-      <div className={styles.sideBtn}>
-        {selectedMusic === "None" ? (
-          <div className={styles.chooseMusic}>
-            <button
-              className={styles.settingsBtn}
-              onClick={() => setShowSettings(true)}
-            >
-              Open Settings to choose music
-            </button>
-            <div>Click vinyl record in the corner to play random music</div>
-          </div>
-        ) : null}
-        {selectedMusic !== "None" ? (
-          <YouTube
-            id="youtube-player"
-            videoId={selectedMusic}
-            opts={config}
-            onReady={_onReady}
-          />
-        ) : null}
-        ♫
-      </div>
+        <YouTube
+          id="youtube-player"
+          videoId={id}
+          opts={config}
+          onReady={_onReady}
+          onError={() => setBackground('https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg')}
+        />
+        <div className={styles.controls}>
+            <button className={styles.controlBtn} onClick={muteUnmute}>{isMuted ? <img className={styles.icon} src='/images/unmute.png'/> : <img className={styles.icon2} src='/images/mute.png'/> }</button>
+            <button className={styles.controlBtn} onClick={playPause}>{isPlaying? <img className={styles.icon} src='/images/pause.png' /> : <img className={styles.icon} src='/images/play.png' />}</button>
+        </div>
     </div>
   );
 };

@@ -25,7 +25,7 @@ body {
 }
 
 .activePomLink {
-  background-color: rgb(61, 93, 107);
+  background-color: rgb(48, 136, 173);
   padding: 5px;
   color: rgb(231, 231, 231);
 }
@@ -40,8 +40,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 35px;
-  right: 140px;
-  top: 8px;
+  right: 160px;
+  top: 13px;
   z-index: 2;
   padding: 10px;
   cursor: pointer;
@@ -70,4 +70,7 @@ body {
 
 #youtube-player {
   display: block;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }

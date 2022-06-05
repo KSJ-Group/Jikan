@@ -1,6 +1,5 @@
-@charset "UTF-8";
 .nav {
-  height: 50px;
+  height: 60px;
   z-index: 2;
   position: absolute;
   top: 0;
@@ -219,92 +218,6 @@
   }
 }
 
-.recordDiv {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 10px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-animation: pulse 2s infinite;
-          animation: pulse 2s infinite;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 450px) {
-  .recordDiv {
-    top: 60px;
-  }
-}
-
-.recordDiv:hover::after {
-  content: "Press to stop music";
-  position: absolute;
-  -webkit-animation: slidein 0.5s ease-in-out;
-          animation: slidein 0.5s ease-in-out;
-  left: 70px;
-  top: 17px;
-  color: white;
-  width: 220px;
-}
-
-.recordDiv2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 10px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  cursor: pointer;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.recordDiv2:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  margin: 10px;
-}
-
-.recordDiv2:hover::after {
-  content: "Press to play random music ♫";
-  position: absolute;
-  -webkit-animation: slidein 0.5s ease-in-out;
-          animation: slidein 0.5s ease-in-out;
-  left: 70px;
-  top: 17px;
-  color: white;
-  width: 220px;
-}
-
-@media screen and (max-width: 450px) {
-  .recordDiv2 {
-    top: 60px;
-  }
-}
-
-.record {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-animation: spinner 3s linear infinite;
-          animation: spinner 3s linear infinite;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.record2 {
-  -o-object-fit: contain;
-     object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
 .weatherContainer {
   position: absolute;
   display: block;
@@ -322,7 +235,7 @@
           align-items: center;
   margin: 10px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.103);
+  background-color: rgba(0, 0, 0, 0.377);
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -334,9 +247,9 @@
   background-color: rgba(0, 0, 0, 0.247);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 740px) {
   .weatherContainer {
-    top: 85px;
+    top: 75px;
     height: 0;
     right: -15px;
     background-color: none;
@@ -347,11 +260,12 @@
 .weatherIcon {
   display: block;
   position: relative;
+  top: 10px;
   width: 100px;
   height: 100px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 740px) {
   .weatherIcon {
     display: none;
   }
@@ -374,8 +288,7 @@
 }
 
 .weatherRight .lastUpdated {
-  margin-top: 5px;
-  font-size: 8px;
+  font-size: 10px;
   color: #c5c5c5;
 }
 

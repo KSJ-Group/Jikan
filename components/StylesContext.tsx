@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const StylesContext = createContext(
   {
-    selectedFont: 'Monaco',
+    selectedFont: 'Syne Mono',
     setSelectedFont: (font: string) => { },
     brightness: 100,
     setBrightness: (percentage: number) => { },
@@ -11,7 +11,7 @@ export const StylesContext = createContext(
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
-  const [selectedFont, setSelectedFont] = useState<string>('Monaco');
+  const [selectedFont, setSelectedFont] = useState<string>('Syne Mono');
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
 

@@ -11,6 +11,15 @@ import TimerDoneModal from "../components/TimerModal";
 import { SettingsContext } from "../components/SettingsContext";
 import { StylesContext } from "../components/StylesContext";
 import { ClockFont } from "../styles/Global/global.style";
+import styled from "styled-components";
+
+interface Font {
+  font: any;
+}
+
+const StyledFont = styled.span<Font>`
+    font-family: ${(props) => props.font}, monospace;
+`
 
 const { Howl, Howler } = require("howler");
 var alert: any;
@@ -386,21 +395,21 @@ const pomodoro: NextPage = () => {
             id="link4"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Pomodoro
+            <StyledFont font={selectedFont}>Pomodoro</StyledFont>
           </div>
           <div
             className={styles.link}
             id="link5"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Short Break
+            <StyledFont font={selectedFont}>Short Break</StyledFont>
           </div>
           <div
             className={styles.link}
             id="link6"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Long Break
+            <StyledFont font={selectedFont}>Long Break</StyledFont>
           </div>
         </div>
         <div className={styles.timerDiv}>
@@ -424,11 +433,11 @@ const pomodoro: NextPage = () => {
               className={styles.startBtn}
               onClick={() => startClickHandler()}
             >
-              Start
+              <StyledFont font={selectedFont}>Start</StyledFont>
             </div>
           ) : (
             <div className={styles.startBtn} onClick={() => stopClickHandler()}>
-              Stop
+              <StyledFont font={selectedFont}>Stop</StyledFont>
             </div>
           )}
         </div>

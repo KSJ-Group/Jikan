@@ -49,23 +49,14 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setIs24Hour,
     selectedAlert,
     setSelectedAlert,
-    selectedMusic,
-    setMusic,
-    music,
     musicVolume,
     setMusicVolume,
     alertVolume,
     setAlertVolume,
     zip,
     setZip,
-    setCurrentWeather,
+    setCurrentWeather
   } = useContext(SettingsContext);
-
-  const [el, setEl] = useState<HTMLElement>();
-
-  useEffect(() => {
-    setEl(document.getElementById('settings-element')!);
-  });
 
   return (
     <div className={styles.settingsDiv}>
@@ -76,7 +67,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody} id="settings-element">
+          <div className={styles.subBody}  id="settings-body">
             {/* <Login /> */}
             {isClock ? (
               // Clock settings
@@ -101,15 +92,13 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                {/* <Blacklist /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground el={el} />
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
+                <ChangeBackground />
               </div>
             ) : (
               // Pomodoro settings
@@ -146,14 +135,14 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   alertVolume={alertVolume}
                   setAlertVolume={setAlertVolume}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
+                {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground el={el} />
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
+                <ChangeBackground />
               </div>
             )}
           </div>
