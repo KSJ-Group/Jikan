@@ -47,7 +47,7 @@
     "@types/youtube-player": "^5.5.5",
     "babel-plugin-styled-components": "^1.13.2",
     "easygraphql-tester": "^6.0.1",
-    "netlify-cli": "^6.14.12",
+    "netlify-cli": "^10.4.0",
     "typescript": "4.4.3"
   },
   "browser": {
