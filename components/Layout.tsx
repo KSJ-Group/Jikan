@@ -20,7 +20,6 @@ const StyledFont = styled.span<Font>`
 `
 
 const Layout: React.FC = ({ children }) => {
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const { brightness, selectedFont } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
@@ -31,34 +30,15 @@ const Layout: React.FC = ({ children }) => {
     zip
   } = useContext(SettingsContext);
 
-  useEffect(() => {
-    if (window) {
-      window.addEventListener("resize", () => {
-        if (!window.screenTop && !window.screenY) {
-         setIsFullscreen(false);
-        } else {
-          setIsFullscreen(true);
-        }
-      })
-    }
-  }, [])
-
-
   const toggleFullscreen = (): void => {
-    if (document) {
-      if (isFullscreen) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      } else {
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen();
-        }
-      }
+    if (document.fullscreenElement !== null) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
     }
   }
 
-  const getWeather = () => {
+  const getWeather = (): void => {
     setLastUpdated(moment().calendar());
     getHandler(zip)
       .then(res => {
