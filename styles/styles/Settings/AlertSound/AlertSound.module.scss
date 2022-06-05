@@ -1,0 +1,28 @@
+.alertContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+}
+
+.alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.previewBtn {
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+  font-size: 15px;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background: #dddddd;
+  }
+}

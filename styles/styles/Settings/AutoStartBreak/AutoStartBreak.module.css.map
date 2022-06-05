@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,aAAa;EAC9B,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,GAAG;CACnB;;AAED,AAAA,QAAQ,CAAC;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;CAC/B",
+    "sources": [
+        "AutoStartBreak.module.scss"
+    ],
+    "names": [],
+    "file": "AutoStartBreak.module.css"
+}

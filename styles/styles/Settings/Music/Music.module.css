@@ -1,0 +1,22 @@
+.musicContainer {
+  width: 100%;
+}
+
+.musicDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.stop {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #efefef;
+}
+/*# sourceMappingURL=Music.module.css.map */

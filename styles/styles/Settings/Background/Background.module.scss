@@ -1,0 +1,14 @@
+.image {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.imageDiv {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
