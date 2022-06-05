@@ -7,15 +7,12 @@ export const BackgroundContext = createContext(
     loaded: true,
     changeLoadStatus: (status: boolean): void => { },
     backgroundType: 'image',
-    selectedMusic: 'None',
-    setMusic: (music: string) => { },
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
   const [backgroundType, setType] = useState<string>('image');
   const [background, setBackground] = useState<string>('https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg');
   const [loaded, setLoaded] = useState(true);
-  const [selectedMusic, setMusic] = useState<string>('None');
 
   const store = {
     background: background,
@@ -35,10 +32,6 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     changeLoadStatus: (status: boolean): void => {
       setLoaded(status);
     },
-    selectedMusic: selectedMusic,
-    setMusic: (id: string): void => {
-      setMusic(id);
-    }
   };
 
   useEffect((): any => {

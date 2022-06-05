@@ -7,16 +7,22 @@ import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import styles from '../styles/Navbar/Navbar.module.css';
 import getHandler from '../pages/api/weather';
+import styled from "styled-components";
+
+interface Font {
+  font: any;
+}
+
+const StyledFont = styled.span<Font>`
+    font-family: ${(props) => props.font}, monospace;
+`
 
 const Layout: React.FC = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const { brightness } = useContext(StylesContext);
+  const { brightness, selectedFont } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   const {
-    selectedMusic,
-    setMusic,
-    music,
     currentWeather,
     setCurrentWeather,
     zip
@@ -54,15 +60,6 @@ const Layout: React.FC = ({ children }) => {
     }
   }, [zip])
 
-  const handleClick = (): void => {
-    if (selectedMusic !== 'None') {
-      setMusic('None');
-    } else {
-      let random = Math.floor(Math.random() * (music.length - 1) + 1);
-      setMusic(music[random].url);
-    }
-  }
-
   return (
     <BrightnessDiv brightness={brightness.toString() + '%'}>
       <div id='layout'>
@@ -70,7 +67,7 @@ const Layout: React.FC = ({ children }) => {
           <Navbar />
           <div onClick={() => toggleFullscreen()} className='fs'>
             <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
-            <div className='fsText'>Fullscreen</div>
+            <div className='fsText'><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
           </div>
           <Background />
           {children}
@@ -79,9 +76,9 @@ const Layout: React.FC = ({ children }) => {
               <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
             </div>
             <div className={styles.weatherRight}>
-              <div>{currentWeather.city}</div>
-              <div>{currentWeather.tempC}° C | {currentWeather.tempF}° F</div>
-              <div>{currentWeather.weather}</div>
+              <StyledFont font={selectedFont}>{currentWeather.city}</StyledFont>
+              <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont>
+              <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont>
             </div>
           </div> : null}
         </BackgroundProvider>

@@ -17,7 +17,7 @@ const YouTubeSearch = () => {
     const isInitialMount = useRef<boolean>(true);
     const [videos, setVideos] = useState<typeof Videos>([]);
     const settings: any = document.getElementById('settings-body');
-    const { setMusic, background, changeBackground } = useContext(BackgroundContext);
+    const { background, changeBackground } = useContext(BackgroundContext);
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");

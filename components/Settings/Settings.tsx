@@ -97,7 +97,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
               </div>
             ) : (
@@ -141,7 +141,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
               </div>
             )}
