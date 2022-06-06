@@ -37,7 +37,7 @@ const AboutModal: React.FC<Props> = ({ setShowSettings }) => {
           <Modal.Body className={styles.modalBody}>
             <div className={styles.modalDiv}>
               <h2>What is Jikan?</h2>
-              <div>Jikan is a web application that features a digital clock and a Pomodoro timer. Amongst all of the pomodoro timer websites that exist online, there wasn't one that was highly customizable. Jikan allows for a variety of customizability, allowing users to change background images, font style, background music, clock format, and more. Leave it open an extra monitor or in the background - the choice is yours. Start being productive now.</div>
+              <div>Jikan is a web application that features a digital clock and a Pomodoro timer. Amongst all of the pomodoro timer websites that exist online, there wasn't one that was highly customizable. Jikan allows for a variety of customizability, allowing users to change background images, font style, background music, clock format, and more. Leave it open an extra monitor or in the background - the choice is yours. Start being more productive today!</div>
               <p />
 
               <h2>What is Pomodoro?</h2>
@@ -45,25 +45,14 @@ const AboutModal: React.FC<Props> = ({ setShowSettings }) => {
               <a href='https://en.wikipedia.org/wiki/Pomodoro_Technique' target="_blank">Source: Wikipedia</a>
               <p />
 
-              <h2>Creators</h2>
+              <h2>GitHub</h2>
+              <div><a href="https://github.com/KSJ-Group/Jikan" target="_blank">Link to repository</a></div>
+              <p />
+
+              <h2>Feedback</h2>
               <div>
-                <div>Connect with us:</div>
-                <ul>
-                  <li>Seiji Matsumoto <a href='https://linkedin.com/in/seiji-matsumoto' target="_blank">LinkedIn</a> | <a href='https://github.com/SeijiMatsumoto' target="_blank">GitHub</a></li>
-                  <li>Katie Law <a href='https://www.linkedin.com/in/katielaw1997/' target="_blank">LinkedIn</a> | <a href='https://github.com/katscap' target="_blank">GitHub</a></li>
-                  <li>June Lee <a href='https://www.linkedin.com/in/juneh-lee/' target="_blank">LinkedIn</a> | <a href='https://github.com/juneisenuj' target="_blank">GitHub</a></li>
-                </ul>
-                <p />
-
-                <h2>GitHub</h2>
-                <div><a href="https://github.com/KSJ-Group/Jikan" target="_blank">Link to repository</a></div>
-                <p />
-
-                <h2>Feedback</h2>
-                <div>
-                  <div>Have any feedback, suggestions, or questions? Feel free to contact us!</div>
-                  <a className={styles.emailBtn} href="mailto:seijim27@gmail.com?subject=[Jikan Inquiry] " target="_blank"><div className={styles.emailDiv}>Email</div></a>
-                </div>
+                <div>Have any feedback, suggestions, or questions? Feel free to contact us!</div>
+                <a className={styles.emailBtn} href="mailto:seijim27@gmail.com?subject=[Jikan Inquiry] " target="_blank"><div className={styles.emailDiv}>Email</div></a>
               </div>
             </div>
           </Modal.Body>
