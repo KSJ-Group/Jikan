@@ -96,8 +96,8 @@ const Search: NextPage = () => {
         <span className={styles.text}>Suggestions:</span>
         <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
         <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Animals')}>Animals</button>
-        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
         <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
         <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>
       </div>
       <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
