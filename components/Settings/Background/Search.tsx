@@ -33,7 +33,7 @@ const Search: NextPage = () => {
       setTerms("");
     }
     if (settings) {
-      settings.scrollTo({top: 450, behavior: 'smooth'});
+      settings.scrollTo({ top: 450, behavior: 'smooth' });
     }
   }, []);
 
@@ -59,10 +59,11 @@ const Search: NextPage = () => {
     axios
       .get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
+        console.log(data.data.photos);
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
         if (settings) {
-          settings.scrollTo({top: 850, behavior: 'smooth'});
+          settings.scrollTo({ top: 850, behavior: 'smooth' });
         }
       })
       .catch((error) => {
@@ -80,18 +81,24 @@ const Search: NextPage = () => {
     e.preventDefault();
     setTerms(term);
     fetchImages(term, 1);
-}
-  
+  }
+
+  useEffect(() => {
+    if (terms.length) {
+      fetchImages(terms, page);
+    }
+  }, [page])
+
   return (
     <div className={styles.search}>
       <div className={styles.searchTitle}>Search Images from Pexel</div>
       <div className={styles.suggestionWrapper}>
-          <span className={styles.text}>Suggestions:</span>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Animals')}>Animals</button>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
-          <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>
+        <span className={styles.text}>Suggestions:</span>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Animals')}>Animals</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>
       </div>
       <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
         <input
