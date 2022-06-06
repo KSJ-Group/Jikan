@@ -88,7 +88,6 @@ const YouTubePlayer = ({ id }) => {
       setIsMuted(true);
     }
     if (player) {
-      // console.log(musicVolume);
       player.target.setVolume(musicVolume);
     }
   };

@@ -22,19 +22,19 @@ const YouTubeSearch = () => {
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
         if (search) {
-          setTerms(search);
+            setTerms(search);
         } else {
-          setTerms("");
+            setTerms("");
         }
 
         if (settings) {
-            settings.scrollTo({top: 450, behavior: 'smooth'});
-          }
+            settings.scrollTo({ top: 450, behavior: 'smooth' });
+        }
     }, []);
 
     useEffect(() => {
         if (isInitialMount.current) {
-          isInitialMount.current = false;
+            isInitialMount.current = false;
         }
         localStorage.setItem("youtubesearch", terms);
     }, [terms]);
@@ -42,7 +42,7 @@ const YouTubeSearch = () => {
     const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
         fetchVideos(terms);
-      }
+    }
 
     const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
@@ -55,13 +55,13 @@ const YouTubeSearch = () => {
             .then((data) => {
                 processData(data.data.items);
                 if (settings) {
-                    settings.scrollTo({top: 520, behavior: 'smooth'});
+                    settings.scrollTo({ top: 520, behavior: 'smooth' });
                 }
             })
             .catch((err) => {
                 console.log('Err', err);
             })
-    };  
+    };
 
     const processData = (data: any) => {
         let processed: any = [];
@@ -73,12 +73,10 @@ const YouTubeSearch = () => {
                 channelTitle: video.snippet.channelTitle
             });
         })
-        console.log(processed);
         setVideos(processed);
     }
 
     const selectVideo = (id: string) => {
-        console.log('ID:', id);
         changeBackground(id);
     }
 
@@ -101,13 +99,13 @@ const YouTubeSearch = () => {
             </div>
             <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
                 <input
-                type="text"
-                value={terms}
-                className={styles.searchInput}
-                placeholder="Lofi, Study, Cafe, Jazz, Anime, etc."
-                onChange={(event: any) => {
-                    changeTerms(event);
-                }}
+                    type="text"
+                    value={terms}
+                    className={styles.searchInput}
+                    placeholder="Lofi, Study, Cafe, Jazz, Anime, etc."
+                    onChange={(event: any) => {
+                        changeTerms(event);
+                    }}
                 />
                 <input
                     className={styles.searchBtn}
@@ -117,8 +115,8 @@ const YouTubeSearch = () => {
                 />
             </form>
             <div className={styles.searchResults}>
-                {videos.map((video: any )=> {
-                    return(
+                {videos.map((video: any) => {
+                    return (
                         <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>
                             <div className={styles.imgWrapper}>
                                 <img className={styles.thumbnail} src={video.thumbnail} />
