@@ -23,26 +23,27 @@
 }
 
 .controls {
-  width:180px;
+  z-index: 20;
+  width: 180px;
   height: 80px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.849);
   position: absolute;
   margin: 0 auto;
-  left: 0; 
+  left: 0;
   right: 0;
   bottom: 10px;
-  padding: 15px 5px; 
+  padding: 15px 5px;
   z-index: 10;
   display: flex;
   justify-content: space-between;
 
   .controlBtn {
+    z-index: 20;
     border: none;
     outline: none;
     background-color: transparent;
     width: 50%;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +56,7 @@
       width: 50px;
       height: 50px;
       transition: 0.1s ease-in;
+      cursor: pointer;
 
       &:hover {
         width: 55px;
@@ -68,6 +70,7 @@
       width: 50px;
       height: 50px;
       transition: 0.1s ease-in;
+      cursor: pointer;
 
       &:hover {
         width: 55px;

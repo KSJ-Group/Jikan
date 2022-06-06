@@ -33,9 +33,9 @@ export const SettingsContext = createContext({
     "Xylophone.mp3",
   ],
   setAllAlarms: (alarms: string[]) => { },
-  musicVolume: 20,
+  musicVolume: 100,
   setMusicVolume: (volume: number) => { },
-  alertVolume: 80,
+  alertVolume: 100,
   setAlertVolume: (volume: number) => { },
   zip: '',
   setZip: (zip: string) => { },
@@ -73,8 +73,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
     "Tri-tone ping.mp3",
     "Xylophone.mp3",
   ]);
-  const [musicVolume, setMusicVolume] = useState<number>(20);
-  const [alertVolume, setAlertVolume] = useState<number>(80);
+  const [musicVolume, setMusicVolume] = useState<number>(100);
+  const [alertVolume, setAlertVolume] = useState<number>(100);
   const [zip, setZip] = useState<string>('');
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [currentWeather, setCurrentWeather] = useState<any>({
