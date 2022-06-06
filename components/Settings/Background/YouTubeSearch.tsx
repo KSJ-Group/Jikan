@@ -93,9 +93,9 @@ const YouTubeSearch = () => {
                 <span className={styles.text}>Suggestions:</span>
                 <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Lo-Fi')}>Lo-Fi</button>
                 <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Jazz')}>Jazz</button>
-                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cafe')}>Cafe</button>
-                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Pop')}>Pop</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Soft Pop')}>Soft Pop</button>
                 <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Anime')}>Anime</button>
+                <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Video Game')}>Video Game</button>
             </div>
             <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
                 <input
