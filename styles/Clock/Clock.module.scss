@@ -5,6 +5,13 @@ $l: 1200px;
 $xl: 1400px;
 $xxl: 2500px;
 
+@mixin notSelectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 .container {
   padding: 1vw 3vw;
   z-index: 2;
@@ -30,6 +37,7 @@ $xxl: 2500px;
   @media screen and (max-width: $phone) {
     font-size: 15vw;
   }
+  @include notSelectable();
 }
 
 // 24 hours
@@ -40,6 +48,7 @@ $xxl: 2500px;
   @media screen and (max-width: $phone) {
     font-size: 28vw;
   }
+  @include notSelectable();
 }
 
 // 12 hours and show seconds
@@ -50,6 +59,7 @@ $xxl: 2500px;
   @media screen and (max-width: $phone) {
     font-size: 13vw;
   }
+  @include notSelectable();
 }
 
 // 12 hours
@@ -60,4 +70,5 @@ $xxl: 2500px;
   @media screen and (max-width: $phone) {
     font-size: 18vw;
   }
+  @include notSelectable();
 }

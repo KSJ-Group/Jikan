@@ -4,6 +4,12 @@
 // $m: 850px;
 // $s: 600px;
 // $phone: 450px;
+@mixin notSelectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
 @mixin flexCenter() {
   display: flex;
@@ -56,6 +62,7 @@
   @media screen and (max-width: 800px) {
     font-size: 2vh;
   }
+  @include notSelectable();
 }
 
 .timerDiv {
@@ -67,6 +74,7 @@
   @media screen and (max-width: 800px) {
     font-size: 20vw;
   }
+  @include notSelectable();
 }
 
 .btnDiv {
@@ -96,4 +104,5 @@
     // top: -20px;
     font-size: 2vh;
   }
+  @include notSelectable();
 }

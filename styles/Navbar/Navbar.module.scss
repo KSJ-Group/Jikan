@@ -1,3 +1,10 @@
+@mixin notSelectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 .nav {
   height: 60px;
   z-index: 2;
@@ -31,6 +38,7 @@
     font-size: 15px;
     margin-top: 10px;
   }
+  @include notSelectable();
 }
 
 .link {
@@ -51,6 +59,7 @@
     font-size: 15px;
     margin: 10px;
   }
+  @include notSelectable();
 }
 
 .settings {
@@ -77,6 +86,7 @@
   @media screen and (max-width: 950px) {
     display: none;
   }
+  @include notSelectable();
 }
 
 .settingsIcon {
@@ -162,6 +172,7 @@
     background-color: none;
     text-align: right;
   }
+  @include notSelectable();
 }
 
 .weatherIcon {

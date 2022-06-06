@@ -33,6 +33,14 @@
   cursor: default;
   z-index: 2;
   color: white;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 @media screen and (max-width: 600px) {
@@ -56,6 +64,14 @@
   z-index: 2;
   -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 .link:hover {
@@ -104,6 +120,14 @@
 .settingsWord {
   margin-left: 10px;
   display: block;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 @media screen and (max-width: 950px) {
@@ -241,6 +265,14 @@
   cursor: pointer;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 .weatherContainer:hover {
