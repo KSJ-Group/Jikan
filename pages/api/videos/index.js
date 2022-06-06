@@ -14,9 +14,13 @@ const youtube = axios.create({
 
 export default async function handler(req, res) {
   let { terms } = req.query;
+  if (!terms.includes("music")) {
+    terms = terms + " music";
+  }
+
   const response = await youtube.get("/search", {
     params: {
-      q: terms + " music",
+      q: terms,
     },
   });
   return res.status(200).json(response.data);
