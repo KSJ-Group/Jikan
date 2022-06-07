@@ -81,7 +81,6 @@ const YouTubeSearch = () => {
     };
 
     const processData = (data: any) => {
-        console.log(data[0])
         let processed: any = [];
         data.forEach(video => {
             processed.push({
@@ -102,7 +101,7 @@ const YouTubeSearch = () => {
     const chooseSuggestion = (e, term) => {
         e.preventDefault();
         setTerms(term);
-        fetchVideos(term, eventType);
+        // fetchVideos(term, eventType);
     }
 
     const radioChangeHandler = (e: any) => {
