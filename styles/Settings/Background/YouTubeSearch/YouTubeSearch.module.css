@@ -58,6 +58,25 @@
   background: #dddddd;
 }
 
+.formsWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.formsWrapper .checkboxWrapper {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.formsWrapper .checkboxWrapper .checkboxLabel {
+  margin-left: 3px;
+}
+
 .searchTitle {
   font-size: 18px;
 }
@@ -101,6 +120,15 @@
 .searchResults .videoResult .imgWrapper {
   width: 100%;
   height: 195px;
+  position: relative;
+}
+
+.searchResults .videoResult .imgWrapper .liveIndicator {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: red;
+  font-weight: bold;
 }
 
 .searchResults .videoResult .imgWrapper .thumbnail {

@@ -14,10 +14,12 @@ const Videos: Video[] = [];
 
 const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
+
     const isInitialMount = useRef<boolean>(true);
     const [videos, setVideos] = useState<typeof Videos>([]);
     const settings: any = document.getElementById('settings-body');
-    const { changeBackground } = useContext(BackgroundContext);
+    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType } = useContext(BackgroundContext);
+    const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
@@ -30,6 +32,13 @@ const YouTubeSearch = () => {
         if (settings) {
             settings.scrollTo({ top: 450, behavior: 'smooth' });
         }
+
+        const checkbox = document.getElementById('musicCheckbox') as HTMLInputElement;
+        isOnlyMusic ? checkbox.checked = true : checkbox.checked = false;
+
+        const checkbox2 = document.getElementById('liveCheckbox') as HTMLInputElement;
+        eventType === 'live' ? checkbox2.checked = true : checkbox2.checked = false;
+
     }, []);
 
     useEffect(() => {
@@ -41,7 +50,7 @@ const YouTubeSearch = () => {
 
     const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
-        fetchVideos(terms);
+        fetchVideos(terms, eventType);
     }
 
     const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -49,10 +58,17 @@ const YouTubeSearch = () => {
         setTerms(event.target.value);
     };
 
-    const fetchVideos = (searchTerms: string) => {
+    const fetchVideos = (searchTerms: string, eventType: string) => {
+        if (isOnlyMusic) {
+            if (!searchTerms.includes("music")) {
+                searchTerms = searchTerms + " music";
+            }
+        }
+
         axios
-            .get(`/api/videos?terms=${searchTerms}`)
+            .get(`/api/videos?terms=${searchTerms}&eventType=${eventType}`)
             .then((data) => {
+                setIsError(false);
                 processData(data.data.items);
                 if (settings) {
                     settings.scrollTo({ top: 520, behavior: 'smooth' });
@@ -60,13 +76,16 @@ const YouTubeSearch = () => {
             })
             .catch((err) => {
                 console.log('Err', err);
+                setIsError(true);
             })
     };
 
     const processData = (data: any) => {
+        console.log(data[0])
         let processed: any = [];
         data.forEach(video => {
             processed.push({
+                live: video.snippet.liveBroadcastContent,
                 videoId: video.id.videoId,
                 thumbnail: video.snippet.thumbnails.high.url,
                 title: video.snippet.title.replace(' &amp;', ''),
@@ -83,12 +102,32 @@ const YouTubeSearch = () => {
     const chooseSuggestion = (e, term) => {
         e.preventDefault();
         setTerms(term);
-        fetchVideos(term);
+        fetchVideos(term, eventType);
     }
+
+    const radioChangeHandler = (e: any) => {
+        e.target.checked ? setIsOnlyMusic(true) : setIsOnlyMusic(false);
+        setVideos([]);
+    };
+
+    const checboxChangeHandler = (e: any) => {
+        e.target.checked ? setEventType('live') : setEventType('completed');
+        setVideos([]);
+    };
 
     return (
         <div className={styles.container}>
             <div className={styles.searchTitle}>Search YouTube</div>
+            <div className={styles.formsWrapper}>
+                <form className={styles.checkboxWrapper} onChange={(e: any) => radioChangeHandler(e)}>
+                    <input className={styles.checkbox} type="checkbox" id="musicCheckbox" name="filter" value="Music Only" defaultChecked />
+                    <label className={styles.checkboxLabel} htmlFor="musicCheckbox">Music Only</label>
+                </form>
+                <form className={styles.checkboxWrapper} onChange={(e: any) => checboxChangeHandler(e)}>
+                    <input className={styles.checkbox} type="checkbox" id="liveCheckbox" name="live" value="Live" defaultChecked />
+                    <label className={styles.checkboxLabel} htmlFor="liveCheckbox">Live Stream</label>
+                </form>
+            </div>
             <div className={styles.suggestionWrapper}>
                 <span className={styles.text}>Suggestions:</span>
                 <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Lo-Fi')}>Lo-Fi</button>
@@ -115,10 +154,12 @@ const YouTubeSearch = () => {
                 />
             </form>
             <div className={styles.searchResults}>
+                {isError && <span>Server cannot be reached. Please try again later.</span>}
                 {videos.map((video: any) => {
                     return (
                         <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>
                             <div className={styles.imgWrapper}>
+                                {video.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                                 <img className={styles.thumbnail} src={video.thumbnail} />
                             </div>
                             <div className={styles.textWrapper}>
