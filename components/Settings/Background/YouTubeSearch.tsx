@@ -12,6 +12,7 @@ interface Video {
 }
 
 const Videos: Video[] = [];
+let timeout;
 
 const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
@@ -52,6 +53,10 @@ const YouTubeSearch = () => {
     const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
         setIsLoading(true);
+        timeout = setTimeout(() => {
+            setIsLoading(false);
+            setIsError(true);
+        }, 10000)
         fetchVideos(terms, eventType);
     }
 
@@ -61,10 +66,14 @@ const YouTubeSearch = () => {
     };
 
     const fetchVideos = (searchTerms: string, eventType: string) => {
-        if (isOnlyMusic) {
+        if (isOnlyMusic && !searchTerms.includes("youtube.com")) {
             if (!searchTerms.includes("music")) {
                 searchTerms = searchTerms + " music";
             }
+        }
+
+        if (searchTerms.includes("youtube.com")) {
+            eventType = "completed";
         }
 
         axios
@@ -99,6 +108,7 @@ const YouTubeSearch = () => {
     useEffect(() => {
         if (videos.length) {
             setIsLoading(false);
+            clearTimeout(timeout);
         }
     }, [videos])
 
