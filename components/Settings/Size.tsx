@@ -30,7 +30,7 @@ const Size: React.FC<Props> = ({ size, setSize }) => {
                 label={choice}
                 id={choice + "id"}
                 defaultChecked={checkIfChecked(choice)}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) => setSize(e.target.value.toLowerCase())}
               />
             );
           })}
