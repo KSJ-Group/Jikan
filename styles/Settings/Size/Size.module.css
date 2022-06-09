@@ -1,4 +1,4 @@
-.autoStartContainer {
+.sizeContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,7 +14,7 @@
   margin-bottom: 5px;
 }
 
-.toggles {
+.sizeToggles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,4 +26,4 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-/*# sourceMappingURL=AutoStartBreak.module.css.map */
+/*# sourceMappingURL=Size.module.css.map */

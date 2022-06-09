@@ -23,7 +23,7 @@ const AutoStartBreak: React.FC<Props> = ({
 
   return (
     <div className={globalStyles.settingModuleContainer}>
-      <Form.Group className={styles.autoStartContainer}>
+      <Form.Group className={styles.autoStartContainer} controlId="autoStart">
         <Form.Label>Auto-start breaks</Form.Label>
         <div className={styles.toggles}>
           {choices.map((choice) => {
@@ -31,7 +31,7 @@ const AutoStartBreak: React.FC<Props> = ({
               <Form.Check
                 key={choice}
                 type="radio"
-                name="name"
+                name="autoStart"
                 value={choice}
                 label={choice}
                 id={choice + "id"}

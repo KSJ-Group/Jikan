@@ -7,13 +7,16 @@ export const StylesContext = createContext(
     brightness: 100,
     setBrightness: (percentage: number) => { },
     blur: false,
-    setBlur: (blur: boolean) => { }
+    setBlur: (blur: boolean) => { },
+    size: 'medium',
+    setSize: (size: string) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
   const [selectedFont, setSelectedFont] = useState<string>('Syne Mono');
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
+  const [size, setSize] = useState<string>("medium");
 
   const store = {
     selectedFont: selectedFont,
@@ -30,6 +33,11 @@ export const StylesProvider: React.FC = ({ children }) => {
     setBlur: (blur: boolean): void => {
       setBlur(blur);
       localStorage.setItem('blur', JSON.stringify(blur));
+    },
+    size: size,
+    setSize: (size: string): void => {
+      setSize(size);
+      localStorage.setItem('clockSize', size);
     }
   };
 
@@ -37,6 +45,7 @@ export const StylesProvider: React.FC = ({ children }) => {
     let cachedFont = localStorage.getItem('font');
     let cachedBrightness = localStorage.getItem('brightness');
     let cachedBlur = localStorage.getItem('blur');
+    let cachedSize = localStorage.getItem('clockSize');
     if (cachedFont) {
       store.setSelectedFont(cachedFont);
     }
@@ -45,6 +54,9 @@ export const StylesProvider: React.FC = ({ children }) => {
     }
     if (cachedBlur) {
       store.setBlur(JSON.parse(cachedBlur));
+    }
+    if (cachedSize) {
+      store.setSize(cachedSize);
     }
   }, []);
 

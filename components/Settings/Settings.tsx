@@ -16,6 +16,7 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
+import Size from "./Size";
 
 interface Props {
   showSettings: boolean;
@@ -28,8 +29,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setSelectedFont,
     brightness,
     setBrightness,
-    blur,
-    setBlur
+    size,
+    setSize
   } = useContext(StylesContext);
 
   const {
@@ -67,7 +68,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody}  id="settings-body">
+          <div className={styles.subBody} id="settings-body">
             {/* <Login /> */}
             {isClock ? (
               // Clock settings
@@ -88,6 +89,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   />
                   <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
                 </div>
+                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
@@ -125,6 +127,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   autoStartBreak={autoStartBreak}
                   setAutoStartBreak={setAutoStartBreak}
                 />
+                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
