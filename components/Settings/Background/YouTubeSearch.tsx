@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "../../../styles/Settings/Background/YouTubeSearch/YouTubeSearch.module.css";
 import axios from "axios";
 import { BackgroundContext } from "../../BackgroundContext";
+import e from "express";
 
 interface Video {
     videoId: String
@@ -101,7 +102,6 @@ const YouTubeSearch = () => {
     const chooseSuggestion = (e, term) => {
         e.preventDefault();
         setTerms(term);
-        // fetchVideos(term, eventType);
     }
 
     const radioChangeHandler = (e: any) => {
@@ -140,7 +140,7 @@ const YouTubeSearch = () => {
                     type="text"
                     value={terms}
                     className={styles.searchInput}
-                    placeholder="Lofi, Study, Cafe, Jazz, Anime, etc."
+                    placeholder="Enter search query or YouTube link"
                     onChange={(event: any) => {
                         changeTerms(event);
                     }}
