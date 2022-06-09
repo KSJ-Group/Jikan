@@ -77,6 +77,13 @@
     flex-direction: column;
     width: 100%;
 
+    .loadingContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+    }
+
     .videoResult {
         display: flex;
         flex-direction: column;

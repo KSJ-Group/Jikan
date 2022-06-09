@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "../../../styles/Settings/Background/YouTubeSearch/YouTubeSearch.module.css";
 import axios from "axios";
 import { BackgroundContext } from "../../BackgroundContext";
-import e from "express";
+import Spinner from 'react-bootstrap/Spinner'
 
 interface Video {
     videoId: String
@@ -15,7 +15,7 @@ const Videos: Video[] = [];
 
 const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
-
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const isInitialMount = useRef<boolean>(true);
     const [videos, setVideos] = useState<typeof Videos>([]);
     const settings: any = document.getElementById('settings-body');
@@ -51,6 +51,7 @@ const YouTubeSearch = () => {
 
     const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
+        setIsLoading(true);
         fetchVideos(terms, eventType);
     }
 
@@ -94,6 +95,12 @@ const YouTubeSearch = () => {
         })
         setVideos(processed);
     }
+
+    useEffect(() => {
+        if (videos.length) {
+            setIsLoading(false);
+        }
+    }, [videos])
 
     const selectVideo = (id: string) => {
         changeBackground(id);
@@ -154,6 +161,11 @@ const YouTubeSearch = () => {
             </form>
             <div className={styles.searchResults}>
                 {isError && <span>Server cannot be reached. Please try again later.</span>}
+                {isLoading &&
+                    <div className={styles.loadingContainer}>
+                        <Spinner animation="border" variant="primary" />
+                    </div>
+                }
                 {videos.map((video: any) => {
                     return (
                         <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>

@@ -101,6 +101,17 @@
   width: 100%;
 }
 
+.searchResults .loadingContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+}
+
 .searchResults .videoResult {
   display: -webkit-box;
   display: -ms-flexbox;
