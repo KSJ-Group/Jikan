@@ -108,7 +108,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
-                {/* <Reset /> */}
+                <Reset />
               </div>
             ) : (
               // Pomodoro settings
@@ -156,6 +156,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
+                <Reset />
+
               </div>
             )}
           </div>
