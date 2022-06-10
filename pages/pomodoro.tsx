@@ -31,7 +31,7 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
   min-width: ${(props) => {
     if (!props.isMobile) {
-      return '35vw';
+      return '30vw';
     } else {
       return '95vw';
     }
