@@ -56,6 +56,12 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.controls:hover {
+  background-color: rgba(0, 0, 0, 0.534);
 }
 
 @media screen and (max-width: 740px) {

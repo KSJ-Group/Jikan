@@ -37,6 +37,11 @@
   z-index: 10;
   display: flex;
   justify-content: space-between;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.534);
+  }
 
   @media screen and (max-width: 740px) {
     top: 65px;
