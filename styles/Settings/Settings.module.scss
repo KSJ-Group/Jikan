@@ -41,6 +41,10 @@
 
 .settingsTitle {
   font-size: 30px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .x {
@@ -106,6 +110,9 @@
   border-radius: 10px;
   color: black;
   margin-bottom: 20px;
+}
+
+.resetContainer {
 }
 
 // .profileIcon {

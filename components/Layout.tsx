@@ -16,6 +16,7 @@ interface Font {
 }
 
 interface Props {
+  color: string;
   opacity: number;
 }
 
@@ -37,7 +38,7 @@ const WeatherContainer = styled.div<Props>`
   align-items: center;
   margin: 10px;
   color: white;
-  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -57,7 +58,7 @@ const WeatherContainer = styled.div<Props>`
   `
 
 const Layout: React.FC = ({ children }) => {
-  const { brightness, selectedFont, opacity } = useContext(StylesContext);
+  const { brightness, selectedFont, opacity, color } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
@@ -111,7 +112,7 @@ const Layout: React.FC = ({ children }) => {
           </div>
           <Background />
           {children}
-          {currentWeather.city ? <WeatherContainer opacity={opacity}>
+          {currentWeather.city ? <WeatherContainer opacity={opacity} color={color}>
             <div className={styles.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
               <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
             </div>

@@ -11,7 +11,11 @@ export const StylesContext = createContext(
     size: 'medium',
     setSize: (size: string) => { },
     opacity: 40,
-    setOpacity: (opacity: number) => { }
+    setOpacity: (opacity: number) => { },
+    color: '0, 0, 0',
+    setColor: (color: string) => { },
+    hex: '#000000',
+    setHex: (hex: string) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
@@ -20,6 +24,8 @@ export const StylesProvider: React.FC = ({ children }) => {
   const [blur, setBlur] = useState<boolean>(false);
   const [size, setSize] = useState<string>("medium");
   const [opacity, setOpacity] = useState<number>(40);
+  const [color, setColor] = useState<string>('0, 0, 0');
+  const [hex, setHex] = useState<string>('#000000');
 
   const store = {
     selectedFont: selectedFont,
@@ -46,6 +52,16 @@ export const StylesProvider: React.FC = ({ children }) => {
     setOpacity: (opacity: number): void => {
       setOpacity(opacity);
       localStorage.setItem('opacity', opacity.toString());
+    },
+    color: color,
+    setColor: (color: string): void => {
+      setColor(color);
+      localStorage.setItem('color', color);
+    },
+    hex: hex,
+    setHex: (hex: string): void => {
+      setHex(hex);
+      localStorage.setItem('hex', hex);
     }
   };
 
@@ -55,6 +71,8 @@ export const StylesProvider: React.FC = ({ children }) => {
     const cachedBlur = localStorage.getItem('blur');
     const cachedSize = localStorage.getItem('clockSize');
     const cachedOpacity = localStorage.getItem('opacity');
+    const cachedColor = localStorage.getItem('color');
+    const cachedHex = localStorage.getItem('hex');
     if (cachedFont) {
       store.setSelectedFont(cachedFont);
     }
@@ -69,6 +87,12 @@ export const StylesProvider: React.FC = ({ children }) => {
     }
     if (cachedOpacity) {
       store.setOpacity(parseInt(cachedOpacity));
+    }
+    if (cachedColor) {
+      store.setColor(cachedColor);
+    }
+    if (cachedHex) {
+      store.setColor(cachedHex);
     }
   }, []);
 

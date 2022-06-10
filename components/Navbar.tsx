@@ -13,6 +13,7 @@ interface Font {
 
 interface Props {
   opacity: number;
+  color: string;
 }
 
 const Nav = styled.nav<Props>`
@@ -24,7 +25,7 @@ const Nav = styled.nav<Props>`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
 `
 
 const StyledFont = styled.span<Font>`
@@ -37,7 +38,7 @@ const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   const { setIsClock, showSettings, setShowSettings } = useContext(SettingsContext);
-  const { selectedFont, opacity } = useContext(StylesContext);
+  const { selectedFont, opacity, color } = useContext(StylesContext);
 
   useEffect(() => {
     setIsClock(clockIsActive);
@@ -106,7 +107,7 @@ const Navbar: React.FC = () => {
 
         <script src="https://kit.fontawesome.com/5a44324c7d.js" crossOrigin="anonymous"></script>
       </Head>
-      <Nav opacity={opacity}>
+      <Nav opacity={opacity} color={color}>
         <div className={styles.mainLinks}>
           <Link href="/"><a className={styles.link} id='clock' onClick={clickLinkClock}><StyledFont font={selectedFont}>Clock</StyledFont></a></Link>
           <div className={styles.line}>|</div>

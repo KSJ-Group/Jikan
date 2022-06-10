@@ -27,6 +27,7 @@ interface ContainerProps {
   size: string;
   isMobile: boolean;
   opacity: number;
+  color: string;
 }
 
 const Container = styled.div<ContainerProps>`
@@ -47,7 +48,7 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   flex-direction: column;
   z-index: 3;
-  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   overflow: hidden;
   border-radius: 20px;
 
@@ -122,7 +123,7 @@ const pomodoro: NextPage = () => {
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const { pomodoroTime, shortBreakTime, longBreakTime } =
+  const { pomodoroTime, shortBreakTime, longBreakTime, selectedAlert, autoStartBreak, alertVolume } =
     useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
@@ -138,8 +139,7 @@ const pomodoro: NextPage = () => {
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [autoStart, setAutoStart] = useState<boolean>(false);
 
-  const { selectedFont, size, opacity } = useContext(StylesContext);
-  const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
+  const { selectedFont, size, opacity, color } = useContext(StylesContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
@@ -470,7 +470,7 @@ const pomodoro: NextPage = () => {
 
   return (
     <div className={styles.pomodoro}>
-      <Container size={size} isMobile={isMobile} opacity={opacity}>
+      <Container size={size} isMobile={isMobile} opacity={opacity} color={color}>
         <Head>
           {currentTime && started ? (
             <title>Jikan | {currentTime}</title>

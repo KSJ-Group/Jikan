@@ -8,13 +8,24 @@ interface pageProps {
   maxPages: number;
 }
 const Page: NextPage<pageProps> = ({ changePage, page, maxPages }) => {
+
+  const clickHandlerNext = (e: any) => {
+    e.preventDefault();
+    changePage(true);
+  }
+
+  const clickHandlerPrev = (e: any) => {
+    e.preventDefault();
+    changePage(false);
+  }
+
   return (
     <div className={styles.page}>
       {page > 1 ? (
         <button
           className={styles.btn}
-          onClick={() => {
-            changePage(false);
+          onClick={(e: any) => {
+            clickHandlerPrev(e);
           }}
         >
           {"<<"}
@@ -25,8 +36,8 @@ const Page: NextPage<pageProps> = ({ changePage, page, maxPages }) => {
       {page < maxPages ? (
         <button
           className={styles.btn}
-          onClick={() => {
-            changePage(true);
+          onClick={(e: any) => {
+            clickHandlerNext(e);
           }}
         >
           {">>"}

@@ -14,7 +14,7 @@ const Controls = styled.div`
   height: 80px;
   border-radius: 10px;
   background-color: ${(props) =>
-    `rgb(0, 0, 0, ${props.opacity / 100})` || "rgb(0, 0, 0, 0.4)"};
+    `rgb(${props.color}, ${props.opacity / 100})` || "rgb(0, 0, 0, 0.4)"};
   position: absolute;
   margin: 0 auto;
   left: 0;
@@ -44,7 +44,7 @@ const YouTubePlayer = ({ id }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const { musicVolume, setMusicVolume } = useContext(SettingsContext);
-  const { opacity } = useContext(StylesContext);
+  const { opacity, color } = useContext(StylesContext);
   const config = {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -144,7 +144,7 @@ const YouTubePlayer = ({ id }) => {
           )
         }
       />
-      <Controls opacity={opacity} onMouseLeave={hideSlider}>
+      <Controls opacity={opacity} color={color} onMouseLeave={hideSlider}>
         <button className={styles.controlBtn}>
           <div id="sliderDiv">
             <input
