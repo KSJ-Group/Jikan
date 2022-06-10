@@ -166,10 +166,11 @@
     background-color: rgba(0, 0, 0, 0.247);
   }
   @media screen and (max-width: 740px) {
-    top: 75px;
+    top: 90px;
     height: 0;
     right: -15px;
     background-color: none;
+    padding: 0;
     text-align: right;
   }
   @include notSelectable();
@@ -197,6 +198,9 @@
   .lastUpdated {
     font-size: 10px;
     color: rgb(197, 197, 197);
+    @media screen and (max-width: 740px) {
+      display: none;
+    }
   }
 }
 
@@ -206,6 +210,9 @@
   top: 0;
   right: 5px;
   margin: 3px;
+  @media screen and (max-width: 740px) {
+    display: none;
+  }
   .refreshIcon {
     width: 15px;
     height: 15px;

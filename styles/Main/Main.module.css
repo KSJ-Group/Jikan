@@ -58,6 +58,16 @@
           justify-content: space-between;
 }
 
+@media screen and (max-width: 740px) {
+  .controls {
+    top: 65px;
+    left: 5px;
+    margin: 0;
+    height: 40px;
+    width: 90px;
+  }
+}
+
 .controls .controlBtn {
   z-index: 20;
   border: none;
@@ -92,6 +102,17 @@
   height: 55px;
 }
 
+@media screen and (max-width: 740px) {
+  .controls .controlBtn .icon {
+    width: 25px;
+    height: 25px;
+  }
+  .controls .controlBtn .icon:hover {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 .controls .controlBtn .icon2 {
   position: relative;
   left: 2px;
@@ -105,6 +126,17 @@
 .controls .controlBtn .icon2:hover {
   width: 55px;
   height: 55px;
+}
+
+@media screen and (max-width: 740px) {
+  .controls .controlBtn .icon2 {
+    width: 25px;
+    height: 25px;
+  }
+  .controls .controlBtn .icon2:hover {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .sideBtn {

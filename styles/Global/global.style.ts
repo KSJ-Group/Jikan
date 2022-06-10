@@ -8,10 +8,6 @@ interface Background {
   blur: any;
 }
 
-interface Font {
-  font: any;
-}
-
 interface BackgroundColor {
   color: any;
 }
@@ -30,10 +26,6 @@ export const BackgroundBlur = styled.div<Background>`
   height: 100vh;
   transition: 0.6s ease-in-out;
   transform: scale(1.1);
-`;
-
-export const ClockFont = styled.div<Font>`
-  font-family: ${(props) => props.font}, monospace;
 `;
 
 export const BackgroundColor = createGlobalStyle<BackgroundColor>`

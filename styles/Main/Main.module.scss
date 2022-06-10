@@ -38,6 +38,14 @@
   display: flex;
   justify-content: space-between;
 
+  @media screen and (max-width: 740px) {
+    top: 65px;
+    left: 5px;
+    margin: 0;
+    height: 40px;
+    width: 90px;
+  }
+
   .controlBtn {
     z-index: 20;
     border: none;
@@ -62,6 +70,16 @@
         width: 55px;
         height: 55px;
       }
+
+      @media screen and (max-width: 740px) {
+        width: 25px;
+        height: 25px;
+
+        &:hover {
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
 
     .icon2 {
@@ -75,6 +93,16 @@
       &:hover {
         width: 55px;
         height: 55px;
+      }
+
+      @media screen and (max-width: 740px) {
+        width: 25px;
+        height: 25px;
+
+        &:hover {
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }

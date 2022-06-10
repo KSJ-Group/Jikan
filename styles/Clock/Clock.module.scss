@@ -5,13 +5,6 @@ $l: 1200px;
 $xl: 1400px;
 $xxl: 2500px;
 
-@mixin notSelectable {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
-}
-
 .container {
   padding: 1vw 3vw;
   z-index: 2;
@@ -30,45 +23,29 @@ $xxl: 2500px;
 }
 
 // 24 hours and show seconds
-.timeA {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 15vw;
-  }
-  @include notSelectable();
-}
+// .timeA {
+//   @media screen and (max-width: $phone) {
+//     font-size: 15vw;
+//   }
+// }
 
-// 24 hours
-.timeB {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 28vw;
-  }
-  @include notSelectable();
-}
+// // 24 hours
+// .timeB {
+//   @media screen and (max-width: $phone) {
+//     font-size: 28vw;
+//   }
+// }
 
-// 12 hours and show seconds
-.timeC {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 13vw;
-  }
-  @include notSelectable();
-}
+// // 12 hours and show seconds
+// .timeC {
+//   @media screen and (max-width: $phone) {
+//     font-size: 13vw;
+//   }
+// }
 
-// 12 hours
-.timeD {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 18vw;
-  }
-  @include notSelectable();
-}
+// // 12 hours
+// .timeD {
+//   @media screen and (max-width: $phone) {
+//     font-size: 18vw;
+//   }
+// }
