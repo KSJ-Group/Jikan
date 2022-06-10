@@ -105,8 +105,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Opacity opacity={opacity} setOpacity={setOpacity} />
-                <Color />
-
+                {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
                 {/* <Reset /> */}
@@ -154,7 +153,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setBrightness={setBrightness}
                 />
                 <Opacity opacity={opacity} setOpacity={setOpacity} />
-                <Color />
+                {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
               </div>
