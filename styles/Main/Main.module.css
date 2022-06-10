@@ -42,7 +42,7 @@
   width: 180px;
   height: 80px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.849);
+  background-color: rgba(0, 0, 0, 0.377);
   position: absolute;
   margin: 0 auto;
   left: 0;
@@ -94,6 +94,8 @@
   height: 50px;
   -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
+  -webkit-filter: invert(1);
+          filter: invert(1);
   cursor: pointer;
 }
 
@@ -120,6 +122,8 @@
   height: 50px;
   -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
+  -webkit-filter: invert(1);
+          filter: invert(1);
   cursor: pointer;
 }
 

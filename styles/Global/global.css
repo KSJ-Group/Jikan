@@ -104,7 +104,7 @@ body {
   height: 150px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.849);
+  background-color: rgba(0, 0, 0, 0.377);
 }
 
 #volumeSlider {
