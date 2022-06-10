@@ -15,12 +15,49 @@ interface Font {
   font: any;
 }
 
+interface Props {
+  opacity: number;
+}
+
 const StyledFont = styled.span<Font>`
     font-family: ${(props) => props.font}, monospace;
 `
 
+const WeatherContainer = styled.div<Props>`
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  color: white;
+  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.534);
+  }
+  @media screen and (max-width: 740px) {
+    top: 90px;
+    height: 0;
+    right: -15px;
+    background-color: none;
+    padding: 0;
+    text-align: right;
+  }
+  `
+
 const Layout: React.FC = ({ children }) => {
-  const { brightness, selectedFont } = useContext(StylesContext);
+  const { brightness, selectedFont, opacity } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
@@ -74,7 +111,7 @@ const Layout: React.FC = ({ children }) => {
           </div>
           <Background />
           {children}
-          {currentWeather.city ? <div className={styles.weatherContainer}>
+          {currentWeather.city ? <WeatherContainer opacity={opacity}>
             <div className={styles.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
               <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
             </div>
@@ -87,7 +124,7 @@ const Layout: React.FC = ({ children }) => {
             <div className={styles.refresh} onClick={getWeather}>
               <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
             </div>
-          </div> : null}
+          </WeatherContainer> : null}
           <div className={styles.offScreen}><Login /></div>
         </BackgroundProvider>
       </div>

@@ -26,6 +26,7 @@ interface TimeFont {
 interface ContainerProps {
   size: string;
   isMobile: boolean;
+  opacity: number;
 }
 
 const Container = styled.div<ContainerProps>`
@@ -46,7 +47,7 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   flex-direction: column;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   overflow: hidden;
   border-radius: 20px;
 
@@ -137,7 +138,7 @@ const pomodoro: NextPage = () => {
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [autoStart, setAutoStart] = useState<boolean>(false);
 
-  const { selectedFont, size } = useContext(StylesContext);
+  const { selectedFont, size, opacity } = useContext(StylesContext);
   const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
@@ -469,7 +470,7 @@ const pomodoro: NextPage = () => {
 
   return (
     <div className={styles.pomodoro}>
-      <Container size={size} isMobile={isMobile}>
+      <Container size={size} isMobile={isMobile} opacity={opacity}>
         <Head>
           {currentTime && started ? (
             <title>Jikan | {currentTime}</title>

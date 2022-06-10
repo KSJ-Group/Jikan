@@ -17,6 +17,7 @@ import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
 import Size from "./Size";
+import Opacity from "./Opacity";
 
 interface Props {
   showSettings: boolean;
@@ -30,7 +31,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     brightness,
     setBrightness,
     size,
-    setSize
+    setSize,
+    opacity,
+    setOpacity
   } = useContext(StylesContext);
 
   const {
@@ -95,6 +98,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setSelectedFont={setSelectedFont}
                 />
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+                <Opacity opacity={opacity} setOpacity={setOpacity} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
@@ -140,6 +144,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 />
                 {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+                <Opacity opacity={opacity} setOpacity={setOpacity} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}

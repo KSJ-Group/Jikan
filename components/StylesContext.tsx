@@ -9,7 +9,9 @@ export const StylesContext = createContext(
     blur: false,
     setBlur: (blur: boolean) => { },
     size: 'medium',
-    setSize: (size: string) => { }
+    setSize: (size: string) => { },
+    opacity: 40,
+    setOpacity: (opacity: number) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
@@ -17,6 +19,7 @@ export const StylesProvider: React.FC = ({ children }) => {
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
   const [size, setSize] = useState<string>("medium");
+  const [opacity, setOpacity] = useState<number>(40);
 
   const store = {
     selectedFont: selectedFont,
@@ -38,14 +41,20 @@ export const StylesProvider: React.FC = ({ children }) => {
     setSize: (size: string): void => {
       setSize(size);
       localStorage.setItem('clockSize', size);
+    },
+    opacity: opacity,
+    setOpacity: (opacity: number): void => {
+      setOpacity(opacity);
+      localStorage.setItem('opacity', opacity.toString());
     }
   };
 
   useEffect((): any => {
-    let cachedFont = localStorage.getItem('font');
-    let cachedBrightness = localStorage.getItem('brightness');
-    let cachedBlur = localStorage.getItem('blur');
-    let cachedSize = localStorage.getItem('clockSize');
+    const cachedFont = localStorage.getItem('font');
+    const cachedBrightness = localStorage.getItem('brightness');
+    const cachedBlur = localStorage.getItem('blur');
+    const cachedSize = localStorage.getItem('clockSize');
+    const cachedOpacity = localStorage.getItem('opacity');
     if (cachedFont) {
       store.setSelectedFont(cachedFont);
     }
@@ -57,6 +66,9 @@ export const StylesProvider: React.FC = ({ children }) => {
     }
     if (cachedSize) {
       store.setSize(cachedSize);
+    }
+    if (cachedOpacity) {
+      store.setOpacity(parseInt(cachedOpacity));
     }
   }, []);
 

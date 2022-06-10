@@ -37,44 +37,7 @@
   }
 }
 
-.controls {
-  z-index: 20;
-  width: 180px;
-  height: 80px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.377);
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  bottom: 10px;
-  padding: 15px 5px;
-  z-index: 10;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.controls:hover {
-  background-color: rgba(0, 0, 0, 0.534);
-}
-
-@media screen and (max-width: 740px) {
-  .controls {
-    top: 65px;
-    left: 5px;
-    margin: 0;
-    height: 40px;
-    width: 90px;
-  }
-}
-
-.controls .controlBtn {
+.controlBtn {
   z-index: 20;
   border: none;
   outline: none;
@@ -91,11 +54,11 @@
           align-items: center;
 }
 
-.controls .controlBtn:nth-child(1) {
+.controlBtn:nth-child(1) {
   border-right: 2px solid black;
 }
 
-.controls .controlBtn .icon {
+.controlBtn .icon {
   width: 50px;
   height: 50px;
   -webkit-transition: 0.1s ease-in;
@@ -105,23 +68,23 @@
   cursor: pointer;
 }
 
-.controls .controlBtn .icon:hover {
+.controlBtn .icon:hover {
   width: 55px;
   height: 55px;
 }
 
 @media screen and (max-width: 740px) {
-  .controls .controlBtn .icon {
+  .controlBtn .icon {
     width: 25px;
     height: 25px;
   }
-  .controls .controlBtn .icon:hover {
+  .controlBtn .icon:hover {
     width: 25px;
     height: 25px;
   }
 }
 
-.controls .controlBtn .icon2 {
+.controlBtn .icon2 {
   position: relative;
   left: 2px;
   width: 50px;
@@ -133,17 +96,17 @@
   cursor: pointer;
 }
 
-.controls .controlBtn .icon2:hover {
+.controlBtn .icon2:hover {
   width: 55px;
   height: 55px;
 }
 
 @media screen and (max-width: 740px) {
-  .controls .controlBtn .icon2 {
+  .controlBtn .icon2 {
     width: 25px;
     height: 25px;
   }
-  .controls .controlBtn .icon2:hover {
+  .controlBtn .icon2:hover {
     width: 25px;
     height: 25px;
   }

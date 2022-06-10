@@ -3,13 +3,48 @@ import styles from "../styles/Main/Main.module.css";
 import YouTube from "react-youtube";
 import { BackgroundContext } from "./BackgroundContext";
 import { SettingsContext } from "./SettingsContext";
+import { StylesContext } from "./StylesContext";
+import styled from "styled-components";
+
 let player = null;
+
+const Controls = styled.div`
+  z-index: 20;
+  width: 180px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: ${(props) =>
+    `rgb(0, 0, 0, ${props.opacity / 100})` || "rgb(0, 0, 0, 0.4)"};
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  padding: 15px 5px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.1s ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.534);
+  }
+
+  @media screen and (max-width: 740px) {
+    top: 65px;
+    left: 5px;
+    margin: 0;
+    height: 40px;
+    width: 90px;
+  } ;
+`;
 
 const YouTubePlayer = ({ id }) => {
   const { setBackground, background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const { musicVolume, setMusicVolume } = useContext(SettingsContext);
+  const { opacity } = useContext(StylesContext);
   const config = {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -109,7 +144,7 @@ const YouTubePlayer = ({ id }) => {
           )
         }
       />
-      <div className={styles.controls} onMouseLeave={hideSlider}>
+      <Controls opacity={opacity} onMouseLeave={hideSlider}>
         <button className={styles.controlBtn}>
           <div id="sliderDiv">
             <input
@@ -145,7 +180,7 @@ const YouTubePlayer = ({ id }) => {
             <img className={styles.icon} src="/images/play.png" />
           )}
         </button>
-      </div>
+      </Controls>
     </div>
   );
 };

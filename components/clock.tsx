@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 interface Props {
   size: string;
+  opacity: number;
 }
 
 interface Font {
@@ -22,7 +23,7 @@ const ClockDiv = styled.div<Props>`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${props => `rgb(0, 0, 0, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   cursor: default;
 
   @media screen and (max-width: 450px) {
@@ -61,7 +62,7 @@ const Clock: React.FC = () => {
   const [is12, d] = useState<boolean>();
 
   const { showSeconds, is24Hour } = useContext(SettingsContext);
-  const { selectedFont, size } = useContext(StylesContext);
+  const { selectedFont, size, opacity } = useContext(StylesContext);
 
   useEffect(() => {
     setTime(moment().format('h:mm A'));
@@ -136,7 +137,7 @@ const Clock: React.FC = () => {
         {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
       </Head>
-      <ClockDiv size={size}>
+      <ClockDiv size={size} opacity={opacity}>
         {is24andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeA}>{time}</ClockFont> : null}
         {is24 ? <ClockFont size={size} font={selectedFont} className={styles.timeB}>{time}</ClockFont> : null}
         {is12andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeC}>{time}</ClockFont> : null}
