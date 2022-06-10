@@ -31,7 +31,11 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
   min-width: ${(props) => {
     if (!props.isMobile) {
-      return '30vw';
+      if (props.size === "small") {
+        return '30vw';
+      } else {
+        return '35vw';
+      }
     } else {
       return '95vw';
     }
@@ -48,7 +52,13 @@ const Container = styled.div<ContainerProps>`
 
   @media screen and (max-width: 450px) {
     padding: 20px;
-    margin-top: -220px;
+    margin-top: ${(props) => {
+    if (props.size === "large") {
+      return "-150px";
+    } else {
+      return "-220px";
+    }
+  }};
   }
 `
 
@@ -65,7 +75,7 @@ const OtherFont = styled.span<Font>`
       }
     } else {
       if (props.size === 'small') {
-        return '4vw';
+        return '3vw';
       } else if (props.size === 'medium') {
         return '4vw';
       } else if (props.size === 'large') {
@@ -79,15 +89,15 @@ const ClockFont = styled.div<TimeFont>`
   font-size: ${(props) => {
     if (!props.isMobile) {
       if (props.size === 'small') {
-        return '5vw';
-      } else if (props.size === 'medium') {
         return '10vw';
-      } else if (props.size === 'large') {
+      } else if (props.size === 'medium') {
         return '15vw';
+      } else if (props.size === 'large') {
+        return '20vw';
       }
     } else {
       if (props.size === 'small') {
-        return '10vw';
+        return '12vw';
       } else if (props.size === 'medium') {
         return '18vw';
       } else if (props.size === 'large') {
