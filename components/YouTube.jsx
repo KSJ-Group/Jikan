@@ -64,7 +64,10 @@ const YouTubePlayer = ({ id }) => {
 
   const showSlider = () => {
     const slider = document.getElementById("sliderDiv");
-    slider.style.display = "block";
+    const innerWidth = window.innerWidth;
+    if (innerWidth > 600) {
+      slider.style.display = "block";
+    }
   };
 
   const hideSlider = () => {
