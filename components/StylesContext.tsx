@@ -10,9 +10,9 @@ export const StylesContext = createContext(
     setBlur: (blur: boolean) => { },
     size: 'medium',
     setSize: (size: string) => { },
-    opacity: 40,
+    opacity: 30,
     setOpacity: (opacity: number) => { },
-    color: '0, 0, 0',
+    color: '0,0,0',
     setColor: (color: string) => { },
     hex: '#000000',
     setHex: (hex: string) => { }
@@ -23,8 +23,8 @@ export const StylesProvider: React.FC = ({ children }) => {
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
   const [size, setSize] = useState<string>("medium");
-  const [opacity, setOpacity] = useState<number>(40);
-  const [color, setColor] = useState<string>('0, 0, 0');
+  const [opacity, setOpacity] = useState<number>(30);
+  const [color, setColor] = useState<string>('0,0,0');
   const [hex, setHex] = useState<string>('#000000');
 
   const store = {
