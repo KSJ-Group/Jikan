@@ -133,10 +133,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setLongBreakTime={setLongBreakTime}
                   setShowSettings={setShowSettings}
                 />
-                <AutoStarBreak
+                {/* <AutoStarBreak
                   autoStartBreak={autoStartBreak}
                   setAutoStartBreak={setAutoStartBreak}
-                />
+                /> */}
                 <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
