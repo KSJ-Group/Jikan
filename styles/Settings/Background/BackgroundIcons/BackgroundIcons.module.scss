@@ -12,6 +12,7 @@
   align-items: center;
   margin-top: 10px;
   width: 100%;
+
 }
 
 .imageOption {
@@ -21,6 +22,11 @@
   text-align: center;
   &:nth-child(1) {
     margin-right: 15px;
+  }
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
 }
 
@@ -34,9 +40,5 @@
   object-fit: cover;
   height: 100%;
   width: 100%;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
+
 }

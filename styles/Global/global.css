@@ -25,7 +25,7 @@ body {
 }
 
 .activePomLink {
-  background-color: #3d5d6b;
+  background-color: #3088ad;
   padding: 5px;
   color: #e7e7e7;
 }
@@ -46,8 +46,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 35px;
-  right: 140px;
-  top: 8px;
+  right: 160px;
+  top: 13px;
   z-index: 2;
   padding: 10px;
   cursor: pointer;
@@ -70,6 +70,15 @@ body {
 
 .fsText {
   margin-left: 10px;
+  -webkit-user-select: none;
+          user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 @media screen and (max-width: 600px) {
@@ -80,5 +89,73 @@ body {
 
 #youtube-player {
   display: block;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+#sliderDiv {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  margin: 0 auto;
+  left: -90px;
+  right: 0;
+  width: 50px;
+  height: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+#volumeSlider {
+  position: relative;
+  top: 65px;
+  left: -40px;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+@-webkit-keyframes fall {
+  to {
+    margin-top: 900px;
+  }
+}
+
+@keyframes fall {
+  to {
+    margin-top: 900px;
+  }
+}
+
+.rainContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+
+.rainContainer::after {
+  content: "";
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  -webkit-animation: rain 0.2s linear infinite;
+          animation: rain 0.2s linear infinite;
+  background-image: url(https://pngimg.com/uploads/rain/rain_PNG13468.png);
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+@-webkit-keyframes rain {
+  to {
+    background-position: -40px 300px;
+  }
+}
+
+@keyframes rain {
+  to {
+    background-position: -40px 300px;
+  }
 }
 /*# sourceMappingURL=global.css.map */

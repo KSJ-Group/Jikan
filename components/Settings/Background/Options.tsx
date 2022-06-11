@@ -30,18 +30,18 @@ const Options = ({ changeDisplay }: OptionsProps) => {
         <div
           className={styles.imageOption}
           onClick={() => {
-            changeDisplay("color");
+            changeDisplay("youtube");
           }}
         >
           <div className={styles.imageContainer}>
             <img
               className={styles.image}
               src={
-                "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                "https://fdn.gsmarena.com/imgroot/news/20/10/yt-music-casting-support-free-tier/-1220x526/gsmarena_001.jpg"
               }
             ></img>
           </div>
-          Color
+          YouTube
         </div>
       </div>
     </div>

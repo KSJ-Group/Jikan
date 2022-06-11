@@ -16,6 +16,11 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
+import Size from "./Size";
+import Opacity from "./Opacity";
+import Color from "./Background/Color";
+import Reset from "./Reset";
+import Ambiance from "./Ambiance";
 
 interface Props {
   showSettings: boolean;
@@ -28,8 +33,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setSelectedFont,
     brightness,
     setBrightness,
-    blur,
-    setBlur
+    size,
+    setSize,
+    opacity,
+    setOpacity
   } = useContext(StylesContext);
 
   const {
@@ -49,23 +56,14 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setIs24Hour,
     selectedAlert,
     setSelectedAlert,
-    selectedMusic,
-    setMusic,
-    music,
     musicVolume,
     setMusicVolume,
     alertVolume,
     setAlertVolume,
     zip,
     setZip,
-    setCurrentWeather,
+    setCurrentWeather
   } = useContext(SettingsContext);
-
-  const [el, setEl] = useState<HTMLElement>();
-
-  useEffect(() => {
-    setEl(document.getElementById('settings-element')!);
-  });
 
   return (
     <div className={styles.settingsDiv}>
@@ -76,7 +74,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
         className={styles.settings}
       >
         <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody} id="settings-element">
+          <div className={styles.subBody} id="settings-body">
             {/* <Login /> */}
             {isClock ? (
               // Clock settings
@@ -97,19 +95,22 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   />
                   <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
                 </div>
+                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                {/* <Blacklist /> */}
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground el={el} />
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+                <Opacity opacity={opacity} setOpacity={setOpacity} />
+                {/* <Color /> */}
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
+                <ChangeBackground />
+                <Ambiance />
+                <Reset />
               </div>
             ) : (
               // Pomodoro settings
@@ -136,6 +137,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   autoStartBreak={autoStartBreak}
                   setAutoStartBreak={setAutoStartBreak}
                 />
+                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
@@ -146,14 +148,18 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   alertVolume={alertVolume}
                   setAlertVolume={setAlertVolume}
                 />
-                <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} />
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+                {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Blur blur={blur} setBlur={setBlur} />
-                <ChangeBackground el={el} />
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+                <Opacity opacity={opacity} setOpacity={setOpacity} />
+                {/* <Color /> */}
+                {/* <Blur blur={blur} setBlur={setBlur} /> */}
+                <ChangeBackground />
+                <Ambiance />
+                <Reset />
               </div>
             )}
           </div>

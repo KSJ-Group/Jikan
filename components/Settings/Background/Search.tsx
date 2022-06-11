@@ -4,7 +4,6 @@ import axios from "axios";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
-import { Form } from "react-bootstrap";
 
 interface Photo {
   url: string;
@@ -17,16 +16,14 @@ interface Photo {
 
 const photos: Photo[] = [];
 
-interface Props {
-  el: any;
-}
-
-const Search: React.FC<Props> = ({ el }) => {
+const Search: NextPage = () => {
   const [terms, setTerms] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [images, setImages] = useState<typeof photos>([]);
   const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
+
+  const settings: any = document.getElementById('settings-body');
 
   useEffect(() => {
     let search = localStorage.getItem("search");
@@ -35,21 +32,17 @@ const Search: React.FC<Props> = ({ el }) => {
     } else {
       setTerms("");
     }
+    if (settings) {
+      settings.scrollTo({ top: 450, behavior: 'smooth' });
+    }
   }, []);
 
-  const initial = () => {
+  useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
-    } else {
-      fetchImages(terms, page);
     }
     localStorage.setItem("search", terms);
-  }
-
-  useEffect(() => {
-    initial();
-  }, [page]);
-
+  }, [terms, page]);
 
   const changeTerms = (event: React.ChangeEvent<HTMLInputElement>): void => {
     event.preventDefault();
@@ -57,16 +50,21 @@ const Search: React.FC<Props> = ({ el }) => {
     setPage(1);
   };
 
+  const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+    fetchImages(terms, page);
+  }
+
   const fetchImages = (searchTerms: string, pageNumber: number): void => {
     axios
       .get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
+        console.log(data.data.photos);
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
-        el!.scrollTo({
-          top: 900,
-          behavior: 'smooth'
-        });
+        if (settings) {
+          settings.scrollTo({ top: 850, behavior: 'smooth' });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -79,33 +77,45 @@ const Search: React.FC<Props> = ({ el }) => {
     setPage(newPage);
   };
 
-  const submitSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // do nothing
+  const chooseSuggestion = (e, term) => {
     e.preventDefault();
-    initial();
+    setTerms(term);
+    fetchImages(term, 1);
   }
+
+  useEffect(() => {
+    if (terms.length) {
+      fetchImages(terms, page);
+    }
+  }, [page])
 
   return (
     <div className={styles.search}>
-      <div className={styles.searchTitle}>Search Images from Pexels</div>
-      <form onSubmit={(e: any) => submitSearch(e)}>
-        <Form.Group className={styles.searchRow}>
-          <Form.Control
-            type="text"
-            value={terms}
-            className={styles.searchInput}
-            placeholder="Mountains, cars, animals, dark, etc."
-            onChange={(event: any) => {
-              changeTerms(event);
-            }}
-          />
-          <input
-            type="submit"
-            value="Submit"
-            className={styles.searchBtn}
-            onClick={initial}
-          />
-        </Form.Group>
+      <div className={styles.searchTitle}>Search Images from Pexel</div>
+      <div className={styles.suggestionWrapper}>
+        <span className={styles.text}>Suggestions:</span>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Nature')}>Nature</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Animals')}>Animals</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Cute')}>Cute</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Abstract')}>Abstract</button>
+        <button className={styles.suggestionBtn} onClick={(e: any) => chooseSuggestion(e, 'Sports')}>Sports</button>
+      </div>
+      <form className={styles.form} onSubmit={(e: any) => submitForm(e)}>
+        <input
+          type="text"
+          value={terms}
+          className={styles.searchInput}
+          placeholder="Mountains, cars, animals, dark, etc."
+          onChange={(event: any) => {
+            changeTerms(event);
+          }}
+        />
+        <input
+          className={styles.searchBtn}
+          type="button"
+          value="Search"
+          onClick={(e: any) => submitForm(e)}
+        />
       </form>
       <div className={styles.images}>
         {images.map((image) => {

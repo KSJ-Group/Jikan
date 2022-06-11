@@ -1,9 +1,9 @@
-// $xxl: 2500px;
-// $xl: 1400px;
-// $l: 1200px;
-// $m: 850px;
-// $s: 600px;
-// $phone: 450px;
+@mixin notSelectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
 @mixin flexCenter() {
   display: flex;
@@ -18,8 +18,7 @@
 }
 
 .container {
-  // height: 55vh;
-  // width: 50vw;
+  min-width: 35vw;
   padding: 30px;
   @include flexCenter();
   flex-direction: column;
@@ -42,7 +41,6 @@
   align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
-  top: 20px;
   width: 100%;
 }
 
@@ -56,17 +54,18 @@
   @media screen and (max-width: 800px) {
     font-size: 2vh;
   }
+  @include notSelectable();
 }
 
 .timerDiv {
   @include flexCenter();
   width: 100%;
-  font-size: 15vw;
   color: white;
   font-weight: bold;
   @media screen and (max-width: 800px) {
     font-size: 20vw;
   }
+  @include notSelectable();
 }
 
 .btnDiv {
@@ -74,14 +73,12 @@
   align-items: flex-start;
   width: 100%;
   position: relative;
-  bottom: 20px;
-  @media screen and (max-width: 1000px) {
-    align-items: flex-end;
-    bottom: 10px;
-  }
 }
 
 .startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   padding: 10px 20px 10px;
   border-radius: 5px;
@@ -93,7 +90,7 @@
     background-color: rgb(230, 230, 230);
   }
   @media screen and (max-width: 800px) {
-    // top: -20px;
     font-size: 2vh;
   }
+  @include notSelectable();
 }

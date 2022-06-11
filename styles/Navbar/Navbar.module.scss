@@ -1,13 +1,8 @@
-.nav {
-  height: 50px;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+@mixin notSelectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .mainLinks {
@@ -31,6 +26,7 @@
     font-size: 15px;
     margin-top: 10px;
   }
+  @include notSelectable();
 }
 
 .link {
@@ -51,6 +47,7 @@
     font-size: 15px;
     margin: 10px;
   }
+  @include notSelectable();
 }
 
 .settings {
@@ -77,6 +74,7 @@
   @media screen and (max-width: 950px) {
     display: none;
   }
+  @include notSelectable();
 }
 
 .settingsIcon {
@@ -137,109 +135,13 @@
   }
 }
 
-.recordDiv {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 10px;
-  width: 60px;
-  height: 60px;
-  // overflow: hidden;
-  border-radius: 50px;
-  transform: scale(1);
-  animation: pulse 2s infinite;
-  cursor: pointer;
-  @media screen and (max-width: 450px) {
-    top: 60px;
-  }
-  &:hover::after {
-    content: "Press to stop music";
-    position: absolute;
-    animation: slidein 0.5s ease-in-out;
-    left: 70px;
-    top: 17px;
-    color: white;
-    width: 220px;
-  }
-}
-
-.recordDiv2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 10px;
-  width: 60px;
-  height: 60px;
-  // overflow: hidden;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-    margin: 10px;
-  }
-  &:hover::after {
-    content: "Press to play random music ♫";
-    position: absolute;
-    animation: slidein 0.5s ease-in-out;
-    left: 70px;
-    top: 17px;
-    color: white;
-    width: 220px;
-  }
-  @media screen and (max-width: 450px) {
-    top: 60px;
-  }
-}
-
-.record {
-  object-fit: cover;
-  animation: spinner 3s linear infinite;
-  width: 100%;
-  height: 100%;
-  transition: 0.2s ease-in-out;
-}
-
-.record2 {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-.weatherContainer {
-  position: absolute;
-  display: block;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 10px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.103);
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.247);
-  }
-  @media screen and (max-width: 450px) {
-    top: 85px;
-    height: 0;
-    right: -15px;
-    background-color: none;
-    text-align: right;
-  }
-}
-
 .weatherIcon {
   display: block;
   position: relative;
-  // top: 10px;
+  top: 10px;
   width: 100px;
   height: 100px;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 740px) {
     display: none;
   }
 }
@@ -253,9 +155,11 @@
     font-weight: bold;
   }
   .lastUpdated {
-    margin-top: 5px;
-    font-size: 8px;
+    font-size: 10px;
     color: rgb(197, 197, 197);
+    @media screen and (max-width: 740px) {
+      display: none;
+    }
   }
 }
 
@@ -265,6 +169,9 @@
   top: 0;
   right: 5px;
   margin: 3px;
+  @media screen and (max-width: 740px) {
+    display: none;
+  }
   .refreshIcon {
     width: 15px;
     height: 15px;

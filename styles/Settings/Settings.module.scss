@@ -41,6 +41,10 @@
 
 .settingsTitle {
   font-size: 30px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .x {
@@ -115,6 +119,30 @@
 //   height: 30px;
 //   cursor: pointer;
 //   filter: invert(1);
+// }
+
+// .login {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   width: 100%;
+//   margin: 15px 0 15px;
+//   padding-bottom: 20px;
+//   border-bottom: 2px solid white;
+// }
+
+// .loginBtn {
+//   width: 100px;
+// }
+
+// .logoutBtn {
+//   width: 100px;
+// }
+
+// .greeting {
+//   width: 100%;
+//   padding-bottom: 5px;
+//   font-size: 25px;
 // }
 
 // .subDiv {

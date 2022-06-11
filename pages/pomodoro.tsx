@@ -10,7 +10,107 @@ import AreYouSureModal from "../components/AreYouSureModal";
 import TimerDoneModal from "../components/TimerModal";
 import { SettingsContext } from "../components/SettingsContext";
 import { StylesContext } from "../components/StylesContext";
-import { ClockFont } from "../styles/Global/global.style";
+import styled from "styled-components";
+
+interface Font {
+  font: any;
+  size: string;
+  isMobile: boolean;
+}
+
+interface TimeFont {
+  size: string;
+  isMobile: boolean;
+}
+
+interface ContainerProps {
+  size: string;
+  isMobile: boolean;
+  opacity: number;
+  color: string;
+}
+
+const Container = styled.div<ContainerProps>`
+  min-width: ${(props) => {
+    if (!props.isMobile) {
+      if (props.size === "small") {
+        return '25vw';
+      } else {
+        return '35vw';
+      }
+    } else {
+      return '95vw';
+    }
+  }};
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+  background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  overflow: hidden;
+  border-radius: 20px;
+
+  @media screen and (max-width: 450px) {
+    padding: 20px;
+    margin-top: ${(props) => {
+    if (props.size === "large") {
+      return "-150px";
+    } else {
+      return "-220px";
+    }
+  }};
+  }
+`
+
+const OtherFont = styled.span<Font>`
+    font-family: ${(props) => props.font}, monospace;
+    font-size: ${(props) => {
+    if (!props.isMobile) {
+      if (props.size === 'small') {
+        return '1vw';
+      } else if (props.size === 'medium') {
+        return '1.25vw';
+      } else if (props.size === 'large') {
+        return '1.5vw';
+      }
+    } else {
+      if (props.size === 'small') {
+        return '3vw';
+      } else if (props.size === 'medium') {
+        return '4vw';
+      } else if (props.size === 'large') {
+        return '6vw';
+      }
+    }
+  }};
+`
+
+const ClockFont = styled.div<TimeFont>`
+  font-size: ${(props) => {
+    if (!props.isMobile) {
+      if (props.size === 'small') {
+        return '6vw';
+      } else if (props.size === 'medium') {
+        return '10vw';
+      } else if (props.size === 'large') {
+        return '15vw';
+      }
+    } else {
+      if (props.size === 'small') {
+        return '12vw';
+      } else if (props.size === 'medium') {
+        return '18vw';
+      } else if (props.size === 'large') {
+        return '25vw';
+      }
+    }
+
+  }};
+  font-weight: bold;
+  color: white;
+`
 
 const { Howl, Howler } = require("howler");
 var alert: any;
@@ -23,7 +123,7 @@ const pomodoro: NextPage = () => {
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const { pomodoroTime, shortBreakTime, longBreakTime } =
+  const { pomodoroTime, shortBreakTime, longBreakTime, selectedAlert, autoStartBreak, alertVolume } =
     useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
@@ -39,8 +139,7 @@ const pomodoro: NextPage = () => {
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [autoStart, setAutoStart] = useState<boolean>(false);
 
-  const { selectedFont } = useContext(StylesContext);
-  const { selectedAlert, autoStartBreak, alertVolume } = useContext(SettingsContext);
+  const { selectedFont, size, opacity, color } = useContext(StylesContext);
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
@@ -371,7 +470,7 @@ const pomodoro: NextPage = () => {
 
   return (
     <div className={styles.pomodoro}>
-      <div className={styles.container}>
+      <Container size={size} isMobile={isMobile} opacity={opacity} color={color}>
         <Head>
           {currentTime && started ? (
             <title>Jikan | {currentTime}</title>
@@ -386,37 +485,37 @@ const pomodoro: NextPage = () => {
             id="link4"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Pomodoro
+            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Pomodoro</OtherFont>
           </div>
           <div
             className={styles.link}
             id="link5"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Short Break
+            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Short Break</OtherFont>
           </div>
           <div
             className={styles.link}
             id="link6"
             onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
           >
-            Long Break
+            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Long Break</OtherFont>
           </div>
         </div>
         <div className={styles.timerDiv}>
-          <ClockFont font={selectedFont}>
+          <OtherFont isMobile={isMobile} size={size} font={selectedFont}>
             {pomodoro ? (
-              <div>{pomodoroTime2}</div>
+              <ClockFont isMobile={isMobile} size={size}>{pomodoroTime2}</ClockFont>
             ) : null}
             {shortBreak ? (
-              <div id="shortBreak">
+              <ClockFont isMobile={isMobile} size={size} id="shortBreak">
                 {shortBreakTime2}
-              </div>
+              </ClockFont>
             ) : null}
             {longBreak ? (
-              <div>{longBreakTime2}</div>
+              <ClockFont isMobile={isMobile} size={size}>{longBreakTime2}</ClockFont>
             ) : null}
-          </ClockFont>
+          </OtherFont>
         </div>
         <div className={styles.btnDiv}>
           {!started ? (
@@ -424,11 +523,11 @@ const pomodoro: NextPage = () => {
               className={styles.startBtn}
               onClick={() => startClickHandler()}
             >
-              Start
+              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Start</OtherFont>
             </div>
           ) : (
             <div className={styles.startBtn} onClick={() => stopClickHandler()}>
-              Stop
+              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Stop</OtherFont>
             </div>
           )}
         </div>
@@ -453,7 +552,7 @@ const pomodoro: NextPage = () => {
             />
           ) : null
         }
-      </div >
+      </Container >
     </div >
   );
 };

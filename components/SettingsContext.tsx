@@ -33,101 +33,9 @@ export const SettingsContext = createContext({
     "Xylophone.mp3",
   ],
   setAllAlarms: (alarms: string[]) => { },
-  selectedMusic: 'None',
-  setMusic: (music: string) => { },
-  music: [
-    {
-      title: 'None',
-      url: 'None'
-    },
-    {
-      title: 'Acoustic Folk',
-      url: 'JoPeBwSJeVc'
-    },
-    {
-      title: 'Anime Lofi Mix',
-      url: 'w3LWHIz3bMc'
-    },
-    {
-      title: 'Anime Music',
-      url: 'NJvaGDTJEQU'
-    },
-    {
-      title: 'Calm Piano',
-      url: 'XULUBg_ZcAU'
-    },
-    {
-      title: 'Coffee Shop Ambiance',
-      url: 'dx3GxpitvbY'
-    },
-    {
-      title: 'Christmas Tunes',
-      url: 'mDTH8UuGxEY'
-    },
-    {
-      title: 'Deep Focus',
-      url: '8N-eLvmheSE'
-    },
-    {
-      title: 'Fallout Radio',
-      url: 'Ya3WXzEBL1E'
-    },
-    {
-      title: 'Indie / Pop / Rock',
-      url: '1itSqkbXIlU'
-    },
-    {
-      title: 'Lofi Hip Hop',
-      url: '5qap5aO4i9A'
-    },
-    {
-      title: 'Nintendo Radio',
-      url: 'tOnOutGHcRQ'
-    },
-    {
-      title: 'R&B Chill',
-      url: 'L9Q1HUdUMp0'
-    },
-    {
-      title: 'Relaxing Jazz',
-      url: 'Dx5qFachd3A'
-    },
-    {
-      title: 'Relaxing Sleep',
-      url: 'HCOO8FdXR1c'
-    },
-    {
-      title: 'Soothing Rain',
-      url: '5tA0Onw2wyQ'
-    },
-    {
-      title: 'Sounds of Nature',
-      url: 'gfo2xZ2SMjc'
-    },
-    {
-      title: 'Spooky Halloween Music',
-      url: 'qJSLmjzLnAM'
-    },
-    {
-      title: 'Studio Ghibli',
-      url: 'P8j-_MOSrec'
-    },
-    {
-      title: 'The Beatles Greatest Hits',
-      url: 'XAtsnyaJziM'
-    },
-    {
-      title: 'The Good Life',
-      url: '36YnV9STBqc'
-    },
-    {
-      title: 'Video Game Tunes',
-      url: '8txpDvFnh5o'
-    },
-  ],
-  musicVolume: 20,
+  musicVolume: 100,
   setMusicVolume: (volume: number) => { },
-  alertVolume: 80,
+  alertVolume: 100,
   setAlertVolume: (volume: number) => { },
   zip: '',
   setZip: (zip: string) => { },
@@ -141,6 +49,8 @@ export const SettingsContext = createContext({
     icon: '',
   },
   setCurrentWeather: (weather: any) => { },
+  currentAmbiance: "none",
+  setCurrentAmbiance: (currentAmbiance: string) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -165,99 +75,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
     "Tri-tone ping.mp3",
     "Xylophone.mp3",
   ]);
-  const [selectedMusic, setMusic] = useState<string>('None');
-  const [music, setAllMusic] = useState<{ title: string, url: string }[]>([
-    {
-      title: 'None',
-      url: 'None'
-    },
-    {
-      title: 'Acoustic Folk',
-      url: 'JoPeBwSJeVc'
-    },
-    {
-      title: 'Anime Lofi Mix',
-      url: 'WDXPJWIgX-o'
-    },
-    // {
-    //   title: 'Anime Music',
-    //   url: 'NJvaGDTJEQU'
-    // },
-    {
-      title: 'Beautiful Piano',
-      url: 'xWRHTpqQMGM'
-    },
-    {
-      title: 'Coffee Shop Ambiance',
-      url: 'mkgylOJSdhE'
-    },
-    {
-      title: 'Christmas Tunes',
-      url: 'mDTH8UuGxEY'
-    },
-    {
-      title: 'Deep Focus',
-      url: 'yfYjEkaN-1s'
-    },
-    {
-      title: 'Dubstep, Trap, EDM, Electro House',
-      url: '8NzYo0jmYek'
-    },
-    {
-      title: 'Fallout Radio',
-      url: 'Ya3WXzEBL1E'
-    },
-    {
-      title: 'Indie / Pop / Rock',
-      url: '1itSqkbXIlU'
-    },
-    {
-      title: 'lofi hip hop radio - beats to relax/study to',
-      url: '5qap5aO4i9A'
-    },
-    {
-      title: 'Nintendo Radio',
-      url: 'MBA_x8kP-yo'
-    },
-    {
-      title: 'R&B Chill',
-      url: 'L9Q1HUdUMp0'
-    },
-    {
-      title: 'Relaxing Jazz',
-      url: 'Dx5qFachd3A'
-    },
-    {
-      title: 'Relaxing Sleep',
-      url: 'MzCOqGCPvkE'
-    },
-    {
-      title: 'Soothing Rain',
-      url: '42M3esYyHdw'
-    },
-    {
-      title: 'Ocean Waves',
-      url: 'rZ7VVGvrfiA'
-    },
-    // {
-    //   title: 'Spooky Halloween Music',
-    //   url: 'qJSLmjzLnAM'
-    // },
-    // {
-    //   title: 'Studio Ghibli',
-    //   url: 'P8j-_MOSrec'
-    // },
-    {
-      title: 'Oldies But Goodies',
-      url: 'x0Y-VAmnMOI'
-    },
-    {
-      title: 'The Good Life',
-      url: '36YnV9STBqc'
-    },
-  ]);
-  const [musicVolume, setMusicVolume] = useState<number>(20);
-  const [alertVolume, setAlertVolume] = useState<number>(80);
+  const [musicVolume, setMusicVolume] = useState<number>(100);
+  const [alertVolume, setAlertVolume] = useState<number>(100);
   const [zip, setZip] = useState<string>('');
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [currentWeather, setCurrentWeather] = useState<any>({
@@ -267,6 +86,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     weather: '',
     icon: '',
   });
+  const [currentAmbiance, setCurrentAmbiance] = useState<string>("none");
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -329,14 +149,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
       setAllAlarms(alarms);
       localStorage.setItem("allAlarms", JSON.stringify(alarms));
     },
-    selectedMusic: selectedMusic,
-    setMusic: (music: string): void => {
-      setMusic(music);
-    },
-    music: music,
-    setAllMusic: (music: { title: string, url: string }[]): void => {
-      setAllMusic(music);
-    },
     musicVolume: musicVolume,
     setMusicVolume: (volume: number): void => {
       setMusicVolume(volume);
@@ -360,22 +172,28 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setCurrentWeather: (weather: any) => {
       setCurrentWeather(weather);
     },
+    currentAmbiance: currentAmbiance,
+    setCurrentAmbiance: (currentAmbiance: string) => {
+      setCurrentAmbiance(currentAmbiance);
+      localStorage.setItem("currentAmbiance", currentAmbiance);
+    }
   };
 
   useEffect((): any => {
-    let cachedClock = localStorage.getItem("isClock");
-    let cachedLoggedIn = localStorage.getItem("isLoggedIn");
-    let cachedPom = localStorage.getItem("pom");
-    let cachedShort = localStorage.getItem("short");
-    let cachedLong = localStorage.getItem("long");
-    let cachedAuto = localStorage.getItem("auto");
-    let cachedSeconds = localStorage.getItem("showSeconds");
-    let cached24 = localStorage.getItem("24");
-    let cachedAlert = localStorage.getItem("alert");
-    let cachedAlarms = localStorage.getItem("allAlarms");
-    let cachedMusicVol = localStorage.getItem("musicVolume");
-    let cachedAlertVol = localStorage.getItem("alertVolume");
-    let cachedZip = localStorage.getItem("zip");
+    const cachedClock = localStorage.getItem("isClock");
+    const cachedLoggedIn = localStorage.getItem("isLoggedIn");
+    const cachedPom = localStorage.getItem("pom");
+    const cachedShort = localStorage.getItem("short");
+    const cachedLong = localStorage.getItem("long");
+    const cachedAuto = localStorage.getItem("auto");
+    const cachedSeconds = localStorage.getItem("showSeconds");
+    const cached24 = localStorage.getItem("24");
+    const cachedAlert = localStorage.getItem("alert");
+    const cachedAlarms = localStorage.getItem("allAlarms");
+    const cachedMusicVol = localStorage.getItem("musicVolume");
+    const cachedAlertVol = localStorage.getItem("alertVolume");
+    const cachedZip = localStorage.getItem("zip");
+    const cachedAmbiance = localStorage.getItem("currentAmbiance");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -414,6 +232,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedZip) {
       store.setZip(cachedZip);
+    }
+    if (cachedAmbiance) {
+      store.setCurrentAmbiance(cachedAmbiance);
     }
   }, []);
 

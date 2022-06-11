@@ -23,41 +23,29 @@ $xxl: 2500px;
 }
 
 // 24 hours and show seconds
-.timeA {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 15vw;
-  }
-}
+// .timeA {
+//   @media screen and (max-width: $phone) {
+//     font-size: 15vw;
+//   }
+// }
 
-// 24 hours
-.timeB {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 28vw;
-  }
-}
+// // 24 hours
+// .timeB {
+//   @media screen and (max-width: $phone) {
+//     font-size: 28vw;
+//   }
+// }
 
-// 12 hours and show seconds
-.timeC {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 13vw;
-  }
-}
+// // 12 hours and show seconds
+// .timeC {
+//   @media screen and (max-width: $phone) {
+//     font-size: 13vw;
+//   }
+// }
 
-// 12 hours
-.timeD {
-  font-size: 13vw;
-  font-weight: bold;
-  color: white;
-  @media screen and (max-width: $phone) {
-    font-size: 18vw;
-  }
-}
+// // 12 hours
+// .timeD {
+//   @media screen and (max-width: $phone) {
+//     font-size: 18vw;
+//   }
+// }
