@@ -34,7 +34,7 @@ const Container = styled.div<ContainerProps>`
   min-width: ${(props) => {
     if (!props.isMobile) {
       if (props.size === "small") {
-        return '30vw';
+        return '25vw';
       } else {
         return '35vw';
       }
@@ -91,11 +91,11 @@ const ClockFont = styled.div<TimeFont>`
   font-size: ${(props) => {
     if (!props.isMobile) {
       if (props.size === 'small') {
-        return '10vw';
+        return '6vw';
       } else if (props.size === 'medium') {
-        return '15vw';
+        return '10vw';
       } else if (props.size === 'large') {
-        return '20vw';
+        return '15vw';
       }
     } else {
       if (props.size === 'small') {

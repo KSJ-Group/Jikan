@@ -18,7 +18,7 @@ const Size: React.FC<Props> = ({ size, setSize }) => {
   return (
     <div className={globalStyles.settingModuleContainer}>
       <Form.Group className={styles.sizeContainer} controlId="sizes">
-        <Form.Label>Clock Size</Form.Label>
+        <Form.Label>Font Size</Form.Label>
         <div className={styles.sizeToggles}>
           {sizeChoices.map((choice) => {
             return (
