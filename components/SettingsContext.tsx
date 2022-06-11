@@ -49,6 +49,8 @@ export const SettingsContext = createContext({
     icon: '',
   },
   setCurrentWeather: (weather: any) => { },
+  currentAmbiance: "none",
+  setCurrentAmbiance: (currentAmbiance: string) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -84,6 +86,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     weather: '',
     icon: '',
   });
+  const [currentAmbiance, setCurrentAmbiance] = useState<string>("none");
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -168,23 +171,29 @@ export const SettingsProvider: React.FC = ({ children }) => {
     currentWeather: currentWeather,
     setCurrentWeather: (weather: any) => {
       setCurrentWeather(weather);
+    },
+    currentAmbiance: currentAmbiance,
+    setCurrentAmbiance: (currentAmbiance: string) => {
+      setCurrentAmbiance(currentAmbiance);
+      localStorage.setItem("currentAmbiance", currentAmbiance);
     }
   };
 
   useEffect((): any => {
-    let cachedClock = localStorage.getItem("isClock");
-    let cachedLoggedIn = localStorage.getItem("isLoggedIn");
-    let cachedPom = localStorage.getItem("pom");
-    let cachedShort = localStorage.getItem("short");
-    let cachedLong = localStorage.getItem("long");
-    let cachedAuto = localStorage.getItem("auto");
-    let cachedSeconds = localStorage.getItem("showSeconds");
-    let cached24 = localStorage.getItem("24");
-    let cachedAlert = localStorage.getItem("alert");
-    let cachedAlarms = localStorage.getItem("allAlarms");
-    let cachedMusicVol = localStorage.getItem("musicVolume");
-    let cachedAlertVol = localStorage.getItem("alertVolume");
-    let cachedZip = localStorage.getItem("zip");
+    const cachedClock = localStorage.getItem("isClock");
+    const cachedLoggedIn = localStorage.getItem("isLoggedIn");
+    const cachedPom = localStorage.getItem("pom");
+    const cachedShort = localStorage.getItem("short");
+    const cachedLong = localStorage.getItem("long");
+    const cachedAuto = localStorage.getItem("auto");
+    const cachedSeconds = localStorage.getItem("showSeconds");
+    const cached24 = localStorage.getItem("24");
+    const cachedAlert = localStorage.getItem("alert");
+    const cachedAlarms = localStorage.getItem("allAlarms");
+    const cachedMusicVol = localStorage.getItem("musicVolume");
+    const cachedAlertVol = localStorage.getItem("alertVolume");
+    const cachedZip = localStorage.getItem("zip");
+    const cachedAmbiance = localStorage.getItem("currentAmbiance");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -223,6 +232,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedZip) {
       store.setZip(cachedZip);
+    }
+    if (cachedAmbiance) {
+      store.setCurrentAmbiance(cachedAmbiance);
     }
   }, []);
 

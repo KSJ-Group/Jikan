@@ -10,6 +10,7 @@ import getHandler from '../pages/api/weather';
 import Login from './Settings/Login';
 import moment from 'moment';
 import styled from "styled-components";
+import Rain from './Settings/Rain';
 
 interface Font {
   font: any;
@@ -126,7 +127,8 @@ const Layout: React.FC = ({ children }) => {
               <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
             </div>
           </WeatherContainer> : null}
-          <div className={styles.offScreen}><Login /></div>
+          {/* <div className={styles.offScreen}><Login /></div> */}
+          <Rain />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

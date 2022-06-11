@@ -24,7 +24,9 @@
     "pages/api/blocker.js",
     "components/YouTube.jsx",
     "pages/api/weather.js",
-    "pages/api/spotify.js"
+    "pages/api/spotify.js",
+    "components/Rain.jsx",
+    "components/Settings/Rain.tsx"
   ],
   "exclude": ["node_modules"]
 }
