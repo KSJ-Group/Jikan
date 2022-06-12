@@ -6,10 +6,10 @@ import { StylesContext } from './StylesContext';
 import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import styles from '../styles/Navbar/Navbar.module.css';
+import styles2 from '../styles/Main/WeatherModule/WeatherModule.module.css';
 import getHandler from '../pages/api/weather';
-import Login from './Settings/Login';
 import moment from 'moment';
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Rain from './Settings/Rain';
 
 interface Font {
@@ -19,27 +19,37 @@ interface Font {
 interface Props {
   color: string;
   opacity: number;
+  isMobile: boolean;
 }
 
 const StyledFont = styled.span<Font>`
     font-family: ${(props) => props.font}, monospace;
 `
 
-const WeatherContainer = styled.div<Props>`
-  -webkit-user-select: none; /* Safari */
+const WeatherContainer = styled.div<Props>(
+  (props) => css`
+     -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
   position: absolute;
   display: block;
-  bottom: 0;
+  ${!props.isMobile && css`
+    bottom: 0;
+  `}
+  ${props.isMobile && css`
+      top: 60px;
+  `}
   right: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 10px;
   color: white;
-  background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
+  background-color: 'rgb(0,0,0,0.4)';
+  ${props.opacity && css`
+    background-color: rgb(0,0,0, props.opacity);
+  `}
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -58,6 +68,8 @@ const WeatherContainer = styled.div<Props>`
   }
   `
 
+)
+
 const Layout: React.FC = ({ children }) => {
   const { brightness, selectedFont, opacity, color } = useContext(StylesContext);
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
@@ -66,7 +78,8 @@ const Layout: React.FC = ({ children }) => {
   const {
     currentWeather,
     setCurrentWeather,
-    zip
+    zip,
+    isMobile
   } = useContext(SettingsContext);
 
   const toggleFullscreen = (): void => {
@@ -107,26 +120,29 @@ const Layout: React.FC = ({ children }) => {
       <div id='layout'>
         <BackgroundProvider>
           <Navbar />
-          <div onClick={() => toggleFullscreen()} className='fs'>
-            <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
-            <div className='fsText'><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
-          </div>
+          {isMobile ? null :
+            <div onClick={() => toggleFullscreen()} className='fs'>
+              <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
+              <div className='fsText'><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
+            </div>
+          }
           <Background />
           {children}
-          {currentWeather.city ? <WeatherContainer opacity={opacity} color={color}>
-            <div className={styles.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
-              <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
-            </div>
-            <div className={styles.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
-              <StyledFont font={selectedFont}>{currentWeather.city}</StyledFont>
-              <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont>
-              <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont>
-              <div className={styles.lastUpdated}><StyledFont font={selectedFont}>Last updated: {lastUpdated}</StyledFont></div>
-            </div>
-            <div className={styles.refresh} onClick={getWeather}>
-              <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
-            </div>
-          </WeatherContainer> : null}
+          {currentWeather.city ?
+            <WeatherContainer opacity={opacity} color={color} isMobile={isMobile}>
+              <div className={styles2.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
+                <img src={currentWeather.icon} alt="weather icon" className={styles2.weatherIcon} />
+              </div>
+              <div className={styles2.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
+                <StyledFont font={selectedFont}>{currentWeather.city}</StyledFont>
+                <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont>
+                <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont>
+                <div className={styles2.lastUpdated}><StyledFont font={selectedFont}>Last updated: {lastUpdated}</StyledFont></div>
+              </div>
+              <div className={styles2.refresh} onClick={getWeather}>
+                <img className={styles2.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
+              </div>
+            </WeatherContainer> : null}
           {/* <div className={styles.offScreen}><Login /></div> */}
           <Rain />
         </BackgroundProvider>

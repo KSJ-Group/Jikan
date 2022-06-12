@@ -1,49 +1,133 @@
 import React, { useState, useContext, useEffect } from "react";
-import styles from "../styles/Main/Main.module.css";
+import styles from "../styles/Main/YouTube/Youtube.module.css";
 import YouTube from "react-youtube";
 import { BackgroundContext } from "./BackgroundContext";
 import { SettingsContext } from "./SettingsContext";
 import { StylesContext } from "./StylesContext";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 let player = null;
 
-const Controls = styled.div`
-  z-index: 20;
-  width: 180px;
-  height: 80px;
-  border-radius: 10px;
-  background-color: ${(props) =>
-    `rgb(${props.color}, ${props.opacity / 100})` || "rgb(0, 0, 0, 0.4)"};
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  bottom: 10px;
-  padding: 15px 5px;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  transition: 0.1s ease-in-out;
+const Controls = styled.div(
+  (props) => css`
+    z-index: 20;
+    width: 180px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: ${(props) =>
+      `rgb(${props.color}, ${props.opacity / 100})` || "rgb(0, 0, 0, 0.4)"};
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    ${props.isMobile &&
+    css`
+      top: 65px;
+      left: 5px;
+      margin: 0;
+      height: 40px;
+      width: 90px;
+    `}
+    padding: 15px 5px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.1s ease-in-out;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.534);
-  }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.534);
+    }
 
-  @media screen and (max-width: 740px) {
-    top: 65px;
-    left: 5px;
-    margin: 0;
-    height: 40px;
-    width: 90px;
-  } ;
-`;
+    @media screen and (max-width: 740px) {
+      top: 65px;
+      left: 5px;
+      margin: 0;
+      height: 40px;
+      width: 90px;
+    } ;
+  `
+);
+
+const Icon = styled.img(
+  (props) => css`
+    width: 50px;
+    height: 50px;
+    &:hover {
+      width: 55px;
+      height: 55px;
+    }
+
+    ${props.isMobile &&
+    css`
+      width: 25px;
+      height: 25px;
+
+      &:hover {
+        width: 25px;
+        height: 25px;
+      }
+    `}
+    transition: 0.1s ease-in;
+    filter: invert(1);
+
+    cursor: pointer;
+
+    @media screen and (max-width: 740px) {
+      width: 25px;
+      height: 25px;
+
+      &:hover {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  `
+);
+
+const Icon2 = styled.img(
+  (props) => css`
+    position: relative;
+    left: 2px;
+    width: 50px;
+    height: 50px;
+
+    &:hover {
+      width: 55px;
+      height: 55px;
+    }
+    ${props.isMobile &&
+    css`
+      width: 25px;
+      height: 25px;
+
+      &:hover {
+        width: 25px;
+        height: 25px;
+      }
+    `}
+    transition: 0.1s ease-in;
+    filter: invert(1);
+
+    cursor: pointer;
+
+    @media screen and (max-width: 740px) {
+      width: 25px;
+      height: 25px;
+
+      &:hover {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  `
+);
 
 const YouTubePlayer = ({ id }) => {
   const { setBackground, background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const { musicVolume, setMusicVolume } = useContext(SettingsContext);
+  const { musicVolume, setMusicVolume, isMobile } = useContext(SettingsContext);
   const { opacity, color } = useContext(StylesContext);
   const config = {
     playerVars: {
@@ -98,10 +182,12 @@ const YouTubePlayer = ({ id }) => {
   };
 
   const showSlider = () => {
-    const slider = document.getElementById("sliderDiv");
-    const innerWidth = window.innerWidth;
-    if (innerWidth > 600) {
-      slider.style.display = "block";
+    if (!isMobile) {
+      const slider = document.getElementById("sliderDiv");
+      const innerWidth = window.innerWidth;
+      if (innerWidth > 600) {
+        slider.style.display = "block";
+      }
     }
   };
 
@@ -144,7 +230,12 @@ const YouTubePlayer = ({ id }) => {
           )
         }
       />
-      <Controls opacity={opacity} color={color} onMouseLeave={hideSlider}>
+      <Controls
+        opacity={opacity}
+        color={color}
+        onMouseLeave={hideSlider}
+        isMobile={isMobile}
+      >
         <button className={styles.controlBtn}>
           <div id="sliderDiv">
             <input
@@ -158,26 +249,26 @@ const YouTubePlayer = ({ id }) => {
             />
           </div>
           {isMuted ? (
-            <img
+            <Icon
               onMouseEnter={showSlider}
               onClick={muteUnmute}
-              className={styles.icon}
               src="/images/unmute.png"
+              isMobile={isMobile}
             />
           ) : (
-            <img
+            <Icon
               onMouseEnter={showSlider}
               onClick={muteUnmute}
-              className={styles.icon2}
               src="/images/mute.png"
+              isMobile={isMobile}
             />
           )}
         </button>
         <button className={styles.controlBtn} onClick={playPause}>
           {isPlaying ? (
-            <img className={styles.icon} src="/images/pause.png" />
+            <Icon2 isMobile={isMobile} src="/images/pause.png" />
           ) : (
-            <img className={styles.icon} src="/images/play.png" />
+            <Icon2 isMobile={isMobile} src="/images/play.png" />
           )}
         </button>
       </Controls>

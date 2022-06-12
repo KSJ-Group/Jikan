@@ -120,12 +120,11 @@ var alert: any;
 let timer: number;
 
 const pomodoro: NextPage = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(true);
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   // const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const { pomodoroTime, shortBreakTime, longBreakTime, selectedAlert, autoStartBreak, alertVolume } =
+  const { pomodoroTime, shortBreakTime, longBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile } =
     useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
@@ -145,18 +144,6 @@ const pomodoro: NextPage = () => {
 
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
-
-  useEffect(() => {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }, []);
 
   useEffect(() => {
     window.addEventListener('beforeunload', function (e) {
@@ -492,7 +479,7 @@ const pomodoro: NextPage = () => {
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         </Head>
         <div className={styles.linksDiv}>
           <div
