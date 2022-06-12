@@ -39,9 +39,9 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
               handleClose();
             }}
           >
-            Start Short Break
+            Start Break
           </Button>
-          <Button
+          {/* <Button
             variant="outline-dark"
             onClick={() => {
               breakFromModal("longBreak");
@@ -49,7 +49,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
             }}
           >
             Start Long Break
-          </Button>
+          </Button> */}
           <Button
             variant="primary"
             onClick={() => {

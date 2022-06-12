@@ -31,7 +31,7 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
     <div className={globalStyles.settingModuleContainer}>
       <div className={styles.fontContainer}>
         <Form.Group className={globalStyles.font}>
-          <Form.Label>Font</Form.Label>
+          <Form.Label>Font Style</Form.Label>
           <Form.Select
             value={selectedFont}
             onChange={(e) => changeFont(e)}

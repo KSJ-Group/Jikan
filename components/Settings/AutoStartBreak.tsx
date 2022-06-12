@@ -12,7 +12,7 @@ const AutoStartBreak: React.FC<Props> = ({
   autoStartBreak,
   setAutoStartBreak,
 }) => {
-  const choices = ["Off", "Short break", "Long break"];
+  const choices = ["Off", "Short break"];
 
   const checkIfChecked = (choice: string): boolean => {
     if (choice === autoStartBreak) {
@@ -37,6 +37,7 @@ const AutoStartBreak: React.FC<Props> = ({
                 id={choice + "id"}
                 defaultChecked={checkIfChecked(choice)}
                 onChange={(e) => setAutoStartBreak(e.target.value)}
+                className={styles.toggle}
               />
             );
           })}

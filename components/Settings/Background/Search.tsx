@@ -59,7 +59,6 @@ const Search: NextPage = () => {
     axios
       .get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
-        console.log(data.data.photos);
         setImages(data.data.photos);
         setMaxPages(Math.ceil(data.data.total_results / 12));
         if (settings) {

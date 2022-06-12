@@ -7,10 +7,10 @@ interface Props {
   handleClose: any,
   switchToPom: any,
   switchToShort: any,
-  switchToLong: any,
+  // switchToLong: any,
   targetMode: string
 }
-const AreYouSureModal: React.FC<Props> = ({ show, handleClose, switchToPom, switchToShort, switchToLong, targetMode }) => {
+const AreYouSureModal: React.FC<Props> = ({ show, handleClose, switchToPom, switchToShort, targetMode }) => {
   return (
     <>
       <Modal
@@ -34,9 +34,10 @@ const AreYouSureModal: React.FC<Props> = ({ show, handleClose, switchToPom, swit
               switchToPom();
             } else if (targetMode === 'short') {
               switchToShort();
-            } else {
-              switchToLong();
             }
+            // else {
+            //   switchToLong();
+            // }
             handleClose();
           }}>Continue</Button>
         </Modal.Footer>

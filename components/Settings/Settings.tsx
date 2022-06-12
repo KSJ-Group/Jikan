@@ -100,11 +100,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
                 />
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Opacity opacity={opacity} setOpacity={setOpacity} />
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
@@ -149,11 +149,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setAlertVolume={setAlertVolume}
                 />
                 {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
+                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
                 />
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Opacity opacity={opacity} setOpacity={setOpacity} />
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
