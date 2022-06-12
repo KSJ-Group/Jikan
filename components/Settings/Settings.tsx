@@ -3,21 +3,15 @@ import { Offcanvas } from "react-bootstrap";
 import { SettingsContext } from "../SettingsContext";
 import { StylesContext } from "../StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
-import Login from "./Login";
 import Timers from "./Timers";
 import AlertSound from "./AlertSound";
 import Brightness from "./Brightness";
-import AutoStarBreak from "./AutoStartBreak";
 import Font from "./Font";
 import ShowSeconds from "./ShowSeconds";
-import Blur from "./Blur";
 import TimeFormat from "./TimeFormat";
 import ChangeBackground from "./Background/ChangeBackground";
-import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
-import Opacity from "./Opacity";
-import Color from "./Background/Color";
 import Reset from "./Reset";
 import Ambiance from "./Ambiance";
 
@@ -40,23 +34,18 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   const {
     isClock,
-    isLoggedIn,
     pomodoroTime,
     setPomodoroTime,
     shortBreakTime,
     setShortBreakTime,
     longBreakTime,
     setLongBreakTime,
-    autoStartBreak,
-    setAutoStartBreak,
     showSeconds,
     setShowSeconds,
     is24Hour,
     setIs24Hour,
     selectedAlert,
     setSelectedAlert,
-    musicVolume,
-    setMusicVolume,
     alertVolume,
     setAlertVolume,
     zip,
@@ -74,7 +63,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
       >
         <Offcanvas.Body className={styles.body}>
           <div className={styles.subBody} id="settings-body">
-            {/* <Login /> */}
             {isClock ? (
               // Clock settings
               <div>
@@ -107,9 +95,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   opacity={opacity}
                   setOpacity={setOpacity}
                 />
-                {/* <Opacity opacity={opacity} setOpacity={setOpacity} /> */}
-                {/* <Color /> */}
-                {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
                 <Ambiance />
                 <Reset />
@@ -135,10 +120,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setLongBreakTime={setLongBreakTime}
                   setShowSettings={setShowSettings}
                 />
-                {/* <AutoStarBreak
-                  autoStartBreak={autoStartBreak}
-                  setAutoStartBreak={setAutoStartBreak}
-                /> */}
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
@@ -151,7 +132,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   alertVolume={alertVolume}
                   setAlertVolume={setAlertVolume}
                 />
-                {/* <Music selectedMusic={selectedMusic} setMusic={setMusic} music={music} musicVolume={musicVolume} setMusicVolume={setMusicVolume} /> */}
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
@@ -159,9 +139,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   opacity={opacity}
                   setOpacity={setOpacity}
                 />
-                {/* <Opacity opacity={opacity} setOpacity={setOpacity} /> */}
-                {/* <Color /> */}
-                {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
                 <Ambiance />
                 <Reset />
