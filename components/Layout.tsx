@@ -5,8 +5,7 @@ import { BackgroundProvider } from './BackgroundContext';
 import { StylesContext } from './StylesContext';
 import { SettingsContext } from './SettingsContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
-import styles from '../styles/Navbar/Navbar.module.css';
-import styles2 from '../styles/Main/WeatherModule/WeatherModule.module.css';
+import styles from '../styles/Main/WeatherModule/WeatherModule.module.css';
 import getHandler from '../pages/api/weather';
 import moment from 'moment';
 import styled, { css } from "styled-components";
@@ -82,13 +81,6 @@ const Layout: React.FC = ({ children }) => {
     isMobile
   } = useContext(SettingsContext);
 
-  const toggleFullscreen = (): void => {
-    if (document.fullscreenElement !== null) {
-      document.exitFullscreen();
-    } else {
-      document.documentElement.requestFullscreen();
-    }
-  }
 
   const getWeather = (): void => {
     setLastUpdated(moment().calendar());
@@ -120,30 +112,23 @@ const Layout: React.FC = ({ children }) => {
       <div id='layout'>
         <BackgroundProvider>
           <Navbar />
-          {isMobile ? null :
-            <div onClick={() => toggleFullscreen()} className='fs'>
-              <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
-              <div className='fsText'><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
-            </div>
-          }
           <Background />
           {children}
           {currentWeather.city ?
             <WeatherContainer opacity={opacity} color={color} isMobile={isMobile}>
-              <div className={styles2.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
-                <img src={currentWeather.icon} alt="weather icon" className={styles2.weatherIcon} />
+              <div className={styles.weatherLeft} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
+                <img src={currentWeather.icon} alt="weather icon" className={styles.weatherIcon} />
               </div>
-              <div className={styles2.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
+              <div className={styles.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
                 <StyledFont font={selectedFont}>{currentWeather.city}</StyledFont>
                 <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont>
                 <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont>
-                <div className={styles2.lastUpdated}><StyledFont font={selectedFont}>Last updated: {lastUpdated}</StyledFont></div>
+                <div className={styles.lastUpdated}><StyledFont font={selectedFont}>Last updated: {lastUpdated}</StyledFont></div>
               </div>
-              <div className={styles2.refresh} onClick={getWeather}>
-                <img className={styles2.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
+              <div className={styles.refresh} onClick={getWeather}>
+                <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
               </div>
             </WeatherContainer> : null}
-          {/* <div className={styles.offScreen}><Login /></div> */}
           <Rain />
         </BackgroundProvider>
       </div>

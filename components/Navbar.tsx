@@ -37,7 +37,7 @@ const StyledFont = styled.span<Font>`
 const Navbar: React.FC = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
-  const { setIsClock, showSettings, setShowSettings } = useContext(SettingsContext);
+  const { setIsClock, showSettings, setShowSettings, isMobile } = useContext(SettingsContext);
   const { selectedFont, opacity, color } = useContext(StylesContext);
 
   useEffect(() => {
@@ -87,6 +87,15 @@ const Navbar: React.FC = () => {
     }
   }, [showSettings])
 
+
+  const toggleFullscreen = (): void => {
+    if (document.fullscreenElement !== null) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  }
+
   return (
     <>
       <Head>
@@ -113,6 +122,12 @@ const Navbar: React.FC = () => {
           <div className={styles.line}>|</div>
           <Link href="/pomodoro"><a className={styles.link} id='timer' onClick={clickLinkPom}><StyledFont font={selectedFont}>Pomodoro</StyledFont></a></Link>
         </div>
+        {isMobile ? null :
+          <div onClick={() => toggleFullscreen()} className={styles.fs}>
+            <img src='/images/fullscreen.png' alt='fullscreen icon' className={styles.fullscreen} />
+            <div className={styles.fsText}><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
+          </div>
+        }
         <div className={styles.settings} onClick={() => setShowSettings(true)}>
           <img className={styles.menuIcon} src='/images/menu.png' alt='menu icon' />
           <div className={styles.settingsWord}><StyledFont font={selectedFont}>Settings</StyledFont></div>

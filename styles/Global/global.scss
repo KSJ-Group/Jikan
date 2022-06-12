@@ -28,42 +28,15 @@ body {
   background-color: rgb(48, 136, 173);
   padding: 5px;
   color: rgb(231, 231, 231);
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(45, 125, 160);
+  }
 }
 
 .activePomLink:hover {
   color: rgb(231, 231, 231);
-}
-
-.fs {
-  position: absolute;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  right: 160px;
-  top: 13px;
-  z-index: 2;
-  padding: 10px;
-  cursor: pointer;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: 0.1s ease-in;
-
-  @media screen and (max-width: 950px) {
-    display: none;
-  }
-  &:hover {
-    color: rgb(255, 251, 251);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-}
-
-.fsText {
-  margin-left: 10px;
-  user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
 }
 
 .modal {
@@ -111,12 +84,13 @@ body {
   height: 100vh;
   position: absolute;
   top: 0;
+  z-index: 1;
   &::after {
     content: "";
     width: 100%;
     height: 100vh;
     position: absolute;
-    animation: rain 0.2s linear infinite;
+    animation: rain 0.5s linear infinite;
     background-image: url(https://pngimg.com/uploads/rain/rain_PNG13468.png);
     transform: scale(2);
     @keyframes rain {
