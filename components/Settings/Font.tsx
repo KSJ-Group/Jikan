@@ -15,9 +15,11 @@ const StyledFont = styled.option<Font>`
 interface Props {
   selectedFont: string;
   setSelectedFont: Function;
+  size: string;
+  setSize: Function;
 }
 
-const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
+const Font: React.FC<Props> = ({ selectedFont, setSelectedFont, size, setSize }) => {
   const changeFont = (e: any) => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;
@@ -27,9 +29,34 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
   const fonts = ["Andale Mono", "Courier New", "Monaco", "Nova Mono", "Share Tech Mono", "Syne Mono", "Tahoma", "Trebuchet MS", "Verdana", "Xanh Mono"];
   const [availFonts, setFonts] = useState<string[]>(fonts);
 
+  const sizeChoices = ["Small", "Medium", "Large"];
+
+  const checkIfChecked = (choice: string): boolean => {
+    return choice.toLowerCase() === size.toLowerCase() ? true : false;
+  };
+
   return (
     <div className={globalStyles.settingModuleContainer}>
       <div className={styles.fontContainer}>
+        <Form.Group className={styles.sizeContainer} controlId="sizes">
+          <Form.Label>Font Size</Form.Label>
+          <div className={styles.sizeToggles}>
+            {sizeChoices.map((choice) => {
+              return (
+                <Form.Check
+                  key={choice}
+                  type="radio"
+                  name="sizes"
+                  value={choice}
+                  label={choice}
+                  id={choice + "id"}
+                  defaultChecked={checkIfChecked(choice)}
+                  onChange={(e) => setSize(e.target.value.toLowerCase())}
+                />
+              );
+            })}
+          </div>
+        </Form.Group>
         <Form.Group className={globalStyles.font}>
           <Form.Label>Font Style</Form.Label>
           <Form.Select
@@ -44,6 +71,7 @@ const Font: React.FC<Props> = ({ selectedFont, setSelectedFont }) => {
           </Form.Select>
         </Form.Group>
       </div>
+
     </div>
   );
 };

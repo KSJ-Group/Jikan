@@ -6,9 +6,10 @@ interface Props {
   show: boolean;
   handleClose: any;
   breakFromModal(choice: string): void;
+  whichDone: string;
 }
 
-const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
+const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal, whichDone }) => {
   return (
     <>
       <Modal
@@ -19,9 +20,15 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Timer Done</Modal.Title>
+          <Modal.Title>
+            {whichDone === 'pomodoro' ? <span>Pomodoro Timer Done</span> : <span>Break Over</span>}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Timer done! Select an option below.</Modal.Body>
+        <Modal.Body>
+          {whichDone === 'pomodoro' ?
+            <span>Great job! You've completed a pomodoro cycle. Select an option below.</span>
+            : <span>Looks like break time is over. Time to focus again!</span>
+          }
+        </Modal.Body>
         <Modal.Footer>
           <Button
             variant="outline-dark"
@@ -30,7 +37,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
               handleClose();
             }}
           >
-            Start Pomodoro
+            {whichDone === 'pomodoro' ? <span>Start Pomodoro Again</span> : <span>Start Pomodoro</span>}
           </Button>
           <Button
             variant="outline-dark"
@@ -39,7 +46,7 @@ const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal }) => {
               handleClose();
             }}
           >
-            Start Break
+            {whichDone === 'pomodoro' ? <span>Take Break</span> : <span>Take Another Break</span>}
           </Button>
           {/* <Button
             variant="outline-dark"

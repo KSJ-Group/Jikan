@@ -35,8 +35,10 @@ const Container = styled.div<ContainerProps>`
     if (!props.isMobile) {
       if (props.size === "small") {
         return '25vw';
+      } else if (props.size === 'medium') {
+        return '35vw'
       } else {
-        return '35vw';
+        return '45vw';
       }
     } else {
       return '95vw';
@@ -562,6 +564,7 @@ const pomodoro: NextPage = () => {
               show={timerModal}
               breakFromModal={breakFromModal}
               handleClose={alarmHandler}
+              whichDone={pomodoro ? 'pomodoro' : 'break'}
             />
           ) : null
         }

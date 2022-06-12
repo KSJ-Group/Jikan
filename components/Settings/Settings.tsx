@@ -16,7 +16,6 @@ import ChangeBackground from "./Background/ChangeBackground";
 import Music from "./Music";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
-import Size from "./Size";
 import Opacity from "./Opacity";
 import Color from "./Background/Color";
 import Reset from "./Reset";
@@ -95,17 +94,20 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   />
                   <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
                 </div>
-                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
+                  size={size}
+                  setSize={setSize}
                 />
                 <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
+                  opacity={opacity}
+                  setOpacity={setOpacity}
                 />
-                <Opacity opacity={opacity} setOpacity={setOpacity} />
+                {/* <Opacity opacity={opacity} setOpacity={setOpacity} /> */}
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
@@ -137,10 +139,11 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   autoStartBreak={autoStartBreak}
                   setAutoStartBreak={setAutoStartBreak}
                 /> */}
-                <Size size={size} setSize={setSize} />
                 <Font
                   selectedFont={selectedFont}
                   setSelectedFont={setSelectedFont}
+                  size={size}
+                  setSize={setSize}
                 />
                 <AlertSound
                   selectedAlert={selectedAlert}
@@ -153,8 +156,10 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 <Brightness
                   brightness={brightness}
                   setBrightness={setBrightness}
+                  opacity={opacity}
+                  setOpacity={setOpacity}
                 />
-                <Opacity opacity={opacity} setOpacity={setOpacity} />
+                {/* <Opacity opacity={opacity} setOpacity={setOpacity} /> */}
                 {/* <Color /> */}
                 {/* <Blur blur={blur} setBlur={setBlur} /> */}
                 <ChangeBackground />
