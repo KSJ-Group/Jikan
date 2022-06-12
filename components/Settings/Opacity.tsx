@@ -20,7 +20,7 @@ const Opacity: React.FC<Props> = ({ opacity, setOpacity }) => {
         Opacity
         <div id='sliderdiv' className={globalStyles.sliderDiv}>
           <input id="slider" className={globalStyles.slider} defaultValue={opacity} onChange={changeHandler} type="range" name="opacity"
-            min="10" max="50" />
+            min="10" max="60" />
           <div>{opacity}%</div>
         </div>
       </div>

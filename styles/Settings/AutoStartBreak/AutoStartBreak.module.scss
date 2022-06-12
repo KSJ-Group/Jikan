@@ -1,7 +1,6 @@
 .autoStartContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   font-size: 18px;
   width: 98%;
   margin-bottom: 5px;
@@ -10,5 +9,9 @@
 .toggles {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.toggle {
+  margin-right: 15px;
 }
