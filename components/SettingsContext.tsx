@@ -50,7 +50,8 @@ export const SettingsContext = createContext({
   },
   setCurrentWeather: (weather: any) => { },
   currentAmbiance: "none",
-  setCurrentAmbiance: (currentAmbiance: string) => { }
+  setCurrentAmbiance: (currentAmbiance: string) => { },
+  isMobile: false,
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -87,6 +88,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     icon: '',
   });
   const [currentAmbiance, setCurrentAmbiance] = useState<string>("none");
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -96,6 +98,16 @@ export const SettingsProvider: React.FC = ({ children }) => {
         localStorage.setItem("allAlarms", JSON.stringify(alerts));
       }
     });
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
   }, []);
 
   const store = {
@@ -176,7 +188,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setCurrentAmbiance: (currentAmbiance: string) => {
       setCurrentAmbiance(currentAmbiance);
       localStorage.setItem("currentAmbiance", currentAmbiance);
-    }
+    },
+    isMobile: isMobile
   };
 
   useEffect((): any => {
