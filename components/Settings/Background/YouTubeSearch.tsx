@@ -18,9 +18,9 @@ const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const isInitialMount = useRef<boolean>(true);
-    const [videos, setVideos] = useState<typeof Videos>([]);
+    // const [videos, setVideos] = useState<typeof Videos>([]);
     const settings: any = document.getElementById('settings-body');
-    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType } = useContext(BackgroundContext);
+    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults } = useContext(BackgroundContext);
     const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
@@ -102,15 +102,15 @@ const YouTubeSearch = () => {
                 channelTitle: video.snippet.channelTitle
             });
         })
-        setVideos(processed);
+        setYoutubeResults(processed);
     }
 
     useEffect(() => {
-        if (videos.length) {
+        if (youtubeResults.length) {
             setIsLoading(false);
             clearTimeout(timeout);
         }
-    }, [videos])
+    }, [youtubeResults])
 
     const selectVideo = (id: string) => {
         changeBackground(id);
@@ -123,12 +123,12 @@ const YouTubeSearch = () => {
 
     const radioChangeHandler = (e: any) => {
         e.target.checked ? setIsOnlyMusic(true) : setIsOnlyMusic(false);
-        setVideos([]);
+        setYoutubeResults([]);
     };
 
     const checboxChangeHandler = (e: any) => {
         e.target.checked ? setEventType('live') : setEventType('completed');
-        setVideos([]);
+        setYoutubeResults([]);
     };
 
     return (
@@ -176,7 +176,7 @@ const YouTubeSearch = () => {
                         <Spinner animation="border" variant="primary" />
                     </div>
                 }
-                {videos.map((video: any) => {
+                {youtubeResults.map((video: any) => {
                     return (
                         <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>
                             <div className={styles.imgWrapper}>
