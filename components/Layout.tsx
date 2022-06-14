@@ -47,7 +47,7 @@ const WeatherContainer = styled.div<Props>(
   color: white;
   background-color: 'rgb(0,0,0,0.4)';
   ${props.opacity && css`
-    background-color: rgb(0,0,0, props.opacity);
+    background-color: rgb(0,0,0, ${props.opacity / 100});
   `}
   padding: 10px;
   border-radius: 10px;
