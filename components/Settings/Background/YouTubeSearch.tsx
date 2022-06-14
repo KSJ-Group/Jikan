@@ -128,7 +128,7 @@ const YouTubeSearch = () => {
         data.forEach(video => {
             let obj = {
                 live: video.snippet.liveBroadcastContent,
-                videoId: video.id.videoId,
+                id: video.id.videoId,
                 thumbnail: video.snippet.thumbnails.high.url,
                 title: video.snippet.title.replace(' &amp;', ''),
                 channelTitle: video.snippet.channelTitle,
@@ -136,7 +136,7 @@ const YouTubeSearch = () => {
             };
 
             favorites.forEach((favorite: any) => {
-                if (favorite.id === video.id.videoId) {
+                if (favorite.id === video.id.id) {
                     obj.favorited = true;
                 }
             })
@@ -161,17 +161,17 @@ const YouTubeSearch = () => {
     }, [youtubeResults])
 
     const selectVideo = (video: any) => {
-        changeBackground(video.videoId);
+        changeBackground(video.id);
         let obj = {
             'type': 'video',
-            'id': video.videoId,
+            'id': video.id,
             'thumbnail': video.thumbnail,
             'live': video.live,
             'title': video.title,
             'favorited': false
         }
         let temp: any = recentlySelected.slice(0, 20);
-        temp = temp.filter(each => each.id !== video.videoId);
+        temp = temp.filter(each => each.id !== video.id);
         temp.unshift(obj);
         setRecentlySelected(temp);
     }
@@ -207,7 +207,7 @@ const YouTubeSearch = () => {
     const favoriteVideo = (video: any) => {
         let temp: any = youtubeResults.slice();
         temp.map((each: any) => {
-            if (each.videoId === video.videoId) {
+            if (each.id === video.id) {
                 each.favorited = true;
             }
         })
@@ -215,7 +215,7 @@ const YouTubeSearch = () => {
 
         let obj = {
             'type': 'video',
-            'id': video.videoId,
+            'id': video.id,
             'thumbnail': video.thumbnail,
             'live': video.live,
             'title': video.title,
@@ -229,7 +229,7 @@ const YouTubeSearch = () => {
     const unfavoriteVideo = (video: any) => {
         let temp: any = youtubeResults.slice();
         temp.map((each: any) => {
-            if (each.videoId === video.videoId) {
+            if (each.id === video.id) {
                 each.favorited = false;
             }
         })
@@ -237,7 +237,7 @@ const YouTubeSearch = () => {
 
 
         let temp2: any = favorites.slice();
-        temp2 = temp2.filter((each: any) => each.videoId !== video.videoId);
+        temp2 = temp2.filter((each: any) => each.id !== video.id);
         setFavorites(temp2);
     }
 
@@ -288,13 +288,13 @@ const YouTubeSearch = () => {
                 }
                 {youtubeResults.map((video: any) => {
                     return (
-                        <div className={styles.videoResult} key={video.videoId + page}>
+                        <div className={styles.videoResult} key={video.id + page}>
                             <div className={styles.imgWrapper}>
                                 {video.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                                 {!video.favorited ? <span className={styles.inactiveStar} onClick={() => favoriteVideo(video)}>☆</span> : <span className={styles.activeStar} onClick={() => unfavoriteVideo(video)}>★</span>}
                                 <img className={styles.thumbnail} src={video.thumbnail} onClick={() => selectVideo(video)} />
                             </div>
-                            <div className={styles.textWrapper}>
+                            <div className={styles.textWrapper} onClick={() => selectVideo(video)}>
                                 <span className={styles.title}>{video.title}</span>
                                 <span className={styles.channel}>{video.channelTitle}</span>
                             </div>

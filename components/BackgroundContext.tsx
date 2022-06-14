@@ -16,7 +16,7 @@ export const BackgroundContext = createContext(
     recentlySelected: [],
     setRecentlySelected: (selected: any) => { },
     favorites: [],
-    setFavorites: (favorites: any) => { }
+    setFavorites: (favorites: any) => { },
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
@@ -82,6 +82,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     const cachedYoutubeResults = localStorage.getItem('youtubeResults');
     const cachedRecentlySelected = localStorage.getItem('recentlySelected');
     const cachedFavorites = localStorage.getItem('favorites');
+    const cachedImages = localStorage.getItem('images');
     if (cachedBackground) {
       store.changeBackground(cachedBackground);
     }

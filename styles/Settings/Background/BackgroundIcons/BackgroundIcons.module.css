@@ -69,4 +69,15 @@
   height: 100%;
   width: 100%;
 }
+
+.title {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
 /*# sourceMappingURL=BackgroundIcons.module.css.map */

@@ -21,7 +21,7 @@ const Option = ({ changeDisplay, src, display, title }: Props) => {
           src={src}
         ></img>
       </div>
-      {title}
+      <span className={styles.title}>{title}</span>
     </div>
   );
 };
