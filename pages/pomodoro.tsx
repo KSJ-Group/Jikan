@@ -320,7 +320,6 @@ const pomodoro: NextPage = () => {
   const startTimer = (): void => {
     if (pomodoro) {
       setPomodoroTime((prevState: string) => {
-        console.log(prevState);
         const milli = minutesAndSecondsToMillis(prevState) - 1000;
         const newTime = millisToMinutesAndSeconds(milli);
 

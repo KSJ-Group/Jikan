@@ -28,8 +28,6 @@ export default async function handler(req, res) {
     params.pageToken = pageToken;
   }
 
-  console.log(terms, eventType);
-
   const youtube = axios.create({
     baseURL: `https://www.googleapis.com/youtube/v3`,
     params: params,

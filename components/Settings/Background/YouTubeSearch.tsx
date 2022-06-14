@@ -27,11 +27,7 @@ const YouTubeSearch = () => {
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
-        if (search) {
-            setTerms(search);
-        } else {
-            setTerms("");
-        }
+        search ? setTerms(search) : setTerms("");
 
         if (settings) {
             settings.scrollTo({ top: 650, behavior: 'smooth' });
@@ -155,12 +151,9 @@ const YouTubeSearch = () => {
         }
     }, [youtubeResults])
 
-    useEffect(() => {
-        console.log('Page:', page)
-    }, [page])
-
     const selectVideo = (id: string) => {
         changeBackground(id);
+        // save to recently selected
     }
 
     const chooseSuggestion = (e, term) => {
@@ -252,16 +245,18 @@ const YouTubeSearch = () => {
                         </div>
                     )
                 })}
-            </div>
-
-            <div className={styles.btnDiv}>
-                {isLoadingMore &&
-                    <div className={styles.loadingContainer}>
-                        <Spinner animation="border" variant="primary" />
+                {youtubeResults.length ?
+                    <div className={styles.btnDiv}>
+                        {isLoadingMore &&
+                            <div className={styles.loadingContainer}>
+                                <Spinner animation="border" variant="primary" />
+                            </div>
+                        }
+                        <button className={styles.loadBtn} onClick={(e: any) => scrollToTop(e)}>Scroll To Top</button>
+                        {page < 5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
                     </div>
+                    : null
                 }
-                <button className={styles.loadBtn} onClick={(e: any) => scrollToTop(e)}>Scroll To Top</button>
-                {page < 5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
             </div>
         </div>
     );
