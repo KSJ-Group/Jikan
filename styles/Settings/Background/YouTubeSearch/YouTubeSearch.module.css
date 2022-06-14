@@ -181,6 +181,31 @@
   position: relative;
 }
 
+.searchResults .videoResult .imgWrapper:hover .inactiveStar {
+  visibility: visible;
+}
+
+.searchResults .videoResult .imgWrapper .inactiveStar {
+  visibility: hidden;
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  margin: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.searchResults .videoResult .imgWrapper .activeStar {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  margin: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .searchResults .videoResult .imgWrapper .liveIndicator {
   position: absolute;
   bottom: 5px;

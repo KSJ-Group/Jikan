@@ -27,9 +27,15 @@ const Options = ({ changeDisplay }: OptionsProps) => {
         />
         <Option
           changeDisplay={changeDisplay}
-          display={"recent"}
-          src={"https://i.ytimg.com/vi/XioLScTS_oM/maxresdefault.jpg"}
-          title={"Recent"}
+          display="recent"
+          src="https://i.ytimg.com/vi/XioLScTS_oM/maxresdefault.jpg"
+          title="Recent"
+        />
+        <Option
+          changeDisplay={changeDisplay}
+          display="favorites"
+          src="https://st4.depositphotos.com/16602560/37795/v/950/depositphotos_377950550-stock-illustration-favorites-icon-vector-heart-icon.jpg?forcejpeg=true"
+          title="Favorites"
         />
       </div>
     </div>

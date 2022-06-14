@@ -3,15 +3,10 @@ import styles from '../../../styles/Settings/Background/RecentlySelected/Recentl
 import { BackgroundContext } from '../../BackgroundContext';
 
 const RecentlySelected = () => {
-  const { background, changeBackground, changeLoadStatus, loaded, recentlySelected, setRecentlySelected } = useContext(BackgroundContext);
-
-  useEffect(() => {
-    console.log(recentlySelected);
-  }, [recentlySelected])
+  const { changeBackground, recentlySelected, setRecentlySelected } = useContext(BackgroundContext);
 
   const selectVideo = (video: any) => {
     changeBackground(video.videoId);
-    console.log(video);
     let obj = {
       'type': 'video',
       'id': video.videoId,
@@ -27,7 +22,6 @@ const RecentlySelected = () => {
 
   const selectImage = (src: string) => {
     changeBackground(src);
-    changeLoadStatus(false);
     let obj = {
       'type': 'image',
       'src': src
@@ -76,7 +70,6 @@ const RecentlySelected = () => {
                   </div>
                 </div>
               )
-
             } else {
               return (
                 <div className={styles.imageResult} key={each.src}>

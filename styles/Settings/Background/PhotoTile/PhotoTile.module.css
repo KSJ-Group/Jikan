@@ -5,6 +5,35 @@
   overflow: hidden;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  position: relative;
+  cursor: pointer;
+}
+
+.imageContainer:hover .inactiveStar {
+  visibility: visible;
+}
+
+.imageContainer .inactiveStar {
+  z-index: 5;
+  visibility: hidden;
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  margin: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.imageContainer .activeStar {
+  z-index: 5;
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  margin: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .image {

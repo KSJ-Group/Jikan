@@ -14,7 +14,9 @@ export const BackgroundContext = createContext(
     youtubeResults: [],
     setYoutubeResults: (results: any) => { },
     recentlySelected: [],
-    setRecentlySelected: (selected: any) => { }
+    setRecentlySelected: (selected: any) => { },
+    favorites: [],
+    setFavorites: (favorites: any) => { }
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
@@ -25,6 +27,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
   const [eventType, setEventType] = useState<string>('live');
   const [youtubeResults, setYoutubeResults] = useState<any>([]);
   const [recentlySelected, setRecentlySelected] = useState<any>([]);
+  const [favorites, setFavorites] = useState<any>([]);
 
   const store = {
     background: background,
@@ -64,6 +67,11 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     setRecentlySelected: (selected: any): void => {
       setRecentlySelected(selected);
       localStorage.setItem('recentlySelected', JSON.stringify(selected));
+    },
+    favorites: favorites,
+    setFavorites: (favorites: any): void => {
+      setFavorites(favorites);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
     }
   };
 
@@ -73,6 +81,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     const cachedEventType = localStorage.getItem('eventType');
     const cachedYoutubeResults = localStorage.getItem('youtubeResults');
     const cachedRecentlySelected = localStorage.getItem('recentlySelected');
+    const cachedFavorites = localStorage.getItem('favorites');
     if (cachedBackground) {
       store.changeBackground(cachedBackground);
     }
@@ -88,7 +97,9 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     if (cachedRecentlySelected) {
       store.setRecentlySelected(JSON.parse(cachedRecentlySelected));
     }
-
+    if (cachedFavorites) {
+      store.setFavorites(JSON.parse(cachedFavorites));
+    }
   }, []);
 
   return (

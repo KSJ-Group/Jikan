@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
+import { BackgroundContext } from "../../BackgroundContext";
 
 interface Photo {
   url: string;
@@ -22,6 +23,7 @@ const Search: NextPage = () => {
   const [images, setImages] = useState<typeof photos>([]);
   const [maxPages, setMaxPages] = useState<number>(0);
   const isInitialMount = useRef<boolean>(true);
+  const { favorites } = useContext(BackgroundContext);
 
   const settings: any = document.getElementById('settings-body');
 
@@ -59,7 +61,18 @@ const Search: NextPage = () => {
     axios
       .get(`/api/images?terms=${searchTerms}&page=${pageNumber}`)
       .then((data) => {
-        setImages(data.data.photos);
+        let photos = data.data.photos.slice();
+        photos = photos.map((photo: any) => {
+          for (let i = 0; i < favorites.length; i++) {
+            const favorite: any = favorites[i];
+            if (favorite.type === 'image' && favorite.src === photo.src.original) {
+              photo.favorited = true;
+            }
+          }
+          return photo;
+        })
+        setImages(photos);
+
         setMaxPages(Math.ceil(data.data.total_results / 12));
         if (settings) {
           settings.scrollTo({ top: 850, behavior: 'smooth' });
@@ -117,13 +130,16 @@ const Search: NextPage = () => {
         />
       </form>
       <div className={styles.images}>
-        {images.map((image) => {
+        {images.map((image: any) => {
           return (
             <PhotoTile
               key={image.url}
               url={image.url}
               avg_color={image.avg_color}
               src={image.src}
+              image={image}
+              images={images}
+              setImages={setImages}
             />
           );
         })}
