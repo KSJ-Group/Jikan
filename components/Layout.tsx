@@ -74,9 +74,6 @@ const Layout: React.FC = ({ children }) => {
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
-  useEffect(() => {
-    console.log('Opacity:', opacity);
-  }, [opacity]);
   const {
     currentWeather,
     setCurrentWeather,
