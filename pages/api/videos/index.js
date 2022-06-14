@@ -4,11 +4,11 @@ require("dotenv").config();
 // https://developers.google.com/youtube/player_parameters
 
 export default async function handler(req, res) {
-  let { terms, eventType } = req.query;
+  let { terms, eventType, pageToken } = req.query;
 
   let params = {
     part: "snippet",
-    maxResults: 20,
+    maxResults: 10,
     key: process.env.YOUTUBE_API,
     eventType: "live",
     type: "video",
@@ -17,11 +17,15 @@ export default async function handler(req, res) {
   if (eventType !== "live") {
     params = {
       part: "snippet",
-      maxResults: 20,
+      maxResults: 10,
       key: process.env.YOUTUBE_API,
       type: "video",
       loop: 1,
     };
+  }
+
+  if (pageToken) {
+    params.pageToken = pageToken;
   }
 
   console.log(terms, eventType);

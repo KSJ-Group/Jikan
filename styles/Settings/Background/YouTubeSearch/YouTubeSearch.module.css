@@ -2,6 +2,42 @@
   z-index: 2;
 }
 
+.container .btnDiv {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .btnDiv .loadBtn {
+  position: relative;
+  height: 38px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 15px;
+  border: 0.1px solid #a8a8a8;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  width: 100px;
+  margin-top: 5px;
+}
+
+.container .btnDiv .loadBtn:hover {
+  background: #dddddd;
+}
+
 .suggestionWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,7 +79,6 @@
 .searchBtn {
   position: relative;
   height: 38px;
-  width: 80px;
   border-radius: 5px;
   background: #efefef;
   border: none;

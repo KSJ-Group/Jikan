@@ -74,7 +74,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
       store.setEventType(cachedEventType);
     }
     if (cachedYoutubeResults) {
-      store.setYoutubeResults(cachedYoutubeResults);
+      store.setYoutubeResults(JSON.parse(cachedYoutubeResults));
     }
 
   }, []);

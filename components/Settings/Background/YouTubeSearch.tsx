@@ -17,8 +17,10 @@ let timeout;
 const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
     const isInitialMount = useRef<boolean>(true);
-    // const [videos, setVideos] = useState<typeof Videos>([]);
+    const [page, setPage] = useState(0);
+    const [nextPageToken, setNextPageToken] = useState<string>('');
     const settings: any = document.getElementById('settings-body');
     const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults } = useContext(BackgroundContext);
     const [isError, setIsError] = useState<boolean>(false);
@@ -32,7 +34,7 @@ const YouTubeSearch = () => {
         }
 
         if (settings) {
-            settings.scrollTo({ top: 450, behavior: 'smooth' });
+            settings.scrollTo({ top: 650, behavior: 'smooth' });
         }
 
         const checkbox = document.getElementById('musicCheckbox') as HTMLInputElement;
@@ -49,6 +51,11 @@ const YouTubeSearch = () => {
         }
         localStorage.setItem("youtubesearch", terms);
     }, [terms]);
+
+    const reset = () => {
+        setNextPageToken('');
+        setYoutubeResults([]);
+    }
 
     const submitForm = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
@@ -80,9 +87,10 @@ const YouTubeSearch = () => {
             .get(`/api/videos?terms=${searchTerms}&eventType=${eventType}`)
             .then((data) => {
                 setIsError(false);
-                processData(data.data.items);
+                setNextPageToken(data.data.nextPageToken);
+                processData(data.data.items, false);
                 if (settings) {
-                    settings.scrollTo({ top: 520, behavior: 'smooth' });
+                    settings.scrollTo({ top: 650, behavior: 'smooth' });
                 }
             })
             .catch((err) => {
@@ -91,7 +99,34 @@ const YouTubeSearch = () => {
             })
     };
 
-    const processData = (data: any) => {
+    const fetchMoreVideos = (searchTerms: string, eventType: string, pageToken: string) => {
+        if (isOnlyMusic && !searchTerms.includes("youtube.com")) {
+            if (!searchTerms.includes("music")) {
+                searchTerms = searchTerms + " music";
+            }
+        }
+
+        if (searchTerms.includes("youtube.com")) {
+            eventType = "completed";
+        }
+
+        axios
+            .get(`/api/videos?terms=${searchTerms}&eventType=${eventType}&pageToken=${pageToken}`)
+            .then((data) => {
+                setIsError(false);
+                setNextPageToken(data.data.nextPageToken);
+                processData(data.data.items, true);
+                // if (settings) {
+                //     settings.scrollTo({ top: 520, behavior: 'smooth' });
+                // }
+            })
+            .catch((err) => {
+                console.log('Err', err);
+                setIsError(true);
+            })
+    }
+
+    const processData = (data: any, append: boolean) => {
         let processed: any = [];
         data.forEach(video => {
             processed.push({
@@ -102,15 +137,27 @@ const YouTubeSearch = () => {
                 channelTitle: video.snippet.channelTitle
             });
         })
-        setYoutubeResults(processed);
+        if (append) {
+            let temp: any = youtubeResults.slice(0);
+            temp = [...temp, ...processed];
+            setYoutubeResults(temp);
+            setIsLoadingMore(false);
+        } else {
+            setYoutubeResults(processed);
+        }
     }
 
     useEffect(() => {
         if (youtubeResults.length) {
             setIsLoading(false);
             clearTimeout(timeout);
+            setPage(youtubeResults.length / 10 - 1);
         }
     }, [youtubeResults])
+
+    useEffect(() => {
+        console.log('Page:', page)
+    }, [page])
 
     const selectVideo = (id: string) => {
         changeBackground(id);
@@ -123,13 +170,28 @@ const YouTubeSearch = () => {
 
     const radioChangeHandler = (e: any) => {
         e.target.checked ? setIsOnlyMusic(true) : setIsOnlyMusic(false);
-        setYoutubeResults([]);
+        reset();
     };
 
     const checboxChangeHandler = (e: any) => {
         e.target.checked ? setEventType('live') : setEventType('completed');
-        setYoutubeResults([]);
+        reset();
     };
+
+    const loadMore = (e: any) => {
+        e.preventDefault();
+        if (page < 5) {
+            fetchMoreVideos(terms, eventType, nextPageToken);
+            setIsLoadingMore(true);
+        }
+    }
+
+    const scrollToTop = (e: any) => {
+        e.preventDefault();
+        if (settings) {
+            settings.scrollTo({ top: 650, behavior: 'smooth' });
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -178,7 +240,7 @@ const YouTubeSearch = () => {
                 }
                 {youtubeResults.map((video: any) => {
                     return (
-                        <div className={styles.videoResult} key={video.videoId} onClick={() => selectVideo(video.videoId)}>
+                        <div className={styles.videoResult} key={video.videoId + page} onClick={() => selectVideo(video.videoId)}>
                             <div className={styles.imgWrapper}>
                                 {video.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                                 <img className={styles.thumbnail} src={video.thumbnail} />
@@ -190,6 +252,16 @@ const YouTubeSearch = () => {
                         </div>
                     )
                 })}
+            </div>
+
+            <div className={styles.btnDiv}>
+                {isLoadingMore &&
+                    <div className={styles.loadingContainer}>
+                        <Spinner animation="border" variant="primary" />
+                    </div>
+                }
+                <button className={styles.loadBtn} onClick={(e: any) => scrollToTop(e)}>Scroll To Top</button>
+                {page < 5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
             </div>
         </div>
     );
