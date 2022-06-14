@@ -1,6 +1,6 @@
 # ⏲ Jikan ⏲
 
-**Deployed Link:** [https://jikan-timer.com](https://jikan-timer.com)
+**Deployed Link:** [https://my-jikan.com](https://my-jikan.com)
 
 **Jikan** is a full-stack clock and timer web application inspired by the Pomodoro Technique.
 The timer is fully customizable, allowing users to control how they want to manage their time.
@@ -18,7 +18,7 @@ your phone or other distractions during your short Pomodoro time, as you know yo
 The pomodoro technique is not a perfect surefire way to be productive. You will need to have discipline and willpower
 to want to be productive. Try it today by visiting the link below!
 
-⏰ \***\*[https://jikan-timer.com](https://jikan-timer.com/)\*\*** ⏰
+⏰ \***\*[https://my-jikan.com](https://my-jikan.com/)\*\*** ⏰
 
 For more detailed information on the pomodoro technique, visit the following link: [Article](https://www.forbes.com/sites/bryancollinseurope/2020/03/03/the-pomodoro-technique/)
 
@@ -32,15 +32,15 @@ have it open on an external monitor or another device, but it can also be run in
 
 #### Clock
 
-![image](https://i.imgur.com/ir5izFp.png)
+![image](https://i.imgur.com/xz3XTjo.png)
 
 #### Pomodoro Timer w/ Settings Open
 
-![image](https://i.imgur.com/70sHa2o.png)
+![image](https://i.imgur.com/r26r3e2.png)
 
 #### Mobile Friendly!
 
-![image](https://i.imgur.com/jD2jUeX.png)
+![image](https://i.imgur.com/rgSADNN.png)
 
 ## Features
 
@@ -48,28 +48,21 @@ have it open on an external monitor or another device, but it can also be run in
 
 - Digital Clock
   - Settings
-    - Google Login
     - Show seconds
     - 12hr / 24hr format
-    - Change font
-    - Select music (YouTube live streams)
-    - Adjust music volume
+    - Change font size or style
     - Set weather (zipcode)
     - Brightness of webpage
-    - Background blur
-    - Change background image (Pexels API image or solid color)
+    - Opacity of webpage
+    - Change background image (Pexels API image or solid color) or YouTube video
 - Pomodoro Timer
   - Settings
-    - Google Login
-    - Set custom times for pomodoro, short break, long break
-    - Turn on auto-start breaks
-    - Change font
-    - Select music (YouTube live streams)
-    - Adjust music volume
+    - Set custom times for pomodoro and break time
+    - Change font size or style
     - Set weather (zipcode)
     - Brightness of webpage
-    - Background blur
-    - Change background image (Pexels API image or solid color)
+    - Opacity of webpage
+    - Change background image (Pexels API image or solid color) or YouTube video
 
 ## Tech Stack
 
@@ -102,11 +95,3 @@ Install Jikan with npm
 
 This application is now only maintained and updated by Seiji Matsumoto.
 For any bug reports or feature requests, please contact Seiji at [seijim27@gmail.com](mailto:seijim27@gmail.com).
-
-### Future Plans
-
-- Fix bugs
-- Add authentication that allows users to retrieve settings data from database
-- Create React Native application
-- Change music UI
-- Revamp settings panel
