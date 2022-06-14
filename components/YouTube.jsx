@@ -124,7 +124,7 @@ const Icon2 = styled.img(
 );
 
 const YouTubePlayer = ({ id }) => {
-  const { setBackground, background } = useContext(BackgroundContext);
+  const { changeBackground, background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const { musicVolume, setMusicVolume, isMobile } = useContext(SettingsContext);
@@ -224,11 +224,6 @@ const YouTubePlayer = ({ id }) => {
         opts={config}
         onReady={_onReady}
         onStateChange={checkChange}
-        onError={() =>
-          setBackground(
-            "https://images.pexels.com/photos/235721/pexels-photo-235721.jpeg"
-          )
-        }
       />
       <Controls
         opacity={opacity}

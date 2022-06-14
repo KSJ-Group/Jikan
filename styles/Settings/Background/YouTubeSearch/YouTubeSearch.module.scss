@@ -1,11 +1,8 @@
 @mixin button {
     position: relative;
     height: 38px;
-    // width: 80px;
     border-radius: 5px;
     background: #efefef;
-    border: none;
-    margin-left: 10px;
     font-size: 15px;
     border: 0.1px solid rgb(168, 168, 168);
     transition: 0.3s ease-in-out;
@@ -16,6 +13,7 @@
 
 .container {
     z-index: 2;
+    margin-top: 5px;
 
     .btnDiv {
         width: 100%;
@@ -23,10 +21,22 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        position: relative;
         .loadBtn {
             @include button;
             width: 100px;
-            margin-top: 5px;
+        }
+        .scrollBtn {
+            position: absolute;
+            right: 0;
+            background: #efefef;
+            border-radius: 50px;
+            font-size: 15px;
+            border: 0.1px solid rgb(168, 168, 168);
+            transition: 0.3s ease-in-out;
+            &:hover {
+                background: #dddddd;
+            }
         }
     }
 }

@@ -308,7 +308,7 @@ const YouTubeSearch = () => {
                                 <Spinner animation="border" variant="primary" />
                             </div>
                         }
-                        <button className={styles.loadBtn} onClick={(e: any) => scrollToTop(e)}>Scroll To Top</button>
+                        <button className={styles.scrollBtn} onClick={(e: any) => scrollToTop(e)}>Go ↑</button>
                         {page < 5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
                     </div>
                     : null
