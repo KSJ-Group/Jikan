@@ -28,7 +28,7 @@ const Options = ({ changeDisplay }: OptionsProps) => {
         <Option
           changeDisplay={changeDisplay}
           display="recent"
-          src="https://i.ytimg.com/vi/XioLScTS_oM/maxresdefault.jpg"
+          src="https://i.pinimg.com/originals/79/f3/60/79f360b27bcb9b7b389b0e557efab553.jpg"
           title="Recent"
         />
         <Option
