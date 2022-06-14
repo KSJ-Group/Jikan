@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import globalStyles from '../../styles/Settings/Settings.module.css'
 import styled from 'styled-components';
+import AreYouSureResetModal from '../AreYouSureResetModal';
 
 const Button = styled.button`
   font-size: 12px;
@@ -16,27 +17,17 @@ const Button = styled.button`
 const Reset = () => {
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const areYouSure = (e: any) => {
+  const openModal = (e: any) => {
     e.preventDefault();
     setShowConfirm(true);
   }
 
-  const clickReset = (e: any) => {
-    setTimeout(() => {
-      localStorage.clear();
-      location.reload();
-    }, 1000);
-  }
-
   return (
     <div className={globalStyles.settingModuleContainer}>
-      {showConfirm ?
-        <Button onClick={(e: any) => clickReset(e)}>Are you sure?</Button> :
-        <Button onClick={(e: any) => areYouSure(e)}>
-          Reset All Options
-        </Button>
-      }
-
+      <Button onClick={(e: any) => openModal(e)}>
+        Reset All Options
+      </Button>
+      <AreYouSureResetModal show={showConfirm} setShowConfirm={setShowConfirm} />
     </div>
   );
 };
