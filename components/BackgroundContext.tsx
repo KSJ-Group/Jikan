@@ -10,7 +10,9 @@ export const BackgroundContext = createContext(
     isOnlyMusic: true,
     setIsOnlyMusic: (isOnlyMusic: boolean): void => { },
     eventType: 'live',
-    setEventType: (eventType: string): void => { }
+    setEventType: (eventType: string): void => { },
+    youtubeResults: [],
+    setYoutubeResults: (results: any) => { }
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
@@ -19,6 +21,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
   const [loaded, setLoaded] = useState(true);
   const [isOnlyMusic, setIsOnlyMusic] = useState<boolean>(true);
   const [eventType, setEventType] = useState<string>('live');
+  const [youtubeResults, setYoutubeResults] = useState<any>([]);
 
   const store = {
     background: background,
@@ -48,23 +51,30 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     setEventType: (eventType: string): void => {
       setEventType(eventType);
       localStorage.setItem('eventType', eventType);
+    },
+    youtubeResults: youtubeResults,
+    setYoutubeResults: (results: any): void => {
+      setYoutubeResults(results);
+      localStorage.setItem('youtubeResults', JSON.stringify(results));
     }
   };
 
   useEffect((): any => {
-    let cachedBackground = localStorage.getItem('background');
-    let cachedIsOnlyMusic = localStorage.getItem('isOnlyMusic');
-    let cachedEventType = localStorage.getItem('eventType');
+    const cachedBackground = localStorage.getItem('background');
+    const cachedIsOnlyMusic = localStorage.getItem('isOnlyMusic');
+    const cachedEventType = localStorage.getItem('eventType');
+    const cachedYoutubeResults = localStorage.getItem('youtubeResults');
     if (cachedBackground) {
       store.changeBackground(cachedBackground);
-    };
-
+    }
     if (cachedIsOnlyMusic) {
       store.setIsOnlyMusic(JSON.parse(cachedIsOnlyMusic));
     }
-
     if (cachedEventType) {
       store.setEventType(cachedEventType);
+    }
+    if (cachedYoutubeResults) {
+      store.setYoutubeResults(JSON.parse(cachedYoutubeResults));
     }
 
   }, []);
