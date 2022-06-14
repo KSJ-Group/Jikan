@@ -5,6 +5,7 @@ import Options from './Options';
 import globalStyles from "../../../styles/Settings/Settings.module.css";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import YouTubeSearch from './YouTubeSearch';
+import RecentlySelected from './RecentlySelected';
 
 const ChangeBackground: React.FC = () => {
   const [display, setDisplay] = useState<string>('');
@@ -18,6 +19,8 @@ const ChangeBackground: React.FC = () => {
       return <Search />
     } else if (display === 'youtube') {
       return <YouTubeSearch />
+    } else if (display === 'recent') {
+      return <RecentlySelected />
     } else return null;
   };
 

@@ -23,7 +23,7 @@ const YouTubeSearch = () => {
     const [page, setPage] = useState(0);
     const [nextPageToken, setNextPageToken] = useState<string>('');
     const settings: any = document.getElementById('settings-body');
-    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults } = useContext(BackgroundContext);
+    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults, recentlySelected, setRecentlySelected } = useContext(BackgroundContext);
     const { isClock } = useContext(SettingsContext);
     const [isError, setIsError] = useState<boolean>(false);
 
@@ -31,7 +31,6 @@ const YouTubeSearch = () => {
         if (settings) {
             isClock ? settings.scrollTo({ top: 650, behavior: 'smooth' }) : settings.scrollTo({ top: 850, behavior: 'smooth' });
         }
-
     }
 
     useEffect(() => {
@@ -153,9 +152,20 @@ const YouTubeSearch = () => {
         }
     }, [youtubeResults])
 
-    const selectVideo = (id: string) => {
-        changeBackground(id);
-        // save to recently selected
+    const selectVideo = (video: any) => {
+        changeBackground(video.videoId);
+        console.log(video);
+        let obj = {
+            'type': 'video',
+            'id': video.videoId,
+            'thumbnail': video.thumbnail,
+            'live': video.live,
+            'title': video.title
+        }
+        let temp: any = recentlySelected.slice(0, 20);
+        temp = temp.filter(each => each.id !== video.videoId);
+        temp.unshift(obj);
+        setRecentlySelected(temp);
     }
 
     const chooseSuggestion = (e, term) => {
@@ -233,7 +243,7 @@ const YouTubeSearch = () => {
                 }
                 {youtubeResults.map((video: any) => {
                     return (
-                        <div className={styles.videoResult} key={video.videoId + page} onClick={() => selectVideo(video.videoId)}>
+                        <div className={styles.videoResult} key={video.videoId + page} onClick={() => selectVideo(video)}>
                             <div className={styles.imgWrapper}>
                                 {video.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                                 <img className={styles.thumbnail} src={video.thumbnail} />

@@ -12,7 +12,9 @@ export const BackgroundContext = createContext(
     eventType: 'live',
     setEventType: (eventType: string): void => { },
     youtubeResults: [],
-    setYoutubeResults: (results: any) => { }
+    setYoutubeResults: (results: any) => { },
+    recentlySelected: [],
+    setRecentlySelected: (selected: any) => { }
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
@@ -22,6 +24,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
   const [isOnlyMusic, setIsOnlyMusic] = useState<boolean>(true);
   const [eventType, setEventType] = useState<string>('live');
   const [youtubeResults, setYoutubeResults] = useState<any>([]);
+  const [recentlySelected, setRecentlySelected] = useState<any>([]);
 
   const store = {
     background: background,
@@ -56,6 +59,11 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     setYoutubeResults: (results: any): void => {
       setYoutubeResults(results);
       localStorage.setItem('youtubeResults', JSON.stringify(results));
+    },
+    recentlySelected: recentlySelected,
+    setRecentlySelected: (selected: any): void => {
+      setRecentlySelected(selected);
+      localStorage.setItem('recentlySelected', JSON.stringify(selected));
     }
   };
 
@@ -64,6 +72,7 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     const cachedIsOnlyMusic = localStorage.getItem('isOnlyMusic');
     const cachedEventType = localStorage.getItem('eventType');
     const cachedYoutubeResults = localStorage.getItem('youtubeResults');
+    const cachedRecentlySelected = localStorage.getItem('recentlySelected');
     if (cachedBackground) {
       store.changeBackground(cachedBackground);
     }
@@ -75,6 +84,9 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     }
     if (cachedYoutubeResults) {
       store.setYoutubeResults(JSON.parse(cachedYoutubeResults));
+    }
+    if (cachedRecentlySelected) {
+      store.setRecentlySelected(JSON.parse(cachedRecentlySelected));
     }
 
   }, []);
