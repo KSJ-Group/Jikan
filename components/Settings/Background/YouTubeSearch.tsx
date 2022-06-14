@@ -3,6 +3,7 @@ import styles from "../../../styles/Settings/Background/YouTubeSearch/YouTubeSea
 import axios from "axios";
 import { BackgroundContext } from "../../BackgroundContext";
 import Spinner from 'react-bootstrap/Spinner'
+import { SettingsContext } from "../../SettingsContext";
 
 interface Video {
     videoId: String
@@ -23,15 +24,21 @@ const YouTubeSearch = () => {
     const [nextPageToken, setNextPageToken] = useState<string>('');
     const settings: any = document.getElementById('settings-body');
     const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults } = useContext(BackgroundContext);
+    const { isClock } = useContext(SettingsContext);
     const [isError, setIsError] = useState<boolean>(false);
+
+    const scroll = () => {
+        if (settings) {
+            isClock ? settings.scrollTo({ top: 650, behavior: 'smooth' }) : settings.scrollTo({ top: 850, behavior: 'smooth' });
+        }
+
+    }
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
         search ? setTerms(search) : setTerms("");
 
-        if (settings) {
-            settings.scrollTo({ top: 650, behavior: 'smooth' });
-        }
+        scroll();
 
         const checkbox = document.getElementById('musicCheckbox') as HTMLInputElement;
         isOnlyMusic ? checkbox.checked = true : checkbox.checked = false;
@@ -85,9 +92,7 @@ const YouTubeSearch = () => {
                 setIsError(false);
                 setNextPageToken(data.data.nextPageToken);
                 processData(data.data.items, false);
-                if (settings) {
-                    settings.scrollTo({ top: 650, behavior: 'smooth' });
-                }
+                scroll();
             })
             .catch((err) => {
                 console.log('Err', err);
@@ -112,9 +117,6 @@ const YouTubeSearch = () => {
                 setIsError(false);
                 setNextPageToken(data.data.nextPageToken);
                 processData(data.data.items, true);
-                // if (settings) {
-                //     settings.scrollTo({ top: 520, behavior: 'smooth' });
-                // }
             })
             .catch((err) => {
                 console.log('Err', err);
@@ -181,9 +183,7 @@ const YouTubeSearch = () => {
 
     const scrollToTop = (e: any) => {
         e.preventDefault();
-        if (settings) {
-            settings.scrollTo({ top: 650, behavior: 'smooth' });
-        }
+        scroll();
     }
 
     return (
