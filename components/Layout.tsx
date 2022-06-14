@@ -47,7 +47,7 @@ const WeatherContainer = styled.div<Props>(
   color: white;
   background-color: 'rgb(0,0,0,0.4)';
   ${props.opacity && css`
-    background-color: rgb(0,0,0, props.opacity);
+    background-color: rgb(0,0,0, ${props.opacity / 100});
   `}
   padding: 10px;
   border-radius: 10px;
@@ -74,6 +74,9 @@ const Layout: React.FC = ({ children }) => {
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
+  useEffect(() => {
+    console.log('Opacity:', opacity);
+  }, [opacity]);
   const {
     currentWeather,
     setCurrentWeather,
