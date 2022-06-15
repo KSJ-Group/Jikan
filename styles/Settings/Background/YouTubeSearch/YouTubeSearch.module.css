@@ -123,13 +123,12 @@
           flex-direction: row;
 }
 
-.formsWrapper .checkboxWrapper {
-  margin-right: 10px;
-  margin-bottom: 5px;
+.formsWrapper .formWrapper {
+  margin: -5px 10px 5px 0;
 }
 
-.formsWrapper .checkboxWrapper .checkboxLabel {
-  margin-left: 3px;
+.formsWrapper .formWrapper .label > span {
+  font-size: 14px;
 }
 
 .searchTitle {

@@ -6,6 +6,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 18px;
   width: 100%;
   margin-bottom: 5px;
@@ -28,6 +31,16 @@
 .longbreak {
   width: 26%;
   margin-right: 10px;
+}
+
+.checkboxWrapper {
+  padding: 0;
+  margin: 0;
+  width: 80px;
+}
+
+.checkboxWrapper .label {
+  margin: 0;
 }
 
 .resetBtn {

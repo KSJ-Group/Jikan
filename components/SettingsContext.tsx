@@ -12,8 +12,8 @@ export const SettingsContext = createContext({
   setShortBreakTime: (time: any) => { },
   longBreakTime: 900000,
   setLongBreakTime: (time: any) => { },
-  autoStartBreak: "Off",
-  setAutoStartBreak: (auto: string) => { },
+  autoStartBreak: true,
+  setAutoStartBreak: (auto: boolean) => { },
   showSeconds: false,
   setShowSeconds: (showSeconds: boolean) => { },
   is24Hour: false,
@@ -60,7 +60,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [pomodoroTime, setPomodoroTime] = useState<number>(1500000);
   const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
   const [longBreakTime, setLongBreakTime] = useState<number>(900000);
-  const [autoStartBreak, setAutoStartBreak] = useState<string>("Off");
+  const [autoStartBreak, setAutoStartBreak] = useState<boolean>(true);
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
   const [selectedAlert, setSelectedAlert] = useState<string>("Xylophone.mp3");
@@ -137,9 +137,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
       localStorage.setItem("long", time.toString());
     },
     autoStartBreak: autoStartBreak,
-    setAutoStartBreak: (auto: string): void => {
+    setAutoStartBreak: (auto: boolean): void => {
       setAutoStartBreak(auto);
-      localStorage.setItem("auto", auto);
+      localStorage.setItem("auto", JSON.stringify(auto));
     },
     showSeconds: showSeconds,
     setShowSeconds: (showSeconds: boolean): void => {
@@ -223,7 +223,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
       store.setLongBreakTime(parseInt(cachedLong));
     }
     if (cachedAuto) {
-      store.setAutoStartBreak(cachedAuto);
+      store.setAutoStartBreak(JSON.parse(cachedAuto));
     }
     if (cachedSeconds) {
       store.setShowSeconds(JSON.parse(cachedSeconds));

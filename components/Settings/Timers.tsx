@@ -6,6 +6,10 @@ import {
   minutesAndSecondsToMillis,
   millisToMinutesAndSeconds,
 } from "../../helper/convertTime";
+import { SettingsContext } from "../SettingsContext";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 interface Props {
   pomodoroTime: number;
@@ -32,30 +36,22 @@ const Timers: React.FC<Props> = ({
   const [shortStr, setShortStr] = useState<string>(
     millisToMinutesAndSeconds(shortBreakTime)
   );
-  // const [longStr, setLongStr] = useState<string>(
-  //   millisToMinutesAndSeconds(longBreakTime)
-  // );
   const [currentPom, setCurrentPom] = useState<number>(25);
   const [currentShort, setCurrentShort] = useState<number>(5);
-  // const [currentLong, setCurrentLong] = useState<number>(15);
 
   const [minutes, setMinutes] = useState<number[]>([]);
   const [shortMinutes, setShortMinutes] = useState<number[]>([]);
-  // const [longMinutes, setLongMinutes] = useState<number[]>([]);
 
+  const { setAutoStartBreak, autoStartBreak } = useContext(SettingsContext);
   useEffect(() => {
     for (let i = 1; i <= 120; i++) {
       setMinutes((prev) => [...prev, i]);
       if (i <= 30) {
         setShortMinutes((prev) => [...prev, i]);
       }
-      // if (i >= 15 && i <= 30) {
-      //   setLongMinutes((prev) => [...prev, i]);
-      // }
     }
     setCurrentPom(parseInt(millisToMinutesAndSeconds(pomodoroTime)));
     setCurrentShort(parseInt(millisToMinutesAndSeconds(shortBreakTime)));
-    // setCurrentLong(parseInt(millisToMinutesAndSeconds(longBreakTime)));
   }, []);
 
   useEffect(() => {
@@ -65,9 +61,6 @@ const Timers: React.FC<Props> = ({
     if (shortStr === "0") {
       setShortStr("1");
     }
-    // if (longStr === "0") {
-    //   setLongStr("1");
-    // }
   }, [pomStr, shortStr]);
 
   const pomChange = (e: any): void => {
@@ -88,24 +81,17 @@ const Timers: React.FC<Props> = ({
     }
   };
 
-  // const longChange = (e: any): void => {
-  //   if (parseInt(e.target.value) > 0) {
-  //     e.preventDefault();
-  //     let toMs = minutesAndSecondsToMillis(e.target.value);
-  //     setLongBreakTime(toMs);
-  //     setCurrentLong(parseInt(e.target.value));
-  //   }
-  // };
-
   const resetTimer = (e: any) => {
     setPomodoroTime(1500000);
     setPomStr("25");
     setShortBreakTime(300000);
     setShortStr("5");
-    // setLongBreakTime(900000);
-    // setLongStr("15");
     setShowSettings(false);
   };
+
+  const autoBreakToggle = (e: any) => {
+    e.target.checked ? setAutoStartBreak(true) : setAutoStartBreak(false);
+  }
 
   return (
     <div className={globalStyles.settingModuleContainer}>
@@ -114,7 +100,7 @@ const Timers: React.FC<Props> = ({
           <Form.Label className={styles.timerLabel}>Pomodoro</Form.Label>
           <Form.Select value={currentPom} onChange={(e) => pomChange(e)}>
             {minutes.map((minute, i) => (
-              <option key={minute + i + "pom"} value={minute}>
+              <option key={minute + i + "pom" + (Math.random() * (1249234 - 1) + 1).toString()} value={minute}>
                 {minute}
               </option>
             ))}
@@ -122,26 +108,23 @@ const Timers: React.FC<Props> = ({
         </Form.Group>
 
         <Form.Group controlId="formShortBreak" className={styles.shortbreak}>
-          <Form.Label className={styles.timerLabel}>Break</Form.Label>
+          <Form.Label className={styles.timerLabel}>
+            <span>Break</span>
+
+          </Form.Label>
+
           <Form.Select value={currentShort} onChange={(e) => shortChange(e)}>
             {shortMinutes.map((minute, i) => (
-              <option key={minute + i + "short"} value={minute}>
+              <option key={minute + 'break' + (Math.random() * (1249234 - 1) + 1).toString()} value={minute}>
                 {minute}
               </option>
             ))}
           </Form.Select>
         </Form.Group>
 
-        {/* <Form.Group controlId="formBasicPassword" className={styles.longbreak}>
-          <Form.Label className={styles.timerLabel}>Long Break</Form.Label>
-          <Form.Select value={currentLong} onChange={(e) => longChange(e)}>
-            {longMinutes.map((minute, i) => (
-              <option key={minute + i + "long"} value={minute}>
-                {minute}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group> */}
+        <FormGroup className={styles.checkboxWrapper} onChange={(e: any) => autoBreakToggle(e)}>
+          <FormControlLabel className={styles.label} control={<Switch id="autoStartCheck" name="auto" value="Auto" checked={autoStartBreak} />} label="Auto" labelPlacement="top" />
+        </FormGroup>
 
         <button onClick={resetTimer} className={styles.resetBtn}>
           Reset

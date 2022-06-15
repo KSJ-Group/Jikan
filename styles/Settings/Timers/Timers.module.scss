@@ -1,6 +1,7 @@
 .timersConatiner {
   display: flex;
   flex-direction: row;
+  align-items: center;
   font-size: 18px;
   width: 100%;
   margin-bottom: 5px;
@@ -23,6 +24,16 @@
 .longbreak {
   width: 26%;
   margin-right: 10px;
+}
+
+.checkboxWrapper {
+  padding: 0;
+  margin: 0;
+  width: 80px;
+  .label {
+    margin: 0;
+    // padding: 0;
+  }
 }
 
 .resetBtn {

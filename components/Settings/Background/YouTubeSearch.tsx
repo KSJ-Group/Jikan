@@ -4,6 +4,9 @@ import axios from "axios";
 import { BackgroundContext } from "../../BackgroundContext";
 import Spinner from 'react-bootstrap/Spinner'
 import { SettingsContext } from "../../SettingsContext";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 interface Video {
     videoId: String
@@ -38,13 +41,6 @@ const YouTubeSearch = () => {
         search ? setTerms(search) : setTerms("");
 
         scroll();
-
-        const checkbox = document.getElementById('musicCheckbox') as HTMLInputElement;
-        isOnlyMusic ? checkbox.checked = true : checkbox.checked = false;
-
-        const checkbox2 = document.getElementById('liveCheckbox') as HTMLInputElement;
-        eventType === 'live' ? checkbox2.checked = true : checkbox2.checked = false;
-
     }, []);
 
     useEffect(() => {
@@ -186,7 +182,7 @@ const YouTubeSearch = () => {
         reset();
     };
 
-    const checboxChangeHandler = (e: any) => {
+    const checkboxChangeHandler = (e: any) => {
         e.target.checked ? setEventType('live') : setEventType('completed');
         reset();
     };
@@ -245,14 +241,12 @@ const YouTubeSearch = () => {
         <div className={styles.container}>
             <div className={styles.searchTitle}>Search YouTube</div>
             <div className={styles.formsWrapper}>
-                <form className={styles.checkboxWrapper} onChange={(e: any) => radioChangeHandler(e)}>
-                    <input className={styles.checkbox} type="checkbox" id="musicCheckbox" name="filter" value="Music Only" defaultChecked />
-                    <label className={styles.checkboxLabel} htmlFor="musicCheckbox">Music Only</label>
-                </form>
-                <form className={styles.checkboxWrapper} onChange={(e: any) => checboxChangeHandler(e)}>
-                    <input className={styles.checkbox} type="checkbox" id="liveCheckbox" name="live" value="Live" defaultChecked />
-                    <label className={styles.checkboxLabel} htmlFor="liveCheckbox">Live Stream</label>
-                </form>
+                <FormGroup className={styles.formWrapper} onChange={(e: any) => radioChangeHandler(e)}>
+                    <FormControlLabel className={styles.label} control={<Switch name="music" value="Music Only" checked={isOnlyMusic} />} label="Music Only" labelPlacement="end" />
+                </FormGroup>
+                <FormGroup className={styles.formWrapper} onChange={(e: any) => checkboxChangeHandler(e)}>
+                    <FormControlLabel className={styles.label} control={<Switch name="live" value="Live Stream" checked={eventType === 'live' ? true : false} />} label="Live" labelPlacement="end" />
+                </FormGroup>
             </div>
             <div className={styles.suggestionWrapper}>
                 <span className={styles.text}>Suggestions:</span>

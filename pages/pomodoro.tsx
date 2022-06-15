@@ -122,14 +122,12 @@ let timer: number;
 const pomodoro: NextPage = () => {
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
-  // const [longBreak, setLongBreak] = useState<boolean>(false);
 
-  const { pomodoroTime, shortBreakTime, longBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile } =
+  const { pomodoroTime, shortBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile } =
     useContext(SettingsContext);
 
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
   const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
-  // const [longBreakTime2, setLongBreakTime] = useState<any>(0);
   const [currentTime, setCurrentTime] = useState<any>("");
 
   const [started, setStarted] = useState<boolean>(false);
@@ -138,7 +136,6 @@ const pomodoro: NextPage = () => {
 
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
-  const [autoStart, setAutoStart] = useState<boolean>(false);
 
   const { selectedFont, size, opacity, color } = useContext(StylesContext);
 
@@ -173,7 +170,6 @@ const pomodoro: NextPage = () => {
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
     setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
-    // setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
     if (!isMobile) {
       if (Notification.permission !== "denied") {
         Notification.requestPermission();
@@ -193,40 +189,26 @@ const pomodoro: NextPage = () => {
     if (pomodoro) {
       stopTimer();
       setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
-      // setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       document.getElementById("link4")?.classList.add("activePomLink");
       document.getElementById("link5")?.classList.remove("activePomLink");
       document.getElementById("link6")?.classList.remove("activePomLink");
     } else if (shortBreak) {
       stopTimer();
       setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
-      // setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
       document.getElementById("link5")?.classList.add("activePomLink");
       document.getElementById("link4")?.classList.remove("activePomLink");
       document.getElementById("link6")?.classList.remove("activePomLink");
     }
-    // else if (longBreak) {
-    //   stopTimer();
-    //   setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
-    //   setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
-    //   document.getElementById("link6")?.classList.add("activePomLink");
-    //   document.getElementById("link4")?.classList.remove("activePomLink");
-    //   document.getElementById("link5")?.classList.remove("activePomLink");
-    // }
+
   }, [pomodoro, shortBreak]);
 
   const showNotification = () => {
     if (!isMobile) {
-      if (autoStartBreak === "Short break") {
+      if (autoStartBreak) {
         const notification = new Notification("Jikan", {
           body: "Good job! Your pomodoro time is up. Short break auto-starting.",
         });
       }
-      // else if (autoStartBreak === "Long break") {
-      //   const notification = new Notification("Jikan", {
-      //     body: "Good job! Your pomodoro time is up. Long break auto-starting.",
-      //   });
-      // }
       else if (pomodoro) {
         const notification = new Notification("Jikan", {
           body: "Good job! Your pomodoro time is up.",
@@ -236,11 +218,6 @@ const pomodoro: NextPage = () => {
           body: "Your short break is over!",
         });
       }
-      // else {
-      //   const notification = new Notification("Jikan", {
-      //     body: "Your long break is over!",
-      //   });
-      // }
     }
   };
 
@@ -260,14 +237,6 @@ const pomodoro: NextPage = () => {
         switchToShort();
       }
     }
-    // else if (target === "Long Break" && !longBreak) {
-    //   if (started) {
-    //     setShowModal(true);
-    //     setTargetMode("long");
-    //   } else {
-    //     switchToLong();
-    //   }
-    // }
   };
 
   const handleClose = (): void => {
@@ -277,28 +246,15 @@ const pomodoro: NextPage = () => {
   const switchToPom = (): void => {
     setPomodoro(true);
     setShortBreak(false);
-    // setLongBreak(false);
   };
 
   const switchToShort = (): void => {
     setShortBreak(true);
     setPomodoro(false);
-    // setLongBreak(false);
   };
-
-  // const switchToLong = (): void => {
-  //   setLongBreak(true);
-  //   setPomodoro(false);
-  //   setShortBreak(false);
-  // };
 
   const startClickHandler = (): void => {
     setStarted(true);
-    // if (pomodoro) {
-    //   if (autoStartBreak === "Short break" || autoStartBreak === "Long break") {
-    //     setAutoStart(true);
-    //   }
-    // }
     timer = window.setInterval(startTimer, 1000);
   };
 
@@ -307,14 +263,8 @@ const pomodoro: NextPage = () => {
     if (pomodoro) {
       stopTimer();
     } else if (shortBreak) {
-      if (autoStartBreak === "Short break" || autoStartBreak === "Long break") {
-        setAutoStart(false);
-      }
       stopTimer();
     }
-    // else if (longBreak) {
-    //   stopTimer();
-    // }
   };
 
   const startTimer = (): void => {
@@ -341,39 +291,26 @@ const pomodoro: NextPage = () => {
         return newTime;
       });
     }
-    // else if (longBreak) {
-    //   setLongBreakTime((prevState: string) => {
-    //     let newTime = millisToMinutesAndSeconds(
-    //       minutesAndSecondsToMillis(prevState) - 1000
-    //     );
-    //     if (newTime === "0:00") {
-    //       timeUpHandler();
-    //     }
-    //     setCurrentTime(newTime);
-    //     return newTime;
-    //   });
-    // }
+  };
+
+  const timeUpHandler = (): void => {
+    stopTimer();
+    alarmHandler();
+    if (!autoStartBreak) {
+      setShowTimerModal(true);
+    } else {
+      if (pomodoro) {
+        startBreak();
+      } else if (shortBreak) {
+        startPom();
+      }
+    }
   };
 
   const stopTimer = (): void => {
     clearInterval(timer);
     timer = 0;
-  };
-
-  const timeUpHandler = (): void => {
-    // if (
-    //   pomodoro &&
-    //   (autoStartBreak === "Short break" || autoStartBreak === "Long break")
-    // ) {
-    //   startBreak();
-    // } else {
-    //   stopTimer();
-    //   alarmHandler();
-    //   setShowTimerModal(true);
-    // }
-    stopTimer();
-    alarmHandler();
-    setShowTimerModal(true);
+    setStarted(false);
   };
 
   const alarmHandler = (): void => {
@@ -383,16 +320,11 @@ const pomodoro: NextPage = () => {
       setShowTimerModal(false);
       setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
       setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
-      // setLongBreakTime(millisToMinutesAndSeconds(longBreakTime));
-      setStarted(false);
       if (pomodoro) {
         setCurrentTime(millisToMinutesAndSeconds(pomodoroTime));
       } else if (shortBreak) {
         setCurrentTime(millisToMinutesAndSeconds(shortBreakTime));
       }
-      // else if (longBreak) {
-      //   setCurrentTime(millisToMinutesAndSeconds(longBreakTime));
-      // }
     } else {
       if (!isMobile) {
         if (Notification.permission === "granted") {
@@ -403,41 +335,41 @@ const pomodoro: NextPage = () => {
       alert.play();
       setTimeout(() => {
         alert.stop();
-      }, 10000);
+      }, 6000);
     }
   };
 
-  // const startBreak = (): void => {
-  //   if (autoStartBreak === "Short break") {
-  //     if (!isMobile) {
-  //       if (Notification.permission === "granted") {
-  //         showNotification();
-  //       }
-  //     }
-  //     setAlarmOn(true);
-  //     alert.play();
-  //     setTimeout(() => {
-  //       setAlarmOn(false);
-  //       alert.stop();
-  //     }, 5000);
-  //     setPomodoro(false);
-  //     setShortBreak(true);
-  //   } else if (autoStartBreak === "Long break") {
-  //     if (!isMobile) {
-  //       if (Notification.permission === "granted") {
-  //         showNotification();
-  //       }
-  //     }
-  //     setAlarmOn(true);
-  //     alert.play();
-  //     setTimeout(() => {
-  //       setAlarmOn(false);
-  //       alert.stop();
-  //     }, 5000);
-  //     setPomodoro(false);
-  //     // setLongBreak(true);
-  //   }
-  // };
+  const startBreak = (): void => {
+    if (!isMobile) {
+      if (Notification.permission === "granted") {
+        showNotification();
+      }
+    }
+    setAlarmOn(true);
+    alert.play();
+    setTimeout(() => {
+      setAlarmOn(false);
+      alert.stop();
+    }, 5000);
+    setSwitch(true);
+    switchToShort();
+  };
+
+  const startPom = (): void => {
+    if (!isMobile) {
+      if (Notification.permission === "granted") {
+        showNotification();
+      }
+    }
+    setAlarmOn(true);
+    alert.play();
+    setTimeout(() => {
+      setAlarmOn(false);
+      alert.stop();
+    }, 5000);
+    setSwitch(true);
+    switchToPom();
+  }
 
   const breakFromModal = (choice: string): void => {
     if (choice === "pomodoro") {
@@ -449,25 +381,7 @@ const pomodoro: NextPage = () => {
       switchToShort();
       alert.stop();
     }
-    // else if (choice === "longBreak") {
-    //   setSwitch(true);
-    //   // switchToLong();
-    //   alert.stop();
-    // }
   };
-
-  useEffect(() => {
-    if (shortBreak && autoStartBreak === "Short break" && autoStart) {
-      setTimeout(() => {
-        startClickHandler();
-      }, 1000);
-    }
-    // else if (longBreak && autoStartBreak === "Long break" && autoStart) {
-    //   setTimeout(() => {
-    //     startClickHandler();
-    //   }, 1000);
-    // }
-  }, [shortBreak]);
 
   return (
     <div className={styles.pomodoro}>
@@ -495,13 +409,6 @@ const pomodoro: NextPage = () => {
           >
             <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Break</OtherFont>
           </div>
-          {/* <div
-            className={styles.link}
-            id="link6"
-            onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
-          >
-            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Long Break</OtherFont>
-          </div> */}
         </div>
         <div className={styles.timerDiv}>
           <OtherFont isMobile={isMobile} size={size} font={selectedFont}>
@@ -513,9 +420,6 @@ const pomodoro: NextPage = () => {
                 {shortBreakTime2}
               </ClockFont>
             ) : null}
-            {/* {longBreak ? (
-              <ClockFont isMobile={isMobile} size={size}>{longBreakTime2}</ClockFont>
-            ) : null} */}
           </OtherFont>
         </div>
         <div className={styles.btnDiv}>
@@ -539,7 +443,6 @@ const pomodoro: NextPage = () => {
               handleClose={handleClose}
               switchToPom={switchToPom}
               switchToShort={switchToShort}
-              // switchToLong={switchToLong}
               targetMode={targetMode}
             />
           ) : null
