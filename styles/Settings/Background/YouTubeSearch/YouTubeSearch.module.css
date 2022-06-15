@@ -106,6 +106,7 @@
   border: 0.1px solid #a8a8a8;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  margin-left: 10px;
 }
 
 .searchBtn:hover {
