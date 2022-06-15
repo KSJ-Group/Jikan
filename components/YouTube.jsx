@@ -121,6 +121,8 @@ const Icon2 = styled.img(
   `
 );
 
+let player;
+
 const YouTubePlayer = ({ id }) => {
   const { background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -135,7 +137,6 @@ const YouTubePlayer = ({ id }) => {
     },
   };
 
-  let player;
   useEffect(() => {
     player = null;
   }, []);
