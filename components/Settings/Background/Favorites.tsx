@@ -3,14 +3,38 @@ import styles from '../../../styles/Settings/Background/Favorites/Favorites.modu
 import { BackgroundContext } from '../../BackgroundContext';
 
 const Favorites = () => {
-  const { changeBackground, favorites, setFavorites } = useContext(BackgroundContext);
+  const { setBackground, favorites, setFavorites, recentlySelected, setRecentlySelected } = useContext(BackgroundContext);
 
-  const selectVideo = (id: string) => {
-    changeBackground(id);
+  const selectVideo = (video: any) => {
+    setBackground(video.id);
+
+    let obj = {
+      'type': 'video',
+      'id': video.id,
+      'thumbnail': video.thumbnail,
+      'live': video.live,
+      'title': video.title,
+      'favorited': true
+    }
+    let temp: any = recentlySelected.slice();
+    temp = temp.filter((each: any) => each.id !== video.id);
+    temp.unshift(obj);
+    setRecentlySelected(temp);
   }
 
-  const selectImage = (src: string) => {
-    changeBackground(src);
+  const selectImage = (image: any) => {
+    setBackground(image.id);
+
+    let obj = {
+      'type': 'image',
+      'id': image.id,
+      'favorited': true
+    }
+
+    let temp: any = recentlySelected.slice();
+    temp = temp.filter((each: any) => each.id !== image.id);
+    temp.unshift(obj);
+    setRecentlySelected(temp);
   }
 
   const deleteFromFavorites = (each: any) => {
@@ -18,7 +42,7 @@ const Favorites = () => {
     if (each.type === 'video') {
       temp = temp.filter((favorite: any) => favorite.id !== each.id)
     } else {
-      temp = temp.filter((favorite: any) => favorite.src !== each.src);
+      temp = temp.filter((favorite: any) => favorite.id !== each.id);
     }
     setFavorites(temp);
   }
@@ -35,7 +59,7 @@ const Favorites = () => {
                   <div className={styles.imgWrapper}>
                     {each.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                     <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} />
-                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each.id)} />
+                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each)} />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Video</span>
                     </div>
@@ -43,11 +67,10 @@ const Favorites = () => {
                 </div>
               )
             } else {
-              console.log(each);
               return (
-                <div className={styles.imageResult} key={each.src}>
+                <div className={styles.imageResult} key={each.id}>
                   <div className={styles.imgWrapper}>
-                    <img className={styles.thumbnail} src={each.src} onClick={() => selectImage(each.src.original)} />
+                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} />
                     <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Image</span>

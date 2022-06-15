@@ -23,7 +23,7 @@ const YouTubeSearch = () => {
     const [page, setPage] = useState(0);
     const [nextPageToken, setNextPageToken] = useState<string>('');
     const settings: any = document.getElementById('settings-body');
-    const { changeBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
+    const { setBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
     const { isClock } = useContext(SettingsContext);
     const [isError, setIsError] = useState<boolean>(false);
 
@@ -161,7 +161,7 @@ const YouTubeSearch = () => {
     }, [youtubeResults])
 
     const selectVideo = (video: any) => {
-        changeBackground(video.id);
+        setBackground(video.id);
         let obj = {
             'type': 'video',
             'id': video.id,

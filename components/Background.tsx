@@ -12,13 +12,13 @@ const Background: React.FC = () => {
   const { blur } = useContext(StylesContext);
   const [blurAmount, setBlurAmount] = useState<string>("0");
 
-  useEffect(() => {
-    if (blur) {
-      setBlurAmount("5px");
-    } else {
-      setBlurAmount("0");
-    }
-  }, [blur]);
+  // useEffect(() => {
+  //   if (blur) {
+  //     setBlurAmount("5px");
+  //   } else {
+  //     setBlurAmount("0");
+  //   }
+  // }, [blur]);
 
   return (
     <div>
@@ -38,7 +38,7 @@ const Background: React.FC = () => {
           </div>
         </BackgroundBlur>
       ) : (
-        <YouTubePlayer 
+        <YouTubePlayer
           id={background}
         />
       )}

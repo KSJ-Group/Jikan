@@ -16,18 +16,25 @@ interface ButtonProps {
   setImages: Function
 };
 
-const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src, image, images, setImages }) => {
-  const { background, changeBackground, changeLoadStatus, loaded, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
+const PhotoTile: NextPage<ButtonProps> = ({ url, src, image, images, setImages }) => {
+  const { background, setBackground, changeLoadStatus, loaded, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
 
   const clickHandler = () => {
-    changeBackground(src.original);
+    setBackground(src.original);
     changeLoadStatus(false);
     let obj = {
       'type': 'image',
-      'src': src.original
+      'id': src.original,
+      'favorited': false
     }
     let temp: any = recentlySelected.slice(0, 20);
-    temp = temp.filter(each => each.src !== src.original)
+    temp = temp.filter(each => {
+      if (each.id !== src.original) {
+        return true;
+      } else {
+        return false;
+      }
+    })
     temp.unshift(obj);
     setRecentlySelected(temp);
   }
@@ -35,7 +42,7 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src, image, images, 
   const favoriteImage = (image: any) => {
     let temp: any = images.slice();
     temp.map((each: any) => {
-      if (image.src === each.src) {
+      if (image.id === each.id) {
         each.favorited = true;
       }
     })
@@ -43,7 +50,7 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src, image, images, 
 
     let obj = {
       'type': 'image',
-      'src': src.original,
+      'id': src.original,
       'favorited': true
     }
 
@@ -55,7 +62,7 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src, image, images, 
   const unfavoriteImage = (image: any) => {
     let temp: any = images.slice();
     temp.map((each: any) => {
-      if (each.src === image.src) {
+      if (each.id === image.id) {
         each.favorited = false;
       }
     })
@@ -63,7 +70,13 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, avg_color, src, image, images, 
 
 
     let temp2: any = favorites.slice();
-    temp2 = temp2.filter((each: any) => each.src !== image.src);
+    temp2 = temp2.filter((each: any) => {
+      if (each.id !== image.id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
     setFavorites(temp2);
   }
 

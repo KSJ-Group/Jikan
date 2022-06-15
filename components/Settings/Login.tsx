@@ -54,7 +54,7 @@ const Login = () => {
 
   const {
     background,
-    changeBackground
+    setBackground
   } = useContext(BackgroundContext)
 
   const responseSuccess = (res) => {
@@ -100,7 +100,7 @@ const Login = () => {
       setMusicVolume(parseInt(userSettings.musicVolume));
       setAlertVolume(parseInt(userSettings.alertVolume));
       setZip(userSettings.zip);
-      changeBackground(userSettings.background);
+      setBackground(userSettings.background);
       if (!settingsChanged) {
         setSettingsChanged(true);
       }

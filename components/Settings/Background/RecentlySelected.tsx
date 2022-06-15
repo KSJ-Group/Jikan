@@ -3,10 +3,10 @@ import styles from '../../../styles/Settings/Background/RecentlySelected/Recentl
 import { BackgroundContext } from '../../BackgroundContext';
 
 const RecentlySelected = () => {
-  const { changeBackground, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
+  const { setBackground, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
 
   const selectVideo = (video: any) => {
-    changeBackground(video.id);
+    setBackground(video.id);
     let obj = {
       'type': 'video',
       'id': video.id,
@@ -22,16 +22,18 @@ const RecentlySelected = () => {
   }
 
   const selectImage = (image: any) => {
-    changeBackground(image.src);
-    let obj = {
-      'type': 'image',
-      'src': image.src,
-      'favorited': image.favorited || false
+    if (image.id) {
+      setBackground(image.id);
+      let obj = {
+        'type': 'image',
+        'id': image.id,
+        'favorited': image.favorited || false
+      }
+      let temp: any = recentlySelected.slice(0, 20);
+      temp = temp.filter(each => each.id !== image.id)
+      temp.unshift(obj);
+      setRecentlySelected(temp);
     }
-    let temp: any = recentlySelected.slice(0, 20);
-    temp = temp.filter(each => each.src !== image.src)
-    temp.unshift(obj);
-    setRecentlySelected(temp);
   }
 
   const deleteFromRecent = (item: any) => {
@@ -40,7 +42,7 @@ const RecentlySelected = () => {
       temp = temp.filter(each => each.id !== item.id)
       setRecentlySelected(temp);
     } else {
-      temp = temp.filter(each => each.src !== item.src);
+      temp = temp.filter(each => each.id !== item.id);
       setRecentlySelected(temp);
     }
   }
@@ -51,19 +53,20 @@ const RecentlySelected = () => {
   }
 
   const favorite = (item: any) => {
-    let obj: any = {
-      'type': 'video',
-      'id': item.id,
-      'thumbnail': item.thumbnail,
-      'live': item.live,
-      'title': item.title,
-      'favorited': true
-    }
-
+    let obj: any = {};
     if (item.type === 'image') {
       obj = {
         'type': 'image',
-        'src': item.original,
+        'id': item.id,
+        'favorited': true
+      }
+    } else {
+      obj = {
+        'type': 'video',
+        'id': item.id,
+        'thumbnail': item.thumbnail,
+        'live': item.live,
+        'title': item.title,
         'favorited': true
       }
     }
@@ -75,9 +78,11 @@ const RecentlySelected = () => {
 
   const unfavorite = (item: any) => {
     let temp: any = favorites.slice();
-    temp = item.type === 'image' ?
-      temp.filter((each: any) => each.src !== item.src) :
-      temp.filter((each: any) => each.id !== item.id);
+    if (item.type === 'image') {
+      temp = temp.filter((each: any) => each.id !== item.id);
+    } else {
+      temp = temp.filter((each: any) => each.id !== item.id);
+    }
     setFavorites(temp);
   }
 
@@ -91,8 +96,8 @@ const RecentlySelected = () => {
             selected.favorited = true;
             exists = true;
           }
-        } else {
-          if (selected.src === favorite.src) {
+        } else if (selected.type === 'image') {
+          if (selected.id === favorite.id) {
             selected.favorited = true;
             exists = true;
           }
@@ -132,13 +137,13 @@ const RecentlySelected = () => {
               )
             } else {
               return (
-                <div className={styles.imageResult} key={each.src}>
+                <div className={styles.imageResult} key={each.id || 'source'}>
                   <div className={styles.imgWrapper}>
                     {!each.favorited ?
                       <span className={styles.inactiveStar} onClick={() => favorite(each)}>☆</span>
                       : <span className={styles.activeStar} onClick={() => unfavorite(each)}>★</span>
                     }
-                    <img className={styles.thumbnail} src={each.src} onClick={() => selectImage(each)} />
+                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} />
                     <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromRecent(each)} />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Image</span>

@@ -6,8 +6,6 @@ import { SettingsContext } from "./SettingsContext";
 import { StylesContext } from "./StylesContext";
 import styled, { css } from "styled-components";
 
-let player = null;
-
 const Controls = styled.div(
   (props) => css`
     z-index: 20;
@@ -124,7 +122,7 @@ const Icon2 = styled.img(
 );
 
 const YouTubePlayer = ({ id }) => {
-  const { changeBackground, background } = useContext(BackgroundContext);
+  const { background } = useContext(BackgroundContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const { musicVolume, setMusicVolume, isMobile } = useContext(SettingsContext);
@@ -136,6 +134,11 @@ const YouTubePlayer = ({ id }) => {
       controls: 0,
     },
   };
+
+  let player;
+  useEffect(() => {
+    player = null;
+  }, []);
 
   useEffect(() => {
     if (background !== "None") {
@@ -174,10 +177,12 @@ const YouTubePlayer = ({ id }) => {
   };
 
   const checkChange = () => {
-    if (player.target.getPlayerState() === 1) {
-      setIsPlaying(true);
-    } else {
-      setIsPlaying(false);
+    if (player) {
+      if (player.target.getPlayerState() === 1) {
+        setIsPlaying(true);
+      } else {
+        setIsPlaying(false);
+      }
     }
   };
 
@@ -224,6 +229,9 @@ const YouTubePlayer = ({ id }) => {
         opts={config}
         onReady={_onReady}
         onStateChange={checkChange}
+        onError={() => {
+          console.log("YouTube player error!");
+        }}
       />
       <Controls
         opacity={opacity}

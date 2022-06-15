@@ -3,7 +3,7 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 export const BackgroundContext = createContext(
   {
     background: '/images/wallpaper-june-2022.jpg',
-    changeBackground: (url: string): void => { },
+    setBackground: (url: string): void => { },
     loaded: true,
     changeLoadStatus: (status: boolean): void => { },
     backgroundType: 'image',
@@ -20,8 +20,8 @@ export const BackgroundContext = createContext(
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
-  const [backgroundType, setType] = useState<string>('image');
   const [background, setBackground] = useState<string>('/images/wallpaper-june-2022.jpg');
+  const [backgroundType, setBackgroundType] = useState<string>('image');
   const [loaded, setLoaded] = useState(true);
   const [isOnlyMusic, setIsOnlyMusic] = useState<boolean>(true);
   const [eventType, setEventType] = useState<string>('live');
@@ -31,12 +31,12 @@ export const BackgroundProvider: React.FC = ({ children }) => {
 
   const store = {
     background: background,
-    changeBackground: (newBackground: string): void => {
+    setBackground: (newBackground: string): void => {
       setBackground(newBackground);
       if (!newBackground.includes('.')) {
-        setType('video');
+        setBackgroundType('video');
       } else {
-        setType('image')
+        setBackgroundType('image')
       }
       localStorage.setItem('background', newBackground);
       localStorage.setItem('backgroundType', backgroundType);
@@ -82,9 +82,8 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     const cachedYoutubeResults = localStorage.getItem('youtubeResults');
     const cachedRecentlySelected = localStorage.getItem('recentlySelected');
     const cachedFavorites = localStorage.getItem('favorites');
-    const cachedImages = localStorage.getItem('images');
     if (cachedBackground) {
-      store.changeBackground(cachedBackground);
+      store.setBackground(cachedBackground);
     }
     if (cachedIsOnlyMusic) {
       store.setIsOnlyMusic(JSON.parse(cachedIsOnlyMusic));
