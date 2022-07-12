@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import Color from './Color';
+import React, { useState } from 'react';
 import Search from './Search';
 import Options from './Options';
 import globalStyles from "../../../styles/Settings/Settings.module.css";

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import type { NextPage } from 'next';
 import { BackgroundContext } from '../../BackgroundContext';
 import styles from '../../../styles/Settings/Background/PhotoTile/PhotoTile.module.css';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import globalStyles from '../../styles/Settings/Settings.module.css';
 import { Form } from "react-bootstrap";
 import { SettingsContext } from '../SettingsContext';

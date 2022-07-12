@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Form } from "react-bootstrap";
 import globalStyles from '../../styles/Settings/Settings.module.css';
 import styles from '../../styles/Settings/Weather/Weather.module.css';

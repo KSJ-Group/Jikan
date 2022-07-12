@@ -7,8 +7,6 @@ const NotFound: NextPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      // router.go(-1)
-      // router.go(1)
       router.push('/')
     }, 5000)
   }, [])

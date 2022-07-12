@@ -93,7 +93,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setOpacity={setOpacity}
                 />
                 <ChangeBackground />
-                {/* <Ambiance /> */}
                 <Reset />
               </div>
             ) : (
@@ -135,7 +134,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setOpacity={setOpacity}
                 />
                 <ChangeBackground />
-                {/* <Ambiance /> */}
                 <Reset />
               </div>
             )}
