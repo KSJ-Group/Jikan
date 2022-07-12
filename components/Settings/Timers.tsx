@@ -122,10 +122,6 @@ const Timers: React.FC<Props> = ({
           />
         </Form.Group>
 
-        {/* <FormGroup className={styles.checkboxWrapper} onChange={(e: any) => autoBreakToggle(e)}>
-          <FormControlLabel className={styles.label} control={<Switch id="autoStartCheck" name="auto" value="Auto" checked={autoStartBreak} />} label="Auto" labelPlacement="top" />
-        </FormGroup> */}
-
         <button onClick={resetTimer} className={styles.resetBtn}>
           Reset
         </button>
