@@ -115,30 +115,23 @@ const ClockFont = styled.div<TimeFont>`
 `
 
 const { Howl, Howler } = require("howler");
-var alert: any;
-
+let alert: any;
 let timer: number;
 
 const pomodoro: NextPage = () => {
+  const { pomodoroTime, shortBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile, started, setStarted } =
+    useContext(SettingsContext);
+  const { selectedFont, size, opacity, color } = useContext(StylesContext);
+
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
-
-  const { pomodoroTime, shortBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile } =
-    useContext(SettingsContext);
-
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
   const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
   const [currentTime, setCurrentTime] = useState<any>("");
-
-  const [started, setStarted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [targetMode, setTargetMode] = useState<string>("");
-
   const [timerModal, setShowTimerModal] = useState<boolean>(false);
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
-
-  const { selectedFont, size, opacity, color } = useContext(StylesContext);
-
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
 
@@ -146,7 +139,7 @@ const pomodoro: NextPage = () => {
     window.addEventListener('beforeunload', function (e) {
       if (started) {
         e.preventDefault();
-        e.returnValue = '';
+        e.returnValue = true;
       }
     })
   }, [started])
@@ -169,13 +162,16 @@ const pomodoro: NextPage = () => {
 
   useEffect(() => {
     setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
-    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
     if (!isMobile) {
       if (Notification.permission !== "denied") {
         Notification.requestPermission();
       }
     }
-  }, [pomodoroTime, shortBreakTime]);
+  }, [pomodoroTime]);
+
+  useEffect(() => {
+    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
+  }, [shortBreakTime])
 
   useEffect(() => {
     setStarted(false);
@@ -199,7 +195,6 @@ const pomodoro: NextPage = () => {
       document.getElementById("link4")?.classList.remove("activePomLink");
       document.getElementById("link6")?.classList.remove("activePomLink");
     }
-
   }, [pomodoro, shortBreak]);
 
   const showNotification = () => {
