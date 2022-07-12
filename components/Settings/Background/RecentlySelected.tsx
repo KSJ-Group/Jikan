@@ -127,8 +127,8 @@ const RecentlySelected = () => {
                   <div className={styles.imgWrapper}>
                     {each.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                     {!each.favorited ? <span className={styles.inactiveStar} onClick={() => favorite(each)}>☆</span> : <span className={styles.activeStar} onClick={() => unfavorite(each)}>★</span>}
-                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromRecent(each)} />
-                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each)} />
+                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromRecent(each)} alt='close' />
+                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each)} alt='thumbnail' />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Video</span>
                     </div>
@@ -143,8 +143,8 @@ const RecentlySelected = () => {
                       <span className={styles.inactiveStar} onClick={() => favorite(each)}>☆</span>
                       : <span className={styles.activeStar} onClick={() => unfavorite(each)}>★</span>
                     }
-                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} />
-                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromRecent(each)} />
+                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} alt='thumbnail' />
+                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromRecent(each)} alt='close' />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Image</span>
                     </div>

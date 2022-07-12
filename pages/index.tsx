@@ -9,7 +9,6 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Jikan | Clock</title>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
       </Head>
       <Clock />
     </div>

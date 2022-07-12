@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import styles from "../../styles/Settings/Timers/Timers.module.css";
 import globalStyles from "../../styles/Settings/Settings.module.css";
 import {
@@ -7,9 +7,6 @@ import {
   millisToMinutesAndSeconds,
 } from "../../helper/convertTime";
 import { SettingsContext } from "../SettingsContext";
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 
 interface Props {
   pomodoroTime: number;
@@ -24,10 +21,8 @@ interface Props {
 const Timers: React.FC<Props> = ({
   pomodoroTime,
   shortBreakTime,
-  longBreakTime,
   setPomodoroTime,
   setShortBreakTime,
-  setLongBreakTime,
   setShowSettings,
 }) => {
   const [pomStr, setPomStr] = useState<string>(
@@ -108,11 +103,7 @@ const Timers: React.FC<Props> = ({
         </Form.Group>
 
         <Form.Group controlId="formShortBreak" className={styles.shortbreak}>
-          <Form.Label className={styles.timerLabel}>
-            <span>Break</span>
-
-          </Form.Label>
-
+          <Form.Label className={styles.timerLabel}>Break</Form.Label>
           <Form.Select value={currentShort} onChange={(e) => shortChange(e)}>
             {shortMinutes.map((minute, i) => (
               <option key={minute + 'break' + (Math.random() * (1249234 - 1) + 1).toString()} value={minute}>
@@ -122,9 +113,18 @@ const Timers: React.FC<Props> = ({
           </Form.Select>
         </Form.Group>
 
-        <FormGroup className={styles.checkboxWrapper} onChange={(e: any) => autoBreakToggle(e)}>
+        <Form.Group controlId="autoBreakToggle" className={styles.checkboxWrapper} >
+          <Form.Label className={styles.label}>Auto</Form.Label>
+          <Form.Check
+            type="switch"
+            checked={autoStartBreak}
+            onChange={(e: any) => autoBreakToggle(e)}
+          />
+        </Form.Group>
+
+        {/* <FormGroup className={styles.checkboxWrapper} onChange={(e: any) => autoBreakToggle(e)}>
           <FormControlLabel className={styles.label} control={<Switch id="autoStartCheck" name="auto" value="Auto" checked={autoStartBreak} />} label="Auto" labelPlacement="top" />
-        </FormGroup>
+        </FormGroup> */}
 
         <button onClick={resetTimer} className={styles.resetBtn}>
           Reset

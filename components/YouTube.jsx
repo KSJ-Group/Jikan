@@ -240,7 +240,7 @@ const YouTubePlayer = ({ id }) => {
         onMouseLeave={hideSlider}
         isMobile={isMobile}
       >
-        <button className={styles.controlBtn}>
+        <div className={styles.controlBtn}>
           <div id="sliderDiv">
             <input
               id="volumeSlider"
@@ -258,6 +258,7 @@ const YouTubePlayer = ({ id }) => {
               onClick={muteUnmute}
               src="/images/unmute.png"
               isMobile={isMobile}
+              alt="unmute"
             />
           ) : (
             <Icon
@@ -265,16 +266,17 @@ const YouTubePlayer = ({ id }) => {
               onClick={muteUnmute}
               src="/images/mute.png"
               isMobile={isMobile}
+              alt="mute"
             />
           )}
-        </button>
-        <button className={styles.controlBtn} onClick={playPause}>
+        </div>
+        <div className={styles.controlBtn} onClick={playPause}>
           {isPlaying ? (
-            <Icon2 isMobile={isMobile} src="/images/pause.png" />
+            <Icon2 isMobile={isMobile} src="/images/pause.png" alt="pause" />
           ) : (
-            <Icon2 isMobile={isMobile} src="/images/play.png" />
+            <Icon2 isMobile={isMobile} src="/images/play.png" alt="play" />
           )}
-        </button>
+        </div>
       </Controls>
     </div>
   );

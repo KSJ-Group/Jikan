@@ -286,7 +286,7 @@ const YouTubeSearch = () => {
                             <div className={styles.imgWrapper}>
                                 {video.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
                                 {!video.favorited ? <span className={styles.inactiveStar} onClick={() => favoriteVideo(video)}>☆</span> : <span className={styles.activeStar} onClick={() => unfavoriteVideo(video)}>★</span>}
-                                <img className={styles.thumbnail} src={video.thumbnail} onClick={() => selectVideo(video)} />
+                                <img className={styles.thumbnail} src={video.thumbnail} onClick={() => selectVideo(video)} alt='thumbnail' />
                             </div>
                             <div className={styles.textWrapper} onClick={() => selectVideo(video)}>
                                 <span className={styles.title}>{video.title}</span>

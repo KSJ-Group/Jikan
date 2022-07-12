@@ -58,8 +58,8 @@ const Favorites = () => {
                 <div className={styles.videoResult} key={each.id + 'favorite'}>
                   <div className={styles.imgWrapper}>
                     {each.live === 'live' && <span className={styles.liveIndicator}>◉ LIVE</span>}
-                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} />
-                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each)} />
+                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} alt='close' />
+                    <img className={styles.thumbnail} src={each.thumbnail} onClick={() => selectVideo(each)} alt='thumbnail' />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Video</span>
                     </div>
@@ -70,8 +70,8 @@ const Favorites = () => {
               return (
                 <div className={styles.imageResult} key={each.id}>
                   <div className={styles.imgWrapper}>
-                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} />
-                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} />
+                    <img className={styles.thumbnail} src={each.id} onClick={() => selectImage(each)} alt='thumbnail' />
+                    <img className={styles.closeBtn} src="http://cdn.onlinewebfonts.com/svg/img_267727.png" onClick={() => deleteFromFavorites(each)} alt='close' />
                     <div className={styles.typeOverlay}>
                       <span className={styles.text}>Image</span>
                     </div>

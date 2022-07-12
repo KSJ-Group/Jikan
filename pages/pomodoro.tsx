@@ -392,7 +392,6 @@ const pomodoro: NextPage = () => {
           ) : (
             <title>Jikan | Pomodoro </title>
           )}
-          <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         </Head>
         <div className={styles.linksDiv}>
           <div

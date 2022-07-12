@@ -35,8 +35,7 @@
 
 .checkboxWrapper {
   padding: 0;
-  margin: 0;
-  width: 80px;
+  margin: 0 5px;
 }
 
 .checkboxWrapper .label {
