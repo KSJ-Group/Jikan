@@ -60,7 +60,17 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     },
     youtubeResults: youtubeResults,
     setYoutubeResults: (results: any): void => {
-      setYoutubeResults(results);
+      console.log('Results:', results);
+      const uniqueIds = new Set();
+      const unique = results.filter(element => {
+        const isDuplicate = uniqueIds.has(element.id);
+        if (!isDuplicate) {
+          uniqueIds.add(element.id);
+          return true;
+        }
+        return false;
+      });
+      setYoutubeResults(unique);
       localStorage.setItem('youtubeResults', JSON.stringify(results));
     },
     recentlySelected: recentlySelected,

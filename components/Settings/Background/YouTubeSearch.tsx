@@ -22,13 +22,14 @@ const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
-    const isInitialMount = useRef<boolean>(true);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState<Number>(0);
     const [nextPageToken, setNextPageToken] = useState<string>('');
+    const [isError, setIsError] = useState<boolean>(false);
+    const isInitialMount = useRef<boolean>(true);
+
     const settings: any = document.getElementById('settings-body');
     const { setBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
     const { isClock } = useContext(SettingsContext);
-    const [isError, setIsError] = useState<boolean>(false);
 
     const scroll = () => {
         if (settings) {
@@ -72,14 +73,9 @@ const YouTubeSearch = () => {
 
     const fetchVideos = (searchTerms: string, eventType: string) => {
         if (isOnlyMusic && !searchTerms.includes("youtube.com")) {
-            if (!searchTerms.includes("music")) {
-                searchTerms = searchTerms + " music";
-            }
+            if (!searchTerms.includes("music")) searchTerms = searchTerms + " music";
         }
-
-        if (searchTerms.includes("youtube.com")) {
-            eventType = "completed";
-        }
+        if (searchTerms.includes("youtube.com")) eventType = "completed";
 
         axios
             .get(`/api/videos?terms=${searchTerms}&eventType=${eventType}`)
@@ -230,7 +226,6 @@ const YouTubeSearch = () => {
             }
         })
         setYoutubeResults(temp);
-
 
         let temp2: any = favorites.slice();
         temp2 = temp2.filter((each: any) => each.id !== video.id);
