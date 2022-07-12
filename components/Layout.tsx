@@ -9,7 +9,6 @@ import styles from '../styles/Main/WeatherModule/WeatherModule.module.css';
 import getHandler from '../pages/api/weather';
 import moment from 'moment';
 import styled, { css } from "styled-components";
-import Rain from './Settings/Rain';
 
 interface Font {
   font: any;
@@ -129,7 +128,6 @@ const Layout: React.FC = ({ children }) => {
                 <img className={styles.refreshIcon} src='/images/refresh.png' alt='refresh icon' />
               </div>
             </WeatherContainer> : null}
-          <Rain />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>

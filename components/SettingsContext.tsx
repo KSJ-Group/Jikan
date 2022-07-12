@@ -47,9 +47,9 @@ export const SettingsContext = createContext({
     icon: '',
   },
   setCurrentWeather: (weather: any) => { },
-  currentAmbiance: "none",
-  setCurrentAmbiance: (currentAmbiance: string) => { },
   isMobile: false,
+  started: false,
+  setStarted: (started: boolean) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -84,8 +84,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
     weather: '',
     icon: '',
   });
-  const [currentAmbiance, setCurrentAmbiance] = useState<string>("none");
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [started, setStarted] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get("/api/getAlarms").then((data) => {
@@ -176,12 +176,11 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setCurrentWeather: (weather: any) => {
       setCurrentWeather(weather);
     },
-    currentAmbiance: currentAmbiance,
-    setCurrentAmbiance: (currentAmbiance: string) => {
-      setCurrentAmbiance(currentAmbiance);
-      localStorage.setItem("currentAmbiance", currentAmbiance);
-    },
-    isMobile: isMobile
+    isMobile: isMobile,
+    started: started,
+    setStarted: (started: boolean) => {
+      setStarted(started);
+    }
   };
 
   useEffect((): any => {
@@ -197,7 +196,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     const cachedMusicVol = localStorage.getItem("musicVolume");
     const cachedAlertVol = localStorage.getItem("alertVolume");
     const cachedZip = localStorage.getItem("zip");
-    const cachedAmbiance = localStorage.getItem("currentAmbiance");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
     }
@@ -233,9 +231,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedZip) {
       store.setZip(cachedZip);
-    }
-    if (cachedAmbiance) {
-      store.setCurrentAmbiance(cachedAmbiance);
     }
   }, []);
 
