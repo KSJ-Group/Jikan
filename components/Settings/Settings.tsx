@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Offcanvas } from "react-bootstrap";
 import { SettingsContext } from "../SettingsContext";
 import { StylesContext } from "../StylesContext";
@@ -13,7 +13,6 @@ import ChangeBackground from "./Background/ChangeBackground";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
 import Reset from "./Reset";
-import Ambiance from "./Ambiance";
 
 interface Props {
   showSettings: boolean;
@@ -38,8 +37,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setPomodoroTime,
     shortBreakTime,
     setShortBreakTime,
-    longBreakTime,
-    setLongBreakTime,
     showSeconds,
     setShowSeconds,
     is24Hour,
@@ -116,8 +113,6 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                   setPomodoroTime={setPomodoroTime}
                   shortBreakTime={shortBreakTime}
                   setShortBreakTime={setShortBreakTime}
-                  longBreakTime={longBreakTime}
-                  setLongBreakTime={setLongBreakTime}
                   setShowSettings={setShowSettings}
                 />
                 <Font

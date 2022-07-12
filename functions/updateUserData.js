@@ -24,7 +24,6 @@ exports.handler = async function (event, context) {
         blur: event.queryStringParameters.blur,
         pomodoroTime: event.queryStringParameters.pomodoroTime,
         shortBreakTime: event.queryStringParameters.shortBreakTime,
-        longBreakTime: event.queryStringParameters.longBreakTime,
         autoStartBreak: event.queryStringParameters.autoStartBreak,
         showSeconds: event.queryStringParameters.showSeconds,
         is24Hour: event.queryStringParameters.is24Hour,

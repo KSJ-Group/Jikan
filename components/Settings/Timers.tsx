@@ -11,10 +11,8 @@ import { SettingsContext } from "../SettingsContext";
 interface Props {
   pomodoroTime: number;
   shortBreakTime: number;
-  longBreakTime: number;
   setPomodoroTime: Function;
   setShortBreakTime: Function;
-  setLongBreakTime: Function;
   setShowSettings: Function;
 }
 

@@ -1,7 +1,6 @@
 // type Timers {
 //   pomodoroTime: Number
 //   shortBreakTime: Number
-//   longBreakTime: Number
 // }
 
 // type Settings {

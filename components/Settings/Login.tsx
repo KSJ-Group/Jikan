@@ -30,7 +30,6 @@ const Login = () => {
     isLoggedIn,
     pomodoroTime,
     shortBreakTime,
-    longBreakTime,
     autoStartBreak,
     showSeconds,
     is24Hour,
@@ -41,7 +40,6 @@ const Login = () => {
     setIsLoggedIn,
     setPomodoroTime,
     setShortBreakTime,
-    setLongBreakTime,
     setAutoStartBreak,
     setShowSeconds,
     setIs24Hour,
@@ -92,7 +90,6 @@ const Login = () => {
       setBlur(JSON.parse(userSettings.blur));
       setPomodoroTime(parseInt(userSettings.pomodoroTime));
       setShortBreakTime(parseInt(userSettings.shortBreakTime));
-      setLongBreakTime(parseInt(userSettings.longBreakTime));
       setAutoStartBreak(JSON.parse(userSettings.autoStartBreak));
       setShowSeconds(JSON.parse(userSettings.showSeconds));
       setIs24Hour(JSON.parse(userSettings.is24Hour));
@@ -118,7 +115,6 @@ const Login = () => {
         JSON.stringify(blur),
         pomodoroTime.toString(),
         shortBreakTime.toString(),
-        longBreakTime.toString(),
         JSON.stringify(autoStartBreak),
         JSON.stringify(showSeconds),
         JSON.stringify(is24Hour),
@@ -136,7 +132,6 @@ const Login = () => {
     blur,
     pomodoroTime,
     shortBreakTime,
-    longBreakTime,
     autoStartBreak,
     showSeconds,
     is24Hour,
@@ -169,7 +164,6 @@ const Login = () => {
               JSON.stringify(blur),
               pomodoroTime.toString(),
               shortBreakTime.toString(),
-              longBreakTime.toString(),
               JSON.stringify(autoStartBreak),
               JSON.stringify(showSeconds),
               JSON.stringify(is24Hour),

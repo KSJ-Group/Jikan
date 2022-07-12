@@ -10,8 +10,6 @@ export const SettingsContext = createContext({
   setPomodoroTime: (time: any) => { },
   shortBreakTime: 300000,
   setShortBreakTime: (time: any) => { },
-  longBreakTime: 900000,
-  setLongBreakTime: (time: any) => { },
   autoStartBreak: true,
   setAutoStartBreak: (auto: boolean) => { },
   showSeconds: false,
@@ -59,7 +57,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [pomodoroTime, setPomodoroTime] = useState<number>(1500000);
   const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
-  const [longBreakTime, setLongBreakTime] = useState<number>(900000);
   const [autoStartBreak, setAutoStartBreak] = useState<boolean>(true);
   const [showSeconds, setShowSeconds] = useState<boolean>(false);
   const [is24Hour, setIs24Hour] = useState<boolean>(false);
@@ -131,11 +128,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
       setShortBreakTime(time);
       localStorage.setItem("short", time.toString());
     },
-    longBreakTime: longBreakTime,
-    setLongBreakTime: (time: number): void => {
-      setLongBreakTime(time);
-      localStorage.setItem("long", time.toString());
-    },
     autoStartBreak: autoStartBreak,
     setAutoStartBreak: (auto: boolean): void => {
       setAutoStartBreak(auto);
@@ -197,7 +189,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     const cachedLoggedIn = localStorage.getItem("isLoggedIn");
     const cachedPom = localStorage.getItem("pom");
     const cachedShort = localStorage.getItem("short");
-    const cachedLong = localStorage.getItem("long");
     const cachedAuto = localStorage.getItem("auto");
     const cachedSeconds = localStorage.getItem("showSeconds");
     const cached24 = localStorage.getItem("24");
@@ -218,9 +209,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
     if (cachedShort) {
       store.setShortBreakTime(parseInt(cachedShort));
-    }
-    if (cachedLong) {
-      store.setLongBreakTime(parseInt(cachedLong));
     }
     if (cachedAuto) {
       store.setAutoStartBreak(JSON.parse(cachedAuto));

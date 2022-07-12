@@ -27,7 +27,6 @@ const resolvers = {
           timers: {
             pomodoroTime: 150000,
             shortBreakTime: 300000,
-            longBreakTime: 900000,
           },
           autoStartBreak: false,
           alertSound: "alarm.wav",
