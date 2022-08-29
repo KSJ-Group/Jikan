@@ -87,7 +87,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [started, setStarted] = useState<boolean>(false);
 
-  useEffect(() => {
+  const getAlarms = () => {
     axios.get("/api/getAlarms").then((data) => {
       if (data.data.length) {
         let alerts = data.data.filter((name) => name.includes(".mp3"));
@@ -95,7 +95,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
         localStorage.setItem("allAlarms", JSON.stringify(alerts));
       }
     });
+  }
 
+  const checkMobile = () => {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
@@ -105,8 +107,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     } else {
       setIsMobile(false);
     }
-  }, []);
-
+  }
   const store = {
     isClock: isClock,
     setIsClock: (isClock: boolean): void => {
@@ -232,6 +233,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     if (cachedZip) {
       store.setZip(cachedZip);
     }
+
+    getAlarms();
+    checkMobile();
   }, []);
 
   return (
