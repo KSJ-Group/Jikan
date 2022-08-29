@@ -5,6 +5,7 @@ import { SettingsContext } from './SettingsContext';
 import { StylesContext } from './StylesContext';
 import Head from "next/head";
 import styled from "styled-components";
+import Draggable from 'react-draggable';
 
 interface Props {
   size: string;
@@ -17,6 +18,13 @@ interface Font {
   size: string;
 }
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 60px);
+  width: 100vw;
+`
 const ClockDiv = styled.div<Props>`
   padding: 1vw 3vw;
   z-index: 2;
@@ -25,7 +33,7 @@ const ClockDiv = styled.div<Props>`
   align-items: center;
   border-radius: 20px;
   background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
-  cursor: default;
+  cursor: move;
 
   @media screen and (max-width: 450px) {
     margin-top: -300px;
@@ -56,17 +64,31 @@ let interval: number;
 
 const Clock: React.FC = () => {
   const [time, setTime] = useState<string>('');
-
   const [is24andSeconds, a] = useState<boolean>();
   const [is24, b] = useState<boolean>();
   const [is12andSeconds, c] = useState<boolean>();
   const [is12, d] = useState<boolean>();
-
+  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
   const { showSeconds, is24Hour } = useContext(SettingsContext);
   const { selectedFont, size, opacity, color } = useContext(StylesContext);
 
+  const resetPosition = () => {
+    setPos({ x: 0, y: 0 });
+  }
+
+  const onControlledDrag = (e, position) => {
+    const { x, y } = position;
+    setPos({ x, y });
+  };
+
+  useEffect(() => {
+    resetPosition();
+  }, [size]);
+
   useEffect(() => {
     setTime(moment().format('h:mm A'));
+    window.addEventListener('resize', resetPosition);
+    return () => window.removeEventListener('resize', resetPosition);
   }, [])
 
   useEffect(() => {
@@ -133,18 +155,20 @@ const Clock: React.FC = () => {
   }
 
   return (
-    <>
+    <Container>
       <Head>
         {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
       </Head>
-      <ClockDiv size={size} opacity={opacity} color={color}>
-        {is24andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeA}>{time}</ClockFont> : null}
-        {is24 ? <ClockFont size={size} font={selectedFont} className={styles.timeB}>{time}</ClockFont> : null}
-        {is12andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeC}>{time}</ClockFont> : null}
-        {is12 ? <ClockFont size={size} font={selectedFont} className={styles.timeD}>{time}</ClockFont> : null}
-      </ClockDiv>
-    </>
+      <Draggable bounds="body" position={pos} onDrag={onControlledDrag}>
+        <ClockDiv size={size} opacity={opacity} color={color}>
+          {is24andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeA}>{time}</ClockFont> : null}
+          {is24 ? <ClockFont size={size} font={selectedFont} className={styles.timeB}>{time}</ClockFont> : null}
+          {is12andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeC}>{time}</ClockFont> : null}
+          {is12 ? <ClockFont size={size} font={selectedFont} className={styles.timeD}>{time}</ClockFont> : null}
+        </ClockDiv>
+      </Draggable>
+    </Container>
   );
 };
 
