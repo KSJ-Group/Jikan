@@ -33,7 +33,10 @@ const ClockDiv = styled.div<Props>`
   align-items: center;
   border-radius: 20px;
   background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
-  cursor: move;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
 
   @media screen and (max-width: 450px) {
     margin-top: -300px;
@@ -68,9 +71,9 @@ const Clock: React.FC = () => {
   const [is24, b] = useState<boolean>();
   const [is12andSeconds, c] = useState<boolean>();
   const [is12, d] = useState<boolean>();
-  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
   const { showSeconds, is24Hour } = useContext(SettingsContext);
   const { selectedFont, size, opacity, color } = useContext(StylesContext);
+  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
 
   const resetPosition = () => {
     setPos({ x: 0, y: 0 });
@@ -160,7 +163,7 @@ const Clock: React.FC = () => {
         {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
       </Head>
-      <Draggable bounds="body" position={pos} onDrag={onControlledDrag}>
+      <Draggable bounds="parent" position={pos} onDrag={onControlledDrag}>
         <ClockDiv size={size} opacity={opacity} color={color}>
           {is24andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeA}>{time}</ClockFont> : null}
           {is24 ? <ClockFont size={size} font={selectedFont} className={styles.timeB}>{time}</ClockFont> : null}
