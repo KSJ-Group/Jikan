@@ -18,13 +18,6 @@ interface Font {
   size: string;
 }
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100% - 60px);
-  width: 100vw;
-`
 const ClockDiv = styled.div<Props>`
   padding: 1vw 3vw;
   z-index: 2;
@@ -72,8 +65,7 @@ const Clock: React.FC = () => {
   const [is12andSeconds, c] = useState<boolean>();
   const [is12, d] = useState<boolean>();
   const { showSeconds, is24Hour } = useContext(SettingsContext);
-  const { selectedFont, size, opacity, color } = useContext(StylesContext);
-  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
+  const { selectedFont, size, opacity, color, pos, setPos } = useContext(StylesContext);
 
   const resetPosition = () => {
     setPos({ x: 0, y: 0 });
@@ -158,7 +150,7 @@ const Clock: React.FC = () => {
   }
 
   return (
-    <Container>
+    <>
       <Head>
         {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
@@ -171,7 +163,7 @@ const Clock: React.FC = () => {
           {is12 ? <ClockFont size={size} font={selectedFont} className={styles.timeD}>{time}</ClockFont> : null}
         </ClockDiv>
       </Draggable>
-    </Container>
+    </>
   );
 };
 
