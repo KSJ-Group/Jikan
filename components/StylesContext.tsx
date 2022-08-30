@@ -15,7 +15,9 @@ export const StylesContext = createContext(
     color: '0,0,0',
     setColor: (color: string) => { },
     hex: '#000000',
-    setHex: (hex: string) => { }
+    setHex: (hex: string) => { },
+    pos: { x: 0, y: 0 },
+    setPos: (pos: any) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
@@ -26,6 +28,7 @@ export const StylesProvider: React.FC = ({ children }) => {
   const [opacity, setOpacity] = useState<number>(30);
   const [color, setColor] = useState<string>('0,0,0');
   const [hex, setHex] = useState<string>('#000000');
+  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
 
   const store = {
     selectedFont: selectedFont,
@@ -62,6 +65,10 @@ export const StylesProvider: React.FC = ({ children }) => {
     setHex: (hex: string): void => {
       setHex(hex);
       localStorage.setItem('hex', hex);
+    },
+    pos: pos,
+    setPos: (pos: any): void => {
+      setPos(pos);
     }
   };
 

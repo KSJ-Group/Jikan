@@ -127,7 +127,7 @@ let timer: number;
 const pomodoro: NextPage = () => {
   const { pomodoroTime, shortBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile, started, setStarted } =
     useContext(SettingsContext);
-  const { selectedFont, size, opacity, color } = useContext(StylesContext);
+  const { selectedFont, size, opacity, color, pos, setPos } = useContext(StylesContext);
 
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
@@ -140,7 +140,6 @@ const pomodoro: NextPage = () => {
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
-  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
 
   const resetPosition = () => {
     setPos({ x: 0, y: 0 });
