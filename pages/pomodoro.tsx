@@ -11,6 +11,7 @@ import TimerDoneModal from "../components/TimerModal";
 import { SettingsContext } from "../components/SettingsContext";
 import { StylesContext } from "../components/StylesContext";
 import styled from "styled-components";
+import Draggable from 'react-draggable';
 
 interface Font {
   font: any;
@@ -53,6 +54,11 @@ const Container = styled.div<ContainerProps>`
   background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   overflow: hidden;
   border-radius: 20px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 
   @media screen and (max-width: 450px) {
     padding: 20px;
@@ -134,14 +140,36 @@ const pomodoro: NextPage = () => {
   const [alarmOn, setAlarmOn] = useState<boolean>(false);
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
+  const [pos, setPos] = useState<any>({ x: 0, y: 0 })
+
+  const resetPosition = () => {
+    setPos({ x: 0, y: 0 });
+  }
+
+  const onControlledDrag = (e, position) => {
+    const { x, y } = position;
+    setPos({ x, y });
+  };
 
   useEffect(() => {
-    window.addEventListener('beforeunload', function (e) {
-      if (started) {
-        e.preventDefault();
-        e.returnValue = true;
-      }
-    })
+    resetPosition();
+  }, [size]);
+
+  useEffect(() => {
+    window.addEventListener('resize', resetPosition);
+    return () => window.removeEventListener('resize', resetPosition);
+  }, [])
+
+  const beforeUnload = (e) => {
+    if (started) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', beforeUnload);
+    return () => window.removeEventListener('beforeunload', beforeUnload);
   }, [started])
 
   useEffect(() => {
@@ -380,78 +408,80 @@ const pomodoro: NextPage = () => {
 
   return (
     <div className={styles.pomodoro}>
-      <Container size={size} isMobile={isMobile} opacity={opacity} color={color}>
-        <Head>
-          {currentTime && started ? (
-            <title>Jikan | {currentTime}</title>
-          ) : (
-            <title>Jikan | Pomodoro </title>
-          )}
-        </Head>
-        <div className={styles.linksDiv}>
-          <div
-            className={styles.link}
-            id="link4"
-            onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
-          >
-            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Pomodoro</OtherFont>
-          </div>
-          <div
-            className={styles.link}
-            id="link5"
-            onClick={(e: any): void => linkClickHandler('Short Break')}
-          >
-            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Break</OtherFont>
-          </div>
-        </div>
-        <div className={styles.timerDiv}>
-          <OtherFont isMobile={isMobile} size={size} font={selectedFont}>
-            {pomodoro ? (
-              <ClockFont isMobile={isMobile} size={size}>{pomodoroTime2}</ClockFont>
-            ) : null}
-            {shortBreak ? (
-              <ClockFont isMobile={isMobile} size={size} id="shortBreak">
-                {shortBreakTime2}
-              </ClockFont>
-            ) : null}
-          </OtherFont>
-        </div>
-        <div className={styles.btnDiv}>
-          {!started ? (
+      <Draggable bounds="body" position={pos} onDrag={onControlledDrag}>
+        <Container size={size} isMobile={isMobile} opacity={opacity} color={color}>
+          <Head>
+            {currentTime && started ? (
+              <title>Jikan | {currentTime}</title>
+            ) : (
+              <title>Jikan | Pomodoro </title>
+            )}
+          </Head>
+          <div className={styles.linksDiv}>
             <div
-              className={styles.startBtn}
-              onClick={() => startClickHandler()}
+              className={styles.link}
+              id="link4"
+              onClick={(e: any): void => linkClickHandler(e.target.innerHTML)}
             >
-              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Start</OtherFont>
+              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Pomodoro</OtherFont>
             </div>
-          ) : (
-            <div className={styles.startBtn} onClick={() => stopClickHandler()}>
-              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Stop</OtherFont>
+            <div
+              className={styles.link}
+              id="link5"
+              onClick={(e: any): void => linkClickHandler('Short Break')}
+            >
+              <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Break</OtherFont>
             </div>
-          )}
-        </div>
-        {
-          showModal ? (
-            <AreYouSureModal
-              show={showModal}
-              handleClose={handleClose}
-              switchToPom={switchToPom}
-              switchToShort={switchToShort}
-              targetMode={targetMode}
-            />
-          ) : null
-        }
-        {
-          timerModal ? (
-            <TimerDoneModal
-              show={timerModal}
-              breakFromModal={breakFromModal}
-              handleClose={alarmHandler}
-              whichDone={pomodoro ? 'pomodoro' : 'break'}
-            />
-          ) : null
-        }
-      </Container >
+          </div>
+          <div className={styles.timerDiv}>
+            <OtherFont isMobile={isMobile} size={size} font={selectedFont}>
+              {pomodoro ? (
+                <ClockFont isMobile={isMobile} size={size}>{pomodoroTime2}</ClockFont>
+              ) : null}
+              {shortBreak ? (
+                <ClockFont isMobile={isMobile} size={size} id="shortBreak">
+                  {shortBreakTime2}
+                </ClockFont>
+              ) : null}
+            </OtherFont>
+          </div>
+          <div className={styles.btnDiv}>
+            {!started ? (
+              <div
+                className={styles.startBtn}
+                onClick={() => startClickHandler()}
+              >
+                <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Start</OtherFont>
+              </div>
+            ) : (
+              <div className={styles.startBtn} onClick={() => stopClickHandler()}>
+                <OtherFont isMobile={isMobile} size={size} font={selectedFont}>Stop</OtherFont>
+              </div>
+            )}
+          </div>
+          {
+            showModal ? (
+              <AreYouSureModal
+                show={showModal}
+                handleClose={handleClose}
+                switchToPom={switchToPom}
+                switchToShort={switchToShort}
+                targetMode={targetMode}
+              />
+            ) : null
+          }
+          {
+            timerModal ? (
+              <TimerDoneModal
+                show={timerModal}
+                breakFromModal={breakFromModal}
+                handleClose={alarmHandler}
+                whichDone={pomodoro ? 'pomodoro' : 'break'}
+              />
+            ) : null
+          }
+        </Container >
+      </Draggable>
     </div >
   );
 };
