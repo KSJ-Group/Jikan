@@ -18,7 +18,7 @@ interface Props {
 
 const Nav = styled.nav<Props>`
   height: 60px;
-  z-index: 2;
+  z-index: 10;
   position: absolute;
   top: 0;
   display: flex;
