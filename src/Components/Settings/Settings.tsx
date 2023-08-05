@@ -36,8 +36,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     isClock,
     pomodoroTime,
     setPomodoroTime,
-    shortBreakTime,
-    setShortBreakTime,
+    breakTime,
+    setBreakTime,
     showSeconds,
     setShowSeconds,
     is24Hour,
@@ -112,8 +112,8 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
                 <Timers
                   pomodoroTime={pomodoroTime}
                   setPomodoroTime={setPomodoroTime}
-                  shortBreakTime={shortBreakTime}
-                  setShortBreakTime={setShortBreakTime}
+                  breakTime={breakTime}
+                  setBreakTime={setBreakTime}
                   setShowSettings={setShowSettings}
                 />
                 <Font

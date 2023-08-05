@@ -5,29 +5,29 @@ import globalStyles from "../../styles/Settings/Settings.module.css";
 import {
   minutesAndSecondsToMillis,
   millisToMinutesAndSeconds,
-} from "../../../helper/convertTime";
+} from "../../helper/convertTime";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
 interface Props {
   pomodoroTime: number;
-  shortBreakTime: number;
+  breakTime: number;
   setPomodoroTime: Function;
-  setShortBreakTime: Function;
+  setBreakTime: Function;
   setShowSettings: Function;
 }
 
 const Timers: React.FC<Props> = ({
   pomodoroTime,
-  shortBreakTime,
+  breakTime,
   setPomodoroTime,
-  setShortBreakTime,
+  setBreakTime,
   setShowSettings,
 }) => {
   const [pomStr, setPomStr] = useState<string>(
     millisToMinutesAndSeconds(pomodoroTime)
   );
   const [shortStr, setShortStr] = useState<string>(
-    millisToMinutesAndSeconds(shortBreakTime)
+    millisToMinutesAndSeconds(breakTime)
   );
   const [currentPom, setCurrentPom] = useState<number>(25);
   const [currentShort, setCurrentShort] = useState<number>(5);
@@ -44,7 +44,7 @@ const Timers: React.FC<Props> = ({
       }
     }
     setCurrentPom(parseInt(millisToMinutesAndSeconds(pomodoroTime)));
-    setCurrentShort(parseInt(millisToMinutesAndSeconds(shortBreakTime)));
+    setCurrentShort(parseInt(millisToMinutesAndSeconds(breakTime)));
   }, []);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Timers: React.FC<Props> = ({
     if (parseInt(e.target.value) > 0) {
       e.preventDefault();
       let toMs = minutesAndSecondsToMillis(e.target.value);
-      setShortBreakTime(toMs);
+      setBreakTime(toMs);
       setCurrentShort(parseInt(e.target.value));
     }
   };
@@ -77,7 +77,7 @@ const Timers: React.FC<Props> = ({
   const resetTimer = (e: any) => {
     setPomodoroTime(1500000);
     setPomStr("25");
-    setShortBreakTime(300000);
+    setBreakTime(300000);
     setShortStr("5");
     setShowSettings(false);
   };
