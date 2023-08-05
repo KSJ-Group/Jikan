@@ -1,11 +1,18 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import axios from "axios";
+import firebase from '../firebase';
+
+interface Weather {
+  city: string
+  tempC: string
+  tempF: string
+  weather: string
+  icon: string
+}
 
 export const SettingsContext = createContext({
   isClock: true,
   setIsClock: (isClock: boolean) => { },
-  isLoggedIn: false,
-  setIsLoggedIn: (isLoggedIn: boolean) => { },
   pomodoroTime: 1500000,
   setPomodoroTime: (time: any) => { },
   shortBreakTime: 300000,
@@ -49,12 +56,13 @@ export const SettingsContext = createContext({
   setCurrentWeather: (weather: any) => { },
   isMobile: false,
   started: false,
-  setStarted: (started: boolean) => { }
+  setStarted: (started: boolean) => { },
+  user: {},
+  setUser: (user: any) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
   const [isClock, setIsClock] = useState<boolean>(true);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [pomodoroTime, setPomodoroTime] = useState<number>(1500000);
   const [shortBreakTime, setShortBreakTime] = useState<number>(300000);
   const [autoStartBreak, setAutoStartBreak] = useState<boolean>(true);
@@ -77,7 +85,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [alertVolume, setAlertVolume] = useState<number>(100);
   const [zip, setZip] = useState<string>('');
   const [showSettings, setShowSettings] = useState<boolean>(false);
-  const [currentWeather, setCurrentWeather] = useState<any>({
+  const [currentWeather, setCurrentWeather] = useState<Weather>({
     city: '',
     tempC: '',
     tempF: '',
@@ -86,6 +94,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
   });
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [started, setStarted] = useState<boolean>(false);
+  const [user, setUser] = useState<any>(null);
 
   const getAlarms = () => {
     axios.get("/api/getAlarms").then((data) => {
@@ -113,11 +122,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setIsClock: (isClock: boolean): void => {
       setIsClock(isClock);
       localStorage.setItem("isClock", JSON.stringify(isClock));
-    },
-    isLoggedIn: isLoggedIn,
-    setIsLoggedIn: (isLoggedIn: boolean): void => {
-      setIsLoggedIn(isLoggedIn);
-      localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
     },
     pomodoroTime: pomodoroTime,
     setPomodoroTime: (time: number): void => {
@@ -181,12 +185,15 @@ export const SettingsProvider: React.FC = ({ children }) => {
     started: started,
     setStarted: (started: boolean) => {
       setStarted(started);
+    },
+    user: user,
+    setUser: (user: any) => {
+      setUser(user);
     }
   };
 
   useEffect((): any => {
     const cachedClock = localStorage.getItem("isClock");
-    const cachedLoggedIn = localStorage.getItem("isLoggedIn");
     const cachedPom = localStorage.getItem("pom");
     const cachedShort = localStorage.getItem("short");
     const cachedAuto = localStorage.getItem("auto");
@@ -199,9 +206,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
     const cachedZip = localStorage.getItem("zip");
     if (cachedClock) {
       store.setIsClock(JSON.parse(cachedClock));
-    }
-    if (cachedLoggedIn) {
-      store.setIsLoggedIn(JSON.parse(cachedLoggedIn));
     }
     if (cachedPom) {
       store.setPomodoroTime(parseInt(cachedPom));
@@ -236,6 +240,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
 
     getAlarms();
     checkMobile();
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user);
+    })
   }, []);
 
   return (
