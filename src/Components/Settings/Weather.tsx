@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Form } from "react-bootstrap";
 import globalStyles from '../../styles/Settings/Settings.module.css';
 import styles from '../../styles/Settings/Weather/Weather.module.css';
-import getHandler from '../../pages/api/weather';
-import { SettingsContext } from '../SettingsContext';
+import getHandler from '../../../pages/api/weather';
+import { SettingsContext } from '../../contexts/SettingsContext';
 
 interface Props {
   zip: string;

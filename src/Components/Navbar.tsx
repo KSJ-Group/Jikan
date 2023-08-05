@@ -3,9 +3,9 @@ import Link from 'next/link';
 import styles from '../styles/Navbar/Navbar.module.css';
 import Head from 'next/head';
 import Settings from './Settings/Settings';
-import { SettingsContext } from './SettingsContext';
+import { SettingsContext } from '../contexts/SettingsContext';
 import styled from "styled-components";
-import { StylesContext } from './StylesContext';
+import { StylesContext } from '../contexts/StylesContext';
 
 interface Font {
   font: any;

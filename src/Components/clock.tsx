@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import styles from '../styles/Clock/Clock.module.css';
 import moment from 'moment';
-import { SettingsContext } from './SettingsContext';
-import { StylesContext } from './StylesContext';
+import { SettingsContext } from '../contexts/SettingsContext';
+import { StylesContext } from '../contexts/StylesContext';
 import Head from "next/head";
 import styled from "styled-components";
 import Draggable from 'react-draggable';

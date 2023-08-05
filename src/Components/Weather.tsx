@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import styles from '../styles/Main/WeatherModule/WeatherModule.module.css';
-import { StylesContext } from './StylesContext';
-import { SettingsContext } from './SettingsContext';
+import { StylesContext } from '../contexts/StylesContext';
+import { SettingsContext } from '../contexts/SettingsContext';
 import styled, { css } from "styled-components";
-import getHandler from '../pages/api/weather';
+import getHandler from '../../pages/api/weather';
 import moment from 'moment';
 
 interface Font {

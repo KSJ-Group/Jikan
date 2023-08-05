@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import styles from '../../../styles/Settings/Background/Favorites/Favorites.module.css';
-import { BackgroundContext } from '../../BackgroundContext';
+import { BackgroundContext } from '../../../contexts/BackgroundContext';
 
 const Favorites = () => {
   const { setBackground, favorites, setFavorites, recentlySelected, setRecentlySelected } = useContext(BackgroundContext);

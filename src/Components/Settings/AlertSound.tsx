@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Form } from "react-bootstrap";
 import styles from "../../styles/Settings/AlertSound/AlertSound.module.css";
 import globalStyles from "../../styles/Settings/Settings.module.css";
-import { SettingsContext } from "../SettingsContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 interface Props {
   selectedAlert: string;

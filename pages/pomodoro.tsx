@@ -6,10 +6,10 @@ import {
   millisToMinutesAndSeconds,
   minutesAndSecondsToMillis,
 } from "../helper/convertTime";
-import AreYouSureModal from "../components/AreYouSureModal";
-import TimerDoneModal from "../components/TimerModal";
-import { SettingsContext } from "../components/SettingsContext";
-import { StylesContext } from "../components/StylesContext";
+import AreYouSureModal from "../src/Components/AreYouSureModal";
+import TimerDoneModal from "../src/Components/TimerModal";
+import { SettingsContext } from "../src/contexts/SettingsContext";
+import { StylesContext } from "../src/contexts/StylesContext";
 import styled from "styled-components";
 import Draggable from 'react-draggable';
 

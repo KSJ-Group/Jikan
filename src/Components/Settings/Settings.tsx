@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Offcanvas } from "react-bootstrap";
-import { SettingsContext } from "../SettingsContext";
-import { StylesContext } from "../StylesContext";
+import { SettingsContext } from "../../contexts/SettingsContext";
+import { StylesContext } from "../../contexts/StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
 import Timers from "./Timers";
 import AlertSound from "./AlertSound";

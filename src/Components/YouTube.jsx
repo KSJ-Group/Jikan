@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import styles from "../styles/Main/YouTube/Youtube.module.css";
 import YouTube from "react-youtube";
-import { BackgroundContext } from "./BackgroundContext";
-import { SettingsContext } from "./SettingsContext";
-import { StylesContext } from "./StylesContext";
+import { BackgroundContext } from "../contexts/BackgroundContext";
+import { SettingsContext } from "../contexts/SettingsContext";
+import { StylesContext } from "../contexts/StylesContext";
 import styled, { css } from "styled-components";
 
 const Controls = styled.div(
@@ -43,7 +43,7 @@ const Controls = styled.div(
       margin: 0;
       height: 40px;
       width: 90px;
-    } ;
+    }
   `
 );
 

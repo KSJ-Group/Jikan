@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "../../../styles/Settings/Background/YouTubeSearch/YouTubeSearch.module.css";
 import axios from "axios";
-import { BackgroundContext } from "../../BackgroundContext";
+import { BackgroundContext } from "../../../contexts/BackgroundContext";
 import Spinner from 'react-bootstrap/Spinner'
-import { SettingsContext } from "../../SettingsContext";
+import { SettingsContext } from "../../../contexts/SettingsContext";
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -22,7 +22,7 @@ const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
-    const [page, setPage] = useState<Number>(0);
+    const [page, setPage] = useState<number>(0);
     const [nextPageToken, setNextPageToken] = useState<string>('');
     const [isError, setIsError] = useState<boolean>(false);
     const isInitialMount = useRef<boolean>(true);

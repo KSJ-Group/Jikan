@@ -1,11 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
-import { BackgroundProvider } from './BackgroundContext';
-import { StylesContext } from './StylesContext';
+import { BackgroundProvider } from '../contexts/BackgroundContext';
+import { StylesContext } from '../contexts/StylesContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
-import getHandler from '../pages/api/weather';
-import moment from 'moment';
 import Weather from './Weather';
 
 const Layout: React.FC = ({ children }) => {

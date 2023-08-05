@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import styles from '../../styles/Settings/Login/Login.module.css'
-import { SettingsContext } from "../SettingsContext";
-import { StylesContext } from "../StylesContext";
-import { BackgroundContext } from '../BackgroundContext';
+import { useContext, useEffect, useState } from 'react';
+import styles from '../../styles/Settings/Login/Login.module.css';
+import { SettingsContext } from "../../contexts/SettingsContext";
+import { StylesContext } from "../../contexts/StylesContext";
+import { BackgroundContext } from '../../contexts/BackgroundContext';
 import GoogleLogin, { GoogleLogout } from 'react-google-login';
 
 const {

@@ -5,8 +5,8 @@ import globalStyles from "../../styles/Settings/Settings.module.css";
 import {
   minutesAndSecondsToMillis,
   millisToMinutesAndSeconds,
-} from "../../helper/convertTime";
-import { SettingsContext } from "../SettingsContext";
+} from "../../../helper/convertTime";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 interface Props {
   pomodoroTime: number;

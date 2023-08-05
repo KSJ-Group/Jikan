@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
-import { BackgroundContext } from "./BackgroundContext";
+import { BackgroundContext } from "../contexts/BackgroundContext";
 import styles from "../styles/Settings/Background/Background.module.css";
 import { BackgroundBlur } from "../styles/Global/global.style";
-import { StylesContext } from "./StylesContext";
+import { StylesContext } from "../contexts/StylesContext";
 import YouTubePlayer from "./YouTube";
 
 const Background: React.FC = () => {

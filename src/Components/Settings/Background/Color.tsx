@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { HuePicker } from "react-color";
-import { StylesContext } from "../../StylesContext";
+import { StylesContext } from "../../../contexts/StylesContext";
 import styles from "../../../styles/Settings/Background/Color/Color.module.css";
 import globalStyles from '../../../styles/Settings/Settings.module.css';
 

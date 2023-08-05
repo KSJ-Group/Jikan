@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
 import Page from "../Page";
-import { BackgroundContext } from "../../BackgroundContext";
+import { BackgroundContext } from "../../../contexts/BackgroundContext";
 
 interface Photo {
   url: string;

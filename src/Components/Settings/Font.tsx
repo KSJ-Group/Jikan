@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import globalStyles from "../../styles/Settings/Settings.module.css";
 import styles from "../../styles/Settings/Font/Font.module.css";

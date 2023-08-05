@@ -1,8 +1,8 @@
-import "../styles/Global/global.css";
+import "../src/styles/Global/global.css";
 import type { AppProps } from "next/app";
-import Layout from "../components/Layout";
-import { StylesProvider } from "../components/StylesContext";
-import { SettingsProvider } from "../components/SettingsContext";
+import Layout from "../src/Components/Layout";
+import { StylesProvider } from "../src/contexts/StylesContext";
+import { SettingsProvider } from "../src/contexts/SettingsContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

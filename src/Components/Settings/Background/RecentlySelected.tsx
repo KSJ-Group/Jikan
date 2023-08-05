@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from '../../../styles/Settings/Background/RecentlySelected/RecentlySelected.module.css';
-import { BackgroundContext } from '../../BackgroundContext';
+import { BackgroundContext } from '../../../contexts/BackgroundContext';
 
 const RecentlySelected = () => {
   const { setBackground, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
