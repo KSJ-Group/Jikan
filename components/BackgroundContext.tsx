@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const BackgroundContext = createContext(
   {
-    background: '/images/wallpaper-june-2022.jpg',
+    background: '/images/default-wallpaper.jpg',
     setBackground: (url: string): void => { },
     loaded: true,
     changeLoadStatus: (status: boolean): void => { },
@@ -20,7 +20,7 @@ export const BackgroundContext = createContext(
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
-  const [background, setBackground] = useState<string>('/images/wallpaper-june-2022.jpg');
+  const [background, setBackground] = useState<string>('/images/default-wallpaper.jpg');
   const [backgroundType, setBackgroundType] = useState<string>('image');
   const [loaded, setLoaded] = useState(true);
   const [isOnlyMusic, setIsOnlyMusic] = useState<boolean>(true);
