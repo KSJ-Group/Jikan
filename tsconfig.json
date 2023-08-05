@@ -26,7 +26,8 @@
     "pages/api/weather.js",
     "pages/api/spotify.js",
     "src/Components/Rain.jsx",
-    "src/Components/Settings/Rain.tsx"
+    "src/Components/Settings/Rain.tsx",
+    "src/firebase.js"
   ],
   "exclude": ["node_modules"]
 }
