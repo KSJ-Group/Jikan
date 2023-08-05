@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import { signInWithGoogle, signOutWithGoogle } from "../../firebase";
 import styles from '../../styles/Settings/Login/Login.module.css';
@@ -8,9 +8,11 @@ const Login = () => {
     user
   } = useContext(SettingsContext);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  const signout = () => {
+    signOutWithGoogle();
+    localStorage.clear();
+    location.reload();
+  }
 
   return (
     <div className={styles.login}>
@@ -24,7 +26,7 @@ const Login = () => {
       ) : (
         <div className={styles.loggedInWrapper}>
           <span className={styles.greeting}>Hello, {user['displayName'].split(" ")[0]}</span>
-          <button className={styles.logoutBtn} onClick={signOutWithGoogle}>
+          <button className={styles.logoutBtn} onClick={signout}>
             Sign out
           </button>
         </div>
