@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import type { NextPage } from "next";
-import styles from "../styles/Pomodoro/Pomodoro.module.css";
+import styles from "../src/styles/Pomodoro/Pomodoro.module.css";
 import Head from "next/head";
 import {
   millisToMinutesAndSeconds,
