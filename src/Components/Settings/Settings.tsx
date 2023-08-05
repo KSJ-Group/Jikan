@@ -5,7 +5,7 @@ import { StylesContext } from "../../contexts/StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
 import Timers from "./Timers";
 import AlertSound from "./AlertSound";
-import Brightness from "./Brightness";
+import Brightness from "./BrightnessOpacity";
 import Font from "./Font";
 import ShowSeconds from "./ShowSeconds";
 import TimeFormat from "./TimeFormat";
@@ -13,6 +13,7 @@ import ChangeBackground from "./Background/ChangeBackground";
 import AboutModal from "../AboutModal";
 import Weather from "./Weather";
 import Reset from "./Reset";
+import Login from "./Login";
 
 interface Props {
   showSettings: boolean;
@@ -60,6 +61,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
       >
         <Offcanvas.Body className={styles.body}>
           <div className={styles.subBody} id="settings-body">
+            <Login />
             {isClock ? (
               // Clock settings
               <div>
