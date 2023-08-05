@@ -3,16 +3,13 @@
   width: 45%;
   margin: 7px;
   overflow: hidden;
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   position: relative;
   cursor: pointer;
 }
-
 .imageContainer:hover .inactiveStar {
   visibility: visible;
 }
-
 .imageContainer .inactiveStar {
   z-index: 5;
   visibility: hidden;
@@ -24,7 +21,6 @@
   font-size: 20px;
   font-weight: bold;
 }
-
 .imageContainer .activeStar {
   z-index: 5;
   position: absolute;
@@ -41,13 +37,10 @@
      object-fit: cover;
   height: 100%;
   width: 100%;
-  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-
 .image:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -56,5 +49,4 @@
   position: relative;
   top: -70px;
   left: 67px;
-}
-/*# sourceMappingURL=PhotoTile.module.css.map */
+}/*# sourceMappingURL=PhotoTile.module.css.map */

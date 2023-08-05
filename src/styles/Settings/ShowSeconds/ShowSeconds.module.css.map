@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,qBAAqB,CAAC;EACpB,KAAK,EAAE,IAAI;EACX,YAAY,EAAE,IAAI;CACnB",
-    "sources": [
-        "ShowSeconds.module.scss"
-    ],
-    "names": [],
-    "file": "ShowSeconds.module.css"
-}
+{"version":3,"sources":["ShowSeconds.module.scss","ShowSeconds.module.css"],"names":[],"mappings":"AAAA;EACE,WAAA;EACA,kBAAA;ACCF","file":"ShowSeconds.module.css"}

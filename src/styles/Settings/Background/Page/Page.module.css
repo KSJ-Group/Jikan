@@ -3,35 +3,22 @@
   left: 8px;
   width: 95%;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
-
 .page:hover {
   cursor: pointer;
 }
 
 .btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 5px 10px 5px;
   border-radius: 5px;
   background: #efefef;
   border: 0.5px solid rgba(0, 0, 0, 0.39);
   width: 48%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 15px;
-}
-/*# sourceMappingURL=Page.module.css.map */
+}/*# sourceMappingURL=Page.module.css.map */

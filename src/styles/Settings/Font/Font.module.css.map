@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,cAAc,CAAC;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,aAAa;EAC9B,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,GAAG;EACV,aAAa,EAAE,GAAG;CACnB;;AAED,AAAA,YAAY,CAAC;EACX,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;CAC/B",
-    "sources": [
-        "Font.module.scss"
-    ],
-    "names": [],
-    "file": "Font.module.css"
-}
+{"version":3,"sources":["Font.module.scss","Font.module.css"],"names":[],"mappings":"AAAA;EACE,cAAA;EACA,WAAA;ACCF;;ADEA;EACE,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,eAAA;EACA,UAAA;EACA,kBAAA;ACCF;;ADEA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;ACCF","file":"Font.module.css"}

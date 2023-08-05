@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,GAAG;EACV,aAAa,EAAE,GAAG;CACnB;;AAED,AAAA,QAAQ,CAAC;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,UAAU;CAC5B;;AAED,AAAA,OAAO,CAAC;EACN,YAAY,EAAE,IAAI;CACnB",
-    "sources": [
-        "AutoStartBreak.module.scss"
-    ],
-    "names": [],
-    "file": "AutoStartBreak.module.css"
-}
+{"version":3,"sources":["AutoStartBreak.module.scss","AutoStartBreak.module.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,sBAAA;EACA,eAAA;EACA,UAAA;EACA,kBAAA;ACCF;;ADEA;EACE,aAAA;EACA,mBAAA;EACA,2BAAA;ACCF;;ADEA;EACE,kBAAA;ACCF","file":"AutoStartBreak.module.css"}

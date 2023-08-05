@@ -1,33 +1,16 @@
 .bgContainer {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .optionContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 10px;
   width: 100%;
 }
@@ -35,32 +18,27 @@
 .imageOption {
   height: 115px;
   width: 48%;
-  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   text-align: center;
   border-radius: 3px;
   margin-bottom: 10px;
-  -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   overflow: hidden;
 }
-
 .imageOption:nth-child(1) {
   margin-right: 5px;
 }
-
 .imageOption:hover {
   opacity: 0.8;
   cursor: pointer;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .imageContainer {
   height: 85px;
   width: 100%;
   overflow: hidden;
-  background-color: #dbdbdb;
+  background-color: rgb(219, 219, 219);
 }
 
 .image {
@@ -71,13 +49,7 @@
 }
 
 .title {
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
-}
-/*# sourceMappingURL=BackgroundIcons.module.css.map */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}/*# sourceMappingURL=BackgroundIcons.module.css.map */

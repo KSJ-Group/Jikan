@@ -9,9 +9,9 @@
 }
 
 .loginBtn {
-  width: 120px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 8px;
+  width: 100%;
 }
 
 .googleLogo {
@@ -24,13 +24,24 @@
 }
 
 .logoutBtn {
-  width: 140px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 8px;
 }
 
 .greeting {
-  width: 100%;
   padding-bottom: 5px;
   font-size: 25px;
+  color: white;
+}
+
+.loggedOutWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.loggedInWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }

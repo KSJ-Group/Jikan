@@ -1,26 +1,14 @@
 .alertContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   font-size: 18px;
 }
 
 .alert {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 18px;
   margin-bottom: 10px;
   width: 100%;
@@ -31,13 +19,10 @@
   margin-left: 10px;
   border-radius: 5px;
   background: #efefef;
-  border: 0.1px solid #a8a8a8;
+  border: 0.1px solid rgb(168, 168, 168);
   font-size: 15px;
-  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-
 .previewBtn:hover {
   background: #dddddd;
-}
-/*# sourceMappingURL=AlertSound.module.css.map */
+}/*# sourceMappingURL=AlertSound.module.css.map */

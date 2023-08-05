@@ -1,12 +1,8 @@
 .mainLinks {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   z-index: 2;
   position: relative;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .line {
@@ -15,23 +11,16 @@
   cursor: default;
   z-index: 2;
   color: white;
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
-
 @media screen and (max-width: 600px) {
   .line {
     font-size: 18px;
     margin-top: 10px;
   }
 }
-
 @media screen and (max-width: 400px) {
   .line {
     font-size: 15px;
@@ -44,29 +33,20 @@
   margin: 20px;
   font-size: 25px;
   z-index: 2;
-  -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
-
 .link:hover {
-  color: white;
+  color: rgb(255, 255, 255);
 }
-
 @media screen and (max-width: 600px) {
   .link {
     font-size: 18px;
     margin: 10px;
   }
 }
-
 @media screen and (max-width: 400px) {
   .link {
     font-size: 15px;
@@ -76,25 +56,17 @@
 
 .settings {
   position: absolute;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: 35px;
   right: 20px;
   cursor: pointer;
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
 }
-
 .settings:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
@@ -102,16 +74,10 @@
 .settingsWord {
   margin-left: 10px;
   display: block;
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
-
 @media screen and (max-width: 950px) {
   .settingsWord {
     display: none;
@@ -121,36 +87,27 @@
 .settingsIcon {
   color: white;
 }
-
 .settingsIcon:hover {
-  color: #fffbfb;
+  color: rgb(255, 251, 251);
 }
 
 .menuIcon {
   width: 20px;
   height: 20px;
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
 
 .fullscreen {
   width: 20px;
   height: 20px;
-  -webkit-filter: invert(1);
-          filter: invert(1);
+  filter: invert(1);
 }
 
 .fs {
   position: absolute;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: 35px;
   right: 160px;
   top: 13px;
@@ -159,31 +116,22 @@
   cursor: pointer;
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
 }
-
 @media screen and (max-width: 950px) {
   .fs {
     display: none;
   }
 }
-
 .fs:hover {
-  color: #fffbfb;
+  color: rgb(255, 251, 251);
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .fsText {
   margin-left: 10px;
   -webkit-user-select: none;
-          user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
-}
-/*# sourceMappingURL=Navbar.module.css.map */
+          user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}/*# sourceMappingURL=Navbar.module.css.map */

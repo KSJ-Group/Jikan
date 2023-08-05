@@ -16,7 +16,7 @@ body {
 }
 
 .inactiveLink {
-  color: #ebebeb;
+  color: rgb(235, 235, 235);
 }
 
 .activeLink {
@@ -25,19 +25,17 @@ body {
 }
 
 .activePomLink {
-  background-color: #3088ad;
+  background-color: rgb(48, 136, 173);
   padding: 5px;
-  color: #e7e7e7;
+  color: rgb(231, 231, 231);
+}
+.activePomLink:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgb(45, 125, 160);
 }
 
 .activePomLink:hover {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #2d7da0;
-}
-
-.activePomLink:hover {
-  color: #e7e7e7;
+  color: rgb(231, 231, 231);
 }
 
 @media screen and (max-width: 600px) {
@@ -71,14 +69,7 @@ body {
   position: relative;
   top: 65px;
   left: -40px;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-}
-
-@-webkit-keyframes fall {
-  to {
-    margin-top: 900px;
-  }
+  transform: rotate(270deg);
 }
 
 @keyframes fall {
@@ -86,7 +77,6 @@ body {
     margin-top: 900px;
   }
 }
-
 .rainContainer {
   width: 100vw;
   height: 100vh;
@@ -94,28 +84,17 @@ body {
   top: 0;
   z-index: 1;
 }
-
 .rainContainer::after {
   content: "";
   width: 100%;
   height: 100vh;
   position: absolute;
-  -webkit-animation: rain 0.5s linear infinite;
-          animation: rain 0.5s linear infinite;
+  animation: rain 0.5s linear infinite;
   background-image: url(https://pngimg.com/uploads/rain/rain_PNG13468.png);
-  -webkit-transform: scale(2);
-          transform: scale(2);
+  transform: scale(2);
 }
-
-@-webkit-keyframes rain {
-  to {
-    background-position: -40px 300px;
-  }
-}
-
 @keyframes rain {
   to {
     background-position: -40px 300px;
   }
-}
-/*# sourceMappingURL=global.css.map */
+}/*# sourceMappingURL=global.css.map */

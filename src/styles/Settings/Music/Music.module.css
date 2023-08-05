@@ -3,13 +3,8 @@
 }
 
 .musicDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .stop {
@@ -18,5 +13,4 @@
   border-radius: 5px;
   border: none;
   background-color: #efefef;
-}
-/*# sourceMappingURL=Music.module.css.map */
+}/*# sourceMappingURL=Music.module.css.map */

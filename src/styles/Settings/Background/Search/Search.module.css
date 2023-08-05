@@ -3,57 +3,35 @@
 }
 
 .suggestionWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-top: 5px;
 }
-
 .suggestionWrapper .text {
   font-size: 12px;
   margin-right: 10px;
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
-
 .suggestionWrapper .suggestionBtn {
   border-radius: 5px;
   background: #efefef;
   border: none;
-  border: 0.1px solid #a8a8a8;
+  border: 0.1px solid rgb(168, 168, 168);
   font-size: 10px;
   margin-right: 5px;
-  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-
 .suggestionWrapper .suggestionBtn:hover {
   background: #dddddd;
 }
 
 .form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .searchBtn {
@@ -65,39 +43,26 @@
   border: none;
   margin-left: 10px;
   font-size: 15px;
-  border: 0.1px solid #a8a8a8;
-  -webkit-transition: 0.3s ease-in-out;
+  border: 0.1px solid rgb(168, 168, 168);
   transition: 0.3s ease-in-out;
 }
-
 .searchBtn:hover {
   background: #dddddd;
 }
 
 .images {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   left: 4px;
 }
 
 .searchTitle {
   font-size: 18px;
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .searchInput {
@@ -110,5 +75,4 @@
 
 .changeBG {
   width: 100%;
-}
-/*# sourceMappingURL=Search.module.css.map */
+}/*# sourceMappingURL=Search.module.css.map */
