@@ -1,4 +1,5 @@
 import firebase from "firebase/compat/app";
+import { getFirestore } from "firebase/firestore";
 import "firebase/compat/auth";
 
 const config = {
@@ -11,7 +12,7 @@ const config = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-firebase.initializeApp(config);
+const app = firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 
@@ -20,5 +21,7 @@ provider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const signOutWithGoogle = () => auth.signOut(provider);
+
+export const db = getFirestore(app);
 
 export default firebase;
