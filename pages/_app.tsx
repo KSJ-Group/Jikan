@@ -6,13 +6,13 @@ import { SettingsProvider } from "../src/contexts/SettingsContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <StylesProvider>
-      <SettingsProvider>
+    <SettingsProvider>
+      <StylesProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </SettingsProvider>
-    </StylesProvider>
+      </StylesProvider>
+    </SettingsProvider>
   );
 }
 
