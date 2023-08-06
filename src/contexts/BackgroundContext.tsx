@@ -1,12 +1,14 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-
+import { SettingsContext } from "./SettingsContext";
+import { getBgFromFirebase, getBgFromLocalStorage } from '../helper/getBackground';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 export const BackgroundContext = createContext(
   {
     background: '/images/default-wallpaper.jpg',
     setBackground: (url: string): void => { },
     loaded: true,
     changeLoadStatus: (status: boolean): void => { },
-    backgroundType: 'image',
     isOnlyMusic: true,
     setIsOnlyMusic: (isOnlyMusic: boolean): void => { },
     eventType: 'live',
@@ -20,8 +22,8 @@ export const BackgroundContext = createContext(
   });
 
 export const BackgroundProvider: React.FC = ({ children }) => {
+  const { user, showSettings, isLoading } = useContext(SettingsContext);
   const [background, setBackground] = useState<string>('/images/default-wallpaper.jpg');
-  const [backgroundType, setBackgroundType] = useState<string>('image');
   const [loaded, setLoaded] = useState(true);
   const [isOnlyMusic, setIsOnlyMusic] = useState<boolean>(true);
   const [eventType, setEventType] = useState<string>('live');
@@ -33,16 +35,8 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     background: background,
     setBackground: (newBackground: string): void => {
       setBackground(newBackground);
-      if (!newBackground.includes('.')) {
-        setBackgroundType('video');
-      } else {
-        setBackgroundType('image')
-      }
       localStorage.setItem('background', newBackground);
-      localStorage.setItem('backgroundType', backgroundType);
     },
-
-    backgroundType: backgroundType,
     loaded: loaded,
     changeLoadStatus: (status: boolean): void => {
       setLoaded(status);
@@ -50,13 +44,10 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     isOnlyMusic: isOnlyMusic,
     setIsOnlyMusic: (isOnlyMusic: boolean): void => {
       setIsOnlyMusic(isOnlyMusic);
-      localStorage.setItem('isOnlyMusic', JSON.stringify(isOnlyMusic));
-
     },
     eventType: eventType,
     setEventType: (eventType: string): void => {
       setEventType(eventType);
-      localStorage.setItem('eventType', eventType);
     },
     youtubeResults: youtubeResults,
     setYoutubeResults: (results: any): void => {
@@ -85,32 +76,37 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     }
   };
 
-  useEffect((): any => {
-    const cachedBackground = localStorage.getItem('background');
-    const cachedIsOnlyMusic = localStorage.getItem('isOnlyMusic');
-    const cachedEventType = localStorage.getItem('eventType');
-    const cachedYoutubeResults = localStorage.getItem('youtubeResults');
-    const cachedRecentlySelected = localStorage.getItem('recentlySelected');
-    const cachedFavorites = localStorage.getItem('favorites');
-    if (cachedBackground) {
-      store.setBackground(cachedBackground);
+  useEffect(() => {
+    if (user) getBgFromFirebase(store, user);
+    else getBgFromLocalStorage(store);
+  }, [user])
+
+  useEffect(() => {
+    if (!showSettings && user && !isLoading) {
+      updateDB();
     }
-    if (cachedIsOnlyMusic) {
-      store.setIsOnlyMusic(JSON.parse(cachedIsOnlyMusic));
+  }, [showSettings])
+
+  const updateDB = async () => {
+    const data = {
+      background: background,
+      recentlySelected: JSON.stringify(recentlySelected),
+      favorites: JSON.stringify(favorites)
+    };
+
+    try {
+      const docRef = doc(db, user["uid"], "background");
+      setDoc(docRef, data).then(() => {
+        getBgFromFirebase(store, user);
+      })
+        .catch(error => {
+          console.log(error);
+        })
+
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
-    if (cachedEventType) {
-      store.setEventType(cachedEventType);
-    }
-    if (cachedYoutubeResults) {
-      store.setYoutubeResults(JSON.parse(cachedYoutubeResults));
-    }
-    if (cachedRecentlySelected) {
-      store.setRecentlySelected(JSON.parse(cachedRecentlySelected));
-    }
-    if (cachedFavorites) {
-      store.setFavorites(JSON.parse(cachedFavorites));
-    }
-  }, []);
+  }
 
   return (
     <BackgroundContext.Provider value={store}>

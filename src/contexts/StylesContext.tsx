@@ -1,4 +1,8 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
+import { SettingsContext } from "./SettingsContext";
+import { getStylesFromFirebase, getStylesFromLocalStorage } from '../helper/getStyles';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export const StylesContext = createContext(
   {
@@ -14,20 +18,18 @@ export const StylesContext = createContext(
     setOpacity: (opacity: number) => { },
     color: '0,0,0',
     setColor: (color: string) => { },
-    hex: '#000000',
-    setHex: (hex: string) => { },
     pos: { x: 0, y: 0 },
     setPos: (pos: any) => { }
   });
 
 export const StylesProvider: React.FC = ({ children }) => {
+  const { user, showSettings, isLoading } = useContext(SettingsContext);
   const [selectedFont, setSelectedFont] = useState<string>('Syne Mono');
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
   const [size, setSize] = useState<string>("medium");
   const [opacity, setOpacity] = useState<number>(30);
   const [color, setColor] = useState<string>('0,0,0');
-  const [hex, setHex] = useState<string>('#000000');
   const [pos, setPos] = useState<any>({ x: 0, y: 0 })
 
   const store = {
@@ -59,49 +61,47 @@ export const StylesProvider: React.FC = ({ children }) => {
     color: color,
     setColor: (color: string): void => {
       setColor(color);
-      localStorage.setItem('color', color);
-    },
-    hex: hex,
-    setHex: (hex: string): void => {
-      setHex(hex);
-      localStorage.setItem('hex', hex);
     },
     pos: pos,
     setPos: (pos: any): void => {
       setPos(pos);
+      localStorage.setItem('position', JSON.stringify(pos));
     }
   };
 
-  useEffect((): any => {
-    const cachedFont = localStorage.getItem('font');
-    const cachedBrightness = localStorage.getItem('brightness');
-    const cachedBlur = localStorage.getItem('blur');
-    const cachedSize = localStorage.getItem('clockSize');
-    const cachedOpacity = localStorage.getItem('opacity');
-    const cachedColor = localStorage.getItem('color');
-    const cachedHex = localStorage.getItem('hex');
-    if (cachedFont) {
-      store.setSelectedFont(cachedFont);
+  useEffect(() => {
+    if (user) getStylesFromFirebase(store, user)
+    else getStylesFromLocalStorage(store)
+  }, [user])
+
+  useEffect(() => {
+    if (!showSettings && user && !isLoading) {
+      updateDB();
     }
-    if (cachedBrightness) {
-      store.setBrightness(parseInt(cachedBrightness));
+  }, [showSettings])
+
+  const updateDB = async () => {
+    const data = {
+      selectedFont: selectedFont,
+      brightness: JSON.stringify(brightness),
+      blur: JSON.stringify(blur),
+      size: size,
+      opacity: JSON.stringify(opacity),
+    };
+
+    try {
+      const docRef = doc(db, user["uid"], "styles");
+      setDoc(docRef, data).then(() => {
+        getStylesFromFirebase(store, user);
+      })
+        .catch(error => {
+          console.log(error);
+        })
+
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
-    if (cachedBlur) {
-      store.setBlur(JSON.parse(cachedBlur));
-    }
-    if (cachedSize) {
-      store.setSize(cachedSize);
-    }
-    if (cachedOpacity) {
-      store.setOpacity(parseInt(cachedOpacity));
-    }
-    if (cachedColor) {
-      store.setColor(cachedColor);
-    }
-    if (cachedHex) {
-      store.setColor(cachedHex);
-    }
-  }, []);
+  }
 
   return (
     <StylesContext.Provider value={store}>
