@@ -6,7 +6,7 @@ import { db } from '../firebase';
 
 export const StylesContext = createContext(
   {
-    selectedFont: 'Syne Mono',
+    selectedFont: 'Nova Mono',
     setSelectedFont: (font: string) => { },
     brightness: 100,
     setBrightness: (percentage: number) => { },
@@ -24,7 +24,7 @@ export const StylesContext = createContext(
 
 export const StylesProvider: React.FC = ({ children }) => {
   const { user, showSettings, isLoading } = useContext(SettingsContext);
-  const [selectedFont, setSelectedFont] = useState<string>('Syne Mono');
+  const [selectedFont, setSelectedFont] = useState<string>('Nova Mono');
   const [brightness, setBrightness] = useState<number>(100);
   const [blur, setBlur] = useState<boolean>(false);
   const [size, setSize] = useState<string>("medium");
