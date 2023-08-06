@@ -20,7 +20,7 @@ const Login = () => {
         <div className={styles.loggedOutWrapper}>
           <button className={styles.loginBtn} onClick={signInWithGoogle}>
             <i className={`fab fa-google ${styles.googleLogo}`}></i>
-            Sign in for personalized settings
+            Sign in for Personalized Settings
           </button>
         </div>
       ) : (
