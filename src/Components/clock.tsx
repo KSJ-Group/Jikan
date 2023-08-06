@@ -58,7 +58,6 @@ const DragImg = styled.img`
   height: 20px;
   width: 20px;
   transform: rotate(45deg);
-  /* padding: 10px; */
   filter: invert(1);
   user-drag: none;
   -webkit-user-drag: none;
