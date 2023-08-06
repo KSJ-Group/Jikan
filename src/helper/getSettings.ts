@@ -2,7 +2,6 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 export async function getSettingsFromFirebase(store, user) {
-  console.log("User signed in. Getting background data from Firebase...");
   try {
     const snap = await getDoc(doc(db, user.uid, "settings"));
     if (snap.exists()) {
@@ -18,8 +17,6 @@ export async function getSettingsFromFirebase(store, user) {
       store.setMusicVolume(JSON.parse(data["musicVolume"]));
       store.setAlertVolume(JSON.parse(data["alertVolume"]));
       store.setZip(data["zip"]);
-    } else {
-      console.log("Settings data does not exist for user", user.uid);
     }
   } catch (e) {
     console.log(e);
@@ -27,9 +24,6 @@ export async function getSettingsFromFirebase(store, user) {
 }
 
 export function getSettingsFromLocalStorage(store) {
-  console.log(
-    "User not signed in. Getting background data from local storage..."
-  );
   const cachedPom = localStorage.getItem("pom");
   const cachedShort = localStorage.getItem("short");
   const cachedAuto = localStorage.getItem("auto");

@@ -195,7 +195,6 @@ export const SettingsProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (!showSettings && user && !isLoading) {
-      console.log("Post general settings to DB");
       updateDB();
     }
   }, [showSettings])
