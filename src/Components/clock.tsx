@@ -26,10 +26,6 @@ const ClockDiv = styled.div<Props>`
   align-items: center;
   border-radius: 20px;
   background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
 
   @media screen and (max-width: 450px) {
     margin-top: -300px;
@@ -39,6 +35,33 @@ const ClockDiv = styled.div<Props>`
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+
+  &:hover {
+    strong {
+      display: block;
+    }
+  }
+`
+
+const DragIcon = styled.strong`
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+`
+
+const DragImg = styled.img`
+  height: 20px;
+  width: 20px;
+  transform: rotate(45deg);
+  /* padding: 10px; */
+  filter: invert(1);
+  user-drag: none;
+  -webkit-user-drag: none;
 `
 
 const ClockFont = styled.div<Font>`
@@ -75,10 +98,6 @@ const Clock: React.FC = () => {
     const { x, y } = position;
     setPos({ x, y });
   };
-
-  useEffect(() => {
-    resetPosition();
-  }, [size]);
 
   useEffect(() => {
     setTime(moment().format('h:mm A'));
@@ -155,8 +174,9 @@ const Clock: React.FC = () => {
         {time ? <title>Jikan | {time}</title> :
           <title>Jikan | Clock</title>}
       </Head>
-      <Draggable bounds="parent" position={pos} onDrag={onControlledDrag}>
+      <Draggable grid={[10, 10]} handle="strong" bounds="parent" position={pos} onDrag={onControlledDrag}>
         <ClockDiv size={size} opacity={opacity} color={color}>
+          <DragIcon><DragImg src="/images/draggable-icon.png" alt="drag icon" /></DragIcon>
           {is24andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeA}>{time}</ClockFont> : null}
           {is24 ? <ClockFont size={size} font={selectedFont} className={styles.timeB}>{time}</ClockFont> : null}
           {is12andSeconds ? <ClockFont size={size} font={selectedFont} className={styles.timeC}>{time}</ClockFont> : null}
