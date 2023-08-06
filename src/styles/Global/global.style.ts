@@ -4,10 +4,6 @@ interface Props {
   brightness: any;
 }
 
-interface Background {
-  blur: any;
-}
-
 interface BackgroundColor {
   color: any;
 }
@@ -18,8 +14,7 @@ export const BrightnessDiv = styled.div<Props>`
   filter: brightness(${(props) => props.brightness});
 `;
 
-export const BackgroundBlur = styled.div<Background>`
-  filter: blur(${(props) => props.blur || "0"});
+export const BackgroundWrapper = styled.div`
   position: absolute;
   top: 0;
   width: 100vw;
