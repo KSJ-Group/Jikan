@@ -1,29 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { BackgroundContext } from "../contexts/BackgroundContext";
 import styles from "../styles/Settings/Background/Background.module.css";
-import { BackgroundBlur } from "../styles/Global/global.style";
-import { StylesContext } from "../contexts/StylesContext";
+import { BackgroundWrapper } from "../styles/Global/global.style";
 import YouTubePlayer from "./YouTube";
 
 const Background: React.FC = () => {
-  const { background, changeLoadStatus, backgroundType } =
+  const { background, changeLoadStatus } =
     useContext(BackgroundContext);
-  const { blur } = useContext(StylesContext);
-  const [blurAmount, setBlurAmount] = useState<string>("0");
-
-  // useEffect(() => {
-  //   if (blur) {
-  //     setBlurAmount("5px");
-  //   } else {
-  //     setBlurAmount("0");
-  //   }
-  // }, [blur]);
 
   return (
     <div>
-      {backgroundType === "image" ? (
-        <BackgroundBlur blur={blurAmount}>
+      {background && background.includes('.') ? (
+        <BackgroundWrapper>
           <div className={styles.imageDiv}>
             <Image
               src={background}
@@ -36,7 +25,7 @@ const Background: React.FC = () => {
               }}
             />
           </div>
-        </BackgroundBlur>
+        </BackgroundWrapper>
       ) : (
         <YouTubePlayer
           id={background}
