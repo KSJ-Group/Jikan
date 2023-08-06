@@ -6,7 +6,6 @@ export async function getSettingsFromFirebase(store, user) {
     const snap = await getDoc(doc(db, user.uid, "settings"));
     if (snap.exists()) {
       const data = snap.data();
-      console.log("Settings: ", data);
       store.setPomodoroTime(JSON.parse(data["pomodoroTime"]));
       store.setBreakTime(JSON.parse(data["breakTime"]));
       store.setAutoStartBreak(JSON.parse(data["autoStartBreak"]));
