@@ -10,8 +10,13 @@
 
 .loginBtn {
   padding: 5px;
-  border-radius: 8px;
+  border-radius: 5px;
   width: 100%;
+  background: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+}
+.loginBtn:hover {
+  background: #dddddd;
 }
 
 .googleLogo {
@@ -25,7 +30,13 @@
 
 .logoutBtn {
   padding: 5px;
-  border-radius: 8px;
+  border-radius: 5px;
+  border: none;
+  background: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+}
+.logoutBtn:hover {
+  background: #dddddd;
 }
 
 .greeting {
