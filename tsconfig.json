@@ -27,7 +27,7 @@
     "pages/api/spotify.js",
     "src/Components/Rain.jsx",
     "src/Components/Settings/Rain.tsx",
-    "src/firebase.js"
+    "src/firebase.ts"
   ],
   "exclude": ["node_modules"]
 }
