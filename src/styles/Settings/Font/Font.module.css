@@ -1,0 +1,19 @@
+.fontContainer {
+  display: block;
+  width: 100%;
+}
+
+.sizeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  width: 98%;
+  margin-bottom: 5px;
+}
+
+.sizeToggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}/*# sourceMappingURL=Font.module.css.map */

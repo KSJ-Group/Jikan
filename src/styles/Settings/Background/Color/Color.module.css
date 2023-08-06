@@ -1,0 +1,36 @@
+.colorContainer {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.colorPicker {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.checkboxWrapper {
+  margin-left: 20px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  position: relative;
+  top: 6px;
+  margin-right: 3px;
+}
+
+.colorTitle {
+  font-size: 18px;
+}
+
+.huePicker {
+  position: relative;
+  width: 100px;
+}/*# sourceMappingURL=Color.module.css.map */

@@ -1,0 +1,117 @@
+.pomodoro {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  min-width: 35vw;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  border-radius: 20px;
+}
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 10px;
+    width: 85vw;
+  }
+}
+@media screen and (max-width: 450px) {
+  .container {
+    padding: 10px;
+    margin-top: -100px;
+  }
+}
+
+.linksDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2.5vh;
+  color: white;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+  transition: 0.2s ease-in;
+}
+@media screen and (max-width: 800px) {
+  .link {
+    font-size: 2vh;
+  }
+}
+
+.timerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+@media screen and (max-width: 800px) {
+  .timerDiv {
+    font-size: 20vw;
+  }
+}
+
+.btnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+.startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 20px 10px;
+  border-radius: 5px;
+  font-size: 3vh;
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.startBtn:hover {
+  background-color: rgb(219, 219, 219);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+@media screen and (max-width: 800px) {
+  .startBtn {
+    font-size: 2vh;
+  }
+}
+.startBtn:active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}/*# sourceMappingURL=Pomodoro.module.css.map */

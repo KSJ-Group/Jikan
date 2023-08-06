@@ -1,0 +1,10 @@
+.brightnessContainer {
+  width: 100%;
+  font-size: 18px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+}/*# sourceMappingURL=Brightness.module.css.map */

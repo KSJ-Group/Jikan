@@ -1,0 +1,31 @@
+.youtube {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.16);
+}
+@media screen and (max-width: 450px) {
+  .youtube {
+    align-items: flex-end;
+    padding-bottom: 150px;
+  }
+}
+
+.controlBtn {
+  z-index: 20;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: 0;
+}
+.controlBtn:nth-child(1) {
+  border-right: 2px solid black;
+}/*# sourceMappingURL=Youtube.module.css.map */

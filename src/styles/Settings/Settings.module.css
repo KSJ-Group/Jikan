@@ -1,0 +1,113 @@
+.settingsDiv {
+  border: none;
+}
+
+.settings {
+  color: rgb(248, 248, 248);
+  border: none;
+  overflow-x: hidden;
+}
+
+.body {
+  background-color: rgb(34, 34, 34);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.subBody {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.subBody::-webkit-scrollbar {
+  display: none;
+}
+
+.settingsTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.topLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.settingsTitle {
+  font-size: 30px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+  color: white;
+}
+
+.x {
+  position: relative;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+  transition: 0.3s ease-in-out;
+}
+.x:hover {
+  background: #dddddd;
+}
+
+.toggleRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.toggleLabel {
+  margin-right: 6px;
+}
+
+.font {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.sliderDiv {
+  width: 99%;
+  display: flex;
+  flex-direction: row;
+}
+
+.slider {
+  width: 275px;
+  margin-right: 20px;
+}
+
+.volumeDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px;
+  font-size: 18px;
+}
+
+.settingModuleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 10px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: black;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=Settings.module.css.map */

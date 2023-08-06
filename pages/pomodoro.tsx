@@ -1,15 +1,15 @@
 import { useEffect, useState, useContext } from "react";
 import type { NextPage } from "next";
-import styles from "../styles/Pomodoro/Pomodoro.module.css";
+import styles from "../src/styles/Pomodoro/Pomodoro.module.css";
 import Head from "next/head";
 import {
   millisToMinutesAndSeconds,
   minutesAndSecondsToMillis,
-} from "../helper/convertTime";
-import AreYouSureModal from "../components/AreYouSureModal";
-import TimerDoneModal from "../components/TimerModal";
-import { SettingsContext } from "../components/SettingsContext";
-import { StylesContext } from "../components/StylesContext";
+} from "../src/helper/convertTime";
+import AreYouSureModal from "../src/Components/AreYouSureModal";
+import TimerDoneModal from "../src/Components/TimerModal";
+import { SettingsContext } from "../src/contexts/SettingsContext";
+import { StylesContext } from "../src/contexts/StylesContext";
 import styled from "styled-components";
 
 interface Font {
@@ -53,6 +53,7 @@ const Container = styled.div<ContainerProps>`
   background-color: ${props => `rgb(${props.color}, ${props.opacity / 100})` || 'rgb(0, 0, 0, 0.4)'};
   overflow: hidden;
   border-radius: 20px;
+  cursor: default;
 
   @media screen and (max-width: 450px) {
     padding: 20px;
@@ -119,14 +120,14 @@ let alert: any;
 let timer: number;
 
 const pomodoro: NextPage = () => {
-  const { pomodoroTime, shortBreakTime, selectedAlert, autoStartBreak, alertVolume, isMobile, started, setStarted } =
+  const { pomodoroTime, breakTime, selectedAlert, autoStartBreak, alertVolume, isMobile, started, setStarted } =
     useContext(SettingsContext);
   const { selectedFont, size, opacity, color } = useContext(StylesContext);
 
   const [pomodoro, setPomodoro] = useState<boolean>(true);
   const [shortBreak, setShortBreak] = useState<boolean>(false);
   const [pomodoroTime2, setPomodoroTime] = useState<any>(0);
-  const [shortBreakTime2, setShortBreakTime] = useState<any>(0);
+  const [breakTime2, setBreakTime] = useState<any>(0);
   const [currentTime, setCurrentTime] = useState<any>("");
   const [showModal, setShowModal] = useState<boolean>(false);
   const [targetMode, setTargetMode] = useState<string>("");
@@ -135,13 +136,16 @@ const pomodoro: NextPage = () => {
   const [switchFromModal, setSwitch] = useState<boolean>(false);
   const [newVolume, setNewVolume] = useState<number>(0);
 
+  const beforeUnload = (e) => {
+    if (started) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
+  }
+
   useEffect(() => {
-    window.addEventListener('beforeunload', function (e) {
-      if (started) {
-        e.preventDefault();
-        e.returnValue = true;
-      }
-    })
+    window.addEventListener('beforeunload', beforeUnload);
+    return () => window.removeEventListener('beforeunload', beforeUnload);
   }, [started])
 
   useEffect(() => {
@@ -170,8 +174,8 @@ const pomodoro: NextPage = () => {
   }, [pomodoroTime]);
 
   useEffect(() => {
-    setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
-  }, [shortBreakTime])
+    setBreakTime(millisToMinutesAndSeconds(breakTime));
+  }, [breakTime])
 
   useEffect(() => {
     setStarted(false);
@@ -184,7 +188,7 @@ const pomodoro: NextPage = () => {
     }
     if (pomodoro) {
       stopTimer();
-      setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
+      setBreakTime(millisToMinutesAndSeconds(breakTime));
       document.getElementById("link4")?.classList.add("activePomLink");
       document.getElementById("link5")?.classList.remove("activePomLink");
       document.getElementById("link6")?.classList.remove("activePomLink");
@@ -275,7 +279,7 @@ const pomodoro: NextPage = () => {
         return newTime;
       });
     } else if (shortBreak) {
-      setShortBreakTime((prevState: string) => {
+      setBreakTime((prevState: string) => {
         let newTime = millisToMinutesAndSeconds(
           minutesAndSecondsToMillis(prevState) - 1000
         );
@@ -314,11 +318,11 @@ const pomodoro: NextPage = () => {
       alert.stop();
       setShowTimerModal(false);
       setPomodoroTime(millisToMinutesAndSeconds(pomodoroTime));
-      setShortBreakTime(millisToMinutesAndSeconds(shortBreakTime));
+      setBreakTime(millisToMinutesAndSeconds(breakTime));
       if (pomodoro) {
         setCurrentTime(millisToMinutesAndSeconds(pomodoroTime));
       } else if (shortBreak) {
-        setCurrentTime(millisToMinutesAndSeconds(shortBreakTime));
+        setCurrentTime(millisToMinutesAndSeconds(breakTime));
       }
     } else {
       if (!isMobile) {
@@ -411,7 +415,7 @@ const pomodoro: NextPage = () => {
             ) : null}
             {shortBreak ? (
               <ClockFont isMobile={isMobile} size={size} id="shortBreak">
-                {shortBreakTime2}
+                {breakTime2}
               </ClockFont>
             ) : null}
           </OtherFont>

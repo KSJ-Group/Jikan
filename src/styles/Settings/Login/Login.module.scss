@@ -1,0 +1,58 @@
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid white;
+}
+
+.loginBtn {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  background: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+  &:hover {
+    background: #dddddd;
+  }
+}
+
+.googleLogo {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+  filter: grayscale(0.5);
+}
+
+.logoutBtn {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background: #efefef;
+  border: 0.1px solid rgb(168, 168, 168);
+  &:hover {
+    background: #dddddd;
+  }
+}
+
+.greeting {
+  padding-bottom: 5px;
+  font-size: 25px;
+  color: white;
+}
+
+.loggedOutWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.loggedInWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

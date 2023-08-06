@@ -1,0 +1,27 @@
+.weatherSettings {
+  width: 100%;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.weatherRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.updateBtn {
+  position: relative;
+  height: 38px;
+  width: 80px;
+  border-radius: 5px;
+  background: #efefef;
+  border: none;
+  margin-left: 10px;
+  font-size: 15px;
+  border: 0.1px solid rgb(168, 168, 168);
+  transition: 0.3s ease-in-out;
+}
+.updateBtn:hover {
+  background: #dddddd;
+}/*# sourceMappingURL=Weather.module.css.map */

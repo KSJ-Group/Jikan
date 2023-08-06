@@ -22,11 +22,12 @@
     "getFileNames.js",
     "pages/api/getAlarms.ts",
     "pages/api/blocker.js",
-    "components/YouTube.jsx",
+    "src/Components/YouTube.jsx",
     "pages/api/weather.js",
     "pages/api/spotify.js",
-    "components/Rain.jsx",
-    "components/Settings/Rain.tsx"
+    "src/Components/Rain.jsx",
+    "src/Components/Settings/Rain.tsx",
+    "src/firebase.ts"
   ],
   "exclude": ["node_modules"]
 }
