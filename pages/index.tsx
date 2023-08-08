@@ -3,6 +3,7 @@ import Head from "next/head";
 import Clock from "../src/Components/clock";
 import styles from "../src/styles/Main/Main.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ToDo from "../src/Components/ToDo";
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
         <title>Jikan | Clock</title>
       </Head>
       <Clock />
+      <ToDo />
     </div>
   );
 };

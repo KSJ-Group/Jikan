@@ -16,6 +16,8 @@ export async function getSettingsFromFirebase(store, user) {
       store.setMusicVolume(JSON.parse(data["musicVolume"]));
       store.setAlertVolume(JSON.parse(data["alertVolume"]));
       store.setZip(data["zip"]);
+      store.setTaskItems(JSON.parse(data["taskItems"]));
+      store.setOpenTasks(JSON.parse(data["openTasks"]));
     }
   } catch (e) {
     console.log(e);
@@ -33,6 +35,8 @@ export function getSettingsFromLocalStorage(store) {
   const cachedMusicVol = localStorage.getItem("musicVolume");
   const cachedAlertVol = localStorage.getItem("alertVolume");
   const cachedZip = localStorage.getItem("zip");
+  const cachedTasks = localStorage.getItem("taskItems");
+  const cachedOpenTasks = localStorage.getItem("openTasks");
   if (cachedPom) {
     store.setPomodoroTime(parseInt(cachedPom));
   }
@@ -62,5 +66,11 @@ export function getSettingsFromLocalStorage(store) {
   }
   if (cachedZip) {
     store.setZip(cachedZip);
+  }
+  if (cachedTasks) {
+    store.setTaskItems(JSON.parse(cachedTasks));
+  }
+  if (cachedOpenTasks) {
+    store.setOpenTasks(JSON.parse(cachedOpenTasks));
   }
 }
