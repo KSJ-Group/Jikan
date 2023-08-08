@@ -14,6 +14,12 @@ interface Weather {
   icon: string
 }
 
+interface Task {
+  complete: boolean
+  taskText: string
+  createdTime: number
+}
+
 export const SettingsContext = createContext({
   // default values
   isLoading: true,
@@ -64,7 +70,13 @@ export const SettingsContext = createContext({
   started: false,
   setStarted: (started: boolean) => { },
   user: {},
-  setUser: (user: any) => { }
+  setUser: (user: any) => { },
+  taskItems: [],
+  setTaskItems: (taskItems: Task[]) => { },
+  openTasks: false,
+  setOpenTasks: (open: boolean) => { },
+  tasksLoading: false,
+  setTasksLoading: (loading: boolean) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -102,6 +114,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
     "Tri-tone ping.mp3",
     "Xylophone.mp3",
   ]);
+  const [taskItems, setTaskItems] = useState<any>([]);
+  const [openTasks, setOpenTasks] = useState<boolean>(false);
+  const [tasksLoading, setTasksLoading] = useState<boolean>(false);
 
   const store = {
     isLoading: isLoading,
@@ -176,6 +191,20 @@ export const SettingsProvider: React.FC = ({ children }) => {
     user: user,
     setUser: (user: any) => {
       setUser(user);
+    },
+    taskItems: taskItems,
+    setTaskItems: (taskItems: any): void => {
+      setTaskItems(taskItems);
+      localStorage.setItem("taskItems", JSON.stringify(taskItems));
+    },
+    openTasks: openTasks,
+    setOpenTasks: (open: boolean): void => {
+      setOpenTasks(open);
+      localStorage.setItem("openTasks", JSON.stringify(openTasks));
+    },
+    tasksLoading: tasksLoading,
+    setTasksLoading: (loading: boolean): void => {
+      setTasksLoading(loading);
     }
   };
 
@@ -199,6 +228,12 @@ export const SettingsProvider: React.FC = ({ children }) => {
     }
   }, [showSettings])
 
+  useEffect(() => {
+    if (!isLoading && user && tasksLoading) {
+      updateDB();
+    }
+  }, [tasksLoading]);
+
   const updateDB = async () => {
     const data = {
       pomodoroTime: JSON.stringify(pomodoroTime),
@@ -210,7 +245,9 @@ export const SettingsProvider: React.FC = ({ children }) => {
       alarms: JSON.stringify(allAlarms),
       musicVolume: JSON.stringify(musicVolume),
       alertVolume: JSON.stringify(alertVolume),
-      zip: zip
+      zip: zip,
+      taskItems: JSON.stringify(taskItems),
+      openTasks: JSON.stringify(openTasks)
     }
 
     try {
@@ -221,7 +258,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
         .catch(error => {
           console.log(error);
         })
-
+      setTasksLoading(false);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
