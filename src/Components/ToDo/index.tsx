@@ -18,9 +18,9 @@ interface Task {
 
 const Wrapper = styled.div<{ open: boolean }>`
   position: absolute;
-  top: 65px;
+  top: 75px;
   transition: 1s ease;
-  left: ${props => props.open ? '20px' : '-250px'};
+  left: ${props => props.open ? '20px' : '-300px'};
 `
 
 const ToDoWrapper = styled.div<Props>`
