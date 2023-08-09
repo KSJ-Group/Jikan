@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
 import styled from "styled-components";
-import { StylesContext } from '../contexts/StylesContext';
-import { Input, Checkbox } from '@mui/material';
-import { SettingsContext } from '../contexts/SettingsContext';
+import { StylesContext } from '../../contexts/StylesContext';
+import { Input } from '@mui/material';
+import { SettingsContext } from '../../contexts/SettingsContext';
+import ListItem from './ListItem';
 
 interface Props {
   font: string;
@@ -25,7 +26,7 @@ const Wrapper = styled.div<{ open: boolean }>`
 const ToDoWrapper = styled.div<Props>`
   border-radius: 20px;
   border-top-right-radius: 0px;
-  width: 250px;
+  width: 300px;
   padding: 10px;
   background-color: ${props => `rgb(0,0,0,${props.opacity / 100})`};
   display: flex;
@@ -35,6 +36,22 @@ const ToDoWrapper = styled.div<Props>`
     color: white;
   }
   font-family: ${props => props.font};
+`
+
+
+const ListWrapper = styled.ul`
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 5px;
+`
+
+const NoItem = styled.li`
+
 `
 
 const Drawer = styled.div<{ opacity: number, open: boolean }>`
@@ -56,7 +73,6 @@ const Drawer = styled.div<{ opacity: number, open: boolean }>`
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 
-
   &:hover {
     width: ${props => props.open ? '50px' : '60px'};
     right: ${props => props.open ? '-50px' : '-60px'};
@@ -77,7 +93,6 @@ const TaskIcon = styled.img<{ open: boolean }>`
   transform: ${props => props.open ? 'none' : 'rotate(180deg)'};
   height: 30px;
   width: 30px;
-
 `
 
 const TopWrapper = styled.div`
@@ -95,50 +110,6 @@ const Header = styled.h1`
   padding-top: 5px;
 `
 
-const ListWrapper = styled.ul<{ hasTasks: boolean }>`
-  width: 100%;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: ${props => props.hasTasks ? 'flex-start' : 'center'};
-  justify-content: flex-start;
-  padding: 0;
-  margin-bottom: 5px;
-`
-
-const ListItem = styled.li<{ checked: boolean }>`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-decoration: ${props => props.checked ? 'line-through' : null};
-  &:hover {
-    span {
-      visibility: visible;
-    }
-  }
-`
-
-const StyledCheckbox = styled(Checkbox)`
-  padding: 2px 9px 9px 9px;
-`
-
-const Delete = styled.span`
-  color: #d1d1d1;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  position: absolute;
-  right: 5px;
-  visibility: hidden;
-  padding: 5px;
-  &:hover {
-    color: white;
-  }
-  &:active {
-    transform: translateY(1px);
-  }
-`
-
 const Form = styled.form`
   display: flex;
   justify-content: center;
@@ -153,12 +124,11 @@ const StyledInput = styled(Input)`
       opacity: 0.5;
     }
   }
-
 `
 
 const ToDo = () => {
   const { opacity, selectedFont } = useContext(StylesContext);
-  const { taskItems, setTaskItems, openTasks, setOpenTasks, tasksLoading, setTasksLoading } = useContext(SettingsContext);
+  const { taskItems, setTaskItems, openTasks, setOpenTasks, setTasksLoading } = useContext(SettingsContext);
   const [input, setInput] = useState<string>("");
 
   const addTask = (e) => {
@@ -170,47 +140,17 @@ const ToDo = () => {
     setTasksLoading(true);
   }
 
-  const tickTask = (index) => {
-    const temp: Task[] = taskItems.slice();
-    temp[index] = {
-      complete: !temp[index].complete,
-      taskText: temp[index].taskText,
-      createdTime: temp[index].createdTime
-    }
-    setTaskItems(temp);
-    setTasksLoading(true);
-  }
-
-  const deleteTask = (index) => {
-    const beginning = taskItems.slice(0, index);
-    const end = taskItems.slice(index + 1);
-    setTaskItems([...beginning, ...end]);
-    setTasksLoading(true);
-  }
-
-  const label = { inputProps: { 'aria-label': 'Checkbox' } };
-
   return (
     <Wrapper open={openTasks}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
           <Header>Task List</Header>
-          <ListWrapper hasTasks={taskItems.length > 0}>
+          <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
-                <ListItem key={task.taskText} checked={task.complete}>
-                  <StyledCheckbox
-                    {...label}
-                    color="default"
-                    checked={task.complete}
-                    onChange={() => tickTask(i)}
-                  />
-                  {task.taskText}
-                  <Delete onClick={() => deleteTask(i)}>x</Delete>
-                </ListItem>
+                <ListItem key={task.taskText + i} task={task} i={i} taskItems={taskItems} setTaskItems={setTaskItems} />
               )
-            }) : <ListItem checked={false}>Let's get stuff done!</ListItem>}
-
+            }) : <NoItem>Start adding tasks below :)</NoItem>}
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
