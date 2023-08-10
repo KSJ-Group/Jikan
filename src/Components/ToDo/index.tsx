@@ -16,17 +16,19 @@ interface Task {
   createdTime: number
 }
 
+const wrapperWidth = '300px';
+
 const Wrapper = styled.div<{ open: boolean }>`
   position: absolute;
   top: 75px;
   transition: 1s ease;
-  left: ${props => props.open ? '20px' : '-300px'};
+  left: ${props => props.open ? '20px' : `-${wrapperWidth}`};
 `
 
 const ToDoWrapper = styled.div<Props>`
   border-radius: 20px;
   border-top-right-radius: 0px;
-  width: 300px;
+  width: ${wrapperWidth};
   padding: 10px;
   background-color: ${props => `rgb(0,0,0,${props.opacity / 100})`};
   display: flex;
@@ -145,11 +147,14 @@ const ToDo = () => {
     setTasksLoading(true);
   }
 
+  const options: any = { weekday: 'short', month: 'long', day: 'numeric' };
+  const today = new Date();
+
   return (
     <Wrapper open={openTasks}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
-          <Header>To Do</Header>
+          <Header>{today.toLocaleDateString("en-US", options)}</Header>
           <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
