@@ -140,24 +140,29 @@ const ToDo = () => {
     setTasksLoading(true);
   }
 
+  const openDrawer = () => {
+    setOpenTasks(!openTasks);
+    setTasksLoading(true);
+  }
+
   return (
     <Wrapper open={openTasks}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
-          <Header>Task List</Header>
+          <Header>To Do</Header>
           <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
                 <ListItem key={task.taskText + i} task={task} i={i} taskItems={taskItems} setTaskItems={setTaskItems} />
               )
-            }) : <NoItem>Start adding tasks below :)</NoItem>}
+            }) : <NoItem>Add tasks below :)</NoItem>}
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
           <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
         </Form>
       </ToDoWrapper >
-      <Drawer opacity={opacity} onClick={() => { setOpenTasks(!openTasks); setTasksLoading(true) }} open={openTasks}>
+      <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>
         <TaskIcon src='/images/arrow.png' alt="task icon" open={openTasks} />
         Tasks
       </Drawer>
