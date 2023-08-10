@@ -21,7 +21,6 @@ interface Task {
 }
 
 export const SettingsContext = createContext({
-  // default values
   isLoading: true,
   isClock: true,
   setIsClock: (isClock: boolean) => { },
@@ -200,7 +199,7 @@ export const SettingsProvider: React.FC = ({ children }) => {
     openTasks: openTasks,
     setOpenTasks: (open: boolean): void => {
       setOpenTasks(open);
-      localStorage.setItem("openTasks", JSON.stringify(openTasks));
+      localStorage.setItem("openTasks", JSON.stringify(open));
     },
     tasksLoading: tasksLoading,
     setTasksLoading: (loading: boolean): void => {
