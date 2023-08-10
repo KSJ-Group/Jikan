@@ -12,11 +12,12 @@ interface Task {
 
 const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean }>`
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   justify-content: ${props => props.hasTasks ? 'flex-start' : 'center'};
   width: 100%;
-  text-decoration: ${props => props.checked ? 'line-through' : null};
+  textarea {
+    text-decoration: ${props => props.checked ? 'line-through' : null};
+  }
 `
 
 const StyledCheckbox = styled(Checkbox)`
@@ -37,14 +38,20 @@ const LeftWrapper = styled.div`
 
 const TaskForm = styled.form``
 
-const TaskText = styled.input<{ active: boolean }>`
+const TaskText = styled.textarea<{ active: boolean, height: string }>`
   background: none;
+  resize: none;
   border: none;
-  outline: none;
+  padding: 0;
+  margin-top: 5px;
+  &:focus-within {
+    outline: none;
+    box-shadow: 0 2px 2px -2px black;
+  }
+  height: ${props => props.height + 'px'};
 `
 
 const EditWrapper = styled.div<{ active: boolean }>`
-  cursor: pointer;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -91,7 +98,8 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [thisInput, setThisInput] = useState<string>(task.taskText);
   const listItemRef: React.RefObject<HTMLDivElement> = useRef(null);
-  const inputRef: React.RefObject<HTMLInputElement> = useRef(null);
+  const inputRef: React.RefObject<HTMLTextAreaElement> = useRef(null);
+  const formRef: React.RefObject<HTMLFormElement> = useRef(null);
   const label = { inputProps: { 'aria-label': 'Checkbox' } };
 
   useEffect(() => {
@@ -134,6 +142,15 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
     }
   }, [edit]);
 
+  const onEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      if (formRef.current) {
+        e.preventDefault();
+        updateTask(e, i);
+      }
+    }
+  }
+
   const updateTask = (e, i) => {
     e.preventDefault();
     const temp = taskItems.slice();
@@ -160,14 +177,16 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
             {...label}
             color="default"
             checked={task.complete}
-            onChange={() => tickTask(i)}
-          />
-          <TaskForm onSubmit={(e) => updateTask(e, i)}>
+            onChange={() => tickTask(i)} />
+          <TaskForm onSubmit={(e) => updateTask(e, i)} ref={formRef}>
             <TaskText
               active={active}
               value={thisInput}
               onChange={(e) => setThisInput(e.target.value)}
               disabled={!edit}
+              wrap='hard'
+              onKeyDown={(e) => onEnterPress(e)}
+              height={inputRef.current ? inputRef.current.scrollHeight.toString() : '0'}
               ref={inputRef} />
           </TaskForm>
         </LeftWrapper>

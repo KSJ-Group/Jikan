@@ -16,17 +16,19 @@ interface Task {
   createdTime: number
 }
 
+const wrapperWidth = '300px';
+
 const Wrapper = styled.div<{ open: boolean }>`
   position: absolute;
   top: 75px;
   transition: 1s ease;
-  left: ${props => props.open ? '20px' : '-300px'};
+  left: ${props => props.open ? '20px' : `-${wrapperWidth}`};
 `
 
 const ToDoWrapper = styled.div<Props>`
   border-radius: 20px;
   border-top-right-radius: 0px;
-  width: 300px;
+  width: ${wrapperWidth};
   padding: 10px;
   background-color: ${props => `rgb(0,0,0,${props.opacity / 100})`};
   display: flex;
@@ -140,24 +142,32 @@ const ToDo = () => {
     setTasksLoading(true);
   }
 
+  const openDrawer = () => {
+    setOpenTasks(!openTasks);
+    setTasksLoading(true);
+  }
+
+  const options: any = { weekday: 'short', month: 'long', day: 'numeric' };
+  const today = new Date();
+
   return (
     <Wrapper open={openTasks}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
-          <Header>Task List</Header>
+          <Header>{today.toLocaleDateString("en-US", options)}</Header>
           <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
                 <ListItem key={task.taskText + i} task={task} i={i} taskItems={taskItems} setTaskItems={setTaskItems} />
               )
-            }) : <NoItem>Start adding tasks below :)</NoItem>}
+            }) : <NoItem>Add tasks below :)</NoItem>}
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
           <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
         </Form>
       </ToDoWrapper >
-      <Drawer opacity={opacity} onClick={() => { setOpenTasks(!openTasks); setTasksLoading(true) }} open={openTasks}>
+      <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>
         <TaskIcon src='/images/arrow.png' alt="task icon" open={openTasks} />
         Tasks
       </Drawer>
