@@ -19,6 +19,7 @@ export const BackgroundWrapper = styled.div<{ blur: number }>`
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(${(props) => props.blur + "px"});
+  filter: blur(${(props) => props.blur + "px"});
 `;
 
 export const BackgroundColor = createGlobalStyle<BackgroundColor>`
