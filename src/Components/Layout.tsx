@@ -7,10 +7,10 @@ import { BrightnessDiv } from '../styles/Global/global.style';
 import Weather from './Weather';
 
 const Layout: React.FC = ({ children }) => {
-  const { brightness } = useContext(StylesContext);
+  const { brightness, blur } = useContext(StylesContext);
 
   return (
-    <BrightnessDiv brightness={brightness.toString() + '%'}>
+    <BrightnessDiv brightness={brightness}>
       <div id='layout'>
         <BackgroundProvider>
           <Navbar />

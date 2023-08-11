@@ -4,15 +4,18 @@ import { BackgroundContext } from "../contexts/BackgroundContext";
 import styles from "../styles/Settings/Background/Background.module.css";
 import { BackgroundWrapper } from "../styles/Global/global.style";
 import YouTubePlayer from "./YouTube";
+import { StylesContext } from "../contexts/StylesContext";
 
 const Background: React.FC = () => {
   const { background, changeLoadStatus } =
     useContext(BackgroundContext);
 
+  const { blur } = useContext(StylesContext);
+
   return (
     <div>
       {background && background.includes('.') ? (
-        <BackgroundWrapper>
+        <BackgroundWrapper blur={blur}>
           <div className={styles.imageDiv}>
             <Image
               src={background}

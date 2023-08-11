@@ -10,8 +10,8 @@ export const StylesContext = createContext(
     setSelectedFont: (font: string) => { },
     brightness: 100,
     setBrightness: (percentage: number) => { },
-    blur: false,
-    setBlur: (blur: boolean) => { },
+    blur: 0,
+    setBlur: (blur: number) => { },
     size: 'medium',
     setSize: (size: string) => { },
     opacity: 30,
@@ -26,7 +26,7 @@ export const StylesProvider: React.FC = ({ children }) => {
   const { user, showSettings, isLoading } = useContext(SettingsContext);
   const [selectedFont, setSelectedFont] = useState<string>('Nova Mono');
   const [brightness, setBrightness] = useState<number>(100);
-  const [blur, setBlur] = useState<boolean>(false);
+  const [blur, setBlur] = useState<number>(0);
   const [size, setSize] = useState<string>("medium");
   const [opacity, setOpacity] = useState<number>(30);
   const [color, setColor] = useState<string>('0,0,0');
@@ -44,7 +44,8 @@ export const StylesProvider: React.FC = ({ children }) => {
       localStorage.setItem('brightness', brightness.toString());
     },
     blur: blur,
-    setBlur: (blur: boolean): void => {
+    setBlur: (blur: number): void => {
+      console.log(blur);
       setBlur(blur);
       localStorage.setItem('blur', JSON.stringify(blur));
     },

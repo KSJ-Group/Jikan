@@ -5,6 +5,7 @@ import { BackgroundContext } from "../contexts/BackgroundContext";
 import { SettingsContext } from "../contexts/SettingsContext";
 import { StylesContext } from "../contexts/StylesContext";
 import styled, { css } from "styled-components";
+import { BackgroundWrapper } from "../styles/Global/global.style";
 
 const Controls = styled.div(
   (props) => css`
@@ -128,7 +129,7 @@ const YouTubePlayer = ({ id }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const { musicVolume, setMusicVolume, isMobile } = useContext(SettingsContext);
-  const { opacity, color } = useContext(StylesContext);
+  const { opacity, color, blur } = useContext(StylesContext);
   const config = {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -224,6 +225,7 @@ const YouTubePlayer = ({ id }) => {
 
   return (
     <div className={styles.youtube}>
+      <BackgroundWrapper blur={blur} />
       <YouTube
         id="youtube-player"
         videoId={id}
