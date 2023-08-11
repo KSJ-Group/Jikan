@@ -86,8 +86,7 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, src, image, images, setImages }
         <span className={styles.inactiveStar} onClick={() => favoriteImage(image)}>☆</span>
         : <span className={styles.activeStar} onClick={() => unfavoriteImage(image)}>★</span>
       }
-
-      <img className={styles.image} src={src.medium} alt={url} onClick={clickHandler} />
+      <div className={styles.image} style={{ backgroundImage: `url(${src.medium})`, backgroundSize: 'cover' }} onClick={clickHandler} />
       {!loaded && background === src.original ? <Spinner className={styles.spinner} animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner> : null}
