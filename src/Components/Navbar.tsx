@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
             <div className={styles.fsText}><StyledFont font={selectedFont}>Fullscreen</StyledFont></div>
           </div>
         }
-        <div className={styles.settings} onClick={() => setShowSettings(true)}>
+        <div className={styles.settings} onClick={() => setShowSettings(!showSettings)}>
           <img className={styles.menuIcon} src='/images/menu.png' alt='menu icon' />
           <div className={styles.settingsWord}><StyledFont font={selectedFont}>Settings</StyledFont></div>
         </div>

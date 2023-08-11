@@ -47,7 +47,7 @@ const WeatherContainer = styled.div<Props>(
   border-radius: 10px;
   cursor: pointer;
   transition: 0.1s ease-in-out;
-  z-index: 10;
+  z-index: 5;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.534);

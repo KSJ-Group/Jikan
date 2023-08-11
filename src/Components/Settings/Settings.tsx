@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { Offcanvas } from "react-bootstrap";
+import React, { useContext, useEffect, useRef } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import { StylesContext } from "../../contexts/StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
@@ -14,11 +13,19 @@ import AboutModal from "../AboutModal";
 import Weather from "./Weather";
 import Reset from "./Reset";
 import Login from "./Login";
+import styled from "styled-components";
 
 interface Props {
   showSettings: boolean;
   setShowSettings: any;
 }
+
+const Wrapper = styled.div<{ show: boolean }>`
+  position: absolute;
+  top: 60px;
+  right: ${props => props.show ? '0' : '-400px'};
+  transition: 0.3s ease;
+`
 
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const {
@@ -50,100 +57,105 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setZip,
     setCurrentWeather
   } = useContext(SettingsContext);
+  const settingsRef: React.RefObject<HTMLDivElement> = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  });
+
+  const handleOutsideClick = (e) => {
+    if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+      setShowSettings(false);
+    }
+  };
 
   return (
-    <div className={styles.settingsDiv}>
-      <Offcanvas
-        show={showSettings}
-        onHide={() => setShowSettings(false)}
-        placement="end"
-        className={styles.settings}
-      >
-        <Offcanvas.Body className={styles.body}>
-          <div className={styles.subBody} id="settings-body">
-            <Login />
-            {isClock ? (
-              // Clock settings
-              <div>
-                <div className={styles.settingsTop}>
-                  <div className={styles.settingsTitle}>Clock Settings</div>
-                  <button
-                    className={styles.x}
-                    onClick={() => setShowSettings(false)}
-                  >
-                    Close
-                  </button>
-                </div>
-                <div className={styles.toggleRow}>
-                  <ShowSeconds
-                    showSeconds={showSeconds}
-                    setShowSeconds={setShowSeconds}
-                  />
-                  <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
-                </div>
-                <Font
-                  selectedFont={selectedFont}
-                  setSelectedFont={setSelectedFont}
-                  size={size}
-                  setSize={setSize}
-                />
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
-                  opacity={opacity}
-                  setOpacity={setOpacity}
-                />
-                <ChangeBackground />
-                <Reset />
-              </div>
-            ) : (
-              // Pomodoro settings
-              <div>
-                <div className={styles.settingsTop}>
-                  <div className={styles.settingsTitle}>Pomodoro Settings</div>
-                  <button
-                    className={styles.x}
-                    onClick={() => setShowSettings(false)}
-                  >
-                    Close
-                  </button>
-                </div>
-                <Timers
-                  pomodoroTime={pomodoroTime}
-                  setPomodoroTime={setPomodoroTime}
-                  breakTime={breakTime}
-                  setBreakTime={setBreakTime}
-                  setShowSettings={setShowSettings}
-                />
-                <Font
-                  selectedFont={selectedFont}
-                  setSelectedFont={setSelectedFont}
-                  size={size}
-                  setSize={setSize}
-                />
-                <AlertSound
-                  selectedAlert={selectedAlert}
-                  setSelectedAlert={setSelectedAlert}
-                  alertVolume={alertVolume}
-                  setAlertVolume={setAlertVolume}
-                />
-                <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
-                <Brightness
-                  brightness={brightness}
-                  setBrightness={setBrightness}
-                  opacity={opacity}
-                  setOpacity={setOpacity}
-                />
-                <ChangeBackground />
-                <Reset />
-              </div>
-            )}
+    <Wrapper show={showSettings} ref={settingsRef}>
+      <div className={styles.body}>
+        <Login />
+        {isClock ? (
+          // Clock settings
+          <div className={styles.settings}>
+            <div className={styles.settingsTop}>
+              <div className={styles.settingsTitle}>Clock Settings</div>
+              <button
+                className={styles.x}
+                onClick={() => setShowSettings(false)}
+              >
+                Close
+              </button>
+            </div>
+            <div className={styles.toggleRow}>
+              <ShowSeconds
+                showSeconds={showSeconds}
+                setShowSeconds={setShowSeconds}
+              />
+              <TimeFormat is24Hour={is24Hour} setIs24Hour={setIs24Hour} />
+            </div>
+            <Font
+              selectedFont={selectedFont}
+              setSelectedFont={setSelectedFont}
+              size={size}
+              setSize={setSize}
+            />
+            <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+            <Brightness
+              brightness={brightness}
+              setBrightness={setBrightness}
+              opacity={opacity}
+              setOpacity={setOpacity}
+            />
+            <ChangeBackground />
+            <Reset />
           </div>
-        </Offcanvas.Body>
-        <AboutModal setShowSettings={setShowSettings} />
-      </Offcanvas>
-    </div >
+        ) : (
+          // Pomodoro settings
+          <div>
+            <div className={styles.settingsTop}>
+              <div className={styles.settingsTitle}>Pomodoro Settings</div>
+              <button
+                className={styles.x}
+                onClick={() => setShowSettings(false)}
+              >
+                Close
+              </button>
+            </div>
+            <Timers
+              pomodoroTime={pomodoroTime}
+              setPomodoroTime={setPomodoroTime}
+              breakTime={breakTime}
+              setBreakTime={setBreakTime}
+              setShowSettings={setShowSettings}
+            />
+            <Font
+              selectedFont={selectedFont}
+              setSelectedFont={setSelectedFont}
+              size={size}
+              setSize={setSize}
+            />
+            <AlertSound
+              selectedAlert={selectedAlert}
+              setSelectedAlert={setSelectedAlert}
+              alertVolume={alertVolume}
+              setAlertVolume={setAlertVolume}
+            />
+            <Weather zip={zip} setZip={setZip} setCurrentWeather={setCurrentWeather} />
+            <Brightness
+              brightness={brightness}
+              setBrightness={setBrightness}
+              opacity={opacity}
+              setOpacity={setOpacity}
+            />
+            <ChangeBackground />
+            <Reset />
+          </div>
+        )}
+      </div>
+      <AboutModal setShowSettings={setShowSettings} />
+    </Wrapper>
   );
 };
 
