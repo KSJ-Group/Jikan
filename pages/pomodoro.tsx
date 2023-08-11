@@ -11,6 +11,7 @@ import TimerDoneModal from "../src/Components/TimerModal";
 import { SettingsContext } from "../src/contexts/SettingsContext";
 import { StylesContext } from "../src/contexts/StylesContext";
 import styled from "styled-components";
+import ToDo from "../src/Components/ToDo";
 
 interface Font {
   font: any;
@@ -392,6 +393,7 @@ const pomodoro: NextPage = () => {
             <title>Jikan | Pomodoro </title>
           )}
         </Head>
+        <ToDo />
         <div className={styles.linksDiv}>
           <div
             className={styles.link}

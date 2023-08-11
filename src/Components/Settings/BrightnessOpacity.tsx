@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../styles/Settings/Brightness/Brightness.module.css';
 import globalStyles from '../../styles/Settings/Settings.module.css';
+import Blur from './Blur';
 
 interface Props {
   brightness: number,
@@ -40,6 +41,7 @@ const Brightness: React.FC<Props> = ({ brightness, setBrightness, opacity, setOp
             <div>{brightness}%</div>
           </div>
         </div>
+        <Blur />
       </div>
     </div >
   );
