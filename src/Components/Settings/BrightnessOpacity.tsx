@@ -11,15 +11,14 @@ interface Props {
 }
 
 const Brightness: React.FC<Props> = ({ brightness, setBrightness, opacity, setOpacity }) => {
-  const changeHandler = (e: any): void => {
+  const opacityChange = (e: any): void => {
     e.preventDefault();
-    setBrightness(e.target.value);
+    setOpacity(parseInt(e.target.value));
   }
 
-  const changeHandler2 = (e: any): void => {
+  const brightnesschange = (e: any): void => {
     e.preventDefault();
-    const num = parseInt(e.target.value);
-    setOpacity(num);
+    setBrightness(parseInt(e.target.value));
   }
 
   return (
@@ -28,7 +27,7 @@ const Brightness: React.FC<Props> = ({ brightness, setBrightness, opacity, setOp
         <div id='brightness' className={styles.brightnessContainer}>
           Opacity
           <div id='sliderdiv' className={globalStyles.sliderDiv}>
-            <input id="slider" className={globalStyles.slider} defaultValue={opacity} onChange={changeHandler2} type="range" name="opacity"
+            <input id="slider" className={globalStyles.slider} defaultValue={opacity} onChange={opacityChange} type="range" name="opacity"
               min="0" max="60" />
             <div>{opacity}%</div>
           </div>
@@ -36,7 +35,7 @@ const Brightness: React.FC<Props> = ({ brightness, setBrightness, opacity, setOp
         <div id='brightness' className={styles.brightnessContainer}>
           Brightness
           <div id='sliderdiv' className={globalStyles.sliderDiv}>
-            <input id="slider" className={globalStyles.slider} defaultValue={brightness} onChange={changeHandler} type="range" name="brightness"
+            <input id="slider" className={globalStyles.slider} defaultValue={brightness} onChange={brightnesschange} type="range" name="brightness"
               min="5" max="100" />
             <div>{brightness}%</div>
           </div>
