@@ -67,7 +67,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   });
 
   const handleOutsideClick = (e) => {
-    if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+    if (settingsRef.current && !settingsRef.current.contains(e.target) && e.target.innerHTML !== 'Settings') {
       setShowSettings(false);
     }
   };
