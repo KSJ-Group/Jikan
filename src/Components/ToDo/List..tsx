@@ -23,18 +23,14 @@ const ListWrapper = styled.ul`
   margin-bottom: 5px;
 `
 
-const NoItem = styled.li`
-
-`
-
 const List = ({ taskItems, setTaskItems }: Props) => {
   return (
     <ListWrapper>
-      {taskItems.length ? taskItems.map((task: Task, i) => {
+      {taskItems.map((task: Task, i) => {
         return (
           <ListItem key={task.taskText + i} task i taskItems setTaskItems />
         )
-      }) : <NoItem>Start adding tasks below :)</NoItem>}
+      })}
     </ListWrapper>
   );
 };

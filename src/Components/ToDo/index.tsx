@@ -16,19 +16,19 @@ interface Task {
   createdTime: number
 }
 
-const wrapperWidth = '300px';
+const wrapperWidth = 300;
 
-const Wrapper = styled.div<{ open: boolean }>`
+const Wrapper = styled.div<{ open: boolean, isMobile: boolean }>`
   position: absolute;
   top: 75px;
   transition: 1s ease;
-  left: ${props => props.open ? '20px' : `-${wrapperWidth}`};
+  left: ${props => props.open ? '20px' : `-${wrapperWidth}px`};
 `
 
 const ToDoWrapper = styled.div<Props>`
   border-radius: 20px;
   border-top-right-radius: 0px;
-  width: ${wrapperWidth};
+  width: ${wrapperWidth + 'px'};
   padding: 10px;
   background-color: ${props => `rgb(0,0,0,${props.opacity / 100})`};
   display: flex;
@@ -52,8 +52,8 @@ const ListWrapper = styled.ul`
   margin-bottom: 5px;
 `
 
-const NoItem = styled.li`
-
+const NoItem = styled.li<{ isMobile: boolean }>`
+  font-size: ${props => props.isMobile ? '12px' : '18px'};
 `
 
 const Drawer = styled.div<{ opacity: number, open: boolean }>`
@@ -90,11 +90,11 @@ const Drawer = styled.div<{ opacity: number, open: boolean }>`
   }
 `
 
-const TaskIcon = styled.img<{ open: boolean }>`
+const TaskIcon = styled.img<{ open: boolean, isMobile: boolean }>`
   filter: invert(1);
   transform: ${props => props.open ? 'none' : 'rotate(180deg)'};
-  height: 30px;
-  width: 30px;
+  height: ${props => props.isMobile ? '20px' : '30px'};
+  width: ${props => props.isMobile ? '20px' : '30px'};
 `
 
 const TopWrapper = styled.div`
@@ -103,8 +103,8 @@ const TopWrapper = styled.div`
   align-items: center;
 `
 
-const Header = styled.h1`
-  font-size: 18px;
+const Header = styled.h1<{ isMobile: boolean }>`
+  font-size: ${props => props.isMobile ? '12px' : '18px'};
   font-weight: bold;
   width: 100%;
   display: flex;
@@ -117,10 +117,11 @@ const Form = styled.form`
   justify-content: center;
 `
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(Input) <{ isMobile: boolean }>`
   width: 90%;
   input {
     color: white;
+    font-size: ${props => props.isMobile ? '12px' : '18px'};
     ::placeholder {
       color: white;
       opacity: 0.5;
@@ -130,7 +131,7 @@ const StyledInput = styled(Input)`
 
 const ToDo = () => {
   const { opacity, selectedFont } = useContext(StylesContext);
-  const { taskItems, setTaskItems, openTasks, setOpenTasks, setTasksLoading } = useContext(SettingsContext);
+  const { taskItems, setTaskItems, openTasks, setOpenTasks, setTasksLoading, isMobile } = useContext(SettingsContext);
   const [input, setInput] = useState<string>("");
 
   const addTask = (e) => {
@@ -151,24 +152,24 @@ const ToDo = () => {
   const today = new Date();
 
   return (
-    <Wrapper open={openTasks}>
+    <Wrapper open={openTasks} isMobile={isMobile}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
-          <Header>{today.toLocaleDateString("en-US", options)}</Header>
+          <Header isMobile={isMobile}>{today.toLocaleDateString("en-US", options)}</Header>
           <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
                 <ListItem key={task.taskText + i} task={task} i={i} taskItems={taskItems} setTaskItems={setTaskItems} />
               )
-            }) : <NoItem>Add tasks below :)</NoItem>}
+            }) : <NoItem isMobile={isMobile}>Add tasks below</NoItem>}
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
-          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
+          <StyledInput isMobile={isMobile} color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
         </Form>
       </ToDoWrapper >
       <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>
-        <TaskIcon src='/images/arrow.png' alt="task icon" open={openTasks} />
+        <TaskIcon isMobile={isMobile} src='/images/arrow.png' alt="task icon" open={openTasks} />
         Tasks
       </Drawer>
     </Wrapper>

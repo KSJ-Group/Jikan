@@ -65,6 +65,9 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     },
     recentlySelected: recentlySelected,
     setRecentlySelected: (selected: any): void => {
+      if (selected.length > 30) {
+        selected.pop();
+      }
       setRecentlySelected(selected);
       localStorage.setItem('recentlySelected', JSON.stringify(selected));
     },

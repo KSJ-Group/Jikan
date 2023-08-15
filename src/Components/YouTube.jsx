@@ -22,9 +22,7 @@ const Controls = styled.div(
     bottom: 10px;
     ${props.isMobile &&
     css`
-      top: 65px;
-      left: 5px;
-      margin: 0;
+      bottom: 100px;
       height: 40px;
       width: 90px;
     `}
@@ -39,9 +37,7 @@ const Controls = styled.div(
     }
 
     @media screen and (max-width: 740px) {
-      top: 65px;
-      left: 5px;
-      margin: 0;
+      bottom: 100px;
       height: 40px;
       width: 90px;
     }
