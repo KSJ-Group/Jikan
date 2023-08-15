@@ -53,9 +53,9 @@ const WeatherContainer = styled.div<Props>(
     background-color: rgba(0, 0, 0, 0.534);
   }
   @media screen and (max-width: 740px) {
-    top: 90px;
+    top: 80px;
+    right: 0;
     height: 0;
-    right: -15px;
     background-color: none;
     padding: 0;
     text-align: right;
@@ -74,6 +74,7 @@ const Weather = () => {
     zip,
     isMobile
   } = useContext(SettingsContext);
+  // const isMobile = true;
 
   const getWeather = (): void => {
     setLastUpdated(moment().calendar());
@@ -110,8 +111,9 @@ const Weather = () => {
             </div>
             <div className={styles.weatherRight} onClick={() => window.open(`https://weather.com/weather/today/l/${zip}`)}>
               <StyledFont font={selectedFont}>{currentWeather.city}</StyledFont>
-              <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont>
-              <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont>
+              {!isMobile ? <StyledFont font={selectedFont}>{currentWeather.tempC}° C | {currentWeather.tempF}° F</StyledFont> :
+                <StyledFont font={selectedFont}>{currentWeather.tempF}° F</StyledFont>}
+              {!isMobile ? <StyledFont font={selectedFont}>{currentWeather.weather}</StyledFont> : null}
               <div className={styles.lastUpdated}><StyledFont font={selectedFont}>Last updated: {lastUpdated}</StyledFont></div>
             </div>
             <div className={styles.refresh} onClick={getWeather}>

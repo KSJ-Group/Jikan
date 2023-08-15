@@ -38,7 +38,8 @@ const LeftWrapper = styled.div`
 
 const TaskForm = styled.form``
 
-const TaskText = styled.textarea<{ active: boolean, height: string }>`
+const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: boolean }>`
+  font-size: ${props => props.isMobile ? '12px' : '18px'};
   background: none;
   resize: none;
   border: none;
@@ -92,7 +93,7 @@ const Button = styled.img`
 `;
 
 const ListItem = ({ task, i, taskItems, setTaskItems }) => {
-  const { setTasksLoading } = useContext(SettingsContext);
+  const { setTasksLoading, isMobile } = useContext(SettingsContext);
   const [visible, setVisible] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);
@@ -181,6 +182,7 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
           <TaskForm onSubmit={(e) => updateTask(e, i)} ref={formRef}>
             <TaskText
               active={active}
+              isMobile={isMobile}
               value={thisInput}
               onChange={(e) => setThisInput(e.target.value)}
               disabled={!edit}

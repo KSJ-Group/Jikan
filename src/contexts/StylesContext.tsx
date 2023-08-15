@@ -39,13 +39,12 @@ export const StylesProvider: React.FC = ({ children }) => {
       localStorage.setItem('font', font);
     },
     brightness: brightness,
-    setBrightness: (percentage: number): void => {
-      setBrightness(percentage);
-      localStorage.setItem('brightness', brightness.toString());
+    setBrightness: (brightness: number): void => {
+      setBrightness(brightness);
+      localStorage.setItem('brightness', JSON.stringify(brightness));
     },
     blur: blur,
     setBlur: (blur: number): void => {
-      console.log(blur);
       setBlur(blur);
       localStorage.setItem('blur', JSON.stringify(blur));
     },
@@ -57,7 +56,7 @@ export const StylesProvider: React.FC = ({ children }) => {
     opacity: opacity,
     setOpacity: (opacity: number): void => {
       setOpacity(opacity);
-      localStorage.setItem('opacity', opacity.toString());
+      localStorage.setItem('opacity', JSON.stringify(opacity));
     },
     color: color,
     setColor: (color: string): void => {

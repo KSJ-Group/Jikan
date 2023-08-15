@@ -19,7 +19,7 @@ interface Font {
 }
 
 const ClockDiv = styled.div<Props>`
-  padding: 1vw 3vw;
+  padding: 0 2vw;
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ const ClockFont = styled.div<Font>`
     if (props.size === 'small') {
       return '5vw';
     } else if (props.size === 'medium') {
-      return '10vw';
+      return '9vw';
     } else if (props.size === 'large') {
       return '15vw';
     }

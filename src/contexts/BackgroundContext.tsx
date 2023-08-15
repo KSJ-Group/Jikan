@@ -51,7 +51,6 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     },
     youtubeResults: youtubeResults,
     setYoutubeResults: (results: any): void => {
-      console.log('Results:', results);
       const uniqueIds = new Set();
       const unique = results.filter(element => {
         const isDuplicate = uniqueIds.has(element.id);
@@ -66,6 +65,9 @@ export const BackgroundProvider: React.FC = ({ children }) => {
     },
     recentlySelected: recentlySelected,
     setRecentlySelected: (selected: any): void => {
+      if (selected.length > 30) {
+        selected.pop();
+      }
       setRecentlySelected(selected);
       localStorage.setItem('recentlySelected', JSON.stringify(selected));
     },
