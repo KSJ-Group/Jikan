@@ -21,7 +21,7 @@ const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean }>`
 `
 
 const StyledCheckbox = styled(Checkbox)`
-  padding: 2px 9px 9px 9px;
+  padding: 2px 9px;
 `
 
 const TaskWrapper = styled.div<{ active: boolean }>`
@@ -49,7 +49,8 @@ const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: bo
     outline: none;
     box-shadow: 0 2px 2px -2px black;
   }
-  height: ${props => props.height + 'px'};
+  min-height: ${props => props.isMobile ? '20px' : '27px'};
+  height: ${props => props.height};
 `
 
 const EditWrapper = styled.div<{ active: boolean }>`
@@ -182,13 +183,13 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
           <TaskForm onSubmit={(e) => updateTask(e, i)} ref={formRef}>
             <TaskText
               active={active}
-              isMobile={isMobile}
+              isMobile={true}
               value={thisInput}
               onChange={(e) => setThisInput(e.target.value)}
               disabled={!edit}
               wrap='hard'
               onKeyDown={(e) => onEnterPress(e)}
-              height={inputRef.current ? inputRef.current.scrollHeight.toString() : '0'}
+              height={inputRef.current ? inputRef.current.scrollHeight.toString() + 'px' : '0'}
               ref={inputRef} />
           </TaskForm>
         </LeftWrapper>
