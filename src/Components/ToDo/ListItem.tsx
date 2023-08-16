@@ -183,7 +183,7 @@ const ListItem = ({ task, i, taskItems, setTaskItems }) => {
           <TaskForm onSubmit={(e) => updateTask(e, i)} ref={formRef}>
             <TaskText
               active={active}
-              isMobile={true}
+              isMobile={isMobile}
               value={thisInput}
               onChange={(e) => setThisInput(e.target.value)}
               disabled={!edit}
