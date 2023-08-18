@@ -118,11 +118,14 @@ const Form = styled.form`
   justify-content: center;
 `
 
-const StyledInput = styled(Input) <{ isMobile: boolean }>`
+const StyledInput = styled(Input)`
   width: 90%;
   input {
     color: white;
-    font-size: ${props => props.isMobile ? '12px' : '18px'};
+    font-size: 18px;
+    @media screen and (max-width: 450px) {
+      font-size: 12px;
+    }
     ::placeholder {
       color: white;
       opacity: 0.5;
@@ -166,7 +169,7 @@ const ToDo = () => {
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
-          <StyledInput isMobile={isMobile} color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
+          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
         </Form>
       </ToDoWrapper >
       <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>
