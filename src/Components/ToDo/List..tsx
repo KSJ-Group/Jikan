@@ -5,6 +5,7 @@ interface Task {
   complete: boolean
   taskText: string
   createdTime: number
+  subTasks: []
 }
 
 interface Props {
