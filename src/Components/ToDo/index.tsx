@@ -14,15 +14,16 @@ interface Task {
   complete: boolean
   taskText: string
   createdTime: number
+  subTasks: Task[]
 }
 
 const wrapperWidth = 300;
 
-const Wrapper = styled.div<{ open: boolean, isMobile: boolean }>`
+const Wrapper = styled.div<{ open: boolean }>`
   position: absolute;
-  top: 75px;
+  top: 70px;
   transition: 1s ease;
-  left: ${props => props.open ? '20px' : `-${wrapperWidth}px`};
+  left: ${props => props.open ? '16px' : `-${wrapperWidth}px`};
 `
 
 const ToDoWrapper = styled.div<Props>`
@@ -137,7 +138,7 @@ const ToDo = () => {
   const addTask = (e) => {
     e.preventDefault();
     const temp: Task[] = taskItems.slice();
-    temp.push({ complete: false, taskText: input, createdTime: Date.now() });
+    temp.push({ complete: false, taskText: input, createdTime: Date.now(), subTasks: [] });
     setTaskItems(temp);
     setInput("");
     setTasksLoading(true);
@@ -152,14 +153,14 @@ const ToDo = () => {
   const today = new Date();
 
   return (
-    <Wrapper open={openTasks} isMobile={isMobile}>
+    <Wrapper open={openTasks}>
       <ToDoWrapper opacity={opacity} font={selectedFont}>
         <TopWrapper>
           <Header isMobile={isMobile}>{today.toLocaleDateString("en-US", options)}</Header>
           <ListWrapper>
             {taskItems.length ? taskItems.map((task: Task, i) => {
               return (
-                <ListItem key={task.taskText + i} task={task} i={i} taskItems={taskItems} setTaskItems={setTaskItems} />
+                <ListItem key={task.taskText + i} task={task} i={i} subTaskIndex={null} taskItems={taskItems} setTaskItems={setTaskItems} isSubTask={false} />
               )
             }) : <NoItem isMobile={isMobile}>Add tasks below</NoItem>}
           </ListWrapper>
