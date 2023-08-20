@@ -236,10 +236,6 @@ const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask })
     }
   }, [showSubTask])
 
-  useEffect(() => {
-    console.log(taskItems);
-  }, [taskItems]);
-
   return (
     <ListItemWrapper
       ref={listItemRef}
