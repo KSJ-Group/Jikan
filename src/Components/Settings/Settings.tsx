@@ -67,7 +67,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const settingsRef: React.RefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
+    if (showSettings) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
