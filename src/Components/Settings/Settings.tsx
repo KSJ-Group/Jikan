@@ -83,7 +83,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
 
   return (
     <Wrapper show={showSettings} ref={settingsRef} loaded={loaded}>
-      <div className={styles.body}>
+      <div className={styles.body} id="settings-body">
         <Login />
         {isClock ? (
           // Clock settings

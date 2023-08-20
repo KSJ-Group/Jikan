@@ -134,7 +134,7 @@
   overflow: hidden;
   cursor: pointer;
   width: 48%;
-  height: 120px;
+  height: 100px;
   transition: 0.2 ease-in;
 }
 .recentWrapper .imageResult:hover {
