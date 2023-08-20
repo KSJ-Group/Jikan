@@ -3,6 +3,7 @@ import { SettingsContext } from '../../contexts/SettingsContext';
 import styled from "styled-components";
 import { Checkbox, Input } from '@mui/material';
 import Menu from './Menu';
+import { StylesContext } from '../../contexts/StylesContext';
 
 interface Task {
   complete: boolean
@@ -16,7 +17,7 @@ const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean }>`
   flex-direction: column;
   justify-content: ${props => props.hasTasks ? 'flex-start' : 'center'};
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   textarea {
     text-decoration: ${props => props.checked ? 'line-through' : 'none'};
   }
@@ -26,15 +27,11 @@ const StyledCheckbox = styled(Checkbox)`
   padding: 2px 9px;
 `
 
-const TaskWrapper = styled.div<{ isSubTask: boolean }>`
+const TaskWrapper = styled.div`
   display: flex;
-  justify-content: ${props => props.isSubTask ? 'flex-end' : 'flex-start'};
 `
 
-const SubTaskWrapper = styled.div<{ isSubTask: boolean }>`
-  display: flex;
-  width: ${props => props.isSubTask ? '90%' : 'auto'};
-`
+const SubTaskWrapper = styled.div``
 
 const LeftWrapper = styled.div`
   display: flex;
@@ -107,6 +104,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox' } };
 
 const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask }) => {
   const { setTasksLoading, isMobile } = useContext(SettingsContext);
+  const { selectedFont } = useContext(StylesContext);
   const [visible, setVisible] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);
@@ -252,8 +250,8 @@ const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask })
       hasTasks={taskItems.length > 0}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => { if (!active) setVisible(false) }}>
-      <TaskWrapper isSubTask={isSubTask}>
-        <SubTaskWrapper isSubTask={isSubTask}>
+      <TaskWrapper>
+        <SubTaskWrapper>
           <LeftWrapper>
             <StyledCheckbox
               {...label}
