@@ -1,6 +1,4 @@
-import Document, { Html, Main, NextScript } from "next/document";
-import Head from "next/head";
-import Script from "next/script";
+import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
