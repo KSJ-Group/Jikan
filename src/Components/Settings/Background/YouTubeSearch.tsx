@@ -22,27 +22,31 @@ const YouTubeSearch = () => {
     const [terms, setTerms] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
+    const [prevScrollTop, setPrevScrollTop] = useState<number>(1111);
     const [page, setPage] = useState<number>(0);
     const [nextPageToken, setNextPageToken] = useState<string>('');
     const [isError, setIsError] = useState<boolean>(false);
+    const [settingsRef, setSettingsRef] = useState<any>(null);
     const isInitialMount = useRef<boolean>(true);
-
-    const settings: any = document.getElementById('settings-body');
     const { setBackground, isOnlyMusic, setIsOnlyMusic, eventType, setEventType, setYoutubeResults, youtubeResults, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
     const { isClock } = useContext(SettingsContext);
 
     const scroll = () => {
-        if (settings) {
-            isClock ? settings.scrollTo({ top: 650, behavior: 'smooth' }) : settings.scrollTo({ top: 850, behavior: 'smooth' });
+        if (settingsRef) {
+            isClock ? settingsRef.scrollTo({ top: 650, behavior: 'smooth' }) : settingsRef.scrollTo({ top: 850, behavior: 'smooth' });
         }
     }
 
     useEffect(() => {
         let search = localStorage.getItem("youtubesearch");
         search ? setTerms(search) : setTerms("");
-
-        scroll();
+        reset();
+        setSettingsRef(document.getElementById('settings-body'));
     }, []);
+
+    useEffect(() => {
+        if (settingsRef) scroll();
+    }, [settingsRef])
 
     useEffect(() => {
         if (isInitialMount.current) {
@@ -135,8 +139,9 @@ const YouTubeSearch = () => {
             processed.push(obj);
         })
         if (append) {
-            let temp: any = youtubeResults.slice(0);
+            let temp: any = youtubeResults.slice();
             temp = [...temp, ...processed];
+            setPrevScrollTop(settingsRef.scrollTop);
             setYoutubeResults(temp);
             setIsLoadingMore(false);
         } else {
@@ -149,6 +154,7 @@ const YouTubeSearch = () => {
             setIsLoading(false);
             clearTimeout(timeout);
             setPage(youtubeResults.length / 10 - 1);
+            if (settingsRef) settingsRef.scrollTop = prevScrollTop;
         }
     }, [youtubeResults])
 
@@ -185,7 +191,7 @@ const YouTubeSearch = () => {
 
     const loadMore = (e: any) => {
         e.preventDefault();
-        if (page < 5) {
+        if (page < 3.5) {
             fetchMoreVideos(terms, eventType, nextPageToken);
             setIsLoadingMore(true);
         }
@@ -297,8 +303,8 @@ const YouTubeSearch = () => {
                                 <Spinner animation="border" variant="primary" />
                             </div>
                         }
-                        <button className={styles.scrollBtn} onClick={(e: any) => scrollToTop(e)}>Go ↑</button>
-                        {page < 5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
+                        <button className={styles.scrollBtn} onClick={(e: any) => scrollToTop(e)}>Top ↑</button>
+                        {page < 3.5 ? <button className={styles.loadBtn} onClick={(e: any) => loadMore(e)}>Load More</button> : null}
                     </div>
                     : null
                 }
