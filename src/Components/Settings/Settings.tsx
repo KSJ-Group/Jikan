@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import { StylesContext } from "../../contexts/StylesContext";
 import styles from "../../styles/Settings/Settings.module.css";
@@ -20,14 +20,21 @@ interface Props {
   setShowSettings: any;
 }
 
-const Wrapper = styled.div<{ show: boolean }>`
+const Wrapper = styled.div<{ show: boolean, loaded: boolean }>`
   position: absolute;
   top: 60px;
   right: ${props => props.show ? '0' : '-400px'};
   transition: 0.3s ease;
+  display: ${props => props.loaded ? 'block' : 'none'};
 `
 
 const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
+  const [loaded, setLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, [])
+
   const {
     selectedFont,
     setSelectedFont,
@@ -60,21 +67,23 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
   const settingsRef: React.RefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
+    if (showSettings) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   });
 
   const handleOutsideClick = (e) => {
-    if (settingsRef.current && !settingsRef.current.contains(e.target) && e.target.innerHTML !== 'Settings' && e.target.alt !== 'menu icon') {
+    if (settingsRef.current && !settingsRef.current.contains(e.target) && e.target.innerHTML !== 'Settings' && e.target.alt !== 'menu icon' && e.target.className !== 'Navbar_settings__3oRTC') {
       setShowSettings(false);
     }
   };
 
   return (
-    <Wrapper show={showSettings} ref={settingsRef}>
-      <div className={styles.body}>
+    <Wrapper show={showSettings} ref={settingsRef} loaded={loaded}>
+      <div className={styles.body} id="settings-body">
         <Login />
         {isClock ? (
           // Clock settings

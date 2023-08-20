@@ -6,7 +6,6 @@ import { SettingsContext } from '../../contexts/SettingsContext';
 import ListItem from './ListItem';
 
 interface Props {
-  font: string;
   opacity: number
 }
 
@@ -19,11 +18,12 @@ interface Task {
 
 const wrapperWidth = 300;
 
-const Wrapper = styled.div<{ open: boolean }>`
+const Wrapper = styled.div<{ open: boolean, font: string }>`
   position: absolute;
   top: 70px;
   transition: 1s ease;
   left: ${props => props.open ? '16px' : `-${wrapperWidth}px`};
+  font-family: ${props => props.font};
 `
 
 const ToDoWrapper = styled.div<Props>`
@@ -38,7 +38,6 @@ const ToDoWrapper = styled.div<Props>`
   * {
     color: white;
   }
-  font-family: ${props => props.font};
 `
 
 
@@ -118,11 +117,12 @@ const Form = styled.form`
   justify-content: center;
 `
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(Input)<{ font: string }>`
   width: 90%;
   input {
     color: white;
-    font-size: 18px;
+    font-size: 16px;
+    font-family: ${props => props.font};
     @media screen and (max-width: 450px) {
       font-size: 12px;
     }
@@ -156,8 +156,8 @@ const ToDo = () => {
   const today = new Date();
 
   return (
-    <Wrapper open={openTasks}>
-      <ToDoWrapper opacity={opacity} font={selectedFont}>
+    <Wrapper open={openTasks} font={selectedFont}>
+      <ToDoWrapper opacity={opacity}>
         <TopWrapper>
           <Header isMobile={isMobile}>{today.toLocaleDateString("en-US", options)}</Header>
           <ListWrapper>
@@ -169,7 +169,7 @@ const ToDo = () => {
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
-          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
+          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter task here.." font={selectedFont}/>
         </Form>
       </ToDoWrapper >
       <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>

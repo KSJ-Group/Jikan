@@ -35,7 +35,7 @@ const Login = () => {
       {!user ? (
         <div className={styles.loggedOutWrapper}>
           <button className={styles.loginBtn} onClick={signInWithGoogle}>
-            <i className={`fab fa-google ${styles.googleLogo}`}></i>
+            <i aria-hidden className={`fab fa-google ${styles.googleLogo}`}></i>
             Sign in for Personalized Settings
           </button>
         </div>

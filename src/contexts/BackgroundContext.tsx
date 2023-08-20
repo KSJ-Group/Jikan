@@ -61,7 +61,6 @@ export const BackgroundProvider: React.FC = ({ children }) => {
         return false;
       });
       setYoutubeResults(unique);
-      localStorage.setItem('youtubeResults', JSON.stringify(results));
     },
     recentlySelected: recentlySelected,
     setRecentlySelected: (selected: any): void => {

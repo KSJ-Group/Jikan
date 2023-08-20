@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import { BackgroundContext } from '../../../contexts/BackgroundContext';
 import styles from '../../../styles/Settings/Background/PhotoTile/PhotoTile.module.css';
 import { Spinner } from 'react-bootstrap';
+import Image from 'next/image';
 
 interface ButtonProps {
   url: string,
@@ -86,7 +87,7 @@ const PhotoTile: NextPage<ButtonProps> = ({ url, src, image, images, setImages }
         <span className={styles.inactiveStar} onClick={() => favoriteImage(image)}>☆</span>
         : <span className={styles.activeStar} onClick={() => unfavoriteImage(image)}>★</span>
       }
-      <div className={styles.image} style={{ backgroundImage: `url(${src.medium})`, backgroundSize: 'cover' }} onClick={clickHandler} />
+      <Image className={styles.image} src={src.medium} onClick={clickHandler} placeholder="blur" alt={url} blurDataURL={src.medium} layout="fill" />
       {!loaded && background === src.original ? <Spinner className={styles.spinner} animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner> : null}
