@@ -19,6 +19,7 @@ const EditWrapper = styled.div<{ active: boolean, isSubTask: boolean }>`
   transition: 0.3s ease;
   background-color: #00000043;
   overflow: hidden;
+  width: 95%;
   &:hover {
     color: white;
   }
@@ -36,6 +37,10 @@ const Button = styled.img<{ isSubTask: boolean }>`
   }
   &:active {
     transform: translateY(1px);
+  }
+  &:first-child {
+    width: 35px;
+    height: 35px;
   }
 `;
 

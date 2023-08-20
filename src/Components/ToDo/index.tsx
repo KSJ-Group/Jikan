@@ -169,7 +169,7 @@ const ToDo = () => {
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
-          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add new task" />
+          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter task here.." />
         </Form>
       </ToDoWrapper >
       <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>

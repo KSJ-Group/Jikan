@@ -15,6 +15,7 @@ const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: ${props => props.hasTasks ? 'flex-start' : 'center'};
+  align-items: center;
   width: 100%;
   textarea {
     text-decoration: ${props => props.checked ? 'line-through' : 'none'};
@@ -41,13 +42,13 @@ const LeftWrapper = styled.div`
 
 const TaskForm = styled.form``
 
-const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: boolean }>`
-  font-size: ${props => props.isMobile ? '12px' : '18px'};
+const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: boolean, isSubTask: boolean }>`
+  font-size: ${props => props.isMobile ? (props.isSubTask ? '12px' : '11px') : (props.isSubTask ? '16px' : '18px')};
   background: none;
   resize: none;
   border: none;
   padding: 0;
-  margin-top: 5px;
+  margin-top: 8px;
   &:focus-within {
     outline: none;
     box-shadow: 0 2px 2px -2px black;
@@ -72,7 +73,8 @@ const SubTaskForm = styled.form<{ active: boolean }>`
   display: flex;
   height: ${props => props.active ? '40px' : '0'};
   transition: 0.3s ease;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  width: 90%;
   padding: ${props => props.active ? '5px 0' : '0'};
   overflow: hidden;
   margin-left: 15px;
@@ -93,6 +95,12 @@ const SubTaskInput = styled(Input)`
     color: white;
     font-size: 14px;
   }
+`
+
+const Separator = styled.hr`
+  width: 95%;
+  color: #8f8f8f;
+  margin: 0;
 `
 
 const label = { inputProps: { 'aria-label': 'Checkbox' } };
@@ -256,6 +264,7 @@ const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask })
               <TaskText
                 active={active}
                 isMobile={isMobile}
+                isSubTask={isSubTask}
                 value={thisInput}
                 onChange={(e) => setThisInput(e.target.value)}
                 disabled={!edit}
@@ -290,6 +299,7 @@ const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask })
         />
       </SubTaskForm>
       <Menu active={active} setShowSubTask={setShowSubTask} deleteTask={deleteTask} setEdit={setEdit} i={i} isSubTask={isSubTask} />
+      {i !== taskItems.length - 1 && !isSubTask ? <Separator /> : null}
     </ListItemWrapper>
   );
 };
