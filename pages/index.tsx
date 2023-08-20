@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Script from "next/script";
 import Clock from "../src/Components/clock";
 import styles from "../src/styles/Main/Main.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -34,23 +33,23 @@ const Home: NextPage = () => {
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
           crossOrigin="anonymous"
         />
-        <Script
+        <script
           src="https://unpkg.com/react/umd/react.production.min.js"
           crossOrigin="true"
-        ></Script>
-        <Script
+        ></script>
+        <script
           src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
           crossOrigin="true"
-        ></Script>
-        <Script
+        ></script>
+        <script
           src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
           crossOrigin="true"
-        ></Script>
-        <Script>var Alert = ReactBootstrap.Alert; </Script>
-        <Script
+        ></script>
+        <script>var Alert = ReactBootstrap.Alert; </script>
+        <script
           src="https://kit.fontawesome.com/5a44324c7d.js"
           crossOrigin="anonymous"
-        ></Script>
+        ></script>
         <link
           rel="icon"
           href="https://icons-for-free.com/iconfiles/png/512/time+timer+icon-1320087275815015291.png"
