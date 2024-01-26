@@ -31,7 +31,7 @@ interface ContainerProps {
   color: string;
 }
 
-const Container = styled.div<any>`
+const Container = styled.div<ContainerProps>`
   min-width: ${(props) => {
     if (!props.isMobile) {
       if (props.size === "small") {
@@ -68,7 +68,7 @@ const Container = styled.div<any>`
   }
 `
 
-const OtherFont = styled.span<any>`
+const OtherFont = styled.span<Font>`
     font-family: ${(props) => props.font}, monospace;
     font-size: ${(props) => {
     if (!props.isMobile) {
@@ -91,7 +91,7 @@ const OtherFont = styled.span<any>`
   }};
 `
 
-const ClockFont = styled.div<any>`
+const ClockFont = styled.div<TimeFont>`
   font-size: ${(props) => {
     if (!props.isMobile) {
       if (props.size === 'small') {
