@@ -112,12 +112,12 @@ const Header = styled.h1<{ isMobile: boolean, children: any }>`
   padding-top: 5px;
 `
 
-const Form = styled.form<{ onSubmit: Function }>`
+const Form = styled.form<{ onSubmit: Function, children: any }>`
   display: flex;
   justify-content: center;
 `
 
-const StyledInput = styled(Input) <{ font: string }>`
+const StyledInput = styled(Input) <{ value: string, onChange: Function, placeholder: string, font: string }>`
   width: 90%;
   input {
     color: white;
