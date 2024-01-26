@@ -12,25 +12,7 @@ import { StylesContext } from "../src/contexts/StylesContext";
 import styled from "styled-components";
 import ToDo from "../src/Components/ToDo";
 
-interface Font {
-  font: any;
-  size: string;
-  isMobile: boolean;
-}
-
-interface TimeFont {
-  size: string;
-  isMobile: boolean;
-}
-
-interface ContainerProps {
-  size: string;
-  isMobile: boolean;
-  opacity: number;
-  color: string;
-}
-
-const Container = styled.div<ContainerProps>`
+const Container = styled.div<{ opacity: number, size: string, isMobile: boolean, color: string }>`
   min-width: ${(props) => {
     if (!props.isMobile) {
       if (props.size === "small") {
@@ -67,7 +49,7 @@ const Container = styled.div<ContainerProps>`
   }
 `
 
-const OtherFont = styled.span<Font>`
+const OtherFont = styled.span<{ font: any, size: string, isMobile: boolean }>`
     font-family: ${(props) => props.font}, monospace;
     font-size: ${(props) => {
     if (!props.isMobile) {
@@ -90,7 +72,7 @@ const OtherFont = styled.span<Font>`
   }};
 `
 
-const ClockFont = styled.div<TimeFont>`
+const ClockFont = styled.div<{ size: string, isMobile: boolean }>`
   font-size: ${(props) => {
     if (!props.isMobile) {
       if (props.size === 'small') {
