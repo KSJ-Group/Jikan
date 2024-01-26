@@ -418,7 +418,7 @@ const pomodoro = () => {
               <ClockFont isMobile={isMobile} size={size}>{pomodoroTime2}</ClockFont>
             ) : null}
             {shortBreak ? (
-              <ClockFont isMobile={isMobile} size={size} id="shortBreak">
+              <ClockFont isMobile={isMobile} size={size}>
                 {breakTime2}
               </ClockFont>
             ) : null}
