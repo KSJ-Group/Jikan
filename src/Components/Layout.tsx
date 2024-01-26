@@ -5,6 +5,7 @@ import { BackgroundProvider } from '../contexts/BackgroundContext';
 import { StylesContext } from '../contexts/StylesContext';
 import { BrightnessDiv } from '../styles/Global/global.style';
 import Weather from './Weather';
+import Quote from './Quote';
 
 const Layout: React.FC = ({ children }) => {
   const { brightness, blur } = useContext(StylesContext);
@@ -17,6 +18,7 @@ const Layout: React.FC = ({ children }) => {
           <Background />
           {children}
           <Weather />
+          <Quote />
         </BackgroundProvider>
       </div>
     </BrightnessDiv>
