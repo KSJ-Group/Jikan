@@ -19,7 +19,7 @@ interface Task {
 
 const wrapperWidth = 300;
 
-const Wrapper = styled.div<{ open: boolean, font: string }>`
+const Wrapper = styled.div<{ open: boolean, font: string, children: any }>`
   position: absolute;
   top: 70px;
   transition: 1s ease;
