@@ -65,9 +65,11 @@ const Font = ({ selectedFont, setSelectedFont, size, setSize }: Props) => {
             onChange={(e) => changeFont(e)}
           >
             {availFonts.map((font) => (
-              <StyledFont key={font} value={font} font={font}>
-                {font}
-              </StyledFont>
+              <div key={font}>
+                <StyledFont value={font} font={font}>
+                  {font}
+                </StyledFont>
+              </div>
             ))}
           </Form.Select>
         </Form.Group>
