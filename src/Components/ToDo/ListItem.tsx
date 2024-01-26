@@ -40,6 +40,7 @@ interface MeatballProps {
   visible: boolean;
   isSubTask: boolean;
   onClick: Function;
+  src: string;
 }
 
 interface SubtaskProps {
