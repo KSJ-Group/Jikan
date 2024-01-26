@@ -67,13 +67,13 @@ const TaskWrapper = styled.div`
   display: flex;
 `
 
-const SubTaskWrapper = styled.div``
+const SubTaskWrapper = styled.div<{ children: any }>``
 
 const LeftWrapper = styled.div`
   display: flex;
 `
 
-const TaskForm = styled.form``
+const TaskForm = styled.form<{ onSubmit: Function, ref: any, children: any }>``
 
 const TaskText = styled.textarea<TaskTextProps>`
   font-size: ${props => props.isMobile ? (props.isSubTask ? '12px' : '11px') : (props.isSubTask ? '16px' : '18px')};
