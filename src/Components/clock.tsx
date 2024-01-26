@@ -18,6 +18,7 @@ interface Font {
   font: any;
   size: string;
   children: any;
+  className: string;
 }
 
 const ClockDiv = styled.div<Props>`
@@ -45,7 +46,7 @@ const ClockDiv = styled.div<Props>`
   }
 `
 
-const DragIcon = styled.strong`
+const DragIcon = styled.strong<{ children: any }>`
   cursor: grab;
   &:active {
     cursor: grabbing;
