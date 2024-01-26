@@ -7,6 +7,7 @@ import ListItem from './ListItem';
 
 interface Props {
   opacity: number
+  children: any;
 }
 
 interface Task {
@@ -40,7 +41,6 @@ const ToDoWrapper = styled.div<Props>`
   }
 `
 
-
 const ListWrapper = styled.ul`
   width: 100%;
   list-style: none;
@@ -52,11 +52,11 @@ const ListWrapper = styled.ul`
   margin-bottom: 5px;
 `
 
-const NoItem = styled.li<{ isMobile: boolean }>`
+const NoItem = styled.li<{ isMobile: boolean, children: any }>`
   font-size: ${props => props.isMobile ? '12px' : '18px'};
 `
 
-const Drawer = styled.div<{ opacity: number, open: boolean }>`
+const Drawer = styled.div<{ opacity: number, open: boolean, children: any }>`
   position: absolute;
   top: 0;
   right: -50px;
@@ -103,7 +103,7 @@ const TopWrapper = styled.div`
   align-items: center;
 `
 
-const Header = styled.h1<{ isMobile: boolean }>`
+const Header = styled.h1<{ isMobile: boolean, children: any }>`
   font-size: ${props => props.isMobile ? '12px' : '18px'};
   font-weight: bold;
   width: 100%;
@@ -117,7 +117,7 @@ const Form = styled.form`
   justify-content: center;
 `
 
-const StyledInput = styled(Input)<{ font: string }>`
+const StyledInput = styled(Input) <{ font: string }>`
   width: 90%;
   input {
     color: white;
@@ -169,7 +169,7 @@ const ToDo = () => {
           </ListWrapper>
         </TopWrapper>
         <Form onSubmit={(e) => addTask(e)}>
-          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter task here.." font={selectedFont}/>
+          <StyledInput color="primary" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter task here.." font={selectedFont} />
         </Form>
       </ToDoWrapper >
       <Drawer opacity={opacity} onClick={openDrawer} open={openTasks}>

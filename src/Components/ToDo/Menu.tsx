@@ -10,7 +10,7 @@ interface Props {
   isSubTask: boolean
 }
 
-const EditWrapper = styled.div<{ active: boolean, isSubTask: boolean }>`
+const EditWrapper = styled.div<{ active: boolean, isSubTask: boolean, children: any }>`
   display: flex;
   justify-content: space-evenly;
   align-items: center;

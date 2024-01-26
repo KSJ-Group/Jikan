@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 interface Props {
   brightness: number;
+  children: any;
 }
 
 interface BackgroundColor {
@@ -14,7 +15,7 @@ export const BrightnessDiv = styled.div<Props>`
   filter: brightness(${(props) => props.brightness + "%"});
 `;
 
-export const BackgroundWrapper = styled.div<{ blur: number }>`
+export const BackgroundWrapper = styled.div<{ blur: number; children: any }>`
   position: absolute;
   width: 100vw;
   height: 100vh;

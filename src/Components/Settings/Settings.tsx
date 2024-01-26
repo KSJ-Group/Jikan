@@ -21,7 +21,7 @@ interface Props {
   setShowSettings: any;
 }
 
-const Wrapper = styled.div<{ show: boolean, loaded: boolean }>`
+const Wrapper = styled.div<{ show: boolean, loaded: boolean, children: any }>`
   position: absolute;
   top: 60px;
   right: ${props => props.show ? '0' : '-400px'};

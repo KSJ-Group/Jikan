@@ -11,11 +11,13 @@ interface Props {
   size: string;
   opacity: number;
   color: string;
+  children: any;
 }
 
 interface Font {
   font: any;
   size: string;
+  children: any;
 }
 
 const ClockDiv = styled.div<Props>`

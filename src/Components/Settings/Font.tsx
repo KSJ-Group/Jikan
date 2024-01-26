@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 interface Font {
   font: any;
+  children: any;
 }
 
 const StyledFont = styled.option<Font>`

@@ -12,7 +12,7 @@ interface Task {
   subTasks: Task[]
 }
 
-const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean }>`
+const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean, children: any }>`
   display: flex;
   flex-direction: column;
   justify-content: ${props => props.hasTasks ? 'flex-start' : 'center'};
@@ -66,7 +66,7 @@ const MeatballIcon = styled.img<{ active: boolean, visible: boolean, isSubTask: 
 
 `
 
-const SubTaskForm = styled.form<{ active: boolean }>`
+const SubTaskForm = styled.form<{ active: boolean, children: any }>`
   display: flex;
   height: ${props => props.active ? '40px' : '0'};
   transition: 0.3s ease;

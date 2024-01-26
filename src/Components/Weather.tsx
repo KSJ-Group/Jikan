@@ -8,11 +8,14 @@ import moment from 'moment';
 
 interface Font {
   font: any;
+  children: any;
 }
+
 interface Props {
   color: string;
   opacity: number;
   isMobile: boolean;
+  children: any;
 }
 
 const StyledFont = styled.span<Font>`

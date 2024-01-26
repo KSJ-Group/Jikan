@@ -9,11 +9,13 @@ import { StylesContext } from '../contexts/StylesContext';
 
 interface Font {
   font: any;
+  children: any;
 }
 
 interface Props {
   opacity: number;
   color: string;
+  children: any;
 }
 
 const Nav = styled.nav<Props>`
