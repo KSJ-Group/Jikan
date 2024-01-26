@@ -8,6 +8,7 @@ interface Font {
   font: any;
   value: string;
   children: any;
+  key: string;
 }
 
 const StyledFont = styled.option<Font>`
@@ -66,11 +67,9 @@ const Font = ({ selectedFont, setSelectedFont, size, setSize }: Props) => {
             onChange={(e) => changeFont(e)}
           >
             {availFonts.map((font) => (
-              <div key={font}>
-                <StyledFont font={font} value={font} >
-                  {font}
-                </StyledFont>
-              </div>
+              <StyledFont key={font} font={font} value={font} >
+                {font}
+              </StyledFont>
             ))}
           </Form.Select>
         </Form.Group>
