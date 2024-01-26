@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext, ReactElement } from "react";
-import type { NextPage } from "next";
 import styles from "../src/styles/Pomodoro/Pomodoro.module.css";
 import Head from "next/head";
 import {

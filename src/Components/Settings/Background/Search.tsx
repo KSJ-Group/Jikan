@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import type { NextPage } from "next";
 import axios from "axios";
 import styles from "../../../styles/Settings/Background/Search/Search.module.css";
 import PhotoTile from "./PhotoTile";
@@ -17,7 +16,7 @@ interface Photo {
 
 const photos: Photo[] = [];
 
-const Search: NextPage = () => {
+const Search = () => {
   const [terms, setTerms] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [images, setImages] = useState<typeof photos>([]);
