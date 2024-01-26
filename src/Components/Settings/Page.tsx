@@ -1,13 +1,12 @@
 import React from "react";
-import type { NextPage } from "next";
 import styles from "../../styles/Settings/Background/Page/Page.module.css";
 
-interface pageProps {
+interface PageProps {
   changePage: (direction: boolean) => void;
   page: number;
   maxPages: number;
 }
-const Page: NextPage<pageProps> = ({ changePage, page, maxPages }) => {
+const Page = ({ changePage, page, maxPages }: PageProps) => {
 
   const clickHandlerNext = (e: any) => {
     e.preventDefault();

@@ -19,7 +19,7 @@ interface Props {
   setSize: Function;
 }
 
-const Font: React.FC<Props> = ({ selectedFont, setSelectedFont, size, setSize }) => {
+const Font = ({ selectedFont, setSelectedFont, size, setSize }: Props) => {
   const changeFont = (e: any) => {
     e.preventDefault();
     const target = e.target as HTMLTextAreaElement;

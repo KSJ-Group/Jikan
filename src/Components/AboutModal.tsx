@@ -7,7 +7,7 @@ interface Props {
   setShowSettings: Function
 }
 
-const AboutModal: React.FC<Props> = ({ setShowSettings }) => {
+const AboutModal = ({ setShowSettings }: Props) => {
   const [showModal, setShow] = useState<boolean>(false);
 
   const handleClose = () => {

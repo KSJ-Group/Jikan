@@ -11,7 +11,7 @@ interface Props {
   setCurrentWeather: Function;
 }
 
-const Weather: React.FC<Props> = ({ zip, setZip, setCurrentWeather }) => {
+const Weather = ({ zip, setZip, setCurrentWeather }: Props) => {
   const {
     setShowSettings,
   } = useContext(SettingsContext);

@@ -9,7 +9,7 @@ interface Props {
   // switchToLong: any,
   targetMode: string
 }
-const AreYouSureModal: React.FC<Props> = ({ show, handleClose, switchToPom, switchToShort, targetMode }) => {
+const AreYouSureModal = ({ show, handleClose, switchToPom, switchToShort, targetMode }: Props) => {
   return (
     <>
       <Modal

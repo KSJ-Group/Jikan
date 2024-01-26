@@ -21,7 +21,7 @@ export const BackgroundContext = createContext(
     setFavorites: (favorites: any) => { },
   });
 
-export const BackgroundProvider: React.FC = ({ children }) => {
+export const BackgroundProvider = ({ children }) => {
   const { user, showSettings, isLoading } = useContext(SettingsContext);
   const [background, setBackground] = useState<string>('/images/default-wallpaper.jpg');
   const [loaded, setLoaded] = useState(true);

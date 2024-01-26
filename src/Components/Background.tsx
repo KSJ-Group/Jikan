@@ -6,7 +6,7 @@ import { BackgroundWrapper } from "../styles/Global/global.style";
 import YouTubePlayer from "./YouTube";
 import { StylesContext } from "../contexts/StylesContext";
 
-const Background: React.FC = () => {
+const Background = () => {
   const { background, changeLoadStatus } =
     useContext(BackgroundContext);
 

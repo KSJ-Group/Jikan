@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, ReactElement } from "react";
 import type { NextPage } from "next";
 import styles from "../src/styles/Pomodoro/Pomodoro.module.css";
 import Head from "next/head";
@@ -120,7 +120,7 @@ const { Howl, Howler } = require("howler");
 let alert: any;
 let timer: number;
 
-const pomodoro: NextPage = () => {
+const pomodoro = () => {
   const { pomodoroTime, breakTime, selectedAlert, autoStartBreak, alertVolume, isMobile, started, setStarted } =
     useContext(SettingsContext);
   const { selectedFont, size, opacity, color } = useContext(StylesContext);

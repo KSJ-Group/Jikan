@@ -8,7 +8,7 @@ interface Props {
   setShowSeconds: Function
 }
 
-const ShowSeconds: React.FC<Props> = ({ showSeconds, setShowSeconds }) => {
+const ShowSeconds = ({ showSeconds, setShowSeconds }: Props) => {
   return (
     <div className={styles.showSecondsContainer}>
       <div className={globalStyles.settingModuleContainer}>

@@ -5,7 +5,7 @@ import styles from "../src/styles/Main/Main.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ToDo from "../src/Components/ToDo";
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div className={styles.container}>
       <Head>

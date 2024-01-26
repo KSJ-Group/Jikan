@@ -8,7 +8,7 @@ interface Props {
   setIs24Hour: Function
 }
 
-const TimeFormat: React.FC<Props> = ({ is24Hour, setIs24Hour }) => {
+const TimeFormat = ({ is24Hour, setIs24Hour }: Props) => {
   return (
     <div className={styles.timeFormatContainer}>
       <div className={globalStyles.settingModuleContainer}>

@@ -10,7 +10,7 @@ interface Props {
   setOpacity: Function
 }
 
-const Brightness: React.FC<Props> = ({ brightness, setBrightness, opacity, setOpacity }) => {
+const Brightness = ({ brightness, setBrightness, opacity, setOpacity }: Props) => {
   const opacityChange = (e: any): void => {
     e.preventDefault();
     setOpacity(parseInt(e.target.value));

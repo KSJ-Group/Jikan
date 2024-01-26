@@ -14,7 +14,7 @@ interface Props {
 const { Howl } = require("howler");
 var alert: any;
 
-const AlertSound: React.FC<Props> = ({ selectedAlert, setSelectedAlert, alertVolume, setAlertVolume }) => {
+const AlertSound = ({ selectedAlert, setSelectedAlert, alertVolume, setAlertVolume }: Props) => {
   const [availAlerts, setAlerts] = useState<string[]>([]);
   const { allAlarms } = useContext(SettingsContext);
 

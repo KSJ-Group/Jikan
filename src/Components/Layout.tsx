@@ -7,7 +7,7 @@ import { BrightnessDiv } from '../styles/Global/global.style';
 import Weather from './Weather';
 import Quote from './Quote';
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }) => {
   const { brightness, blur } = useContext(StylesContext);
 
   return (

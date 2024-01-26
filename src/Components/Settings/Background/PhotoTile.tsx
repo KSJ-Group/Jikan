@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import type { NextPage } from 'next';
 import { BackgroundContext } from '../../../contexts/BackgroundContext';
 import styles from '../../../styles/Settings/Background/PhotoTile/PhotoTile.module.css';
 import { Spinner } from 'react-bootstrap';
@@ -17,7 +16,7 @@ interface ButtonProps {
   setImages: Function
 };
 
-const PhotoTile: NextPage<ButtonProps> = ({ url, src, image, images, setImages }) => {
+const PhotoTile = ({ url, src, image, images, setImages }: ButtonProps) => {
   const { background, setBackground, changeLoadStatus, loaded, recentlySelected, setRecentlySelected, favorites, setFavorites } = useContext(BackgroundContext);
 
   const clickHandler = () => {

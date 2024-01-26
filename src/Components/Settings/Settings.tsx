@@ -29,7 +29,7 @@ const Wrapper = styled.div<{ show: boolean, loaded: boolean }>`
   display: ${props => props.loaded ? 'block' : 'none'};
 `
 
-const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
+const Settings = ({ showSettings, setShowSettings }: Props) => {
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {

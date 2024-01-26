@@ -34,7 +34,7 @@ const StyledFont = styled.span<Font>`
   top: 1px;
 `
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [clockIsActive, setClockIsActive] = useState<boolean>(true);
   const [pomIsActive, setPomIsActive] = useState<boolean>(false);
   const { setIsClock, showSettings, setShowSettings, isMobile } = useContext(SettingsContext);

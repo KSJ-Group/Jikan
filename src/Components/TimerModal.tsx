@@ -8,7 +8,7 @@ interface Props {
   whichDone: string;
 }
 
-const TimerModal: React.FC<Props> = ({ show, handleClose, breakFromModal, whichDone }) => {
+const TimerModal = ({ show, handleClose, breakFromModal, whichDone }: Props) => {
   return (
     <>
       <Modal

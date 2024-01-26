@@ -80,7 +80,7 @@ const ClockFont = styled.div<Font>`
 
 let interval: number;
 
-const Clock: React.FC = () => {
+const Clock = () => {
   const [time, setTime] = useState<string>('');
   const [is24andSeconds, a] = useState<boolean>();
   const [is24, b] = useState<boolean>();

@@ -7,7 +7,7 @@ import YouTubeSearch from './YouTubeSearch';
 import RecentlySelected from './RecentlySelected';
 import Favorites from './Favorites';
 
-const ChangeBackground: React.FC = () => {
+const ChangeBackground = () => {
   const [display, setDisplay] = useState<string>('');
 
   const changeDisplay = (option: string) => {

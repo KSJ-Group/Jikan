@@ -1,8 +1,7 @@
-import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const NotFound: NextPage = () => {
+const NotFound = () => {
   const router = useRouter()
 
   useEffect(() => {

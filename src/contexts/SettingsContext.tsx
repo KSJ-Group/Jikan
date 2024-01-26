@@ -82,7 +82,7 @@ export const SettingsContext = createContext({
   setQuote: (quote: string) => { }
 });
 
-export const SettingsProvider: React.FC = ({ children }) => {
+export const SettingsProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isClock, setIsClock] = useState<boolean>(true);
   const [pomodoroTime, setPomodoroTime] = useState<number>(1500000);

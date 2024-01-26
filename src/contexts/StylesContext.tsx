@@ -22,7 +22,7 @@ export const StylesContext = createContext(
     setPos: (pos: any) => { }
   });
 
-export const StylesProvider: React.FC = ({ children }) => {
+export const StylesProvider = ({ children }) => {
   const { user, showSettings, isLoading } = useContext(SettingsContext);
   const [selectedFont, setSelectedFont] = useState<string>('Nova Mono');
   const [brightness, setBrightness] = useState<number>(100);
