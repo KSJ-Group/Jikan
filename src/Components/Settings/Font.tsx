@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 interface Font {
   font: any;
+  value: string;
   children: any;
 }
 
@@ -66,7 +67,7 @@ const Font = ({ selectedFont, setSelectedFont, size, setSize }: Props) => {
           >
             {availFonts.map((font) => (
               <div key={font}>
-                <StyledFont value={font} font={font}>
+                <StyledFont font={font} value={font} >
                   {font}
                 </StyledFont>
               </div>
