@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { SettingsContext } from '../../contexts/SettingsContext';
-import styled from "styled-components";
+import styled, { AnyStyledComponent } from "styled-components";
 import { Checkbox, Input } from '@mui/material';
 import Menu from './Menu';
 import { StylesContext } from '../../contexts/StylesContext';
@@ -12,7 +12,43 @@ interface Task {
   subTasks: Task[]
 }
 
-const ListItemWrapper = styled.div<{ checked: boolean, hasTasks: boolean, children: any }>`
+interface ListProps {
+  checked: boolean;
+  hasTasks: boolean;
+  children: any;
+  ref: any;
+  key: string;
+  onMouseEnter: Function;
+  onMouseLeave: Function;
+}
+
+interface TaskTextProps {
+  active: boolean;
+  isMobile: boolean;
+  isSubTask: boolean;
+  value: string;
+  onChange: Function;
+  disabled: Boolean;
+  wrap: string;
+  onKeyDown: Function;
+  height: string;
+  ref: any;
+}
+
+interface MeatballProps {
+  active: boolean;
+  visible: boolean;
+  isSubTask: boolean;
+  onClick: Function;
+}
+
+interface SubtaskProps {
+  active: boolean;
+  children: any;
+  onSubmit: Function;
+}
+
+const ListItemWrapper = styled.div<ListProps>`
   display: flex;
   flex-direction: column;
   justify-content: ${props => props.hasTasks ? 'flex-start' : 'center'};
@@ -39,7 +75,7 @@ const LeftWrapper = styled.div`
 
 const TaskForm = styled.form``
 
-const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: boolean, isSubTask: boolean }>`
+const TaskText = styled.textarea<TaskTextProps>`
   font-size: ${props => props.isMobile ? (props.isSubTask ? '12px' : '11px') : (props.isSubTask ? '16px' : '18px')};
   background: none;
   resize: none;
@@ -54,7 +90,7 @@ const TaskText = styled.textarea<{ active: boolean, height: string, isMobile: bo
   height: ${props => props.height};
 `
 
-const MeatballIcon = styled.img<{ active: boolean, visible: boolean, isSubTask: boolean }>`
+const MeatballIcon = styled.img<MeatballProps>`
   width: 20px;
   height: 38px;
   object-fit: contain;
@@ -66,7 +102,7 @@ const MeatballIcon = styled.img<{ active: boolean, visible: boolean, isSubTask: 
 
 `
 
-const SubTaskForm = styled.form<{ active: boolean, children: any }>`
+const SubTaskForm = styled.form<SubtaskProps>`
   display: flex;
   height: ${props => props.active ? '40px' : '0'};
   transition: 0.3s ease;
@@ -104,7 +140,6 @@ const label = { inputProps: { 'aria-label': 'Checkbox' } };
 
 const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask }) => {
   const { setTasksLoading, isMobile } = useContext(SettingsContext);
-  const { selectedFont } = useContext(StylesContext);
   const [visible, setVisible] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);

@@ -3,7 +3,7 @@ import globalStyles from '../../styles/Settings/Settings.module.css'
 import styled from 'styled-components';
 import AreYouSureResetModal from '../AreYouSureResetModal';
 
-const Button = styled.button`
+const Button = styled.button<{ onClick: Function }>`
   font-size: 12px;
   padding: 10px;
   border-radius: 5px;

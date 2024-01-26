@@ -25,7 +25,7 @@ const EditWrapper = styled.div<{ active: boolean, isSubTask: boolean, children: 
   }
 `
 
-const Button = styled.img<{ isSubTask: boolean }>`
+const Button = styled.img<{ isSubTask: boolean, src: string, onClick: Function }>`
   width: ${props => props.isSubTask ? '35px' : '40px'};
   height: ${props => props.isSubTask ? '35px' : '40px'};
   padding: 5px;

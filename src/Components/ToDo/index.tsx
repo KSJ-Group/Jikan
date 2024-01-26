@@ -56,7 +56,7 @@ const NoItem = styled.li<{ isMobile: boolean, children: any }>`
   font-size: ${props => props.isMobile ? '12px' : '18px'};
 `
 
-const Drawer = styled.div<{ opacity: number, open: boolean, children: any }>`
+const Drawer = styled.div<{ opacity: number, open: boolean, onClick: Function, children: any }>`
   position: absolute;
   top: 0;
   right: -50px;
@@ -112,7 +112,7 @@ const Header = styled.h1<{ isMobile: boolean, children: any }>`
   padding-top: 5px;
 `
 
-const Form = styled.form`
+const Form = styled.form<{ onSubmit: Function }>`
   display: flex;
   justify-content: center;
 `
