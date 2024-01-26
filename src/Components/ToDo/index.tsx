@@ -90,7 +90,7 @@ const Drawer = styled.div<{ opacity: number, open: boolean, onClick: Function, c
   }
 `
 
-const TaskIcon = styled.img<{ open: boolean, isMobile: boolean }>`
+const TaskIcon = styled.img<{ src: string, alt: string, open: boolean, isMobile: boolean }>`
   filter: invert(1);
   transform: ${props => props.open ? 'none' : 'rotate(180deg)'};
   height: ${props => props.isMobile ? '20px' : '30px'};

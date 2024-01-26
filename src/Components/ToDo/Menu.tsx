@@ -25,7 +25,7 @@ const EditWrapper = styled.div<{ active: boolean, isSubTask: boolean, children: 
   }
 `
 
-const Button = styled.img<{ isSubTask: boolean, src: string, onClick: Function }>`
+const Button = styled.img<{ isSubTask: boolean, src: string, alt: string, onClick: Function }>`
   width: ${props => props.isSubTask ? '35px' : '40px'};
   height: ${props => props.isSubTask ? '35px' : '40px'};
   padding: 5px;
@@ -47,9 +47,9 @@ const Button = styled.img<{ isSubTask: boolean, src: string, onClick: Function }
 const Menu = ({ active, setShowSubTask, deleteTask, setEdit, i, isSubTask }: Props) => {
   return (
     <EditWrapper active={active} isSubTask={isSubTask}>
-      {!isSubTask ? <Button isSubTask={isSubTask} src="/images/add.png" onClick={() => setShowSubTask(prev => !prev)} /> : null}
-      <Button isSubTask={isSubTask} src="/images/edit.png" onClick={() => setEdit(true)} />
-      <Button isSubTask={isSubTask} src="/images/trash.png" onClick={() => deleteTask()} />
+      {!isSubTask ? <Button isSubTask={isSubTask} src="/images/add.png" alt="edit button" onClick={() => setShowSubTask(prev => !prev)} /> : null}
+      <Button isSubTask={isSubTask} src="/images/edit.png" alt="edit button" onClick={() => setEdit(true)} />
+      <Button isSubTask={isSubTask} src="/images/trash.png" alt="edit button" onClick={() => deleteTask()} />
     </EditWrapper>
   );
 };

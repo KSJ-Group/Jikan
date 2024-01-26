@@ -56,7 +56,7 @@ const DragIcon = styled.strong`
   display: none;
 `
 
-const DragImg = styled.img`
+const DragImg = styled.img<{ src: string, alt: string }>`
   height: 20px;
   width: 20px;
   transform: rotate(45deg);

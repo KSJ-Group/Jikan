@@ -41,6 +41,7 @@ interface MeatballProps {
   isSubTask: boolean;
   onClick: Function;
   src: string;
+  alt: string;
 }
 
 interface SubtaskProps {
@@ -114,7 +115,7 @@ const SubTaskForm = styled.form<SubtaskProps>`
   margin-left: 15px;
 `
 
-const Arrow = styled.img<{ active: boolean }>`
+const Arrow = styled.img<{ active: boolean, src: string }>`
   transform: scaleY(-1);
   height: 20px;
   filter: invert(1);
@@ -309,7 +310,7 @@ const ListItem = ({ task, i, subTaskIndex, taskItems, setTaskItems, isSubTask })
             </TaskForm>
           </LeftWrapper>
         </SubTaskWrapper>
-        <MeatballIcon src="/images/meatball-icon.png" onClick={() => { setActive(!active) }} active={active} visible={visible} isSubTask={isSubTask} />
+        <MeatballIcon src="/images/meatball-icon.png" alt="menu button" onClick={() => { setActive(!active) }} active={active} visible={visible} isSubTask={isSubTask} />
       </TaskWrapper>
       {!isSubTask && task.subTasks && task.subTasks.length ? task.subTasks.map((child, index) => {
         return (
