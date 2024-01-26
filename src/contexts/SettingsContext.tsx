@@ -75,7 +75,11 @@ export const SettingsContext = createContext({
   openTasks: false,
   setOpenTasks: (open: boolean) => { },
   tasksLoading: false,
-  setTasksLoading: (loading: boolean) => { }
+  setTasksLoading: (loading: boolean) => { },
+  showQuote: false,
+  setShowQuote: (show: boolean) => { },
+  quote: "",
+  setQuote: (quote: string) => { }
 });
 
 export const SettingsProvider: React.FC = ({ children }) => {
@@ -116,6 +120,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
   const [taskItems, setTaskItems] = useState<any>([]);
   const [openTasks, setOpenTasks] = useState<boolean>(false);
   const [tasksLoading, setTasksLoading] = useState<boolean>(false);
+  const [showQuote, setShowQuote] = useState<boolean>(false);
+  const [quote, setQuote] = useState<string>('');
 
   const store = {
     isLoading: isLoading,
@@ -204,6 +210,17 @@ export const SettingsProvider: React.FC = ({ children }) => {
     tasksLoading: tasksLoading,
     setTasksLoading: (loading: boolean): void => {
       setTasksLoading(loading);
+    },
+    showQuote: showQuote,
+    setShowQuote: (show: boolean): void => {
+      setShowQuote(show);
+      localStorage.setItem("lastFetchedQuote", JSON.stringify((new Date).getTime()));
+      localStorage.setItem("showQuote", JSON.stringify(show));
+    },
+    quote: quote,
+    setQuote: (quote: string): void => {
+      setQuote(quote.replace(/"\//g, ""));
+      localStorage.setItem("quote", quote);
     }
   };
 
@@ -246,7 +263,8 @@ export const SettingsProvider: React.FC = ({ children }) => {
       alertVolume: JSON.stringify(alertVolume),
       zip: zip,
       taskItems: JSON.stringify(taskItems),
-      openTasks: JSON.stringify(openTasks)
+      openTasks: JSON.stringify(openTasks),
+      showQuote: JSON.stringify(showQuote),
     }
 
     try {

@@ -14,6 +14,7 @@ import Weather from "./Weather";
 import Reset from "./Reset";
 import Login from "./Login";
 import styled from "styled-components";
+import Quote from "./Quote";
 
 interface Props {
   showSettings: boolean;
@@ -62,7 +63,9 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
     setAlertVolume,
     zip,
     setZip,
-    setCurrentWeather
+    setCurrentWeather,
+    showQuote,
+    setShowQuote,
   } = useContext(SettingsContext);
   const settingsRef: React.RefObject<HTMLDivElement> = useRef(null);
 
@@ -118,6 +121,7 @@ const Settings: React.FC<Props> = ({ showSettings, setShowSettings }) => {
               setOpacity={setOpacity}
             />
             <ChangeBackground />
+            <Quote showQuote={showQuote} setShowQuote={setShowQuote} />
             <Reset />
           </div>
         ) : (
