@@ -214,8 +214,11 @@ export const SettingsProvider = ({ children }) => {
     showQuote: showQuote,
     setShowQuote: (show: boolean): void => {
       setShowQuote(show);
-      localStorage.setItem("lastFetchedQuote", JSON.stringify((new Date).getTime()));
       localStorage.setItem("showQuote", JSON.stringify(show));
+      if (!show) {
+        setQuote("");
+        localStorage.removeItem("quote");
+      }
     },
     quote: quote,
     setQuote: (quote: string): void => {

@@ -5,7 +5,7 @@ import styles from '../styles/Settings/Quote/Quote.module.css';
 type Props = {}
 
 const Quote = (props: Props) => {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   const {
     showQuote,
@@ -14,30 +14,42 @@ const Quote = (props: Props) => {
   } = useContext(SettingsContext);
 
   useEffect(() => {
-    if (showQuote && isDayPassed()) {
-      getNewQuote();
-    } else {
-      const lsQuote = localStorage.getItem("quote");
-      if (lsQuote) {
-        setQuote(lsQuote);
-        setLoading(false);
+    setLoaded(true);
+  }, [])
+
+  useEffect(() => {
+    if (loaded) {
+      if (showQuote) {
+        if (shouldFetchNewQuote()) {
+          getNewQuote();
+        } else {
+          const lsQuote = localStorage.getItem("quote");
+          if (lsQuote) {
+            setQuote(lsQuote);
+          } else {
+            getNewQuote();
+          }
+        }
       } else {
-        getNewQuote();
+        localStorage.removeItem("lastFetchedQuote");
       }
     }
-  }, [showQuote])
+  }, [loaded, showQuote])
 
-  const isDayPassed = () => {
-    const lastRefreshedString = localStorage.getItem('lastFetchedQuote');
-    if (!lastRefreshedString) return true;
+  const shouldFetchNewQuote = () => {
+    const lastFetchedQuote = localStorage.getItem('lastFetchedQuote');
+    if (!lastFetchedQuote) {
+      return true;
+    }
 
-    const lastRefreshed = new Date(lastRefreshedString);
+    const lastRefreshed = parseInt(lastFetchedQuote);
     const currentTime = new Date();
-    const timeDifference = currentTime.valueOf() - lastRefreshed.valueOf();
+    const timeDifference = currentTime.valueOf() - lastRefreshed;
     return timeDifference > 86400000;
   }
 
   const getNewQuote = async () => {
+    console.log("Getting new quote..");
     try {
       const response = await fetch("/api/getQuote", {
         method: "POST",
@@ -49,17 +61,11 @@ const Quote = (props: Props) => {
       const data = await response.json();
 
       setQuote(data.result.content);
-      setLoading(false);
+      localStorage.setItem('lastFetchedQuote', JSON.stringify((new Date).getTime()));
     } catch (error) {
       console.error(error);
     }
   }
-
-  useEffect(() => {
-    if (quote) console.log(quote);
-  }, [quote])
-
-  if (loading || !showQuote) return null;
 
   return (
     <div className={styles.quoteWrapper}>

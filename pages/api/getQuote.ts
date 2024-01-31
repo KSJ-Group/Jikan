@@ -23,7 +23,7 @@ export default async function getQuote(req, res) {
         {
           role: "user",
           content:
-            "Give me a random, short, one sentence motivational or inspirational quote. No punctuations at beginning or end",
+            "Give me a random, short, one sentence motivational or inspirational quote from a famous figure without telling me who said it. No punctuations at beginning or end",
         },
       ],
       model: "gpt-3.5-turbo",
